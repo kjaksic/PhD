@@ -1,0 +1,499 @@
+Mplus VERSION 8.10
+MUTHEN & MUTHEN
+08/30/2024   5:23 PM
+
+INPUT INSTRUCTIONS
+
+  DATA: File is regresija.dat;
+
+  VARIABLE:
+
+  NAMES ARE ID EKST_C UGOD_C SAV_C NE_C OTV_C HUM
+  IMP NEG_VAL COMPLEX TIP POS_VAL ADVER
+  SAV EKST A2 N2 OTV SEU;
+
+  USEVARIABLES ARE EKST_C UGOD_C SAV_C NE_C OTV_C SEU;
+
+  BETWEEN ARE EKST_C UGOD_C SAV_C NE_C OTV_C;
+
+  MISSING ARE ALL (-99);
+
+  CLUSTER IS id;
+
+
+  ANALYSIS:
+  TYPE = TWOLEVEL;
+  ESTIMATOR = BAYES;
+  PROCESSORS = 12;
+  FBITERATIONS = 200000;
+
+
+  MODEL:
+
+  %WITHIN%
+  SEU;
+
+
+  %BETWEEN%
+  EKST_C;
+  UGOD_C;
+  SAV_C;
+  NE_C;
+  OTV_C;
+
+
+  SEU ON SAV_C;
+  SEU ON EKST_C;
+  SEU ON UGOD_C;
+  SEU ON OTV_C;
+  SEU ON NE_C;
+
+  SAV_C WITH EKST_C;
+  SAV_C WITH UGOD_C;
+  SAV_C WITH OTV_C;
+  SAV_C WITH NE_C;
+
+  EKST_C WITH UGOD_C;
+  EKST_C WITH OTV_C;
+  EKST_C WITH NE_C;
+
+  UGOD_C WITH OTV_C;
+  UGOD_C WITH NE_C;
+
+  OTV_C WITH NE_C;
+
+  OUTPUT: STANDARDIZED;
+
+
+
+*** WARNING
+  One or more individual-level variables have no variation within a
+  cluster for the following clusters.
+
+     Variable   Cluster IDs with no within-cluster variation
+
+      SEU         16554319 24591061 13994941 12491438
+
+*** WARNING
+  Data set contains cases with missing on all variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on all variables:  116
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        2854
+
+Number of dependent variables                                    1
+Number of independent variables                                  5
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   SEU
+
+Observed independent variables
+   EKST_C      UGOD_C      SAV_C       NE_C        OTV_C
+
+Variables with special functions
+
+  Cluster variable      ID
+
+  Between variables
+   EKST_C      UGOD_C      SAV_C       NE_C        OTV_C
+
+
+Estimator                                                    BAYES
+Specifications for Bayesian Estimation
+  Point estimate                                            MEDIAN
+  Number of Markov chain Monte Carlo (MCMC) chains               2
+  Random seed for the first chain                                0
+  Starting value information                           UNPERTURBED
+  Algorithm used for Markov chain Monte Carlo           GIBBS(PX1)
+  Fixed number of iterations                                200000
+  K-th iteration used for thinning                               1
+
+Input data file(s)
+  regresija.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of clusters                         99
+
+       Size (s)    Cluster ID with Size s
+
+         11        13994322
+         12        20855574
+         14        16654540
+         16        15261338
+         18        12495072 21213820
+         21        24595014
+         24        12491236 13525223
+         27        21214531
+         29        20163018
+         30        27788116 27663860 15264484 13996939 15614525 16554713
+                   20855258 27918624 27785220 15612828 15611768 13522864
+                   20852179 20856921 24593194 13525517 27913643 13526266
+                   20856715 24595365 27662560 20855884 15471270 20855351
+                   20162054 16551092 15611922 15471432 27666050 27915449
+                   27918933 13527350 12492795 24592461 20161546 27918828
+                   27788829 20854791 20854464 20794922 12497874 16554891
+                   27665653 24591737 12498862 16554319 12492669 24591061
+                   27665886 27661979 16556161 16554342 12193480 16554668
+                   26754012 20796904 16556163 13994941 27787671 20855586
+                   13528127 12494252 24593393 20162526 12492269 13993235
+                   15474494 24591987 20162730 27664277 24598783 26754644
+                   27663723 15262166 12198304 12191870 20798331 20796311
+                   12491438 13529089 15266576 12491120 27783342 24595090
+                   15264805 27662082 13997204 21212503
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+     Number of missing data patterns            17
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              EKST_C        UGOD_C        SAV_C         NE_C          OTV_C
+              ________      ________      ________      ________      ________
+ EKST_C         0.934
+ UGOD_C         0.892         0.892
+ SAV_C          0.913         0.871         0.924
+ NE_C           0.871         0.829         0.882         0.882
+ OTV_C          0.882         0.850         0.871         0.840         0.892
+ SEU            0.548         0.524         0.541         0.519         0.523
+
+
+           Covariance Coverage
+              SEU
+              ________
+ SEU            0.609
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     EKST_C                3.507      -0.229       2.333    4.49%       2.833      3.500      3.500
+              89.000       0.337      -0.617       4.667    2.25%       3.667      4.000
+     UGOD_C                4.078      -0.701       2.500    2.35%       3.667      4.000      4.167
+              85.000       0.313       0.352       5.000    3.53%       4.333      4.500
+     SAV_C                 4.117      -0.720       2.500    1.14%       3.667      4.000      4.167
+              88.000       0.324       0.313       5.000    4.55%       4.333      4.667
+     NE_C                  2.734       0.166       1.333    1.19%       2.167      2.500      2.667
+              84.000       0.394      -0.259       4.500    1.19%       2.833      3.333
+     OTV_C                 3.727       0.135       2.500    1.18%       3.167      3.500      3.667
+              85.000       0.370      -0.747       5.000    2.35%       3.833      4.167
+     SEU                   5.781      -1.096       1.000    0.17%       5.000      5.667      6.000
+            1738.000       1.008       1.620       7.000   16.86%       6.000      6.667
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     USE THE FBITERATIONS OPTION TO INCREASE THE NUMBER OF ITERATIONS BY A FACTOR
+     OF AT LEAST TWO TO CHECK CONVERGENCE AND THAT THE PSR VALUE DOES NOT INCREASE.
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                              28
+
+Bayesian Posterior Predictive Checking using Chi-Square
+
+          95% Confidence Interval for the Difference Between
+          the Observed and the Replicated Chi-Square Values
+
+                                -20.249            25.615
+
+          Posterior Predictive P-Value              0.420
+
+Information Criteria
+
+          Deviance (DIC)                         4501.068
+          Estimated Number of Parameters (pD)     117.242
+
+
+
+MODEL RESULTS
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+
+Within Level
+
+ Variances
+    SEU                0.488       0.017      0.000       0.456       0.523      *
+
+Between Level
+
+ SEU        ON
+    SAV_C              0.240       0.161      0.069      -0.080       0.553
+    EKST_C             0.218       0.148      0.070      -0.074       0.507
+    UGOD_C             0.436       0.157      0.003       0.123       0.739      *
+    OTV_C              0.016       0.124      0.450      -0.229       0.260
+    NE_C               0.252       0.150      0.048      -0.046       0.543
+
+ SAV_C    WITH
+    EKST_C             0.070       0.045      0.049      -0.013       0.167
+    UGOD_C             0.185       0.048      0.000       0.106       0.294      *
+    OTV_C              0.008       0.048      0.428      -0.086       0.105
+    NE_C              -0.153       0.053      0.000      -0.270      -0.063      *
+
+ EKST_C   WITH
+    UGOD_C             0.036       0.044      0.196      -0.048       0.125
+    OTV_C              0.101       0.050      0.013       0.012       0.209      *
+    NE_C              -0.215       0.057      0.000      -0.344      -0.122      *
+
+ UGOD_C   WITH
+    OTV_C              0.026       0.048      0.284      -0.067       0.124
+    NE_C              -0.108       0.050      0.008      -0.217      -0.020      *
+
+ OTV_C    WITH
+    NE_C              -0.084       0.054      0.046      -0.199       0.015
+
+ Means
+    EKST_C             3.504       0.066      0.000       3.374       3.635      *
+    UGOD_C             4.080       0.064      0.000       3.954       4.206      *
+    SAV_C              4.110       0.065      0.000       3.981       4.238      *
+    NE_C               2.747       0.073      0.000       2.603       2.891      *
+    OTV_C              3.725       0.071      0.000       3.584       3.865      *
+
+ Intercepts
+    SEU                1.498       1.212      0.105      -0.852       3.914
+
+ Variances
+    EKST_C             0.387       0.065      0.000       0.287       0.540      *
+    UGOD_C             0.354       0.060      0.000       0.262       0.494      *
+    SAV_C              0.373       0.063      0.000       0.276       0.520      *
+    NE_C               0.455       0.078      0.000       0.335       0.640      *
+    OTV_C              0.427       0.073      0.000       0.315       0.601      *
+
+ Residual Variances
+    SEU                0.428       0.072      0.000       0.315       0.596      *
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ Variances
+    SEU                1.000       0.000      0.000       1.000       1.000
+
+Between Level
+
+ SEU        ON
+    SAV_C              0.193       0.128      0.069      -0.064       0.436
+    EKST_C             0.179       0.119      0.070      -0.061       0.407
+    UGOD_C             0.341       0.118      0.003       0.097       0.558      *
+    OTV_C              0.014       0.106      0.450      -0.194       0.220
+    NE_C               0.224       0.131      0.048      -0.041       0.474
+
+ SAV_C    WITH
+    EKST_C             0.186       0.109      0.049      -0.034       0.390
+    UGOD_C             0.513       0.085      0.000       0.328       0.659      *
+    OTV_C              0.021       0.115      0.428      -0.205       0.245
+    NE_C              -0.376       0.099      0.000      -0.552      -0.165      *
+
+ EKST_C   WITH
+    UGOD_C             0.097       0.111      0.196      -0.125       0.310
+    OTV_C              0.252       0.107      0.013       0.031       0.449      *
+    NE_C              -0.516       0.086      0.000      -0.664      -0.328      *
+
+ UGOD_C   WITH
+    OTV_C              0.069       0.118      0.284      -0.166       0.294
+    NE_C              -0.273       0.107      0.008      -0.468      -0.051      *
+
+ OTV_C    WITH
+    NE_C              -0.193       0.111      0.046      -0.400       0.033
+
+ Means
+    EKST_C             5.631       0.464      0.000       4.741       6.561      *
+    UGOD_C             6.855       0.564      0.000       5.781       7.990      *
+    SAV_C              6.730       0.553      0.000       5.676       7.843      *
+    NE_C               4.070       0.350      0.000       3.403       4.773      *
+    OTV_C              5.701       0.481      0.000       4.778       6.667      *
+
+ Intercepts
+    SEU                1.973       1.645      0.105      -1.026       5.413
+
+ Variances
+    EKST_C             1.000       0.000      0.000       1.000       1.000
+    UGOD_C             1.000       0.000      0.000       1.000       1.000
+    SAV_C              1.000       0.000      0.000       1.000       1.000
+    NE_C               1.000       0.000      0.000       1.000       1.000
+    OTV_C              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    SEU                0.744       0.082      0.000       0.573       0.893      *
+
+
+STDY Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ Variances
+    SEU                1.000       0.000      0.000       1.000       1.000
+
+Between Level
+
+ SEU        ON
+    SAV_C              0.193       0.128      0.069      -0.064       0.436
+    EKST_C             0.179       0.119      0.070      -0.061       0.407
+    UGOD_C             0.341       0.118      0.003       0.097       0.558      *
+    OTV_C              0.014       0.106      0.450      -0.194       0.220
+    NE_C               0.224       0.131      0.048      -0.041       0.474
+
+ SAV_C    WITH
+    EKST_C             0.186       0.109      0.049      -0.034       0.390
+    UGOD_C             0.513       0.085      0.000       0.328       0.659      *
+    OTV_C              0.021       0.115      0.428      -0.205       0.245
+    NE_C              -0.376       0.099      0.000      -0.552      -0.165      *
+
+ EKST_C   WITH
+    UGOD_C             0.097       0.111      0.196      -0.125       0.310
+    OTV_C              0.252       0.107      0.013       0.031       0.449      *
+    NE_C              -0.516       0.086      0.000      -0.664      -0.328      *
+
+ UGOD_C   WITH
+    OTV_C              0.069       0.118      0.284      -0.166       0.294
+    NE_C              -0.273       0.107      0.008      -0.468      -0.051      *
+
+ OTV_C    WITH
+    NE_C              -0.193       0.111      0.046      -0.400       0.033
+
+ Means
+    EKST_C             5.631       0.464      0.000       4.741       6.561      *
+    UGOD_C             6.855       0.564      0.000       5.781       7.990      *
+    SAV_C              6.730       0.553      0.000       5.676       7.843      *
+    NE_C               4.070       0.350      0.000       3.403       4.773      *
+    OTV_C              5.701       0.481      0.000       4.778       6.667      *
+
+ Intercepts
+    SEU                1.973       1.645      0.105      -1.026       5.413
+
+ Variances
+    EKST_C             1.000       0.000      0.000       1.000       1.000
+    UGOD_C             1.000       0.000      0.000       1.000       1.000
+    SAV_C              1.000       0.000      0.000       1.000       1.000
+    NE_C               1.000       0.000      0.000       1.000       1.000
+    OTV_C              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    SEU                0.744       0.082      0.000       0.573       0.893      *
+
+
+STD Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ Variances
+    SEU                0.488       0.017      0.000       0.456       0.523      *
+
+Between Level
+
+ SEU        ON
+    SAV_C              0.240       0.161      0.069      -0.080       0.553
+    EKST_C             0.218       0.148      0.070      -0.074       0.507
+    UGOD_C             0.436       0.157      0.003       0.123       0.739      *
+    OTV_C              0.016       0.124      0.450      -0.229       0.260
+    NE_C               0.252       0.150      0.048      -0.046       0.543
+
+ SAV_C    WITH
+    EKST_C             0.070       0.045      0.049      -0.013       0.167
+    UGOD_C             0.185       0.048      0.000       0.106       0.294      *
+    OTV_C              0.008       0.048      0.428      -0.086       0.105
+    NE_C              -0.153       0.053      0.000      -0.270      -0.063      *
+
+ EKST_C   WITH
+    UGOD_C             0.036       0.044      0.196      -0.048       0.125
+    OTV_C              0.101       0.050      0.013       0.012       0.209      *
+    NE_C              -0.215       0.057      0.000      -0.344      -0.122      *
+
+ UGOD_C   WITH
+    OTV_C              0.026       0.048      0.284      -0.067       0.124
+    NE_C              -0.108       0.050      0.008      -0.217      -0.020      *
+
+ OTV_C    WITH
+    NE_C              -0.084       0.054      0.046      -0.199       0.015
+
+ Means
+    EKST_C             3.504       0.066      0.000       3.374       3.635      *
+    UGOD_C             4.080       0.064      0.000       3.954       4.206      *
+    SAV_C              4.110       0.065      0.000       3.981       4.238      *
+    NE_C               2.747       0.073      0.000       2.603       2.891      *
+    OTV_C              3.725       0.071      0.000       3.584       3.865      *
+
+ Intercepts
+    SEU                1.498       1.212      0.105      -0.852       3.914
+
+ Variances
+    EKST_C             0.387       0.065      0.000       0.287       0.540      *
+    UGOD_C             0.354       0.060      0.000       0.262       0.494      *
+    SAV_C              0.373       0.063      0.000       0.276       0.520      *
+    NE_C               0.455       0.078      0.000       0.335       0.640      *
+    OTV_C              0.427       0.073      0.000       0.315       0.601      *
+
+ Residual Variances
+    SEU                0.428       0.072      0.000       0.315       0.596      *
+
+
+R-SQUARE
+
+Between Level
+
+                                Posterior  One-Tailed         95% C.I.
+    Variable        Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%
+
+    SEU                0.256       0.082      0.000       0.107       0.427
+
+
+DIAGRAM INFORMATION
+
+  Mplus diagrams are currently not available for multilevel analysis.
+  No diagram output was produced.
+
+
+     Beginning Time:  17:23:53
+        Ending Time:  17:26:19
+       Elapsed Time:  00:02:26
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2023 Muthen & Muthen
