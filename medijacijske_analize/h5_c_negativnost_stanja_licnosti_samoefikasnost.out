@@ -1,0 +1,3436 @@
+Mplus VERSION 8.10
+MUTHEN & MUTHEN
+07/02/2024   3:16 PM
+
+INPUT INSTRUCTIONS
+
+  DATA: File is regresija.dat;
+
+  VARIABLE:
+
+  NAMES ARE ID EKST_C UGOD_C SAV_C NE_C OTV_C HUM
+  IMP NEG_VAL COMPLEX TIP POS_VAL ADVER
+  SAV EKST A2 N2 OTV SEU;
+
+  USEVARIABLES ARE ADVER EKST
+  A2 SAV N2 OTV SEU;
+
+  MISSING ARE ALL (-99);
+
+  CLUSTER IS id;
+
+
+  ANALYSIS:
+  TYPE = TWOLEVEL;
+  ESTIMATOR = BAYES;
+  PROCESSORS = 12;
+  ALGORITHM=GIBBS(RW);
+  FBITERATIONS = 200000;
+
+
+  MODEL:
+
+  %WITHIN%
+
+  EKST WITH A2;
+  EKST WITH SAV;
+  EKST WITH N2;
+  EKST WITH OTV;
+
+  A2 WITH SAV;
+  A2 WITH N2;
+  A2 WITH OTV;
+
+  SAV WITH N2;
+  SAV WITH OTV;
+
+  N2 WITH OTV;
+
+  SEU ON EKST (b1u);
+  SEU ON A2 (b2u);
+  SEU ON SAV (b3u);
+  SEU ON N2 (b4u);
+  SEU ON OTV (b5u);
+
+  EKST ON ADVER (a1u);
+  A2 ON ADVER (a2u);
+  SAV ON ADVER (a3u);
+  N2 ON ADVER (a4u);
+  OTV ON ADVER (a5u);
+
+  SEU ON ADVER;
+
+
+  %BETWEEN%
+
+  EKST WITH A2;
+  EKST WITH SAV;
+  EKST WITH N2;
+  EKST WITH OTV;
+
+  A2 WITH SAV;
+  A2 WITH N2;
+  A2 WITH OTV;
+
+  SAV WITH N2;
+  SAV WITH OTV;
+
+  N2 WITH OTV;
+
+  SEU ON EKST (b1b);
+  SEU ON A2 (b2b);
+  SEU ON SAV (b3b);
+  SEU ON N2 (b4b);
+  SEU ON OTV (b5b);
+
+  EKST ON ADVER (a1b);
+  A2 ON ADVER (a2b);
+  SAV ON ADVER (a3b);
+  N2 ON ADVER (a4b);
+  OTV ON ADVER (a5b);
+
+  SEU ON ADVER;
+
+  MODEL CONSTRAINT:
+
+  NEW (AEW AUW
+  ASW ANNW AOW
+  AEB AUB ASB
+  ANNB AOB);
+
+  AEW = a1u*b1u;
+  AUW = a2u*b2u;
+  ASW = a3u*b3u;
+  ANNW = a4u*b4u;
+  AOW = a5u*b5u;
+
+
+  AEB = a1b*b1b;
+  AUB = a2b*b2b;
+  ASB = a3b*b3b;
+  ANNB = a4b*b4b;
+  AOB = a5b*b5b;
+
+
+
+
+
+
+  OUTPUT: STANDARDIZED TECH8;
+
+
+
+*** WARNING
+  One or more individual-level variables have no variation within a
+  cluster for the following clusters.
+
+     Variable   Cluster IDs with no within-cluster variation
+
+      ADVER       20162730 20162054 24592461 27788116 16554319 16554891
+      EKST        12198304 24591061 16554319
+      A2          20163018 27661979 27664277 13994322 12198304 15611768 20856921 20162730 27665653
+                  12193480 15474494 20854464 20855586 26754644 20855351 12497874 24592461 13997204
+                  13996939 20798331 15471432 13526266 13527350 16554668 24591987 16556161 24595014
+                  24598783 16556163 24595090 16554319 27787671 16554713
+      SAV         12198304 20162730 24591061 20855351 13994941 12491438 16556161 16554319 16554891
+                  16554713
+      N2          13994322 12198304 20855574 12492269 27665653 20855586 20855351 20798331 24598783
+                  24595090 16554319 27787671 16554891
+      OTV         24591061 20855351 16554319
+      SEU         24591061 13994941 12491438 16554319
+
+*** WARNING
+  Data set contains cases with missing on all variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on all variables:  1232
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1738
+
+Number of dependent variables                                    6
+Number of independent variables                                  1
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   EKST        A2          SAV         N2          OTV         SEU
+
+Observed independent variables
+   ADVER
+
+Variables with special functions
+
+  Cluster variable      ID
+
+Estimator                                                    BAYES
+Specifications for Bayesian Estimation
+  Point estimate                                            MEDIAN
+  Number of Markov chain Monte Carlo (MCMC) chains               2
+  Random seed for the first chain                                0
+  Starting value information                           UNPERTURBED
+  Algorithm used for Markov chain Monte Carlo            GIBBS(RW)
+  Fixed number of iterations                                200000
+  K-th iteration used for thinning                               1
+
+Input data file(s)
+  regresija.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of clusters                         99
+
+       Size (s)    Cluster ID with Size s
+
+          9        20163018
+         10        27913643 27665886 27661979 27664277
+         11        13994322 12494252 15264484 12198304
+         12        15262166 13525517 20855574 20796311
+         13        15611768 26754012 27662560 20856921 15266576
+         14        20794922 12492269 20162730 27665653 12498862 21214531
+                   12191870 16654540 13529089 20796904
+         15        27785220 12193480 27918933 15474494
+         16        15261338 20854464 24591061 20162054 20855586 26754644
+         17        20855351 12497874 13993235 13994941 27918624 24592461
+                   20162526 20852179 15471270 27783342 27662082 13997204
+         18        21213820 27663723 12492669 13528127 13996939 20798331
+                   12495072 20854791 15611922 15471432 13526266 13527350
+         19        12491438 16554668 27915449 13522864 27788116 15612828
+         20        24591987 20161546 24595365 16556161
+         21        27663860 24591737 24595014 27666050 15264805 16551092
+                   27918828
+         22        24593194 24598783
+         23        15614525 16556163 12492795 20855258 24595090 16554319
+                   20856715 27788829
+         24        12491236 13525223 16554342 27787671 12491120
+         25        16554891 16554713 21212503
+         26        24593393 20855884
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+     Number of missing data patterns             1
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER          1.000
+ EKST           1.000         1.000
+ A2             1.000         1.000         1.000
+ SAV            1.000         1.000         1.000         1.000
+ N2             1.000         1.000         1.000         1.000         1.000
+ OTV            1.000         1.000         1.000         1.000         1.000
+ SEU            1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              OTV           SEU
+              ________      ________
+ OTV            1.000
+ SEU            1.000         1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     ADVER                 1.957       1.364       1.000   41.31%       1.000      1.000      1.333
+            1738.000       1.480       1.155       6.667    0.12%       2.000      3.000
+     EKST                  5.910      -1.294       1.000    0.23%       5.000      6.000      6.000
+            1738.000       1.054       2.364       7.000   26.29%       6.000      7.000
+     A2                    6.476      -2.751       1.000    0.75%       6.000      7.000      7.000
+            1738.000       1.246       7.758       7.000   72.32%       7.000      7.000
+     SAV                   6.114      -1.390       1.000    0.06%       5.500      6.000      6.000
+            1738.000       0.835       2.671       7.000   32.97%       6.500      7.000
+     N2                    2.221       1.253       1.000   46.03%       1.000      1.000      2.000
+            1738.000       2.413       0.596       7.000    1.67%       2.000      4.000
+     OTV                   5.565      -0.985       1.000    0.29%       5.000      5.500      6.000
+            1738.000       1.215       1.361       7.000   15.48%       6.000      6.500
+     SEU                   5.781      -1.096       1.000    0.17%       5.000      5.667      6.000
+            1738.000       1.008       1.620       7.000   16.86%       6.000      6.667
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     USE THE FBITERATIONS OPTION TO INCREASE THE NUMBER OF ITERATIONS BY A FACTOR
+     OF AT LEAST TWO TO CHECK CONVERGENCE AND THAT THE PSR VALUE DOES NOT INCREASE.
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                              63
+
+Bayesian Posterior Predictive Checking using Chi-Square
+
+          95% Confidence Interval for the Difference Between
+          the Observed and the Replicated Chi-Square Values
+
+                                -30.871            37.717
+
+          Posterior Predictive P-Value              0.428
+
+Information Criteria
+
+          Deviance (DIC)                        29007.057
+          Estimated Number of Parameters (pD)     639.485
+
+
+
+MODEL RESULTS
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+
+Within Level
+
+ SEU        ON
+    EKST               0.062       0.023      0.004       0.017       0.107      *
+    A2                 0.059       0.017      0.000       0.025       0.092      *
+    SAV                0.233       0.026      0.000       0.182       0.283      *
+    N2                -0.031       0.014      0.016      -0.059      -0.003      *
+    OTV                0.177       0.021      0.000       0.135       0.219      *
+    ADVER             -0.127       0.018      0.000      -0.162      -0.092      *
+
+ EKST       ON
+    ADVER             -0.158       0.019      0.000      -0.196      -0.121      *
+
+ A2         ON
+    ADVER             -0.168       0.024      0.000      -0.215      -0.120      *
+
+ SAV        ON
+    ADVER             -0.097       0.017      0.000      -0.130      -0.065      *
+
+ N2         ON
+    ADVER              0.388       0.029      0.000       0.332       0.444      *
+
+ OTV        ON
+    ADVER             -0.223       0.021      0.000      -0.264      -0.183      *
+
+ EKST     WITH
+    A2                 0.064       0.016      0.000       0.032       0.096      *
+    SAV                0.110       0.012      0.000       0.088       0.133      *
+    N2                -0.078       0.019      0.000      -0.116      -0.040      *
+    OTV                0.207       0.015      0.000       0.179       0.238      *
+
+ A2       WITH
+    SAV                0.044       0.014      0.001       0.017       0.071      *
+    N2                -0.096       0.025      0.000      -0.146      -0.049      *
+    OTV                0.063       0.018      0.000       0.029       0.099      *
+
+ SAV      WITH
+    N2                -0.034       0.017      0.021      -0.066      -0.001      *
+    OTV                0.138       0.013      0.000       0.114       0.163      *
+
+ N2       WITH
+    OTV               -0.050       0.021      0.009      -0.091      -0.008      *
+
+ Variances
+    ADVER              0.868       0.030      0.000       0.811       0.930      *
+
+ Residual Variances
+    EKST               0.526       0.018      0.000       0.491       0.563      *
+    A2                 0.825       0.029      0.000       0.772       0.886      *
+    SAV                0.387       0.013      0.000       0.362       0.415      *
+    N2                 1.159       0.041      0.000       1.084       1.243      *
+    OTV                0.616       0.022      0.000       0.576       0.661      *
+    SEU                0.378       0.013      0.000       0.353       0.405      *
+
+Between Level
+
+ SEU        ON
+    EKST              -0.099       0.118      0.198      -0.330       0.132
+    A2                 0.126       0.139      0.181      -0.147       0.398
+    SAV                0.454       0.125      0.000       0.208       0.698      *
+    N2                -0.047       0.073      0.256      -0.190       0.095
+    OTV                0.378       0.091      0.000       0.199       0.558      *
+    ADVER             -0.097       0.105      0.176      -0.303       0.109
+
+ EKST       ON
+    ADVER             -0.505       0.093      0.000      -0.687      -0.323      *
+
+ A2         ON
+    ADVER             -0.580       0.072      0.000      -0.722      -0.438      *
+
+ SAV        ON
+    ADVER             -0.457       0.085      0.000      -0.624      -0.290      *
+
+ N2         ON
+    ADVER              0.918       0.118      0.000       0.687       1.149      *
+
+ OTV        ON
+    ADVER             -0.319       0.109      0.002      -0.534      -0.107      *
+
+ EKST     WITH
+    A2                 0.111       0.042      0.002       0.038       0.204      *
+    SAV                0.243       0.055      0.000       0.153       0.370      *
+    N2                -0.138       0.068      0.011      -0.286      -0.019      *
+    OTV                0.268       0.068      0.000       0.156       0.421      *
+
+ A2       WITH
+    SAV                0.085       0.039      0.008       0.017       0.168      *
+    N2                -0.141       0.054      0.001      -0.262      -0.047      *
+    OTV                0.014       0.047      0.374      -0.076       0.112
+
+ SAV      WITH
+    N2                -0.063       0.061      0.132      -0.193       0.048
+    OTV                0.261       0.062      0.000       0.158       0.402      *
+
+ N2       WITH
+    OTV                0.040       0.076      0.292      -0.108       0.190
+
+ Means
+    ADVER              1.957       0.083      0.000       1.795       2.119      *
+
+ Intercepts
+    EKST               6.894       0.194      0.000       6.513       7.273      *
+    A2                 7.609       0.151      0.000       7.311       7.907      *
+    SAV                6.997       0.177      0.000       6.649       7.344      *
+    N2                 0.402       0.246      0.051      -0.082       0.885
+    OTV                6.171       0.228      0.000       5.726       6.619      *
+    SEU                0.975       1.066      0.178      -1.120       3.066
+
+ Variances
+    ADVER              0.614       0.099      0.000       0.456       0.845      *
+
+ Residual Variances
+    EKST               0.421       0.073      0.000       0.305       0.592      *
+    A2                 0.225       0.044      0.000       0.156       0.327      *
+    SAV                0.355       0.061      0.000       0.257       0.494      *
+    N2                 0.659       0.121      0.000       0.475       0.956      *
+    OTV                0.593       0.100      0.000       0.437       0.821      *
+    SEU                0.179       0.032      0.000       0.129       0.253      *
+
+New/Additional Parameters
+    AEW               -0.010       0.004      0.004      -0.018      -0.003      *
+    AUW               -0.010       0.003      0.000      -0.017      -0.004      *
+    ASW               -0.022       0.005      0.000      -0.032      -0.014      *
+    ANNW              -0.012       0.006      0.016      -0.023      -0.001      *
+    AOW               -0.039       0.006      0.000      -0.052      -0.028      *
+    AEB                0.048       0.061      0.198      -0.068       0.177
+    AUB               -0.072       0.082      0.181      -0.238       0.085
+    ASB               -0.202       0.070      0.000      -0.357      -0.085      *
+    ANNB              -0.043       0.067      0.256      -0.179       0.088
+    AOB               -0.116       0.051      0.002      -0.234      -0.034      *
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ SEU        ON
+    EKST               0.066       0.024      0.004       0.018       0.113      *
+    A2                 0.077       0.022      0.000       0.033       0.120      *
+    SAV                0.209       0.023      0.000       0.164       0.253      *
+    N2                -0.050       0.023      0.016      -0.095      -0.004      *
+    OTV                0.205       0.024      0.000       0.157       0.253      *
+    ADVER             -0.168       0.024      0.000      -0.214      -0.122      *
+
+ EKST       ON
+    ADVER             -0.199       0.024      0.000      -0.245      -0.153      *
+
+ A2         ON
+    ADVER             -0.169       0.024      0.000      -0.216      -0.122      *
+
+ SAV        ON
+    ADVER             -0.144       0.024      0.000      -0.191      -0.096      *
+
+ N2         ON
+    ADVER              0.318       0.022      0.000       0.274       0.361      *
+
+ OTV        ON
+    ADVER             -0.256       0.023      0.000      -0.301      -0.210      *
+
+ EKST     WITH
+    A2                 0.097       0.024      0.000       0.049       0.145      *
+    SAV                0.245       0.023      0.000       0.198       0.290      *
+    N2                -0.099       0.024      0.000      -0.147      -0.052      *
+    OTV                0.364       0.022      0.000       0.321       0.406      *
+
+ A2       WITH
+    SAV                0.078       0.024      0.001       0.030       0.126      *
+    N2                -0.098       0.025      0.000      -0.147      -0.051      *
+    OTV                0.089       0.025      0.000       0.041       0.137      *
+
+ SAV      WITH
+    N2                -0.050       0.025      0.021      -0.098      -0.002      *
+    OTV                0.283       0.023      0.000       0.238       0.327      *
+
+ N2       WITH
+    OTV               -0.059       0.025      0.009      -0.107      -0.010      *
+
+ Variances
+    ADVER              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    EKST               0.960       0.009      0.000       0.940       0.977      *
+    A2                 0.971       0.008      0.000       0.953       0.985      *
+    SAV                0.979       0.007      0.000       0.964       0.991      *
+    N2                 0.899       0.014      0.000       0.870       0.925      *
+    OTV                0.934       0.012      0.000       0.910       0.956      *
+    SEU                0.769       0.018      0.000       0.733       0.804      *
+
+Between Level
+
+ SEU        ON
+    EKST              -0.101       0.119      0.198      -0.335       0.134
+    A2                 0.110       0.121      0.181      -0.127       0.347
+    SAV                0.420       0.113      0.000       0.193       0.634      *
+    N2                -0.068       0.105      0.256      -0.275       0.137
+    OTV                0.409       0.096      0.000       0.216       0.594      *
+    ADVER             -0.101       0.109      0.176      -0.315       0.113
+
+ EKST       ON
+    ADVER             -0.521       0.082      0.000      -0.663      -0.343      *
+
+ A2         ON
+    ADVER             -0.692       0.064      0.000      -0.797      -0.548      *
+
+ SAV        ON
+    ADVER             -0.516       0.082      0.000      -0.659      -0.338      *
+
+ N2         ON
+    ADVER              0.663       0.065      0.000       0.517       0.771      *
+
+ OTV        ON
+    ADVER             -0.309       0.099      0.002      -0.490      -0.104      *
+
+ EKST     WITH
+    A2                 0.368       0.110      0.002       0.134       0.560      *
+    SAV                0.633       0.073      0.000       0.471       0.754      *
+    N2                -0.266       0.111      0.011      -0.471      -0.038      *
+    OTV                0.541       0.084      0.000       0.357       0.685      *
+
+ A2       WITH
+    SAV                0.305       0.115      0.008       0.063       0.512      *
+    N2                -0.371       0.111      0.001      -0.567      -0.132      *
+    OTV                0.040       0.123      0.374      -0.200       0.281
+
+ SAV      WITH
+    N2                -0.132       0.116      0.132      -0.353       0.099
+    OTV                0.573       0.079      0.000       0.400       0.708      *
+
+ N2       WITH
+    OTV                0.065       0.116      0.292      -0.166       0.285
+
+ Means
+    ADVER              2.498       0.222      0.000       2.076       2.946      *
+
+ Intercepts
+    EKST               9.018       0.626      0.000       7.851      10.297      *
+    A2                11.544       0.832      0.000       9.984      13.248      *
+    SAV               10.020       0.694      0.000       8.725      11.443      *
+    N2                 0.369       0.245      0.051      -0.068       0.891
+    OTV                7.580       0.574      0.000       6.487       8.724      *
+    SEU                1.291       1.438      0.178      -1.420       4.222
+
+ Variances
+    ADVER              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    EKST               0.729       0.083      0.000       0.560       0.882      *
+    A2                 0.521       0.086      0.000       0.364       0.699      *
+    SAV                0.734       0.082      0.000       0.566       0.886      *
+    N2                 0.560       0.084      0.000       0.405       0.733      *
+    OTV                0.905       0.060      0.000       0.760       0.989      *
+    SEU                0.316       0.060      0.000       0.215       0.448      *
+
+
+STDY Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ SEU        ON
+    EKST               0.066       0.024      0.004       0.018       0.113      *
+    A2                 0.077       0.022      0.000       0.033       0.120      *
+    SAV                0.209       0.023      0.000       0.164       0.253      *
+    N2                -0.050       0.023      0.016      -0.095      -0.004      *
+    OTV                0.205       0.024      0.000       0.157       0.253      *
+    ADVER             -0.168       0.024      0.000      -0.214      -0.122      *
+
+ EKST       ON
+    ADVER             -0.199       0.024      0.000      -0.245      -0.153      *
+
+ A2         ON
+    ADVER             -0.169       0.024      0.000      -0.216      -0.122      *
+
+ SAV        ON
+    ADVER             -0.144       0.024      0.000      -0.191      -0.096      *
+
+ N2         ON
+    ADVER              0.318       0.022      0.000       0.274       0.361      *
+
+ OTV        ON
+    ADVER             -0.256       0.023      0.000      -0.301      -0.210      *
+
+ EKST     WITH
+    A2                 0.097       0.024      0.000       0.049       0.145      *
+    SAV                0.245       0.023      0.000       0.198       0.290      *
+    N2                -0.099       0.024      0.000      -0.147      -0.052      *
+    OTV                0.364       0.022      0.000       0.321       0.406      *
+
+ A2       WITH
+    SAV                0.078       0.024      0.001       0.030       0.126      *
+    N2                -0.098       0.025      0.000      -0.147      -0.051      *
+    OTV                0.089       0.025      0.000       0.041       0.137      *
+
+ SAV      WITH
+    N2                -0.050       0.025      0.021      -0.098      -0.002      *
+    OTV                0.283       0.023      0.000       0.238       0.327      *
+
+ N2       WITH
+    OTV               -0.059       0.025      0.009      -0.107      -0.010      *
+
+ Variances
+    ADVER              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    EKST               0.960       0.009      0.000       0.940       0.977      *
+    A2                 0.971       0.008      0.000       0.953       0.985      *
+    SAV                0.979       0.007      0.000       0.964       0.991      *
+    N2                 0.899       0.014      0.000       0.870       0.925      *
+    OTV                0.934       0.012      0.000       0.910       0.956      *
+    SEU                0.769       0.018      0.000       0.733       0.804      *
+
+Between Level
+
+ SEU        ON
+    EKST              -0.101       0.119      0.198      -0.335       0.134
+    A2                 0.110       0.121      0.181      -0.127       0.347
+    SAV                0.420       0.113      0.000       0.193       0.634      *
+    N2                -0.068       0.105      0.256      -0.275       0.137
+    OTV                0.409       0.096      0.000       0.216       0.594      *
+    ADVER             -0.101       0.109      0.176      -0.315       0.113
+
+ EKST       ON
+    ADVER             -0.521       0.082      0.000      -0.663      -0.343      *
+
+ A2         ON
+    ADVER             -0.692       0.064      0.000      -0.797      -0.548      *
+
+ SAV        ON
+    ADVER             -0.516       0.082      0.000      -0.659      -0.338      *
+
+ N2         ON
+    ADVER              0.663       0.065      0.000       0.517       0.771      *
+
+ OTV        ON
+    ADVER             -0.309       0.099      0.002      -0.490      -0.104      *
+
+ EKST     WITH
+    A2                 0.368       0.110      0.002       0.134       0.560      *
+    SAV                0.633       0.073      0.000       0.471       0.754      *
+    N2                -0.266       0.111      0.011      -0.471      -0.038      *
+    OTV                0.541       0.084      0.000       0.357       0.685      *
+
+ A2       WITH
+    SAV                0.305       0.115      0.008       0.063       0.512      *
+    N2                -0.371       0.111      0.001      -0.567      -0.132      *
+    OTV                0.040       0.123      0.374      -0.200       0.281
+
+ SAV      WITH
+    N2                -0.132       0.116      0.132      -0.353       0.099
+    OTV                0.573       0.079      0.000       0.400       0.708      *
+
+ N2       WITH
+    OTV                0.065       0.116      0.292      -0.166       0.285
+
+ Means
+    ADVER              2.498       0.222      0.000       2.076       2.946      *
+
+ Intercepts
+    EKST               9.018       0.626      0.000       7.851      10.297      *
+    A2                11.544       0.832      0.000       9.984      13.248      *
+    SAV               10.020       0.694      0.000       8.725      11.443      *
+    N2                 0.369       0.245      0.051      -0.068       0.891
+    OTV                7.580       0.574      0.000       6.487       8.724      *
+    SEU                1.291       1.438      0.178      -1.420       4.222
+
+ Variances
+    ADVER              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    EKST               0.729       0.083      0.000       0.560       0.882      *
+    A2                 0.521       0.086      0.000       0.364       0.699      *
+    SAV                0.734       0.082      0.000       0.566       0.886      *
+    N2                 0.560       0.084      0.000       0.405       0.733      *
+    OTV                0.905       0.060      0.000       0.760       0.989      *
+    SEU                0.316       0.060      0.000       0.215       0.448      *
+
+
+STD Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ SEU        ON
+    EKST               0.062       0.023      0.004       0.017       0.107      *
+    A2                 0.059       0.017      0.000       0.025       0.092      *
+    SAV                0.233       0.026      0.000       0.182       0.283      *
+    N2                -0.031       0.014      0.016      -0.059      -0.003      *
+    OTV                0.177       0.021      0.000       0.135       0.219      *
+    ADVER             -0.127       0.018      0.000      -0.162      -0.092      *
+
+ EKST       ON
+    ADVER             -0.158       0.019      0.000      -0.196      -0.121      *
+
+ A2         ON
+    ADVER             -0.168       0.024      0.000      -0.215      -0.120      *
+
+ SAV        ON
+    ADVER             -0.097       0.017      0.000      -0.130      -0.065      *
+
+ N2         ON
+    ADVER              0.388       0.029      0.000       0.332       0.444      *
+
+ OTV        ON
+    ADVER             -0.223       0.021      0.000      -0.264      -0.183      *
+
+ EKST     WITH
+    A2                 0.064       0.016      0.000       0.032       0.096      *
+    SAV                0.110       0.012      0.000       0.088       0.133      *
+    N2                -0.078       0.019      0.000      -0.116      -0.040      *
+    OTV                0.207       0.015      0.000       0.179       0.238      *
+
+ A2       WITH
+    SAV                0.044       0.014      0.001       0.017       0.071      *
+    N2                -0.096       0.025      0.000      -0.146      -0.049      *
+    OTV                0.063       0.018      0.000       0.029       0.099      *
+
+ SAV      WITH
+    N2                -0.034       0.017      0.021      -0.066      -0.001      *
+    OTV                0.138       0.013      0.000       0.114       0.163      *
+
+ N2       WITH
+    OTV               -0.050       0.021      0.009      -0.091      -0.008      *
+
+ Variances
+    ADVER              0.868       0.030      0.000       0.811       0.930      *
+
+ Residual Variances
+    EKST               0.526       0.018      0.000       0.491       0.563      *
+    A2                 0.825       0.029      0.000       0.772       0.886      *
+    SAV                0.387       0.013      0.000       0.362       0.415      *
+    N2                 1.159       0.041      0.000       1.084       1.243      *
+    OTV                0.616       0.022      0.000       0.576       0.661      *
+    SEU                0.378       0.013      0.000       0.353       0.405      *
+
+Between Level
+
+ SEU        ON
+    EKST              -0.099       0.118      0.198      -0.330       0.132
+    A2                 0.126       0.139      0.181      -0.147       0.398
+    SAV                0.454       0.125      0.000       0.208       0.698      *
+    N2                -0.047       0.073      0.256      -0.190       0.095
+    OTV                0.378       0.091      0.000       0.199       0.558      *
+    ADVER             -0.097       0.105      0.176      -0.303       0.109
+
+ EKST       ON
+    ADVER             -0.505       0.093      0.000      -0.687      -0.323      *
+
+ A2         ON
+    ADVER             -0.580       0.072      0.000      -0.722      -0.438      *
+
+ SAV        ON
+    ADVER             -0.457       0.085      0.000      -0.624      -0.290      *
+
+ N2         ON
+    ADVER              0.918       0.118      0.000       0.687       1.149      *
+
+ OTV        ON
+    ADVER             -0.319       0.109      0.002      -0.534      -0.107      *
+
+ EKST     WITH
+    A2                 0.111       0.042      0.002       0.038       0.204      *
+    SAV                0.243       0.055      0.000       0.153       0.370      *
+    N2                -0.138       0.068      0.011      -0.286      -0.019      *
+    OTV                0.268       0.068      0.000       0.156       0.421      *
+
+ A2       WITH
+    SAV                0.085       0.039      0.008       0.017       0.168      *
+    N2                -0.141       0.054      0.001      -0.262      -0.047      *
+    OTV                0.014       0.047      0.374      -0.076       0.112
+
+ SAV      WITH
+    N2                -0.063       0.061      0.132      -0.193       0.048
+    OTV                0.261       0.062      0.000       0.158       0.402      *
+
+ N2       WITH
+    OTV                0.040       0.076      0.292      -0.108       0.190
+
+ Means
+    ADVER              1.957       0.083      0.000       1.795       2.119      *
+
+ Intercepts
+    EKST               6.894       0.194      0.000       6.513       7.273      *
+    A2                 7.609       0.151      0.000       7.311       7.907      *
+    SAV                6.997       0.177      0.000       6.649       7.344      *
+    N2                 0.402       0.246      0.051      -0.082       0.885
+    OTV                6.171       0.228      0.000       5.726       6.619      *
+    SEU                0.975       1.066      0.178      -1.120       3.066
+
+ Variances
+    ADVER              0.614       0.099      0.000       0.456       0.845      *
+
+ Residual Variances
+    EKST               0.421       0.073      0.000       0.305       0.592      *
+    A2                 0.225       0.044      0.000       0.156       0.327      *
+    SAV                0.355       0.061      0.000       0.257       0.494      *
+    N2                 0.659       0.121      0.000       0.475       0.956      *
+    OTV                0.593       0.100      0.000       0.437       0.821      *
+    SEU                0.179       0.032      0.000       0.129       0.253      *
+
+
+R-SQUARE
+
+Within Level
+
+                                Posterior  One-Tailed         95% C.I.
+    Variable        Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%
+
+    EKST               0.040       0.009      0.000       0.023       0.060
+    A2                 0.029       0.008      0.000       0.015       0.047
+    SAV                0.021       0.007      0.000       0.009       0.036
+    N2                 0.101       0.014      0.000       0.075       0.130
+    OTV                0.066       0.012      0.000       0.044       0.090
+    SEU                0.231       0.018      0.000       0.196       0.267
+
+Between Level
+
+                                Posterior  One-Tailed         95% C.I.
+    Variable        Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%
+
+    EKST               0.271       0.083      0.000       0.118       0.440
+    A2                 0.479       0.086      0.000       0.301       0.636
+    SAV                0.266       0.082      0.000       0.114       0.434
+    N2                 0.440       0.084      0.000       0.267       0.595
+    OTV                0.095       0.060      0.000       0.011       0.240
+    SEU                0.684       0.060      0.000       0.552       0.785
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION FOR WITHIN
+
+
+           NU
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU
+              OTV           SEU
+              ________      ________
+                    0             0
+
+
+           LAMBDA
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER              0             0             0             0             0
+ EKST               0             0             0             0             0
+ A2                 0             0             0             0             0
+ SAV                0             0             0             0             0
+ N2                 0             0             0             0             0
+ OTV                0             0             0             0             0
+ SEU                0             0             0             0             0
+
+
+           LAMBDA
+              OTV           SEU
+              ________      ________
+ ADVER              0             0
+ EKST               0             0
+ A2                 0             0
+ SAV                0             0
+ N2                 0             0
+ OTV                0             0
+ SEU                0             0
+
+
+           THETA
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER              0
+ EKST               0             0
+ A2                 0             0             0
+ SAV                0             0             0             0
+ N2                 0             0             0             0             0
+ OTV                0             0             0             0             0
+ SEU                0             0             0             0             0
+
+
+           THETA
+              OTV           SEU
+              ________      ________
+ OTV                0
+ SEU                0             0
+
+
+           ALPHA
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           ALPHA
+              OTV           SEU
+              ________      ________
+                    0             0
+
+
+           BETA
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER              0             0             0             0             0
+ EKST               1             0             0             0             0
+ A2                 2             0             0             0             0
+ SAV                3             0             0             0             0
+ N2                 4             0             0             0             0
+ OTV                5             0             0             0             0
+ SEU                6             7             8             9            10
+
+
+           BETA
+              OTV           SEU
+              ________      ________
+ ADVER              0             0
+ EKST               0             0
+ A2                 0             0
+ SAV                0             0
+ N2                 0             0
+ OTV                0             0
+ SEU               11             0
+
+
+           PSI
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER             12
+ EKST               0            13
+ A2                 0            14            15
+ SAV                0            16            17            18
+ N2                 0            19            20            21            22
+ OTV                0            23            24            25            26
+ SEU                0             0             0             0             0
+
+
+           PSI
+              OTV           SEU
+              ________      ________
+ OTV               27
+ SEU                0            28
+
+
+     PARAMETER SPECIFICATION FOR BETWEEN
+
+
+           NU
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU
+              OTV           SEU
+              ________      ________
+                    0             0
+
+
+           LAMBDA
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER              0             0             0             0             0
+ EKST               0             0             0             0             0
+ A2                 0             0             0             0             0
+ SAV                0             0             0             0             0
+ N2                 0             0             0             0             0
+ OTV                0             0             0             0             0
+ SEU                0             0             0             0             0
+
+
+           LAMBDA
+              OTV           SEU
+              ________      ________
+ ADVER              0             0
+ EKST               0             0
+ A2                 0             0
+ SAV                0             0
+ N2                 0             0
+ OTV                0             0
+ SEU                0             0
+
+
+           THETA
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER              0
+ EKST               0             0
+ A2                 0             0             0
+ SAV                0             0             0             0
+ N2                 0             0             0             0             0
+ OTV                0             0             0             0             0
+ SEU                0             0             0             0             0
+
+
+           THETA
+              OTV           SEU
+              ________      ________
+ OTV                0
+ SEU                0             0
+
+
+           ALPHA
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+                   29            30            31            32            33
+
+
+           ALPHA
+              OTV           SEU
+              ________      ________
+                   34            35
+
+
+           BETA
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER              0             0             0             0             0
+ EKST              36             0             0             0             0
+ A2                37             0             0             0             0
+ SAV               38             0             0             0             0
+ N2                39             0             0             0             0
+ OTV               40             0             0             0             0
+ SEU               41            42            43            44            45
+
+
+           BETA
+              OTV           SEU
+              ________      ________
+ ADVER              0             0
+ EKST               0             0
+ A2                 0             0
+ SAV                0             0
+ N2                 0             0
+ OTV                0             0
+ SEU               46             0
+
+
+           PSI
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER             47
+ EKST               0            48
+ A2                 0            49            50
+ SAV                0            51            52            53
+ N2                 0            54            55            56            57
+ OTV                0            58            59            60            61
+ SEU                0             0             0             0             0
+
+
+           PSI
+              OTV           SEU
+              ________      ________
+ OTV               62
+ SEU                0            63
+
+
+     PARAMETER SPECIFICATION FOR THE ADDITIONAL PARAMETERS
+
+
+           NEW/ADDITIONAL PARAMETERS
+              AEW           AUW           ASW           ANNW          AOW
+              ________      ________      ________      ________      ________
+                   64            65            66            67            68
+
+
+           NEW/ADDITIONAL PARAMETERS
+              AEB           AUB           ASB           ANNB          AOB
+              ________      ________      ________      ________      ________
+                   69            70            71            72            73
+
+
+     STARTING VALUES FOR WITHIN
+
+
+           NU
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              OTV           SEU
+              ________      ________
+                0.000         0.000
+
+
+           LAMBDA
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER          1.000         0.000         0.000         0.000         0.000
+ EKST           0.000         1.000         0.000         0.000         0.000
+ A2             0.000         0.000         1.000         0.000         0.000
+ SAV            0.000         0.000         0.000         1.000         0.000
+ N2             0.000         0.000         0.000         0.000         1.000
+ OTV            0.000         0.000         0.000         0.000         0.000
+ SEU            0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              OTV           SEU
+              ________      ________
+ ADVER          0.000         0.000
+ EKST           0.000         0.000
+ A2             0.000         0.000
+ SAV            0.000         0.000
+ N2             0.000         0.000
+ OTV            1.000         0.000
+ SEU            0.000         1.000
+
+
+           THETA
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER          0.000
+ EKST           0.000         0.000
+ A2             0.000         0.000         0.000
+ SAV            0.000         0.000         0.000         0.000
+ N2             0.000         0.000         0.000         0.000         0.000
+ OTV            0.000         0.000         0.000         0.000         0.000
+ SEU            0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              OTV           SEU
+              ________      ________
+ OTV            0.000
+ SEU            0.000         0.000
+
+
+           ALPHA
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           ALPHA
+              OTV           SEU
+              ________      ________
+                0.000         0.000
+
+
+           BETA
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER          0.000         0.000         0.000         0.000         0.000
+ EKST           0.000         0.000         0.000         0.000         0.000
+ A2             0.000         0.000         0.000         0.000         0.000
+ SAV            0.000         0.000         0.000         0.000         0.000
+ N2             0.000         0.000         0.000         0.000         0.000
+ OTV            0.000         0.000         0.000         0.000         0.000
+ SEU            0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              OTV           SEU
+              ________      ________
+ ADVER          0.000         0.000
+ EKST           0.000         0.000
+ A2             0.000         0.000
+ SAV            0.000         0.000
+ N2             0.000         0.000
+ OTV            0.000         0.000
+ SEU            0.000         0.000
+
+
+           PSI
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER          0.740
+ EKST           0.000         0.527
+ A2             0.000         0.000         0.623
+ SAV            0.000         0.000         0.000         0.418
+ N2             0.000         0.000         0.000         0.000         1.206
+ OTV            0.000         0.000         0.000         0.000         0.000
+ SEU            0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              OTV           SEU
+              ________      ________
+ OTV            0.608
+ SEU            0.000         0.504
+
+
+     STARTING VALUES FOR BETWEEN
+
+
+           NU
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              OTV           SEU
+              ________      ________
+                0.000         0.000
+
+
+           LAMBDA
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER          1.000         0.000         0.000         0.000         0.000
+ EKST           0.000         1.000         0.000         0.000         0.000
+ A2             0.000         0.000         1.000         0.000         0.000
+ SAV            0.000         0.000         0.000         1.000         0.000
+ N2             0.000         0.000         0.000         0.000         1.000
+ OTV            0.000         0.000         0.000         0.000         0.000
+ SEU            0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              OTV           SEU
+              ________      ________
+ ADVER          0.000         0.000
+ EKST           0.000         0.000
+ A2             0.000         0.000
+ SAV            0.000         0.000
+ N2             0.000         0.000
+ OTV            1.000         0.000
+ SEU            0.000         1.000
+
+
+           THETA
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER          0.000
+ EKST           0.000         0.000
+ A2             0.000         0.000         0.000
+ SAV            0.000         0.000         0.000         0.000
+ N2             0.000         0.000         0.000         0.000         0.000
+ OTV            0.000         0.000         0.000         0.000         0.000
+ SEU            0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              OTV           SEU
+              ________      ________
+ OTV            0.000
+ SEU            0.000         0.000
+
+
+           ALPHA
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+                1.957         5.910         6.476         6.114         2.221
+
+
+           ALPHA
+              OTV           SEU
+              ________      ________
+                5.565         5.781
+
+
+           BETA
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER          0.000         0.000         0.000         0.000         0.000
+ EKST           0.000         0.000         0.000         0.000         0.000
+ A2             0.000         0.000         0.000         0.000         0.000
+ SAV            0.000         0.000         0.000         0.000         0.000
+ N2             0.000         0.000         0.000         0.000         0.000
+ OTV            0.000         0.000         0.000         0.000         0.000
+ SEU            0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              OTV           SEU
+              ________      ________
+ ADVER          0.000         0.000
+ EKST           0.000         0.000
+ A2             0.000         0.000
+ SAV            0.000         0.000
+ N2             0.000         0.000
+ OTV            0.000         0.000
+ SEU            0.000         0.000
+
+
+           PSI
+              ADVER         EKST          A2            SAV           N2
+              ________      ________      ________      ________      ________
+ ADVER          0.740
+ EKST           0.000         0.527
+ A2             0.000         0.000         0.623
+ SAV            0.000         0.000         0.000         0.418
+ N2             0.000         0.000         0.000         0.000         1.206
+ OTV            0.000         0.000         0.000         0.000         0.000
+ SEU            0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              OTV           SEU
+              ________      ________
+ OTV            0.608
+ SEU            0.000         0.504
+
+
+     STARTING VALUES FOR THE ADDITIONAL PARAMETERS
+
+
+           NEW/ADDITIONAL PARAMETERS
+              AEW           AUW           ASW           ANNW          AOW
+              ________      ________      ________      ________      ________
+                0.500         0.500         0.500         0.500         0.500
+
+
+           NEW/ADDITIONAL PARAMETERS
+              AEB           AUB           ASB           ANNB          AOB
+              ________      ________      ________      ________      ________
+                0.500         0.500         0.500         0.500         0.500
+
+
+
+     PRIORS FOR ALL PARAMETERS            PRIOR MEAN      PRIOR VARIANCE     PRIOR STD. DEV.
+
+     Parameter 1~N(0.000,infinity)           0.0000            infinity            infinity
+     Parameter 2~N(0.000,infinity)           0.0000            infinity            infinity
+     Parameter 3~N(0.000,infinity)           0.0000            infinity            infinity
+     Parameter 4~N(0.000,infinity)           0.0000            infinity            infinity
+     Parameter 5~N(0.000,infinity)           0.0000            infinity            infinity
+     Parameter 6~N(0.000,infinity)           0.0000            infinity            infinity
+     Parameter 7~N(0.000,infinity)           0.0000            infinity            infinity
+     Parameter 8~N(0.000,infinity)           0.0000            infinity            infinity
+     Parameter 9~N(0.000,infinity)           0.0000            infinity            infinity
+     Parameter 10~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 11~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 12~IG(-1.000,0.000)         infinity            infinity            infinity
+     Parameter 13~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 14~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 15~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 16~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 17~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 18~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 19~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 20~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 21~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 22~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 23~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 24~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 25~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 26~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 27~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 28~IG(-1.000,0.000)         infinity            infinity            infinity
+     Parameter 29~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 30~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 31~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 32~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 33~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 34~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 35~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 36~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 37~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 38~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 39~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 40~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 41~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 42~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 43~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 44~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 45~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 46~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 47~IG(-1.000,0.000)         infinity            infinity            infinity
+     Parameter 48~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 49~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 50~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 51~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 52~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 53~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 54~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 55~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 56~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 57~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 58~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 59~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 60~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 61~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 62~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 63~IG(-1.000,0.000)         infinity            infinity            infinity
+
+
+TECHNICAL 8 OUTPUT
+
+
+   TECHNICAL 8 OUTPUT FOR BAYES ESTIMATION
+
+     PROCESSOR    BSEED
+     1            0
+     2            285380
+     3            253358
+     4            93468
+     5            608496
+     6            903420
+     7            195873
+     8            462953
+     9            939021
+     10           127215
+     11           415931
+     12           533738
+
+                     POTENTIAL       PARAMETER WITH
+     ITERATION    SCALE REDUCTION      HIGHEST PSR
+     100              3.563               58
+     200              2.561               52
+     300              3.203               52
+     400              2.255               52
+     500              2.059               52
+     600              1.687               52
+     700              1.618               48
+     800              1.623               51
+     900              1.596               51
+     1000             1.610               51
+     1100             1.668               51
+     1200             1.437               51
+     1300             1.306               51
+     1400             1.252               58
+     1500             1.248               50
+     1600             1.224               51
+     1700             1.235               51
+     1800             1.206               50
+     1900             1.297               50
+     2000             1.270               50
+     2100             1.230               50
+     2200             1.158               50
+     2300             1.166               50
+     2400             1.127               53
+     2500             1.107               53
+     2600             1.115               53
+     2700             1.171               53
+     2800             1.208               53
+     2900             1.268               53
+     3000             1.261               53
+     3100             1.201               53
+     3200             1.191               53
+     3300             1.167               53
+     3400             1.174               53
+     3500             1.153               53
+     3600             1.093               53
+     3700             1.102               53
+     3800             1.158               53
+     3900             1.159               53
+     4000             1.163               53
+     4100             1.162               53
+     4200             1.151               53
+     4300             1.120               53
+     4400             1.082               53
+     4500             1.066               53
+     4600             1.064               53
+     4700             1.061               53
+     4800             1.059               60
+     4900             1.064               60
+     5000             1.066               60
+     5100             1.075               60
+     5200             1.062               60
+     5300             1.049               53
+     5400             1.036               60
+     5500             1.040               54
+     5600             1.040               54
+     5700             1.030               54
+     5800             1.031               54
+     5900             1.027               54
+     6000             1.024               54
+     6100             1.020               54
+     6200             1.018               54
+     6300             1.014               56
+     6400             1.012               56
+     6500             1.012               50
+     6600             1.014               50
+     6700             1.015               50
+     6800             1.015               17
+     6900             1.016               17
+     7000             1.014               17
+     7100             1.011               17
+     7200             1.009               23
+     7300             1.009               20
+     7400             1.008               56
+     7500             1.014               56
+     7600             1.017               62
+     7700             1.032               62
+     7800             1.049               62
+     7900             1.062               62
+     8000             1.062               62
+     8100             1.050               62
+     8200             1.033               62
+     8300             1.026               62
+     8400             1.024               62
+     8500             1.024               62
+     8600             1.021               62
+     8700             1.018               62
+     8800             1.014               62
+     8900             1.013               62
+     9000             1.016               56
+     9100             1.016               62
+     9200             1.014               56
+     9300             1.014               56
+     9400             1.015               51
+     9500             1.012               56
+     9600             1.010               58
+     9700             1.015               58
+     9800             1.013               58
+     9900             1.017               58
+     10000            1.027               58
+     10100            1.037               58
+     10200            1.051               58
+     10300            1.056               58
+     10400            1.048               58
+     10500            1.041               58
+     10600            1.039               58
+     10700            1.033               58
+     10800            1.032               60
+     10900            1.028               60
+     11000            1.027               60
+     11100            1.025               60
+     11200            1.026               60
+     11300            1.028               60
+     11400            1.023               60
+     11500            1.023               62
+     11600            1.022               62
+     11700            1.022               62
+     11800            1.021               62
+     11900            1.019               60
+     12000            1.020               60
+     12100            1.021               60
+     12200            1.021               62
+     12300            1.017               62
+     12400            1.015               62
+     12500            1.017               60
+     12600            1.019               60
+     12700            1.017               62
+     12800            1.015               60
+     12900            1.013               60
+     13000            1.014               57
+     13100            1.014               57
+     13200            1.013               60
+     13300            1.014               60
+     13400            1.012               60
+     13500            1.010               54
+     13600            1.010               49
+     13700            1.012               48
+     13800            1.016               48
+     13900            1.016               48
+     14000            1.016               48
+     14100            1.014               48
+     14200            1.016               48
+     14300            1.018               48
+     14400            1.018               48
+     14500            1.019               48
+     14600            1.019               48
+     14700            1.017               48
+     14800            1.015               48
+     14900            1.012               48
+     15000            1.010               48
+     15100            1.011               48
+     15200            1.009               48
+     15300            1.007               48
+     15400            1.005               57
+     15500            1.007               57
+     15600            1.008               57
+     15700            1.009               57
+     15800            1.010               57
+     15900            1.011               57
+     16000            1.014               57
+     16100            1.016               57
+     16200            1.018               57
+     16300            1.020               54
+     16400            1.023               54
+     16500            1.022               54
+     16600            1.023               54
+     16700            1.027               54
+     16800            1.029               54
+     16900            1.030               54
+     17000            1.031               54
+     17100            1.035               54
+     17200            1.036               54
+     17300            1.038               54
+     17400            1.036               54
+     17500            1.035               54
+     17600            1.040               54
+     17700            1.039               54
+     17800            1.038               54
+     17900            1.041               54
+     18000            1.043               54
+     18100            1.043               54
+     18200            1.042               54
+     18300            1.041               54
+     18400            1.040               54
+     18500            1.041               54
+     18600            1.044               54
+     18700            1.049               54
+     18800            1.051               54
+     18900            1.058               54
+     19000            1.063               54
+     19100            1.063               54
+     19200            1.060               54
+     19300            1.059               54
+     19400            1.056               54
+     19500            1.058               54
+     19600            1.055               54
+     19700            1.056               54
+     19800            1.061               54
+     19900            1.059               54
+     20000            1.055               54
+     20100            1.049               54
+     20200            1.046               54
+     20300            1.045               54
+     20400            1.046               54
+     20500            1.046               54
+     20600            1.046               54
+     20700            1.046               54
+     20800            1.044               54
+     20900            1.041               54
+     21000            1.036               54
+     21100            1.033               54
+     21200            1.029               54
+     21300            1.028               54
+     21400            1.030               54
+     21500            1.033               54
+     21600            1.034               54
+     21700            1.031               54
+     21800            1.028               54
+     21900            1.026               54
+     22000            1.022               54
+     22100            1.021               54
+     22200            1.020               54
+     22300            1.019               54
+     22400            1.019               54
+     22500            1.019               54
+     22600            1.016               54
+     22700            1.014               54
+     22800            1.013               54
+     22900            1.010               54
+     23000            1.010               53
+     23100            1.010               54
+     23200            1.009               54
+     23300            1.009               53
+     23400            1.010               53
+     23500            1.011               53
+     23600            1.012               53
+     23700            1.012               53
+     23800            1.013               53
+     23900            1.012               53
+     24000            1.009               53
+     24100            1.009               53
+     24200            1.008               53
+     24300            1.007               53
+     24400            1.007               53
+     24500            1.008               53
+     24600            1.008               53
+     24700            1.006               53
+     24800            1.006               62
+     24900            1.005               62
+     25000            1.004               53
+     25100            1.003               53
+     25200            1.003               53
+     25300            1.003               14
+     25400            1.004               53
+     25500            1.005               53
+     25600            1.005               53
+     25700            1.005               53
+     25800            1.005               53
+     25900            1.005               53
+     26000            1.005               53
+     26100            1.004               53
+     26200            1.003               53
+     26300            1.003               25
+     26400            1.003               25
+     26500            1.003               25
+     26600            1.003               25
+     26700            1.003               57
+     26800            1.003               57
+     26900            1.004               57
+     27000            1.003               57
+     27100            1.003               25
+     27200            1.003               25
+     27300            1.003               25
+     27400            1.003               57
+     27500            1.003               54
+     27600            1.004               54
+     27700            1.004               54
+     27800            1.004               54
+     27900            1.003               54
+     28000            1.004               59
+     28100            1.004               59
+     28200            1.004               59
+     28300            1.004               25
+     28400            1.004               25
+     28500            1.004               25
+     28600            1.004               54
+     28700            1.004               59
+     28800            1.004               59
+     28900            1.004               59
+     29000            1.005               59
+     29100            1.005               59
+     29200            1.005               59
+     29300            1.004               59
+     29400            1.003               59
+     29500            1.004               59
+     29600            1.004               59
+     29700            1.004               59
+     29800            1.004               54
+     29900            1.004               54
+     30000            1.004               59
+     30100            1.004               52
+     30200            1.004               52
+     30300            1.004               52
+     30400            1.004               52
+     30500            1.005               52
+     30600            1.005               52
+     30700            1.005               52
+     30800            1.006               52
+     30900            1.006               52
+     31000            1.007               52
+     31100            1.007               52
+     31200            1.008               52
+     31300            1.008               52
+     31400            1.009               52
+     31500            1.009               52
+     31600            1.008               52
+     31700            1.008               52
+     31800            1.006               52
+     31900            1.005               52
+     32000            1.004               52
+     32100            1.004               59
+     32200            1.005               59
+     32300            1.005               59
+     32400            1.005               59
+     32500            1.005               59
+     32600            1.006               59
+     32700            1.006               59
+     32800            1.007               59
+     32900            1.007               59
+     33000            1.008               59
+     33100            1.008               59
+     33200            1.008               59
+     33300            1.007               59
+     33400            1.007               59
+     33500            1.006               59
+     33600            1.006               59
+     33700            1.005               15
+     33800            1.005               59
+     33900            1.006               59
+     34000            1.006               59
+     34100            1.006               59
+     34200            1.007               59
+     34300            1.006               59
+     34400            1.005               59
+     34500            1.005               59
+     34600            1.005               59
+     34700            1.005               15
+     34800            1.004               15
+     34900            1.004               15
+     35000            1.005               59
+     35100            1.004               59
+     35200            1.004               15
+     35300            1.004               55
+     35400            1.005               55
+     35500            1.005               55
+     35600            1.005               55
+     35700            1.004               15
+     35800            1.005               15
+     35900            1.005               15
+     36000            1.005               15
+     36100            1.006               48
+     36200            1.006               48
+     36300            1.005               48
+     36400            1.005               48
+     36500            1.005               53
+     36600            1.005               53
+     36700            1.005               53
+     36800            1.005               53
+     36900            1.005               48
+     37000            1.006               48
+     37100            1.007               48
+     37200            1.007               48
+     37300            1.008               48
+     37400            1.007               48
+     37500            1.007               48
+     37600            1.007               48
+     37700            1.007               48
+     37800            1.007               48
+     37900            1.007               48
+     38000            1.007               48
+     38100            1.008               48
+     38200            1.008               48
+     38300            1.009               48
+     38400            1.008               48
+     38500            1.008               48
+     38600            1.007               55
+     38700            1.007               55
+     38800            1.007               55
+     38900            1.007               55
+     39000            1.007               55
+     39100            1.006               55
+     39200            1.006               54
+     39300            1.006               54
+     39400            1.006               54
+     39500            1.006               55
+     39600            1.006               54
+     39700            1.007               54
+     39800            1.006               55
+     39900            1.007               55
+     40000            1.007               55
+     40100            1.007               55
+     40200            1.006               55
+     40300            1.006               55
+     40400            1.006               55
+     40500            1.006               55
+     40600            1.006               55
+     40700            1.007               48
+     40800            1.008               48
+     40900            1.008               48
+     41000            1.008               48
+     41100            1.008               48
+     41200            1.008               54
+     41300            1.008               54
+     41400            1.008               54
+     41500            1.008               54
+     41600            1.008               54
+     41700            1.007               54
+     41800            1.007               54
+     41900            1.006               48
+     42000            1.006               55
+     42100            1.006               55
+     42200            1.006               55
+     42300            1.006               55
+     42400            1.006               55
+     42500            1.006               48
+     42600            1.006               48
+     42700            1.007               48
+     42800            1.008               48
+     42900            1.008               48
+     43000            1.008               48
+     43100            1.008               48
+     43200            1.008               48
+     43300            1.009               48
+     43400            1.009               48
+     43500            1.008               48
+     43600            1.007               48
+     43700            1.007               48
+     43800            1.007               48
+     43900            1.007               48
+     44000            1.006               48
+     44100            1.006               48
+     44200            1.006               48
+     44300            1.007               48
+     44400            1.007               48
+     44500            1.008               48
+     44600            1.007               48
+     44700            1.007               48
+     44800            1.007               48
+     44900            1.007               48
+     45000            1.006               48
+     45100            1.006               48
+     45200            1.006               48
+     45300            1.006               48
+     45400            1.006               48
+     45500            1.006               48
+     45600            1.006               48
+     45700            1.005               48
+     45800            1.005               48
+     45900            1.004               48
+     46000            1.004               48
+     46100            1.005               48
+     46200            1.005               48
+     46300            1.006               48
+     46400            1.006               48
+     46500            1.006               48
+     46600            1.006               48
+     46700            1.006               48
+     46800            1.007               48
+     46900            1.006               48
+     47000            1.006               48
+     47100            1.005               48
+     47200            1.005               48
+     47300            1.004               48
+     47400            1.003               48
+     47500            1.003               48
+     47600            1.003               48
+     47700            1.003               48
+     47800            1.003               48
+     47900            1.003               48
+     48000            1.003               48
+     48100            1.002               48
+     48200            1.002               48
+     48300            1.003               48
+     48400            1.003               48
+     48500            1.003               48
+     48600            1.004               48
+     48700            1.004               51
+     48800            1.004               51
+     48900            1.003               51
+     49000            1.003               51
+     49100            1.003               51
+     49200            1.003               51
+     49300            1.004               51
+     49400            1.004               51
+     49500            1.005               51
+     49600            1.005               51
+     49700            1.005               51
+     49800            1.005               51
+     49900            1.005               51
+     50000            1.005               51
+     50100            1.005               51
+     50200            1.005               51
+     50300            1.006               51
+     50400            1.006               51
+     50500            1.006               51
+     50600            1.006               51
+     50700            1.005               51
+     50800            1.005               51
+     50900            1.004               51
+     51000            1.004               51
+     51100            1.004               51
+     51200            1.004               51
+     51300            1.003               51
+     51400            1.002               51
+     51500            1.002               51
+     51600            1.002               26
+     51700            1.002               26
+     51800            1.002               26
+     51900            1.002               26
+     52000            1.002               51
+     52100            1.002               51
+     52200            1.002               51
+     52300            1.002               26
+     52400            1.002               26
+     52500            1.002               26
+     52600            1.002               53
+     52700            1.002               53
+     52800            1.002               53
+     52900            1.003               53
+     53000            1.002               53
+     53100            1.003               53
+     53200            1.003               53
+     53300            1.003               53
+     53400            1.004               53
+     53500            1.004               53
+     53600            1.005               53
+     53700            1.005               53
+     53800            1.005               53
+     53900            1.005               53
+     54000            1.006               53
+     54100            1.006               53
+     54200            1.006               53
+     54300            1.007               53
+     54400            1.007               51
+     54500            1.008               51
+     54600            1.008               51
+     54700            1.010               51
+     54800            1.010               51
+     54900            1.011               51
+     55000            1.011               51
+     55100            1.010               51
+     55200            1.010               51
+     55300            1.009               51
+     55400            1.009               51
+     55500            1.009               51
+     55600            1.010               51
+     55700            1.010               51
+     55800            1.011               51
+     55900            1.011               51
+     56000            1.011               51
+     56100            1.011               51
+     56200            1.011               51
+     56300            1.010               51
+     56400            1.009               51
+     56500            1.009               51
+     56600            1.009               51
+     56700            1.009               51
+     56800            1.009               51
+     56900            1.009               51
+     57000            1.009               51
+     57100            1.009               51
+     57200            1.008               51
+     57300            1.007               51
+     57400            1.007               51
+     57500            1.006               51
+     57600            1.006               51
+     57700            1.006               51
+     57800            1.006               51
+     57900            1.006               51
+     58000            1.005               51
+     58100            1.004               51
+     58200            1.004               51
+     58300            1.003               57
+     58400            1.003               57
+     58500            1.003               57
+     58600            1.004               57
+     58700            1.004               57
+     58800            1.004               57
+     58900            1.004               57
+     59000            1.004               57
+     59100            1.004               57
+     59200            1.004               57
+     59300            1.003               57
+     59400            1.003               57
+     59500            1.003               57
+     59600            1.003               57
+     59700            1.003               57
+     59800            1.003               51
+     59900            1.003               51
+     60000            1.004               51
+     60100            1.004               51
+     60200            1.005               51
+     60300            1.005               51
+     60400            1.005               51
+     60500            1.005               51
+     60600            1.005               51
+     60700            1.005               51
+     60800            1.005               51
+     60900            1.005               51
+     61000            1.005               51
+     61100            1.005               51
+     61200            1.006               51
+     61300            1.006               51
+     61400            1.006               51
+     61500            1.005               51
+     61600            1.005               51
+     61700            1.004               51
+     61800            1.004               51
+     61900            1.004               51
+     62000            1.004               51
+     62100            1.004               51
+     62200            1.004               51
+     62300            1.003               51
+     62400            1.003               51
+     62500            1.003               51
+     62600            1.003               51
+     62700            1.004               51
+     62800            1.004               51
+     62900            1.004               51
+     63000            1.004               51
+     63100            1.004               51
+     63200            1.004               51
+     63300            1.004               51
+     63400            1.003               51
+     63500            1.003               51
+     63600            1.003               51
+     63700            1.003               51
+     63800            1.003               51
+     63900            1.002               51
+     64000            1.002               51
+     64100            1.002               51
+     64200            1.002               51
+     64300            1.002               51
+     64400            1.002               51
+     64500            1.002               51
+     64600            1.002               51
+     64700            1.002               51
+     64800            1.002               57
+     64900            1.002               57
+     65000            1.002               57
+     65100            1.002               57
+     65200            1.002               57
+     65300            1.002               49
+     65400            1.002               49
+     65500            1.002               57
+     65600            1.002               57
+     65700            1.002               49
+     65800            1.003               49
+     65900            1.003               49
+     66000            1.003               49
+     66100            1.003               49
+     66200            1.004               49
+     66300            1.004               49
+     66400            1.004               49
+     66500            1.003               49
+     66600            1.003               49
+     66700            1.003               49
+     66800            1.003               49
+     66900            1.002               49
+     67000            1.002               49
+     67100            1.002               49
+     67200            1.002               49
+     67300            1.002               49
+     67400            1.002               49
+     67500            1.002               49
+     67600            1.002               49
+     67700            1.002               49
+     67800            1.001               26
+     67900            1.002               26
+     68000            1.002               26
+     68100            1.002               26
+     68200            1.002               49
+     68300            1.002               49
+     68400            1.002               49
+     68500            1.002               49
+     68600            1.002               49
+     68700            1.002               49
+     68800            1.002               49
+     68900            1.002               49
+     69000            1.002               49
+     69100            1.002               49
+     69200            1.002               49
+     69300            1.002               49
+     69400            1.002               49
+     69500            1.002               49
+     69600            1.001               49
+     69700            1.001               26
+     69800            1.001               26
+     69900            1.001               26
+     70000            1.001               26
+     70100            1.001               26
+     70200            1.001               26
+     70300            1.001               26
+     70400            1.001               26
+     70500            1.001               26
+     70600            1.001               26
+     70700            1.001               26
+     70800            1.001               26
+     70900            1.001               26
+     71000            1.002               26
+     71100            1.002               26
+     71200            1.002               26
+     71300            1.002               26
+     71400            1.002               26
+     71500            1.002               26
+     71600            1.002               26
+     71700            1.002               26
+     71800            1.002               26
+     71900            1.002               26
+     72000            1.002               26
+     72100            1.002               26
+     72200            1.002               26
+     72300            1.002               26
+     72400            1.001               26
+     72500            1.001               26
+     72600            1.001               26
+     72700            1.001               26
+     72800            1.001               26
+     72900            1.001               26
+     73000            1.001               26
+     73100            1.001               26
+     73200            1.002               26
+     73300            1.001               26
+     73400            1.001               26
+     73500            1.001               26
+     73600            1.001               26
+     73700            1.001               26
+     73800            1.001               26
+     73900            1.001               26
+     74000            1.001               54
+     74100            1.001               54
+     74200            1.001               26
+     74300            1.001               26
+     74400            1.001               26
+     74500            1.001               26
+     74600            1.001               54
+     74700            1.001               14
+     74800            1.001               14
+     74900            1.001               14
+     75000            1.001               14
+     75100            1.001               14
+     75200            1.001               14
+     75300            1.000               14
+     75400            1.000               14
+     75500            1.000               14
+     75600            1.001               14
+     75700            1.001               14
+     75800            1.001               14
+     75900            1.001               14
+     76000            1.001               14
+     76100            1.000               14
+     76200            1.000               14
+     76300            1.000               22
+     76400            1.000               14
+     76500            1.000               22
+     76600            1.000               22
+     76700            1.000               14
+     76800            1.000               22
+     76900            1.001               22
+     77000            1.001               61
+     77100            1.000               27
+     77200            1.000               14
+     77300            1.000               14
+     77400            1.000               14
+     77500            1.000               61
+     77600            1.001               61
+     77700            1.001               61
+     77800            1.001               61
+     77900            1.001               61
+     78000            1.001               58
+     78100            1.001               58
+     78200            1.001               58
+     78300            1.001               58
+     78400            1.001               58
+     78500            1.001               58
+     78600            1.001               58
+     78700            1.001               58
+     78800            1.001               58
+     78900            1.001               58
+     79000            1.001               58
+     79100            1.001               58
+     79200            1.001               58
+     79300            1.001               57
+     79400            1.001               58
+     79500            1.001               58
+     79600            1.001               57
+     79700            1.001               57
+     79800            1.001               57
+     79900            1.001               57
+     80000            1.001               57
+     80100            1.001               57
+     80200            1.001               54
+     80300            1.001               15
+     80400            1.001               14
+     80500            1.001               18
+     80600            1.001               14
+     80700            1.001               14
+     80800            1.001               14
+     80900            1.001               54
+     81000            1.001               14
+     81100            1.001               57
+     81200            1.001               57
+     81300            1.001               57
+     81400            1.001               57
+     81500            1.001               57
+     81600            1.001               57
+     81700            1.001               57
+     81800            1.001               57
+     81900            1.001               57
+     82000            1.001               57
+     82100            1.001               57
+     82200            1.002               57
+     82300            1.002               57
+     82400            1.002               57
+     82500            1.002               57
+     82600            1.002               57
+     82700            1.002               57
+     82800            1.002               57
+     82900            1.003               57
+     83000            1.003               57
+     83100            1.003               57
+     83200            1.002               57
+     83300            1.002               57
+     83400            1.002               57
+     83500            1.002               57
+     83600            1.002               54
+     83700            1.002               54
+     83800            1.002               57
+     83900            1.002               57
+     84000            1.002               57
+     84100            1.001               57
+     84200            1.001               57
+     84300            1.001               57
+     84400            1.001               57
+     84500            1.001               57
+     84600            1.001               57
+     84700            1.001               57
+     84800            1.001               57
+     84900            1.001               57
+     85000            1.001               57
+     85100            1.001               57
+     85200            1.001               54
+     85300            1.001               54
+     85400            1.001               54
+     85500            1.001               57
+     85600            1.001               57
+     85700            1.001               57
+     85800            1.001               57
+     85900            1.001               57
+     86000            1.001               57
+     86100            1.001               57
+     86200            1.001               57
+     86300            1.001               57
+     86400            1.001               57
+     86500            1.001               57
+     86600            1.001               57
+     86700            1.001               57
+     86800            1.001               57
+     86900            1.002               57
+     87000            1.002               57
+     87100            1.002               57
+     87200            1.001               57
+     87300            1.001               57
+     87400            1.001               55
+     87500            1.001               55
+     87600            1.001               55
+     87700            1.001               55
+     87800            1.001               55
+     87900            1.001               55
+     88000            1.001               55
+     88100            1.001               55
+     88200            1.001               55
+     88300            1.001               55
+     88400            1.001               55
+     88500            1.001               55
+     88600            1.001               55
+     88700            1.001               55
+     88800            1.001               55
+     88900            1.001               55
+     89000            1.001               49
+     89100            1.001               49
+     89200            1.001               49
+     89300            1.001               49
+     89400            1.001               49
+     89500            1.001               49
+     89600            1.001               49
+     89700            1.001               49
+     89800            1.001               49
+     89900            1.001               49
+     90000            1.001               49
+     90100            1.001               18
+     90200            1.001               18
+     90300            1.001               18
+     90400            1.001               49
+     90500            1.001               18
+     90600            1.001               18
+     90700            1.001               18
+     90800            1.001               18
+     90900            1.001               18
+     91000            1.001               18
+     91100            1.001               18
+     91200            1.001               18
+     91300            1.001               18
+     91400            1.001               18
+     91500            1.001               18
+     91600            1.001               18
+     91700            1.001               18
+     91800            1.001               18
+     91900            1.001               18
+     92000            1.001               18
+     92100            1.001               26
+     92200            1.001               26
+     92300            1.001               26
+     92400            1.001               18
+     92500            1.001               26
+     92600            1.001               26
+     92700            1.001               61
+     92800            1.001               61
+     92900            1.001               61
+     93000            1.001               61
+     93100            1.001               61
+     93200            1.001               61
+     93300            1.001               61
+     93400            1.001               61
+     93500            1.001               61
+     93600            1.001               61
+     93700            1.001               26
+     93800            1.001               26
+     93900            1.001               61
+     94000            1.001               61
+     94100            1.001               61
+     94200            1.001               61
+     94300            1.001               61
+     94400            1.001               61
+     94500            1.001               61
+     94600            1.001               61
+     94700            1.001               61
+     94800            1.001               61
+     94900            1.001               61
+     95000            1.001               61
+     95100            1.001               61
+     95200            1.001               61
+     95300            1.001               61
+     95400            1.001               18
+     95500            1.001               18
+     95600            1.001               18
+     95700            1.001               18
+     95800            1.001               18
+     95900            1.001               18
+     96000            1.001               18
+     96100            1.001               18
+     96200            1.001               18
+     96300            1.001               18
+     96400            1.001               18
+     96500            1.001               18
+     96600            1.001               18
+     96700            1.001               18
+     96800            1.001               18
+     96900            1.001               53
+     97000            1.001               53
+     97100            1.001               53
+     97200            1.002               53
+     97300            1.002               53
+     97400            1.002               53
+     97500            1.002               53
+     97600            1.002               53
+     97700            1.002               53
+     97800            1.002               53
+     97900            1.002               53
+     98000            1.002               53
+     98100            1.002               53
+     98200            1.003               53
+     98300            1.002               53
+     98400            1.002               53
+     98500            1.002               53
+     98600            1.003               53
+     98700            1.003               53
+     98800            1.003               53
+     98900            1.003               53
+     99000            1.004               53
+     99100            1.004               53
+     99200            1.004               53
+     99300            1.004               53
+     99400            1.003               53
+     99500            1.003               53
+     99600            1.003               53
+     99700            1.003               53
+     99800            1.003               53
+     99900            1.003               53
+     100000           1.003               53
+     100100           1.003               53
+     100200           1.003               53
+     100300           1.003               53
+     100400           1.003               53
+     100500           1.003               53
+     100600           1.002               53
+     100700           1.002               53
+     100800           1.002               53
+     100900           1.002               53
+     101000           1.002               53
+     101100           1.002               53
+     101200           1.002               53
+     101300           1.002               53
+     101400           1.002               53
+     101500           1.002               53
+     101600           1.002               53
+     101700           1.002               53
+     101800           1.002               53
+     101900           1.002               53
+     102000           1.002               53
+     102100           1.002               53
+     102200           1.002               53
+     102300           1.002               53
+     102400           1.002               53
+     102500           1.002               53
+     102600           1.002               53
+     102700           1.001               53
+     102800           1.001               53
+     102900           1.001               53
+     103000           1.001               57
+     103100           1.002               57
+     103200           1.002               57
+     103300           1.002               57
+     103400           1.003               57
+     103500           1.003               57
+     103600           1.004               57
+     103700           1.004               57
+     103800           1.004               57
+     103900           1.004               57
+     104000           1.004               57
+     104100           1.004               57
+     104200           1.003               57
+     104300           1.003               57
+     104400           1.003               57
+     104500           1.003               57
+     104600           1.003               57
+     104700           1.003               57
+     104800           1.003               57
+     104900           1.003               57
+     105000           1.002               57
+     105100           1.002               57
+     105200           1.002               57
+     105300           1.002               57
+     105400           1.002               57
+     105500           1.002               57
+     105600           1.002               57
+     105700           1.002               57
+     105800           1.002               57
+     105900           1.002               57
+     106000           1.002               57
+     106100           1.002               57
+     106200           1.002               57
+     106300           1.002               57
+     106400           1.002               57
+     106500           1.002               57
+     106600           1.002               57
+     106700           1.002               57
+     106800           1.003               57
+     106900           1.003               57
+     107000           1.003               57
+     107100           1.003               57
+     107200           1.003               57
+     107300           1.003               57
+     107400           1.003               57
+     107500           1.003               57
+     107600           1.003               57
+     107700           1.003               57
+     107800           1.003               57
+     107900           1.003               57
+     108000           1.003               57
+     108100           1.003               57
+     108200           1.002               57
+     108300           1.002               57
+     108400           1.002               57
+     108500           1.002               57
+     108600           1.002               57
+     108700           1.002               57
+     108800           1.002               57
+     108900           1.002               57
+     109000           1.002               57
+     109100           1.002               57
+     109200           1.002               57
+     109300           1.002               57
+     109400           1.002               57
+     109500           1.002               57
+     109600           1.002               57
+     109700           1.002               57
+     109800           1.002               57
+     109900           1.002               57
+     110000           1.002               57
+     110100           1.002               57
+     110200           1.002               57
+     110300           1.002               57
+     110400           1.001               57
+     110500           1.001               57
+     110600           1.001               62
+     110700           1.001               62
+     110800           1.001               62
+     110900           1.001               62
+     111000           1.001               62
+     111100           1.001               62
+     111200           1.001               62
+     111300           1.001               62
+     111400           1.001               22
+     111500           1.001               55
+     111600           1.001               55
+     111700           1.001               55
+     111800           1.001               55
+     111900           1.001               55
+     112000           1.001               55
+     112100           1.001               55
+     112200           1.001               55
+     112300           1.001               55
+     112400           1.002               55
+     112500           1.002               55
+     112600           1.002               55
+     112700           1.002               55
+     112800           1.002               55
+     112900           1.002               55
+     113000           1.002               55
+     113100           1.001               55
+     113200           1.001               54
+     113300           1.001               55
+     113400           1.001               57
+     113500           1.001               55
+     113600           1.001               55
+     113700           1.001               55
+     113800           1.001               55
+     113900           1.001               55
+     114000           1.001               55
+     114100           1.001               55
+     114200           1.001               55
+     114300           1.001               55
+     114400           1.001               57
+     114500           1.001               55
+     114600           1.001               55
+     114700           1.001               55
+     114800           1.001               55
+     114900           1.001               55
+     115000           1.001               55
+     115100           1.001               55
+     115200           1.001               55
+     115300           1.001               55
+     115400           1.001               55
+     115500           1.001               55
+     115600           1.001               55
+     115700           1.001               55
+     115800           1.001               55
+     115900           1.001               55
+     116000           1.001               55
+     116100           1.001               55
+     116200           1.001               54
+     116300           1.001               55
+     116400           1.001               55
+     116500           1.002               55
+     116600           1.002               55
+     116700           1.002               55
+     116800           1.002               55
+     116900           1.002               55
+     117000           1.002               55
+     117100           1.002               55
+     117200           1.002               55
+     117300           1.002               57
+     117400           1.002               55
+     117500           1.002               55
+     117600           1.002               55
+     117700           1.002               55
+     117800           1.002               57
+     117900           1.002               57
+     118000           1.002               57
+     118100           1.002               57
+     118200           1.002               57
+     118300           1.002               57
+     118400           1.002               57
+     118500           1.002               57
+     118600           1.002               57
+     118700           1.002               57
+     118800           1.002               57
+     118900           1.002               57
+     119000           1.002               57
+     119100           1.002               57
+     119200           1.002               57
+     119300           1.002               57
+     119400           1.002               57
+     119500           1.002               57
+     119600           1.002               57
+     119700           1.002               57
+     119800           1.002               57
+     119900           1.002               57
+     120000           1.002               57
+     120100           1.002               57
+     120200           1.002               57
+     120300           1.002               53
+     120400           1.002               53
+     120500           1.003               53
+     120600           1.003               53
+     120700           1.003               53
+     120800           1.003               53
+     120900           1.003               53
+     121000           1.003               53
+     121100           1.003               53
+     121200           1.003               53
+     121300           1.003               53
+     121400           1.002               53
+     121500           1.003               53
+     121600           1.003               53
+     121700           1.003               53
+     121800           1.003               53
+     121900           1.003               53
+     122000           1.003               53
+     122100           1.003               53
+     122200           1.003               53
+     122300           1.003               53
+     122400           1.003               53
+     122500           1.003               53
+     122600           1.003               53
+     122700           1.003               53
+     122800           1.003               53
+     122900           1.003               53
+     123000           1.003               53
+     123100           1.003               53
+     123200           1.003               53
+     123300           1.003               53
+     123400           1.003               53
+     123500           1.003               53
+     123600           1.003               53
+     123700           1.003               53
+     123800           1.003               53
+     123900           1.003               53
+     124000           1.003               53
+     124100           1.003               53
+     124200           1.003               53
+     124300           1.003               53
+     124400           1.003               53
+     124500           1.003               53
+     124600           1.003               53
+     124700           1.003               53
+     124800           1.002               53
+     124900           1.002               53
+     125000           1.003               53
+     125100           1.003               53
+     125200           1.003               53
+     125300           1.003               53
+     125400           1.003               53
+     125500           1.003               53
+     125600           1.003               53
+     125700           1.003               53
+     125800           1.003               53
+     125900           1.002               53
+     126000           1.002               53
+     126100           1.002               53
+     126200           1.002               53
+     126300           1.002               53
+     126400           1.002               53
+     126500           1.002               53
+     126600           1.002               53
+     126700           1.002               53
+     126800           1.002               53
+     126900           1.002               53
+     127000           1.002               53
+     127100           1.002               53
+     127200           1.002               53
+     127300           1.002               53
+     127400           1.002               53
+     127500           1.001               51
+     127600           1.001               51
+     127700           1.001               51
+     127800           1.001               22
+     127900           1.001               22
+     128000           1.001               22
+     128100           1.002               51
+     128200           1.002               51
+     128300           1.002               51
+     128400           1.002               51
+     128500           1.002               51
+     128600           1.002               51
+     128700           1.002               51
+     128800           1.002               51
+     128900           1.002               51
+     129000           1.002               51
+     129100           1.002               51
+     129200           1.002               51
+     129300           1.002               51
+     129400           1.002               51
+     129500           1.002               51
+     129600           1.002               51
+     129700           1.002               53
+     129800           1.002               53
+     129900           1.002               52
+     130000           1.002               52
+     130100           1.002               52
+     130200           1.002               52
+     130300           1.002               52
+     130400           1.002               52
+     130500           1.002               52
+     130600           1.002               52
+     130700           1.002               52
+     130800           1.002               52
+     130900           1.002               52
+     131000           1.002               52
+     131100           1.002               52
+     131200           1.002               52
+     131300           1.002               52
+     131400           1.002               52
+     131500           1.002               52
+     131600           1.002               52
+     131700           1.002               52
+     131800           1.002               52
+     131900           1.002               52
+     132000           1.002               52
+     132100           1.002               52
+     132200           1.002               52
+     132300           1.002               52
+     132400           1.002               52
+     132500           1.002               52
+     132600           1.002               52
+     132700           1.002               52
+     132800           1.002               52
+     132900           1.002               52
+     133000           1.002               52
+     133100           1.002               52
+     133200           1.002               52
+     133300           1.002               52
+     133400           1.002               52
+     133500           1.002               52
+     133600           1.002               52
+     133700           1.002               52
+     133800           1.002               52
+     133900           1.002               52
+     134000           1.002               52
+     134100           1.002               52
+     134200           1.002               52
+     134300           1.002               52
+     134400           1.002               52
+     134500           1.003               52
+     134600           1.003               52
+     134700           1.003               52
+     134800           1.003               52
+     134900           1.003               52
+     135000           1.003               52
+     135100           1.003               52
+     135200           1.003               52
+     135300           1.003               52
+     135400           1.003               52
+     135500           1.003               52
+     135600           1.003               52
+     135700           1.003               52
+     135800           1.003               52
+     135900           1.003               52
+     136000           1.003               52
+     136100           1.003               52
+     136200           1.003               52
+     136300           1.003               52
+     136400           1.003               52
+     136500           1.003               52
+     136600           1.003               52
+     136700           1.003               52
+     136800           1.003               52
+     136900           1.003               52
+     137000           1.003               52
+     137100           1.003               52
+     137200           1.002               52
+     137300           1.002               52
+     137400           1.002               52
+     137500           1.002               52
+     137600           1.002               52
+     137700           1.003               52
+     137800           1.003               52
+     137900           1.003               52
+     138000           1.003               52
+     138100           1.003               52
+     138200           1.003               52
+     138300           1.003               52
+     138400           1.003               52
+     138500           1.003               52
+     138600           1.003               52
+     138700           1.003               52
+     138800           1.003               52
+     138900           1.003               52
+     139000           1.003               52
+     139100           1.003               52
+     139200           1.003               52
+     139300           1.003               52
+     139400           1.003               52
+     139500           1.003               52
+     139600           1.003               52
+     139700           1.003               52
+     139800           1.003               52
+     139900           1.003               52
+     140000           1.003               52
+     140100           1.004               52
+     140200           1.003               52
+     140300           1.003               52
+     140400           1.003               52
+     140500           1.003               52
+     140600           1.003               52
+     140700           1.003               52
+     140800           1.003               52
+     140900           1.003               52
+     141000           1.003               52
+     141100           1.003               52
+     141200           1.003               52
+     141300           1.002               52
+     141400           1.002               52
+     141500           1.002               52
+     141600           1.002               52
+     141700           1.002               52
+     141800           1.002               52
+     141900           1.002               52
+     142000           1.002               52
+     142100           1.002               52
+     142200           1.002               52
+     142300           1.002               52
+     142400           1.002               52
+     142500           1.002               52
+     142600           1.003               52
+     142700           1.003               52
+     142800           1.003               52
+     142900           1.003               52
+     143000           1.003               52
+     143100           1.003               52
+     143200           1.003               52
+     143300           1.003               52
+     143400           1.003               52
+     143500           1.003               52
+     143600           1.003               52
+     143700           1.003               52
+     143800           1.003               52
+     143900           1.003               52
+     144000           1.003               52
+     144100           1.003               52
+     144200           1.004               52
+     144300           1.004               52
+     144400           1.004               52
+     144500           1.004               52
+     144600           1.004               52
+     144700           1.005               52
+     144800           1.005               52
+     144900           1.005               52
+     145000           1.005               52
+     145100           1.005               52
+     145200           1.005               52
+     145300           1.005               52
+     145400           1.005               52
+     145500           1.005               52
+     145600           1.005               52
+     145700           1.005               52
+     145800           1.005               52
+     145900           1.005               52
+     146000           1.004               52
+     146100           1.004               52
+     146200           1.004               52
+     146300           1.004               52
+     146400           1.004               52
+     146500           1.004               52
+     146600           1.004               52
+     146700           1.004               52
+     146800           1.004               52
+     146900           1.004               52
+     147000           1.003               52
+     147100           1.003               52
+     147200           1.003               52
+     147300           1.003               52
+     147400           1.003               52
+     147500           1.003               52
+     147600           1.003               52
+     147700           1.003               52
+     147800           1.003               52
+     147900           1.003               52
+     148000           1.003               52
+     148100           1.003               52
+     148200           1.003               52
+     148300           1.003               52
+     148400           1.003               52
+     148500           1.003               52
+     148600           1.003               52
+     148700           1.003               52
+     148800           1.003               52
+     148900           1.003               52
+     149000           1.003               52
+     149100           1.003               52
+     149200           1.003               52
+     149300           1.003               52
+     149400           1.003               52
+     149500           1.003               52
+     149600           1.003               52
+     149700           1.003               52
+     149800           1.003               52
+     149900           1.003               52
+     150000           1.003               52
+     150100           1.003               52
+     150200           1.003               52
+     150300           1.003               52
+     150400           1.003               52
+     150500           1.003               52
+     150600           1.003               52
+     150700           1.003               52
+     150800           1.003               52
+     150900           1.003               52
+     151000           1.003               52
+     151100           1.003               52
+     151200           1.003               52
+     151300           1.003               52
+     151400           1.003               52
+     151500           1.003               52
+     151600           1.003               52
+     151700           1.003               52
+     151800           1.003               52
+     151900           1.003               52
+     152000           1.003               52
+     152100           1.003               52
+     152200           1.003               52
+     152300           1.003               52
+     152400           1.003               52
+     152500           1.003               52
+     152600           1.002               52
+     152700           1.002               52
+     152800           1.002               52
+     152900           1.002               52
+     153000           1.002               52
+     153100           1.002               52
+     153200           1.002               52
+     153300           1.002               52
+     153400           1.002               52
+     153500           1.002               52
+     153600           1.002               52
+     153700           1.002               52
+     153800           1.002               52
+     153900           1.002               52
+     154000           1.002               52
+     154100           1.002               52
+     154200           1.002               52
+     154300           1.002               52
+     154400           1.002               52
+     154500           1.002               52
+     154600           1.002               52
+     154700           1.002               52
+     154800           1.002               52
+     154900           1.002               53
+     155000           1.002               53
+     155100           1.002               53
+     155200           1.002               53
+     155300           1.002               53
+     155400           1.002               53
+     155500           1.002               53
+     155600           1.003               53
+     155700           1.002               53
+     155800           1.002               53
+     155900           1.002               53
+     156000           1.002               53
+     156100           1.002               53
+     156200           1.002               53
+     156300           1.003               53
+     156400           1.003               53
+     156500           1.003               53
+     156600           1.003               53
+     156700           1.002               53
+     156800           1.002               53
+     156900           1.002               53
+     157000           1.002               52
+     157100           1.002               52
+     157200           1.002               52
+     157300           1.002               52
+     157400           1.002               52
+     157500           1.002               52
+     157600           1.002               52
+     157700           1.002               52
+     157800           1.002               52
+     157900           1.002               52
+     158000           1.002               52
+     158100           1.002               52
+     158200           1.002               52
+     158300           1.002               52
+     158400           1.002               52
+     158500           1.002               52
+     158600           1.001               52
+     158700           1.001               52
+     158800           1.001               52
+     158900           1.001               57
+     159000           1.001               57
+     159100           1.001               57
+     159200           1.001               57
+     159300           1.001               57
+     159400           1.001               52
+     159500           1.001               52
+     159600           1.001               52
+     159700           1.001               52
+     159800           1.001               52
+     159900           1.001               52
+     160000           1.001               52
+     160100           1.001               52
+     160200           1.001               52
+     160300           1.001               52
+     160400           1.001               52
+     160500           1.001               52
+     160600           1.001               52
+     160700           1.001               52
+     160800           1.001               52
+     160900           1.001               52
+     161000           1.001               52
+     161100           1.001               52
+     161200           1.001               52
+     161300           1.001               52
+     161400           1.001               52
+     161500           1.001               52
+     161600           1.001               52
+     161700           1.001               52
+     161800           1.001               52
+     161900           1.002               52
+     162000           1.002               52
+     162100           1.002               52
+     162200           1.002               52
+     162300           1.001               52
+     162400           1.001               52
+     162500           1.001               52
+     162600           1.001               52
+     162700           1.001               52
+     162800           1.001               52
+     162900           1.001               52
+     163000           1.001               52
+     163100           1.002               52
+     163200           1.002               52
+     163300           1.002               52
+     163400           1.002               52
+     163500           1.002               52
+     163600           1.002               52
+     163700           1.002               52
+     163800           1.002               52
+     163900           1.002               52
+     164000           1.002               52
+     164100           1.002               52
+     164200           1.002               52
+     164300           1.002               52
+     164400           1.001               52
+     164500           1.001               52
+     164600           1.001               52
+     164700           1.001               52
+     164800           1.001               52
+     164900           1.002               52
+     165000           1.001               52
+     165100           1.001               52
+     165200           1.001               52
+     165300           1.001               52
+     165400           1.001               52
+     165500           1.001               52
+     165600           1.001               52
+     165700           1.001               52
+     165800           1.001               52
+     165900           1.001               52
+     166000           1.001               52
+     166100           1.001               52
+     166200           1.001               52
+     166300           1.001               52
+     166400           1.001               52
+     166500           1.001               52
+     166600           1.001               52
+     166700           1.001               52
+     166800           1.001               52
+     166900           1.001               52
+     167000           1.001               52
+     167100           1.001               52
+     167200           1.001               52
+     167300           1.001               52
+     167400           1.001               52
+     167500           1.001               52
+     167600           1.001               52
+     167700           1.001               52
+     167800           1.001               52
+     167900           1.001               52
+     168000           1.001               52
+     168100           1.001               52
+     168200           1.001               52
+     168300           1.001               52
+     168400           1.001               52
+     168500           1.002               52
+     168600           1.002               52
+     168700           1.001               52
+     168800           1.002               52
+     168900           1.002               52
+     169000           1.002               52
+     169100           1.002               52
+     169200           1.002               52
+     169300           1.002               52
+     169400           1.002               52
+     169500           1.002               52
+     169600           1.002               52
+     169700           1.002               52
+     169800           1.002               52
+     169900           1.002               52
+     170000           1.002               52
+     170100           1.002               52
+     170200           1.002               52
+     170300           1.002               52
+     170400           1.002               52
+     170500           1.002               52
+     170600           1.002               52
+     170700           1.002               52
+     170800           1.002               52
+     170900           1.002               52
+     171000           1.002               52
+     171100           1.002               52
+     171200           1.002               52
+     171300           1.002               52
+     171400           1.002               52
+     171500           1.002               52
+     171600           1.002               52
+     171700           1.002               52
+     171800           1.002               52
+     171900           1.002               52
+     172000           1.002               52
+     172100           1.003               52
+     172200           1.003               52
+     172300           1.003               52
+     172400           1.003               52
+     172500           1.003               52
+     172600           1.003               52
+     172700           1.003               52
+     172800           1.003               52
+     172900           1.003               52
+     173000           1.003               52
+     173100           1.003               52
+     173200           1.003               52
+     173300           1.003               52
+     173400           1.003               52
+     173500           1.003               52
+     173600           1.003               52
+     173700           1.003               52
+     173800           1.003               52
+     173900           1.003               52
+     174000           1.003               52
+     174100           1.003               52
+     174200           1.003               52
+     174300           1.003               52
+     174400           1.003               52
+     174500           1.003               52
+     174600           1.003               52
+     174700           1.003               52
+     174800           1.004               52
+     174900           1.004               52
+     175000           1.004               52
+     175100           1.004               52
+     175200           1.004               52
+     175300           1.004               52
+     175400           1.004               52
+     175500           1.004               52
+     175600           1.004               52
+     175700           1.004               52
+     175800           1.004               52
+     175900           1.004               52
+     176000           1.004               52
+     176100           1.004               52
+     176200           1.004               52
+     176300           1.004               52
+     176400           1.004               52
+     176500           1.004               52
+     176600           1.004               52
+     176700           1.004               52
+     176800           1.003               52
+     176900           1.003               52
+     177000           1.004               52
+     177100           1.004               52
+     177200           1.004               52
+     177300           1.004               52
+     177400           1.004               52
+     177500           1.004               52
+     177600           1.004               52
+     177700           1.004               52
+     177800           1.004               52
+     177900           1.004               52
+     178000           1.004               52
+     178100           1.004               52
+     178200           1.004               52
+     178300           1.004               52
+     178400           1.004               52
+     178500           1.004               52
+     178600           1.004               52
+     178700           1.004               52
+     178800           1.004               52
+     178900           1.004               52
+     179000           1.004               52
+     179100           1.004               52
+     179200           1.004               51
+     179300           1.004               51
+     179400           1.004               51
+     179500           1.004               51
+     179600           1.004               51
+     179700           1.004               51
+     179800           1.003               51
+     179900           1.003               51
+     180000           1.003               51
+     180100           1.003               51
+     180200           1.004               52
+     180300           1.004               52
+     180400           1.003               52
+     180500           1.003               52
+     180600           1.003               51
+     180700           1.003               51
+     180800           1.004               51
+     180900           1.004               51
+     181000           1.004               51
+     181100           1.004               51
+     181200           1.004               51
+     181300           1.004               51
+     181400           1.004               51
+     181500           1.004               51
+     181600           1.004               51
+     181700           1.004               51
+     181800           1.004               51
+     181900           1.004               51
+     182000           1.004               51
+     182100           1.004               51
+     182200           1.004               51
+     182300           1.004               51
+     182400           1.004               51
+     182500           1.004               51
+     182600           1.004               51
+     182700           1.004               51
+     182800           1.004               51
+     182900           1.004               51
+     183000           1.004               49
+     183100           1.004               49
+     183200           1.004               49
+     183300           1.004               49
+     183400           1.004               49
+     183500           1.004               49
+     183600           1.004               49
+     183700           1.004               49
+     183800           1.004               49
+     183900           1.005               49
+     184000           1.005               49
+     184100           1.005               49
+     184200           1.005               49
+     184300           1.005               49
+     184400           1.005               49
+     184500           1.005               49
+     184600           1.005               49
+     184700           1.005               49
+     184800           1.004               49
+     184900           1.004               49
+     185000           1.004               49
+     185100           1.004               49
+     185200           1.004               49
+     185300           1.004               49
+     185400           1.004               49
+     185500           1.004               49
+     185600           1.004               49
+     185700           1.004               49
+     185800           1.004               49
+     185900           1.004               49
+     186000           1.004               49
+     186100           1.004               49
+     186200           1.004               49
+     186300           1.004               49
+     186400           1.004               49
+     186500           1.004               49
+     186600           1.004               49
+     186700           1.004               49
+     186800           1.004               49
+     186900           1.004               49
+     187000           1.004               49
+     187100           1.004               49
+     187200           1.004               49
+     187300           1.004               49
+     187400           1.004               49
+     187500           1.004               49
+     187600           1.004               49
+     187700           1.004               49
+     187800           1.004               49
+     187900           1.004               49
+     188000           1.004               49
+     188100           1.004               49
+     188200           1.004               49
+     188300           1.004               49
+     188400           1.004               49
+     188500           1.004               52
+     188600           1.004               52
+     188700           1.004               52
+     188800           1.004               52
+     188900           1.004               52
+     189000           1.004               52
+     189100           1.003               52
+     189200           1.003               52
+     189300           1.003               52
+     189400           1.003               52
+     189500           1.003               52
+     189600           1.003               52
+     189700           1.003               52
+     189800           1.004               52
+     189900           1.004               52
+     190000           1.004               52
+     190100           1.003               52
+     190200           1.003               52
+     190300           1.003               52
+     190400           1.003               52
+     190500           1.003               52
+     190600           1.003               52
+     190700           1.003               52
+     190800           1.003               52
+     190900           1.003               52
+     191000           1.003               52
+     191100           1.003               52
+     191200           1.003               52
+     191300           1.003               52
+     191400           1.003               52
+     191500           1.003               52
+     191600           1.002               52
+     191700           1.002               49
+     191800           1.002               52
+     191900           1.002               49
+     192000           1.002               49
+     192100           1.002               49
+     192200           1.002               49
+     192300           1.002               49
+     192400           1.002               49
+     192500           1.002               49
+     192600           1.002               52
+     192700           1.002               52
+     192800           1.002               52
+     192900           1.002               49
+     193000           1.002               49
+     193100           1.002               49
+     193200           1.002               49
+     193300           1.003               49
+     193400           1.002               49
+     193500           1.002               49
+     193600           1.003               49
+     193700           1.003               49
+     193800           1.003               49
+     193900           1.003               49
+     194000           1.003               49
+     194100           1.002               49
+     194200           1.002               49
+     194300           1.002               49
+     194400           1.002               49
+     194500           1.002               49
+     194600           1.002               49
+     194700           1.002               49
+     194800           1.002               49
+     194900           1.002               49
+     195000           1.002               49
+     195100           1.002               49
+     195200           1.002               49
+     195300           1.002               49
+     195400           1.002               49
+     195500           1.002               49
+     195600           1.002               49
+     195700           1.002               49
+     195800           1.002               49
+     195900           1.002               49
+     196000           1.002               49
+     196100           1.002               49
+     196200           1.002               49
+     196300           1.002               49
+     196400           1.002               49
+     196500           1.002               49
+     196600           1.002               49
+     196700           1.002               52
+     196800           1.002               49
+     196900           1.002               49
+     197000           1.002               49
+     197100           1.002               49
+     197200           1.002               49
+     197300           1.002               49
+     197400           1.002               49
+     197500           1.002               49
+     197600           1.002               49
+     197700           1.002               52
+     197800           1.002               49
+     197900           1.002               49
+     198000           1.002               49
+     198100           1.002               49
+     198200           1.002               49
+     198300           1.002               49
+     198400           1.002               52
+     198500           1.002               52
+     198600           1.002               52
+     198700           1.002               52
+     198800           1.002               52
+     198900           1.002               52
+     199000           1.002               52
+     199100           1.002               52
+     199200           1.002               49
+     199300           1.002               49
+     199400           1.002               49
+     199500           1.002               49
+     199600           1.002               49
+     199700           1.002               49
+     199800           1.002               49
+     199900           1.002               49
+     200000           1.002               49
+
+
+DIAGRAM INFORMATION
+
+  Mplus diagrams are currently not available for multilevel analysis.
+  No diagram output was produced.
+
+
+     Beginning Time:  15:16:40
+        Ending Time:  15:19:21
+       Elapsed Time:  00:02:41
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2023 Muthen & Muthen
