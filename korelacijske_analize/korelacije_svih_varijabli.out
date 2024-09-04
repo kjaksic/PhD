@@ -1,0 +1,2058 @@
+Mplus VERSION 8.10
+MUTHEN & MUTHEN
+08/30/2024   4:57 PM
+
+INPUT INSTRUCTIONS
+
+  DATA: File is korelacije.dat;
+
+  VARIABLE:
+  NAMES ARE id redni_broj_uzorkovanja
+  dan tjedan smjena H_1 H_2 H_3 IMP_1 IMP_2 IMP_3
+  NEG_VAL_1 NEG_VAL_2 NEG_VAL_3 COMP_1 COMP_2
+  COMP_3 TIP_1 TIP_2 TIP_3 POS_VAL_1 POS_VAL_2
+  POS_VAL_3 ADV_1 ADV_2 ADV_3 C1 C2 E1 E2
+  A1 A2 O1 O2 N1 N2 POZ_1 POZ_2 POZ_3
+  POZ_4 NEG_1 NEG_2 NEG_3 NEG_4
+  NEG_5 ER_1 ER_2 ER_3 ER_4 ER_5
+  ER_6 ER_7 ER_8 SE_1 SE_2 SE_3
+  SAV EKST OTV SEU
+  HUM IMP NEG_VAL COMPLEX TIPI
+  POS_VAL ADVERS T1GL1 T1GL2
+  T1GL3 T1GL4 T1GL5 T1GL6
+  T1GL7 T1GL8 T1GL9 T1GL10
+  T1GL11 T1GL12 T1GL13 T1GL14
+  T1GL15 T1GL16 T1GL17
+  T1GL18 T1GL19 T1GL20
+  T1GL21 T1GL22 T1GL23
+  T1GL24 T1GL25 T1GL26
+  T1GL27 T1GL28 T1GL29 T1GL30
+  EKST_C UGOD_C SAV_C NEU_C
+  OTV_C;
+
+
+  USEVARIABLES ARE SAV
+  EKST A2 OTV N2 SEU HUM
+  IMP NEG_VAL COMPLEX TIPI
+  POS_VAL ADVERS EKST_C
+  UGOD_C SAV_C NEU_C
+  OTV_C;
+
+  MISSING ARE ALL (-99);
+
+  CLUSTER IS id;
+
+  BETWEEN ARE EKST_C UGOD_C SAV_C
+  NEU_C OTV_C;
+
+
+  ANALYSIS:
+  TYPE = TWOLEVEL;
+  ESTIMATOR = BAYES;
+  PROCESSORS = 12;
+  FBITERATIONS = 200000;
+
+
+  MODEL:
+
+  %WITHIN%
+  SAV;
+  EKST;
+  A2;
+  OTV;
+  N2;
+  SEU;
+  HUM;
+  IMP;
+  NEG_VAL;
+  COMPLEX;
+  TIPI;
+  POS_VAL;
+  ADVERS;
+
+  SAV WITH EKST;
+  SAV WITH A2;
+  SAV WITH OTV;
+  SAV WITH N2;
+  SAV WITH SEU;
+
+  EKST WITH A2;
+  EKST WITH OTV;
+  EKST WITH N2;
+  EKST WITH SEU;
+
+  A2 WITH OTV;
+  A2 WITH N2;
+  A2 WITH SEU;
+
+  OTV WITH N2;
+  OTV WITH SEU;
+
+  N2 WITH SEU;
+
+  HUM WITH SAV;
+  HUM WITH EKST;
+  HUM WITH A2;
+  HUM WITH OTV;
+  HUM WITH N2;
+  HUM WITH SEU;
+  HUM WITH IMP;
+  HUM WITH NEG_VAL;
+  HUM WITH COMPLEX;
+  HUM WITH TIPI;
+  HUM WITH POS_VAL;
+  HUM WITH ADVERS;
+
+  IMP WITH SAV;
+  IMP WITH EKST;
+  IMP WITH A2;
+  IMP WITH OTV;
+  IMP WITH N2;
+  IMP WITH SEU;
+  IMP WITH NEG_VAL;
+  IMP WITH COMPLEX;
+  IMP WITH TIPI;
+  IMP WITH POS_VAL;
+  IMP WITH ADVERS;
+
+
+  NEG_VAL WITH SAV;
+  NEG_VAL WITH EKST;
+  NEG_VAL WITH A2;
+  NEG_VAL WITH OTV;
+  NEG_VAL WITH N2;
+  NEG_VAL WITH SEU;
+  NEG_VAL WITH COMPLEX;
+  NEG_VAL WITH TIPI;
+  NEG_VAL WITH POS_VAL;
+  NEG_VAL WITH ADVERS;
+
+  COMPLEX WITH SAV;
+  COMPLEX WITH EKST;
+  COMPLEX WITH A2;
+  COMPLEX WITH OTV;
+  COMPLEX WITH N2;
+  COMPLEX WITH SEU;
+  COMPLEX WITH TIPI;
+  COMPLEX WITH POS_VAL;
+  COMPLEX WITH ADVERS;
+
+
+  TIPI WITH SAV;
+  TIPI WITH EKST;
+  TIPI WITH A2;
+  TIPI WITH OTV;
+  TIPI WITH N2;
+  TIPI WITH SEU;
+  TIPI WITH POS_VAL;
+  TIPI WITH ADVERS;
+
+
+  POS_VAL WITH SAV;
+  POS_VAL WITH EKST;
+  POS_VAL WITH A2;
+  POS_VAL WITH OTV;
+  POS_VAL WITH N2;
+  POS_VAL WITH SEU;
+  POS_VAL WITH ADVERS;
+
+  ADVERS WITH SAV;
+  ADVERS WITH EKST;
+  ADVERS WITH A2;
+  ADVERS WITH OTV;
+  ADVERS WITH N2;
+  ADVERS WITH SEU;
+
+
+
+
+  %BETWEEN%
+  SAV;
+  EKST;
+  A2;
+  OTV;
+  N2;
+  SEU;
+  HUM;
+  IMP;
+  NEG_VAL;
+  COMPLEX;
+  TIPI;
+  POS_VAL;
+  ADVERS;
+
+  EKST_C
+  UGOD_C
+  SAV_C
+  NEU_C
+  OTV_C;
+
+  SAV WITH EKST;
+  SAV WITH A2;
+  SAV WITH OTV;
+  SAV WITH N2;
+  SAV WITH SEU;
+
+  EKST WITH A2;
+  EKST WITH OTV;
+  EKST WITH N2;
+  EKST WITH SEU;
+
+  A2 WITH OTV;
+  A2 WITH N2;
+  A2 WITH SEU;
+
+  OTV WITH N2;
+  OTV WITH SEU;
+
+  N2 WITH SEU;
+
+  HUM WITH SAV;
+  HUM WITH EKST;
+  HUM WITH A2;
+  HUM WITH OTV;
+  HUM WITH N2;
+  HUM WITH SEU;
+  HUM WITH IMP;
+  HUM WITH NEG_VAL;
+  HUM WITH COMPLEX;
+  HUM WITH TIPI;
+  HUM WITH POS_VAL;
+  HUM WITH ADVERS;
+
+  IMP WITH SAV;
+  IMP WITH EKST;
+  IMP WITH A2;
+  IMP WITH OTV;
+  IMP WITH N2;
+  IMP WITH SEU;
+  IMP WITH NEG_VAL;
+  IMP WITH COMPLEX;
+  IMP WITH TIPI;
+  IMP WITH POS_VAL;
+  IMP WITH ADVERS;
+
+
+  NEG_VAL WITH SAV;
+  NEG_VAL WITH EKST;
+  NEG_VAL WITH A2;
+  NEG_VAL WITH OTV;
+  NEG_VAL WITH N2;
+  NEG_VAL WITH SEU;
+  NEG_VAL WITH COMPLEX;
+  NEG_VAL WITH TIPI;
+  NEG_VAL WITH POS_VAL;
+  NEG_VAL WITH ADVERS;
+
+  COMPLEX WITH SAV;
+  COMPLEX WITH EKST;
+  COMPLEX WITH A2;
+  COMPLEX WITH OTV;
+  COMPLEX WITH N2;
+  COMPLEX WITH SEU;
+  COMPLEX WITH TIPI;
+  COMPLEX WITH POS_VAL;
+  COMPLEX WITH ADVERS;
+
+
+  TIPI WITH SAV;
+  TIPI WITH EKST;
+  TIPI WITH A2;
+  TIPI WITH OTV;
+  TIPI WITH N2;
+  TIPI WITH SEU;
+  TIPI WITH POS_VAL;
+  TIPI WITH ADVERS;
+
+
+  POS_VAL WITH SAV;
+  POS_VAL WITH EKST;
+  POS_VAL WITH A2;
+  POS_VAL WITH OTV;
+  POS_VAL WITH N2;
+  POS_VAL WITH SEU;
+  POS_VAL WITH ADVERS;
+
+  ADVERS WITH SAV;
+  ADVERS WITH EKST;
+  ADVERS WITH A2;
+  ADVERS WITH OTV;
+  ADVERS WITH N2;
+  ADVERS WITH SEU;
+
+  EKST_C WITH SAV;
+  EKST_C WITH EKST;
+  EKST_C WITH A2;
+  EKST_C WITH OTV;
+  EKST_C WITH N2;
+  EKST_C WITH SEU;
+  EKST_C WITH HUM;
+  EKST_C WITH IMP;
+  EKST_C WITH NEG_VAL;
+  EKST_C WITH COMPLEX;
+  EKST_C WITH TIPI;
+  EKST_C WITH POS_VAL;
+  EKST_C WITH ADVERS;
+  EKST_C WITH UGOD_C;
+  EKST_C WITH SAV_C;
+  EKST_C WITH NEU_C;
+  EKST_C WITH OTV_C;
+
+
+  UGOD_C WITH SAV;
+  UGOD_C WITH EKST;
+  UGOD_C WITH A2;
+  UGOD_C WITH OTV;
+  UGOD_C WITH N2;
+  UGOD_C WITH SEU;
+  UGOD_C WITH HUM;
+  UGOD_C WITH IMP;
+  UGOD_C WITH NEG_VAL;
+  UGOD_C WITH COMPLEX;
+  UGOD_C WITH TIPI;
+  UGOD_C WITH POS_VAL;
+  UGOD_C WITH ADVERS;
+  UGOD_C WITH SAV_C;
+  UGOD_C WITH NEU_C;
+  UGOD_C WITH OTV_C;
+
+
+  SAV_C WITH SAV;
+  SAV_C WITH EKST;
+  SAV_C WITH A2;
+  SAV_C WITH OTV;
+  SAV_C WITH N2;
+  SAV_C WITH SEU;
+  SAV_C WITH HUM;
+  SAV_C WITH IMP;
+  SAV_C WITH NEG_VAL;
+  SAV_C WITH COMPLEX;
+  SAV_C WITH TIPI;
+  SAV_C WITH POS_VAL;
+  SAV_C WITH ADVERS;
+  SAV_C WITH NEU_C;
+  SAV_C WITH OTV_C;
+
+
+  NEU_C WITH SAV;
+  NEU_C WITH EKST;
+  NEU_C WITH A2;
+  NEU_C WITH OTV;
+  NEU_C WITH N2;
+  NEU_C WITH SEU;
+  NEU_C WITH HUM;
+  NEU_C WITH IMP;
+  NEU_C WITH NEG_VAL;
+  NEU_C WITH COMPLEX;
+  NEU_C WITH TIPI;
+  NEU_C WITH POS_VAL;
+  NEU_C WITH ADVERS;
+  NEU_C WITH OTV_C;
+
+
+
+  OTV_C WITH SAV;
+  OTV_C WITH EKST;
+  OTV_C WITH A2;
+  OTV_C WITH OTV;
+  OTV_C WITH N2;
+  OTV_C WITH SEU;
+  OTV_C WITH HUM;
+  OTV_C WITH IMP;
+  OTV_C WITH NEG_VAL;
+  OTV_C WITH COMPLEX;
+  OTV_C WITH TIPI;
+  OTV_C WITH POS_VAL;
+  OTV_C WITH ADVERS;
+
+
+  OUTPUT: STANDARDIZED;
+
+
+
+*** WARNING
+  One or more individual-level variables have no variation within a
+  cluster for the following clusters.
+
+     Variable   Cluster IDs with no within-cluster variation
+
+      SAV         16554713 20855351 16554891 16554319 24591061 16556161 13994941 20162730 12198304
+                  12491438
+      EKST        16554319 24591061 12198304
+      A2          13994322 24595014 13996939 16554713 15611768 20856921 20163018 13526266 20855351
+                  15471432 13527350 24592461 20854464 12497874 27665653 16554319 27661979 16556161
+                  12193480 16554668 16556163 27787671 20855586 15474494 24591987 20162730 27664277
+                  24598783 26754644 12198304 20798331 24595090 13997204
+      OTV         20855351 16554319 24591061
+      N2          13994322 20855574 20855351 16554891 27665653 16554319 27787671 20855586 12492269
+                  24598783 12198304 20798331 24595090
+      SEU         16554319 24591061 13994941 12491438
+      HUM         13527350 24592461 16556161 24595090
+      IMP         16554319 12491438
+      NEG_VAL     27788116 13996939 20855258 20163018 13527350 21214531 16554891 27665653 16554319
+                  16556161 12193480 20855586 24598783 26754644 12491438
+      ADVERS      27788116 20162054 24592461 16554891 16554319 20162730
+
+*** WARNING
+  Data set contains cases with missing on all variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on all variables:  112
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        2858
+
+Number of dependent variables                                   18
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   EKST_C      UGOD_C      SAV_C       NEU_C       OTV_C       SAV
+   EKST        A2          OTV         N2          SEU         HUM
+   IMP         NEG_VAL     COMPLEX     TIPI        POS_VAL     ADVERS
+
+Variables with special functions
+
+  Cluster variable      ID
+
+  Between variables
+   EKST_C      UGOD_C      SAV_C       NEU_C       OTV_C
+
+
+Estimator                                                    BAYES
+Specifications for Bayesian Estimation
+  Point estimate                                            MEDIAN
+  Number of Markov chain Monte Carlo (MCMC) chains               2
+  Random seed for the first chain                                0
+  Starting value information                           UNPERTURBED
+  Algorithm used for Markov chain Monte Carlo           GIBBS(PX1)
+  Fixed number of iterations                                200000
+  K-th iteration used for thinning                               1
+
+Input data file(s)
+  korelacije.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of clusters                         99
+
+       Size (s)    Cluster ID with Size s
+
+         11        13994322
+         12        20855574
+         14        16654540
+         16        15261338
+         18        12495072 21213820
+         21        24595014
+         24        12491236 13525223
+         30        13993235 12191870 27788116 27663860 15264484 13996939
+                   15614525 16554713 20855258 27918624 27785220 15612828
+                   15611768 27913643 13522864 20856921 24593194 13525517
+                   20163018 13526266 20852179 24595365 27662560 20855884
+                   15471270 20855351 20162054 16551092 15611922 15471432
+                   27666050 27915449 27918933 13527350 12492795 24592461
+                   20161546 27918828 21214531 20854791 20854464 20794922
+                   12497874 16554891 27665653 24591737 12498862 16554319
+                   12492669 24591061 27665886 27661979 16556161 16554342
+                   12193480 16554668 26754012 20796904 16556163 13994941
+                   27787671 20855586 13528127 12494252 20856715 20162526
+                   12492269 27788829 15474494 24591987 20162730 27664277
+                   24598783 26754644 27663723 15262166 12198304 24593393
+                   20798331 20796311 12491438 13529089 15266576 12491120
+                   27783342 24595090 15264805 27662082 13997204 21212503
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+     Number of missing data patterns            17
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              EKST_C        UGOD_C        SAV_C         NEU_C         OTV_C
+              ________      ________      ________      ________      ________
+ EKST_C         0.934
+ UGOD_C         0.892         0.892
+ SAV_C          0.913         0.871         0.924
+ NEU_C          0.871         0.829         0.882         0.882
+ OTV_C          0.882         0.850         0.871         0.840         0.892
+ SAV            0.547         0.523         0.541         0.518         0.522
+ EKST           0.547         0.523         0.541         0.518         0.522
+ A2             0.547         0.523         0.541         0.518         0.522
+ OTV            0.547         0.523         0.541         0.518         0.522
+ N2             0.547         0.523         0.541         0.518         0.522
+ SEU            0.547         0.523         0.541         0.518         0.522
+ HUM            0.547         0.523         0.541         0.518         0.522
+ IMP            0.547         0.523         0.541         0.518         0.522
+ NEG_VAL        0.547         0.523         0.541         0.518         0.522
+ COMPLEX        0.547         0.523         0.541         0.518         0.522
+ TIPI           0.547         0.523         0.541         0.518         0.522
+ POS_VAL        0.547         0.523         0.541         0.518         0.522
+ ADVERS         0.547         0.523         0.541         0.518         0.522
+
+
+           Covariance Coverage
+              SAV           EKST          A2            OTV           N2
+              ________      ________      ________      ________      ________
+ SAV            0.608
+ EKST           0.608         0.608
+ A2             0.608         0.608         0.608
+ OTV            0.608         0.608         0.608         0.608
+ N2             0.608         0.608         0.608         0.608         0.608
+ SEU            0.608         0.608         0.608         0.608         0.608
+ HUM            0.608         0.608         0.608         0.608         0.608
+ IMP            0.608         0.608         0.608         0.608         0.608
+ NEG_VAL        0.608         0.608         0.608         0.608         0.608
+ COMPLEX        0.608         0.608         0.608         0.608         0.608
+ TIPI           0.608         0.608         0.608         0.608         0.608
+ POS_VAL        0.608         0.608         0.608         0.608         0.608
+ ADVERS         0.608         0.608         0.608         0.608         0.608
+
+
+           Covariance Coverage
+              SEU           HUM           IMP           NEG_VAL       COMPLEX
+              ________      ________      ________      ________      ________
+ SEU            0.608
+ HUM            0.608         0.608
+ IMP            0.608         0.608         0.608
+ NEG_VAL        0.608         0.608         0.608         0.608
+ COMPLEX        0.608         0.608         0.608         0.608         0.608
+ TIPI           0.608         0.608         0.608         0.608         0.608
+ POS_VAL        0.608         0.608         0.608         0.608         0.608
+ ADVERS         0.608         0.608         0.608         0.608         0.608
+
+
+           Covariance Coverage
+              TIPI          POS_VAL       ADVERS
+              ________      ________      ________
+ TIPI           0.608
+ POS_VAL        0.608         0.608
+ ADVERS         0.608         0.608         0.608
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     EKST_C                3.507      -0.229       2.333    4.49%       2.833      3.500      3.500
+              89.000       0.337      -0.617       4.667    2.25%       3.667      4.000
+     UGOD_C                4.078      -0.701       2.500    2.35%       3.667      4.000      4.167
+              85.000       0.313       0.352       5.000    3.53%       4.333      4.500
+     SAV_C                 4.117      -0.720       2.500    1.14%       3.667      4.000      4.167
+              88.000       0.324       0.313       5.000    4.55%       4.333      4.667
+     NEU_C                 2.734       0.166       1.333    1.19%       2.167      2.500      2.667
+              84.000       0.394      -0.259       4.500    1.19%       2.833      3.333
+     OTV_C                 3.727       0.135       2.500    1.18%       3.167      3.500      3.667
+              85.000       0.370      -0.747       5.000    2.35%       3.833      4.167
+     SAV                   6.114      -1.390       1.000    0.06%       5.500      6.000      6.000
+            1738.000       0.835       2.671       7.000   32.97%       6.500      7.000
+     EKST                  5.910      -1.294       1.000    0.23%       5.000      6.000      6.000
+            1738.000       1.054       2.364       7.000   26.29%       6.000      7.000
+     A2                    6.476      -2.751       1.000    0.75%       6.000      7.000      7.000
+            1738.000       1.246       7.758       7.000   72.32%       7.000      7.000
+     OTV                   5.565      -0.985       1.000    0.29%       5.000      5.500      6.000
+            1738.000       1.215       1.361       7.000   15.48%       6.000      6.500
+     N2                    2.221       1.253       1.000   46.03%       1.000      1.000      2.000
+            1738.000       2.413       0.596       7.000    1.67%       2.000      4.000
+     SEU                   5.781      -1.096       1.000    0.17%       5.000      5.667      6.000
+            1738.000       1.008       1.620       7.000   16.86%       6.000      6.667
+     HUM                   2.553       0.595       1.000   31.30%       1.000      1.667      2.000
+            1738.000       2.310      -0.858       7.000    0.23%       3.000      4.000
+     IMP                   5.734      -1.294       1.000    0.40%       5.000      5.667      6.000
+            1738.000       0.991       2.727       7.000   13.52%       6.000      6.667
+     NEG_VAL               1.406       2.715       1.000   67.89%       1.000      1.000      1.000
+            1738.000       0.700       7.950       7.000    0.06%       1.000      1.667
+     COMPLEX               5.483      -1.115       1.000    0.58%       4.667      5.333      5.667
+            1738.000       1.139       2.025       7.000    9.26%       6.000      6.333
+     TIPI                  5.515      -1.134       1.000    0.69%       4.667      5.333      5.667
+            1738.000       1.350       1.730       7.000   13.69%       6.000      6.333
+     POS_VAL               4.814      -0.785       1.000    2.76%       4.000      4.667      5.000
+            1738.000       1.992       0.262       7.000    4.49%       5.333      6.000
+     ADVERS                1.957       1.364       1.000   41.31%       1.000      1.000      1.333
+            1738.000       1.480       1.155       6.667    0.12%       2.000      3.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     USE THE FBITERATIONS OPTION TO INCREASE THE NUMBER OF ITERATIONS BY A FACTOR
+     OF AT LEAST TWO TO CHECK CONVERGENCE AND THAT THE PSR VALUE DOES NOT INCREASE.
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                             280
+
+Bayesian Posterior Predictive Checking using Chi-Square
+
+          95% Confidence Interval for the Difference Between
+          the Observed and the Replicated Chi-Square Values
+
+                                 10.076           173.369
+
+          Posterior Predictive P-Value              0.014
+
+Information Criteria
+
+          Deviance (DIC)                        51929.178
+          Estimated Number of Parameters (pD)    1257.229
+
+
+
+MODEL RESULTS
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+
+Within Level
+
+ SAV      WITH
+    EKST               0.125       0.012      0.000       0.102       0.149      *
+    A2                 0.059       0.015      0.000       0.030       0.088      *
+    OTV                0.159       0.013      0.000       0.133       0.186      *
+    N2                -0.067       0.018      0.000      -0.103      -0.032      *
+    SEU                0.145       0.012      0.000       0.123       0.168      *
+    HUM               -0.010       0.016      0.267      -0.041       0.021
+    IMP                0.141       0.012      0.000       0.118       0.166      *
+    NEG_VAL           -0.056       0.009      0.000      -0.074      -0.039      *
+    COMPLEX            0.133       0.013      0.000       0.108       0.159      *
+    TIPI               0.078       0.014      0.000       0.052       0.105      *
+    POS_VAL            0.148       0.015      0.000       0.119       0.179      *
+    ADVERS            -0.085       0.015      0.000      -0.115      -0.057      *
+
+ EKST     WITH
+    A2                 0.088       0.017      0.000       0.055       0.123      *
+    OTV                0.240       0.016      0.000       0.209       0.273      *
+    N2                -0.132       0.021      0.000      -0.175      -0.091      *
+    SEU                0.133       0.013      0.000       0.107       0.160      *
+    HUM                0.108       0.019      0.000       0.071       0.146      *
+    IMP                0.132       0.014      0.000       0.105       0.160      *
+    NEG_VAL           -0.075       0.010      0.000      -0.096      -0.055      *
+    COMPLEX            0.122       0.015      0.000       0.093       0.152      *
+    TIPI               0.070       0.016      0.000       0.039       0.101      *
+    POS_VAL            0.212       0.018      0.000       0.177       0.249      *
+    ADVERS            -0.139       0.018      0.000      -0.175      -0.105      *
+
+ A2       WITH
+    OTV                0.097       0.019      0.000       0.060       0.135      *
+    N2                -0.154       0.027      0.000      -0.207      -0.103      *
+    SEU                0.110       0.016      0.000       0.078       0.143      *
+    HUM                0.002       0.024      0.466      -0.044       0.048
+    IMP                0.069       0.017      0.000       0.035       0.103      *
+    NEG_VAL           -0.096       0.013      0.000      -0.122      -0.070      *
+    COMPLEX            0.057       0.018      0.001       0.022       0.093      *
+    TIPI               0.021       0.020      0.140      -0.017       0.060
+    POS_VAL            0.093       0.022      0.000       0.050       0.137      *
+    ADVERS            -0.148       0.022      0.000      -0.192      -0.105      *
+
+ OTV      WITH
+    N2                -0.126       0.023      0.000      -0.173      -0.080      *
+    SEU                0.204       0.015      0.000       0.175       0.235      *
+    HUM                0.170       0.021      0.000       0.129       0.212      *
+    IMP                0.169       0.016      0.000       0.139       0.200      *
+    NEG_VAL           -0.085       0.011      0.000      -0.108      -0.063      *
+    COMPLEX            0.162       0.017      0.000       0.130       0.195      *
+    TIPI               0.054       0.017      0.001       0.020       0.088      *
+    POS_VAL            0.317       0.021      0.000       0.278       0.360      *
+    ADVERS            -0.197       0.020      0.000      -0.236      -0.159      *
+
+ N2       WITH
+    SEU               -0.138       0.020      0.000      -0.179      -0.099      *
+    HUM                0.010       0.029      0.360      -0.046       0.067
+    IMP               -0.137       0.021      0.000      -0.179      -0.095      *
+    NEG_VAL            0.095       0.016      0.000       0.064       0.127      *
+    COMPLEX           -0.117       0.023      0.000      -0.162      -0.073      *
+    TIPI              -0.038       0.024      0.058      -0.086       0.009
+    POS_VAL           -0.214       0.028      0.000      -0.269      -0.161      *
+    ADVERS             0.342       0.028      0.000       0.288       0.398      *
+
+ HUM      WITH
+    SEU                0.014       0.018      0.214      -0.021       0.049
+    IMP                0.041       0.019      0.014       0.004       0.078      *
+    NEG_VAL            0.022       0.014      0.062      -0.006       0.049
+    COMPLEX            0.007       0.020      0.353      -0.032       0.047
+    TIPI              -0.122       0.022      0.000      -0.165      -0.080      *
+    POS_VAL            0.256       0.025      0.000       0.209       0.306      *
+    ADVERS            -0.048       0.024      0.022      -0.096      -0.001      *
+
+ IMP      WITH
+    SEU                0.227       0.014      0.000       0.200       0.255      *
+    NEG_VAL           -0.116       0.011      0.000      -0.138      -0.096      *
+    COMPLEX            0.347       0.017      0.000       0.315       0.382      *
+    TIPI               0.174       0.016      0.000       0.143       0.207      *
+    POS_VAL            0.376       0.020      0.000       0.338       0.416      *
+    ADVERS            -0.227       0.018      0.000      -0.263      -0.192      *
+
+ NEG_VAL  WITH
+    SEU               -0.086       0.010      0.000      -0.106      -0.067      *
+    COMPLEX           -0.090       0.011      0.000      -0.112      -0.069      *
+    TIPI              -0.045       0.012      0.000      -0.069      -0.022      *
+    POS_VAL           -0.151       0.014      0.000      -0.179      -0.125      *
+    ADVERS             0.206       0.014      0.000       0.179       0.234      *
+
+ COMPLEX  WITH
+    SEU                0.222       0.015      0.000       0.194       0.252      *
+    TIPI               0.215       0.018      0.000       0.182       0.250      *
+    POS_VAL            0.326       0.020      0.000       0.287       0.367      *
+    ADVERS            -0.152       0.019      0.000      -0.190      -0.116      *
+
+ TIPI     WITH
+    SEU                0.143       0.015      0.000       0.113       0.173      *
+    POS_VAL            0.135       0.020      0.000       0.096       0.175      *
+    ADVERS            -0.106       0.020      0.000      -0.146      -0.067      *
+
+ POS_VAL  WITH
+    SEU                0.256       0.018      0.000       0.222       0.292      *
+    ADVERS            -0.354       0.024      0.000      -0.403      -0.309      *
+
+ ADVERS   WITH
+    SEU               -0.194       0.017      0.000      -0.229      -0.161      *
+
+ Variances
+    SAV                0.399       0.014      0.000       0.373       0.428      *
+    EKST               0.552       0.019      0.000       0.516       0.592      *
+    A2                 0.858       0.030      0.000       0.802       0.920      *
+    OTV                0.666       0.023      0.000       0.622       0.714      *
+    N2                 1.303       0.046      0.000       1.217       1.397      *
+    SEU                0.496       0.018      0.000       0.463       0.532      *
+    HUM                1.038       0.037      0.000       0.970       1.113      *
+    IMP                0.551       0.019      0.000       0.515       0.591      *
+    NEG_VAL            0.308       0.011      0.000       0.288       0.330      *
+    COMPLEX            0.621       0.022      0.000       0.580       0.666      *
+    TIPI               0.721       0.025      0.000       0.673       0.773      *
+    POS_VAL            0.900       0.032      0.000       0.841       0.966      *
+    ADVERS             0.880       0.031      0.000       0.822       0.944      *
+
+Between Level
+
+ SAV      WITH
+    EKST               0.564       0.132      0.000       0.363       0.880      *
+    A2                 0.371       0.108      0.000       0.200       0.624      *
+    OTV                0.508       0.133      0.000       0.301       0.824      *
+    N2                -0.488       0.169      0.000      -0.876      -0.213      *
+    SEU                0.566       0.131      0.000       0.367       0.877      *
+    HUM               -0.178       0.167      0.125      -0.531       0.131
+    IMP                0.537       0.123      0.000       0.351       0.831      *
+    NEG_VAL           -0.293       0.098      0.000      -0.520      -0.135      *
+    COMPLEX            0.463       0.124      0.000       0.270       0.757      *
+    TIPI               0.427       0.130      0.000       0.220       0.731      *
+    POS_VAL            0.389       0.160      0.002       0.122       0.753      *
+    ADVERS            -0.438       0.131      0.000      -0.746      -0.232      *
+    EKST_C             0.103       0.089      0.106      -0.061       0.293
+    UGOD_C             0.285       0.094      0.000       0.132       0.503      *
+    SAV_C              0.259       0.095      0.001       0.103       0.478      *
+    NEU_C             -0.087       0.099      0.172      -0.293       0.099
+    OTV_C              0.070       0.097      0.219      -0.115       0.271
+
+ EKST     WITH
+    A2                 0.435       0.121      0.000       0.247       0.721      *
+    OTV                0.535       0.146      0.000       0.310       0.878      *
+    N2                -0.641       0.192      0.000      -1.090      -0.336      *
+    SEU                0.507       0.135      0.000       0.298       0.828      *
+    HUM                0.005       0.180      0.488      -0.351       0.364
+    IMP                0.527       0.130      0.000       0.328       0.836      *
+    NEG_VAL           -0.293       0.106      0.000      -0.537      -0.119      *
+    COMPLEX            0.430       0.131      0.000       0.221       0.736      *
+    TIPI               0.469       0.143      0.000       0.241       0.804      *
+    POS_VAL            0.504       0.179      0.000       0.212       0.917      *
+    ADVERS            -0.488       0.145      0.000      -0.827      -0.259      *
+    EKST_C             0.214       0.101      0.008       0.041       0.439      *
+    UGOD_C             0.347       0.105      0.000       0.179       0.591      *
+    SAV_C              0.198       0.099      0.012       0.026       0.419      *
+    NEU_C             -0.202       0.109      0.020      -0.443      -0.010      *
+    OTV_C              0.085       0.105      0.195      -0.114       0.304
+
+ A2       WITH
+    OTV                0.197       0.115      0.028      -0.004       0.451
+    N2                -0.712       0.180      0.000      -1.139      -0.434      *
+    SEU                0.368       0.115      0.000       0.184       0.636      *
+    HUM               -0.263       0.165      0.040      -0.622       0.032
+    IMP                0.307       0.105      0.000       0.136       0.548      *
+    NEG_VAL           -0.497       0.111      0.000      -0.761      -0.330      *
+    COMPLEX            0.253       0.110      0.004       0.066       0.501      *
+    TIPI               0.285       0.120      0.003       0.081       0.556      *
+    POS_VAL            0.137       0.148      0.158      -0.139       0.450
+    ADVERS            -0.555       0.137      0.000      -0.880      -0.345      *
+    EKST_C             0.095       0.089      0.124      -0.069       0.283
+    UGOD_C             0.253       0.091      0.000       0.101       0.461      *
+    SAV_C              0.098       0.088      0.114      -0.065       0.286
+    NEU_C             -0.031       0.096      0.365      -0.226       0.157
+    OTV_C             -0.060       0.095      0.249      -0.257       0.120
+
+ OTV      WITH
+    N2                -0.227       0.183      0.089      -0.618       0.106
+    SEU                0.597       0.148      0.000       0.371       0.949      *
+    HUM                0.253       0.195      0.078      -0.100       0.672
+    IMP                0.478       0.132      0.000       0.271       0.789      *
+    NEG_VAL           -0.177       0.107      0.033      -0.412       0.012
+    COMPLEX            0.447       0.139      0.000       0.225       0.771      *
+    TIPI               0.320       0.142      0.005       0.077       0.638      *
+    POS_VAL            0.697       0.201      0.000       0.383       1.170      *
+    ADVERS            -0.310       0.142      0.006      -0.628      -0.067      *
+    EKST_C             0.072       0.104      0.230      -0.127       0.286
+    UGOD_C             0.250       0.106      0.004       0.069       0.489      *
+    SAV_C              0.199       0.106      0.018       0.013       0.433      *
+    NEU_C             -0.122       0.116      0.128      -0.366       0.094
+    OTV_C              0.191       0.115      0.033      -0.013       0.443
+
+ N2       WITH
+    SEU               -0.501       0.180      0.000      -0.913      -0.205      *
+    HUM                0.366       0.265      0.066      -0.114       0.940
+    IMP               -0.506       0.170      0.000      -0.899      -0.229      *
+    NEG_VAL            0.486       0.157      0.000       0.234       0.851      *
+    COMPLEX           -0.420       0.178      0.003      -0.821      -0.118      *
+    TIPI              -0.550       0.199      0.000      -1.004      -0.224      *
+    POS_VAL           -0.272       0.241      0.110      -0.788       0.173
+    ADVERS             0.891       0.222      0.000       0.552       1.419      *
+    EKST_C            -0.289       0.145      0.013      -0.612      -0.036      *
+    UGOD_C            -0.369       0.143      0.001      -0.694      -0.129      *
+    SAV_C             -0.270       0.146      0.020      -0.595      -0.015      *
+    NEU_C              0.358       0.167      0.007       0.071       0.731      *
+    OTV_C              0.065       0.152      0.324      -0.226       0.376
+
+ HUM      WITH
+    SEU               -0.120       0.178      0.236      -0.489       0.219
+    IMP               -0.061       0.166      0.348      -0.397       0.261
+    NEG_VAL            0.329       0.158      0.009       0.058       0.680      *
+    COMPLEX            0.095       0.180      0.286      -0.252       0.465
+    TIPI              -0.247       0.199      0.088      -0.673       0.115
+    POS_VAL            0.386       0.258      0.051      -0.078       0.946
+    ADVERS             0.437       0.205      0.008       0.084       0.896      *
+    EKST_C             0.152       0.151      0.140      -0.129       0.473
+    UGOD_C            -0.107       0.146      0.218      -0.408       0.170
+    SAV_C             -0.127       0.151      0.182      -0.442       0.156
+    NEU_C             -0.112       0.169      0.241      -0.461       0.212
+    OTV_C              0.276       0.169      0.035      -0.024       0.646
+
+ IMP      WITH
+    SEU                0.614       0.136      0.000       0.409       0.940      *
+    NEG_VAL           -0.286       0.098      0.000      -0.514      -0.127      *
+    COMPLEX            0.682       0.143      0.000       0.467       1.026      *
+    TIPI               0.555       0.140      0.000       0.339       0.889      *
+    POS_VAL            0.781       0.186      0.000       0.497       1.225      *
+    ADVERS            -0.471       0.134      0.000      -0.787      -0.261      *
+    EKST_C             0.114       0.089      0.083      -0.049       0.305
+    UGOD_C             0.237       0.091      0.001       0.086       0.443      *
+    SAV_C              0.171       0.096      0.022       0.004       0.383      *
+    NEU_C             -0.140       0.104      0.072      -0.362       0.050
+    OTV_C              0.039       0.094      0.331      -0.144       0.229
+
+ NEG_VAL  WITH
+    SEU               -0.335       0.107      0.000      -0.583      -0.163      *
+    COMPLEX           -0.231       0.103      0.005      -0.463      -0.058      *
+    TIPI              -0.319       0.115      0.000      -0.583      -0.130      *
+    POS_VAL           -0.122       0.139      0.169      -0.415       0.136
+    ADVERS             0.559       0.132      0.000       0.359       0.872      *
+    EKST_C             0.027       0.081      0.360      -0.130       0.191
+    UGOD_C            -0.194       0.082      0.003      -0.378      -0.055      *
+    SAV_C             -0.072       0.081      0.171      -0.241       0.080
+    NEU_C             -0.023       0.088      0.392      -0.202       0.150
+    OTV_C              0.076       0.087      0.174      -0.088       0.259
+
+ COMPLEX  WITH
+    SEU                0.570       0.139      0.000       0.356       0.903      *
+    TIPI               0.470       0.143      0.000       0.243       0.805      *
+    POS_VAL            0.851       0.202      0.000       0.543       1.334      *
+    ADVERS            -0.368       0.136      0.001      -0.680      -0.142      *
+    EKST_C             0.098       0.096      0.134      -0.080       0.301
+    UGOD_C             0.166       0.095      0.026      -0.002       0.374
+    SAV_C              0.133       0.103      0.079      -0.053       0.355
+    NEU_C             -0.086       0.113      0.208      -0.320       0.128
+    OTV_C              0.092       0.103      0.168      -0.101       0.307
+
+ TIPI     WITH
+    SEU                0.510       0.144      0.000       0.285       0.848      *
+    POS_VAL            0.483       0.191      0.002       0.165       0.916      *
+    ADVERS            -0.354       0.147      0.003      -0.687      -0.106      *
+    EKST_C             0.060       0.104      0.267      -0.139       0.276
+    UGOD_C             0.253       0.106      0.003       0.074       0.491      *
+    SAV_C              0.267       0.117      0.005       0.068       0.529      *
+    NEU_C             -0.114       0.124      0.162      -0.374       0.118
+    OTV_C             -0.128       0.114      0.110      -0.370       0.081
+
+ POS_VAL  WITH
+    SEU                0.654       0.186      0.000       0.363       1.093      *
+    ADVERS            -0.359       0.186      0.014      -0.773      -0.039      *
+    EKST_C             0.168       0.137      0.094      -0.084       0.459
+    UGOD_C             0.182       0.134      0.068      -0.060       0.471
+    SAV_C              0.090       0.141      0.247      -0.177       0.381
+    NEU_C             -0.211       0.159      0.075      -0.551       0.081
+    OTV_C              0.118       0.148      0.195      -0.160       0.428
+
+ ADVERS   WITH
+    SEU               -0.474       0.141      0.000      -0.806      -0.250      *
+    EKST_C            -0.096       0.105      0.164      -0.316       0.102
+    UGOD_C            -0.268       0.107      0.002      -0.509      -0.089      *
+    SAV_C             -0.158       0.106      0.050      -0.388       0.032
+    NEU_C              0.127       0.116      0.118      -0.089       0.375
+    OTV_C              0.050       0.113      0.317      -0.168       0.282
+
+ EKST_C   WITH
+    SEU                0.085       0.096      0.170      -0.094       0.287
+    UGOD_C             0.048       0.076      0.251      -0.099       0.205
+    SAV_C              0.107       0.081      0.072      -0.038       0.282
+    NEU_C             -0.312       0.100      0.000      -0.547      -0.153      *
+    OTV_C              0.151       0.089      0.029      -0.006       0.347
+
+ UGOD_C   WITH
+    SEU                0.255       0.098      0.001       0.091       0.478      *
+    SAV_C              0.261       0.084      0.000       0.127       0.457      *
+    NEU_C             -0.153       0.088      0.027      -0.347       0.003
+    OTV_C              0.049       0.085      0.269      -0.113       0.225
+
+ SAV_C    WITH
+    SEU                0.220       0.103      0.008       0.043       0.450      *
+    NEU_C             -0.223       0.095      0.003      -0.441      -0.066      *
+    OTV_C              0.020       0.087      0.404      -0.150       0.196
+
+ NEU_C    WITH
+    SEU               -0.023       0.109      0.410      -0.242       0.190
+    OTV_C             -0.122       0.098      0.086      -0.332       0.056
+
+ OTV_C    WITH
+    SEU                0.024       0.102      0.399      -0.177       0.231
+
+ Means
+    EKST_C             3.498       0.079      0.000       3.342       3.654      *
+    UGOD_C             4.074       0.077      0.000       3.923       4.224      *
+    SAV_C              4.108       0.079      0.000       3.952       4.262      *
+    NEU_C              2.747       0.088      0.000       2.574       2.922      *
+    OTV_C              3.721       0.086      0.000       3.550       3.889      *
+    SAV                6.102       0.087      0.000       5.930       6.273      *
+    EKST               5.906       0.095      0.000       5.717       6.093      *
+    A2                 6.476       0.085      0.000       6.307       6.643      *
+    OTV                5.546       0.101      0.000       5.346       5.744      *
+    N2                 2.196       0.138      0.000       1.925       2.470      *
+    SEU                5.774       0.094      0.000       5.590       5.959      *
+    HUM                2.585       0.147      0.000       2.295       2.873      *
+    IMP                5.732       0.088      0.000       5.560       5.905      *
+    NEG_VAL            1.405       0.080      0.000       1.248       1.563      *
+    COMPLEX            5.484       0.095      0.000       5.297       5.670      *
+    TIPI               5.528       0.104      0.000       5.324       5.734      *
+    POS_VAL            4.813       0.134      0.000       4.550       5.077      *
+    ADVERS             1.957       0.104      0.000       1.753       2.162      *
+
+ Variances
+    EKST_C             0.563       0.114      0.000       0.395       0.839      *
+    UGOD_C             0.517       0.105      0.000       0.362       0.771      *
+    SAV_C              0.554       0.114      0.000       0.387       0.830      *
+    NEU_C              0.681       0.142      0.000       0.472       1.027      *
+    OTV_C              0.643       0.136      0.000       0.444       0.975      *
+    SAV                0.708       0.139      0.000       0.500       1.041      *
+    EKST               0.852       0.168      0.000       0.600       1.257      *
+    A2                 0.653       0.133      0.000       0.453       0.972      *
+    OTV                0.952       0.188      0.000       0.670       1.404      *
+    N2                 1.775       0.350      0.000       1.251       2.616      *
+    SEU                0.822       0.161      0.000       0.580       1.212      *
+    HUM                2.025       0.396      0.000       1.430       2.979      *
+    IMP                0.712       0.141      0.000       0.501       1.051      *
+    NEG_VAL            0.599       0.117      0.000       0.424       0.879      *
+    COMPLEX            0.838       0.166      0.000       0.589       1.234      *
+    TIPI               0.999       0.197      0.000       0.703       1.470      *
+    POS_VAL            1.690       0.331      0.000       1.196       2.485      *
+    ADVERS             0.989       0.197      0.000       0.693       1.464      *
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ SAV      WITH
+    EKST               0.266       0.023      0.000       0.220       0.311      *
+    A2                 0.100       0.025      0.000       0.052       0.149      *
+    OTV                0.308       0.023      0.000       0.263       0.351      *
+    N2                -0.093       0.025      0.000      -0.141      -0.044      *
+    SEU                0.326       0.022      0.000       0.282       0.369      *
+    HUM               -0.016       0.025      0.267      -0.064       0.033
+    IMP                0.301       0.023      0.000       0.256       0.345      *
+    NEG_VAL           -0.160       0.024      0.000      -0.207      -0.112      *
+    COMPLEX            0.267       0.023      0.000       0.221       0.312      *
+    TIPI               0.146       0.024      0.000       0.098       0.193      *
+    POS_VAL            0.247       0.023      0.000       0.201       0.292      *
+    ADVERS            -0.144       0.024      0.000      -0.192      -0.096      *
+
+ EKST     WITH
+    A2                 0.128       0.024      0.000       0.080       0.176      *
+    OTV                0.396       0.021      0.000       0.354       0.437      *
+    N2                -0.156       0.024      0.000      -0.204      -0.108      *
+    SEU                0.254       0.023      0.000       0.208       0.298      *
+    HUM                0.142       0.024      0.000       0.094       0.190      *
+    IMP                0.239       0.023      0.000       0.193       0.285      *
+    NEG_VAL           -0.183       0.024      0.000      -0.229      -0.135      *
+    COMPLEX            0.208       0.024      0.000       0.161       0.254      *
+    TIPI               0.110       0.025      0.000       0.062       0.158      *
+    POS_VAL            0.301       0.023      0.000       0.256       0.345      *
+    ADVERS            -0.200       0.024      0.000      -0.246      -0.153      *
+
+ A2       WITH
+    OTV                0.128       0.025      0.000       0.080       0.176      *
+    N2                -0.146       0.024      0.000      -0.193      -0.098      *
+    SEU                0.169       0.024      0.000       0.121       0.216      *
+    HUM                0.002       0.025      0.466      -0.047       0.051
+    IMP                0.100       0.025      0.000       0.051       0.148      *
+    NEG_VAL           -0.186       0.024      0.000      -0.233      -0.139      *
+    COMPLEX            0.079       0.025      0.001       0.030       0.127      *
+    TIPI               0.027       0.025      0.140      -0.022       0.075
+    POS_VAL            0.106       0.025      0.000       0.058       0.154      *
+    ADVERS            -0.170       0.024      0.000      -0.217      -0.122      *
+
+ OTV      WITH
+    N2                -0.135       0.024      0.000      -0.183      -0.087      *
+    SEU                0.355       0.022      0.000       0.312       0.397      *
+    HUM                0.204       0.024      0.000       0.157       0.251      *
+    IMP                0.279       0.023      0.000       0.233       0.323      *
+    NEG_VAL           -0.189       0.024      0.000      -0.235      -0.141      *
+    COMPLEX            0.251       0.023      0.000       0.205       0.297      *
+    TIPI               0.078       0.025      0.001       0.029       0.126      *
+    POS_VAL            0.410       0.021      0.000       0.369       0.450      *
+    ADVERS            -0.257       0.023      0.000      -0.302      -0.211      *
+
+ N2       WITH
+    SEU               -0.172       0.024      0.000      -0.219      -0.125      *
+    HUM                0.009       0.025      0.360      -0.040       0.057
+    IMP               -0.161       0.024      0.000      -0.208      -0.113      *
+    NEG_VAL            0.150       0.024      0.000       0.102       0.198      *
+    COMPLEX           -0.130       0.025      0.000      -0.178      -0.082      *
+    TIPI              -0.039       0.025      0.058      -0.088       0.010
+    POS_VAL           -0.198       0.024      0.000      -0.244      -0.150      *
+    ADVERS             0.319       0.022      0.000       0.274       0.362      *
+
+ HUM      WITH
+    SEU                0.020       0.025      0.214      -0.029       0.068
+    IMP                0.055       0.025      0.014       0.006       0.103      *
+    NEG_VAL            0.038       0.025      0.062      -0.010       0.087
+    COMPLEX            0.009       0.025      0.353      -0.039       0.058
+    TIPI              -0.141       0.024      0.000      -0.188      -0.093      *
+    POS_VAL            0.265       0.023      0.000       0.219       0.310      *
+    ADVERS            -0.051       0.025      0.022      -0.099      -0.002      *
+
+ IMP      WITH
+    SEU                0.434       0.020      0.000       0.393       0.472      *
+    NEG_VAL           -0.283       0.023      0.000      -0.327      -0.237      *
+    COMPLEX            0.594       0.016      0.000       0.561       0.624      *
+    TIPI               0.276       0.023      0.000       0.231       0.321      *
+    POS_VAL            0.534       0.018      0.000       0.498       0.568      *
+    ADVERS            -0.326       0.022      0.000      -0.369      -0.281      *
+
+ NEG_VAL  WITH
+    SEU               -0.221       0.024      0.000      -0.267      -0.174      *
+    COMPLEX           -0.206       0.024      0.000      -0.252      -0.159      *
+    TIPI              -0.096       0.025      0.000      -0.144      -0.048      *
+    POS_VAL           -0.288       0.023      0.000      -0.332      -0.242      *
+    ADVERS             0.395       0.021      0.000       0.353       0.435      *
+
+ COMPLEX  WITH
+    SEU                0.400       0.021      0.000       0.358       0.440      *
+    TIPI               0.322       0.022      0.000       0.277       0.365      *
+    POS_VAL            0.436       0.020      0.000       0.396       0.474      *
+    ADVERS            -0.206       0.024      0.000      -0.252      -0.159      *
+
+ TIPI     WITH
+    SEU                0.239       0.023      0.000       0.193       0.284      *
+    POS_VAL            0.168       0.024      0.000       0.121       0.215      *
+    ADVERS            -0.133       0.024      0.000      -0.181      -0.085      *
+
+ POS_VAL  WITH
+    SEU                0.384       0.021      0.000       0.341       0.424      *
+    ADVERS            -0.398       0.021      0.000      -0.438      -0.356      *
+
+ ADVERS   WITH
+    SEU               -0.294       0.023      0.000      -0.338      -0.249      *
+
+ Variances
+    SAV                1.000       0.000      0.000       1.000       1.000
+    EKST               1.000       0.000      0.000       1.000       1.000
+    A2                 1.000       0.000      0.000       1.000       1.000
+    OTV                1.000       0.000      0.000       1.000       1.000
+    N2                 1.000       0.000      0.000       1.000       1.000
+    SEU                1.000       0.000      0.000       1.000       1.000
+    HUM                1.000       0.000      0.000       1.000       1.000
+    IMP                1.000       0.000      0.000       1.000       1.000
+    NEG_VAL            1.000       0.000      0.000       1.000       1.000
+    COMPLEX            1.000       0.000      0.000       1.000       1.000
+    TIPI               1.000       0.000      0.000       1.000       1.000
+    POS_VAL            1.000       0.000      0.000       1.000       1.000
+    ADVERS             1.000       0.000      0.000       1.000       1.000
+
+Between Level
+
+ SAV      WITH
+    EKST               0.733       0.064      0.000       0.585       0.834      *
+    A2                 0.552       0.096      0.000       0.338       0.713      *
+    OTV                0.626       0.083      0.000       0.439       0.761      *
+    N2                -0.442       0.107      0.000      -0.627      -0.209      *
+    SEU                0.747       0.061      0.000       0.606       0.843      *
+    HUM               -0.151       0.128      0.125      -0.391       0.107
+    IMP                0.761       0.058      0.000       0.625       0.854      *
+    NEG_VAL           -0.457       0.105      0.000      -0.638      -0.229      *
+    COMPLEX            0.608       0.085      0.000       0.415       0.748      *
+    TIPI               0.515       0.098      0.000       0.298       0.681      *
+    POS_VAL            0.361       0.114      0.002       0.119       0.564      *
+    ADVERS            -0.532       0.097      0.000      -0.695      -0.316      *
+    EKST_C             0.166       0.128      0.106      -0.095       0.406
+    UGOD_C             0.479       0.107      0.000       0.241       0.661      *
+    SAV_C              0.421       0.112      0.001       0.178       0.615      *
+    NEU_C             -0.128       0.131      0.172      -0.375       0.138
+    OTV_C              0.106       0.134      0.219      -0.163       0.360
+
+ EKST     WITH
+    A2                 0.591       0.090      0.000       0.388       0.741      *
+    OTV                0.602       0.086      0.000       0.407       0.744      *
+    N2                -0.528       0.097      0.000      -0.692      -0.312      *
+    SEU                0.613       0.084      0.000       0.423       0.752      *
+    HUM                0.004       0.130      0.488      -0.250       0.257
+    IMP                0.683       0.073      0.000       0.516       0.801      *
+    NEG_VAL           -0.417       0.109      0.000      -0.607      -0.181      *
+    COMPLEX            0.516       0.098      0.000       0.298       0.682      *
+    TIPI               0.515       0.099      0.000       0.298       0.682      *
+    POS_VAL            0.427       0.108      0.000       0.195       0.614      *
+    ADVERS            -0.539       0.096      0.000      -0.701      -0.325      *
+    EKST_C             0.315       0.119      0.008       0.062       0.529      *
+    UGOD_C             0.530       0.101      0.000       0.305       0.697      *
+    SAV_C              0.293       0.121      0.012       0.039       0.512      *
+    NEU_C             -0.270       0.123      0.020      -0.492      -0.013      *
+    OTV_C              0.117       0.132      0.195      -0.149       0.365
+
+ A2       WITH
+    OTV                0.255       0.126      0.028      -0.006       0.484
+    N2                -0.668       0.079      0.000      -0.795      -0.488      *
+    SEU                0.509       0.101      0.000       0.285       0.681      *
+    HUM               -0.233       0.126      0.040      -0.466       0.028
+    IMP                0.457       0.108      0.000       0.221       0.643      *
+    NEG_VAL           -0.800       0.053      0.000      -0.881      -0.674      *
+    COMPLEX            0.348       0.119      0.004       0.095       0.559      *
+    TIPI               0.359       0.118      0.003       0.107       0.566      *
+    POS_VAL            0.133       0.130      0.158      -0.129       0.378
+    ADVERS            -0.697       0.074      0.000      -0.815      -0.527      *
+    EKST_C             0.159       0.134      0.124      -0.112       0.409
+    UGOD_C             0.442       0.115      0.000       0.189       0.638      *
+    SAV_C              0.166       0.134      0.114      -0.106       0.415
+    NEU_C             -0.048       0.136      0.365      -0.309       0.221
+    OTV_C             -0.095       0.137      0.249      -0.353       0.178
+
+ OTV      WITH
+    N2                -0.178       0.127      0.089      -0.415       0.082
+    SEU                0.682       0.073      0.000       0.513       0.799      *
+    HUM                0.186       0.126      0.078      -0.072       0.420
+    IMP                0.588       0.089      0.000       0.387       0.736      *
+    NEG_VAL           -0.239       0.123      0.033      -0.466       0.016
+    COMPLEX            0.508       0.100      0.000       0.287       0.677      *
+    TIPI               0.333       0.118      0.005       0.084       0.543      *
+    POS_VAL            0.557       0.092      0.000       0.351       0.712      *
+    ADVERS            -0.325       0.119      0.006      -0.538      -0.073      *
+    EKST_C             0.100       0.132      0.230      -0.166       0.350
+    UGOD_C             0.363       0.121      0.004       0.104       0.574      *
+    SAV_C              0.279       0.124      0.018       0.018       0.504      *
+    NEU_C             -0.154       0.132      0.128      -0.401       0.114
+    OTV_C              0.248       0.127      0.033      -0.017       0.481
+
+ N2       WITH
+    SEU               -0.421       0.109      0.000      -0.611      -0.186      *
+    HUM                0.197       0.126      0.066      -0.060       0.431
+    IMP               -0.456       0.106      0.000      -0.639      -0.226      *
+    NEG_VAL            0.478       0.102      0.000       0.254       0.654      *
+    COMPLEX           -0.350       0.116      0.003      -0.556      -0.103      *
+    TIPI              -0.420       0.110      0.000      -0.611      -0.183      *
+    POS_VAL           -0.160       0.127      0.110      -0.399       0.098
+    ADVERS             0.680       0.074      0.000       0.510       0.800      *
+    EKST_C            -0.294       0.122      0.013      -0.514      -0.037      *
+    UGOD_C            -0.392       0.114      0.001      -0.591      -0.144      *
+    SAV_C             -0.278       0.125      0.020      -0.504      -0.015      *
+    NEU_C              0.332       0.124      0.007       0.067       0.551      *
+    OTV_C              0.062       0.133      0.324      -0.201       0.317
+
+ HUM      WITH
+    SEU               -0.095       0.129      0.236      -0.341       0.163
+    IMP               -0.052       0.130      0.348      -0.303       0.206
+    NEG_VAL            0.304       0.119      0.009       0.055       0.518      *
+    COMPLEX            0.074       0.130      0.286      -0.185       0.323
+    TIPI              -0.177       0.126      0.088      -0.413       0.080
+    POS_VAL            0.212       0.124      0.051      -0.042       0.440
+    ADVERS             0.314       0.120      0.008       0.062       0.530      *
+    EKST_C             0.145       0.130      0.140      -0.118       0.390
+    UGOD_C            -0.106       0.133      0.218      -0.357       0.159
+    SAV_C             -0.122       0.131      0.182      -0.370       0.143
+    NEU_C             -0.097       0.135      0.241      -0.352       0.172
+    OTV_C              0.246       0.128      0.035      -0.021       0.480
+
+ IMP      WITH
+    SEU                0.808       0.049      0.000       0.691       0.883      *
+    NEG_VAL           -0.445       0.106      0.000      -0.628      -0.215      *
+    COMPLEX            0.886       0.031      0.000       0.811       0.933      *
+    TIPI               0.665       0.077      0.000       0.488       0.789      *
+    POS_VAL            0.718       0.066      0.000       0.565       0.822      *
+    ADVERS            -0.569       0.091      0.000      -0.721      -0.364      *
+    EKST_C             0.183       0.127      0.083      -0.077       0.419
+    UGOD_C             0.397       0.113      0.001       0.153       0.595      *
+    SAV_C              0.278       0.129      0.022       0.007       0.510      *
+    NEU_C             -0.204       0.134      0.072      -0.450       0.071
+    OTV_C              0.059       0.131      0.331      -0.200       0.309
+
+ NEG_VAL  WITH
+    SEU               -0.484       0.101      0.000      -0.658      -0.262      *
+    COMPLEX           -0.332       0.117      0.005      -0.541      -0.086      *
+    TIPI              -0.419       0.109      0.000      -0.609      -0.183      *
+    POS_VAL           -0.124       0.127      0.169      -0.366       0.131
+    ADVERS             0.732       0.064      0.000       0.584       0.833      *
+    EKST_C             0.048       0.131      0.360      -0.211       0.299
+    UGOD_C            -0.355       0.117      0.003      -0.560      -0.106      *
+    SAV_C             -0.127       0.129      0.171      -0.371       0.134
+    NEU_C             -0.036       0.130      0.392      -0.288       0.220
+    OTV_C              0.125       0.130      0.174      -0.137       0.369
+
+ COMPLEX  WITH
+    SEU                0.693       0.071      0.000       0.529       0.807      *
+    TIPI               0.521       0.098      0.000       0.304       0.686      *
+    POS_VAL            0.721       0.066      0.000       0.568       0.825      *
+    ADVERS            -0.411       0.111      0.001      -0.604      -0.171      *
+    EKST_C             0.146       0.128      0.134      -0.115       0.387
+    UGOD_C             0.256       0.125      0.026      -0.003       0.484
+    SAV_C              0.199       0.135      0.079      -0.079       0.447
+    NEU_C             -0.116       0.139      0.208      -0.377       0.163
+    OTV_C              0.127       0.129      0.168      -0.134       0.372
+
+ TIPI     WITH
+    SEU                0.570       0.091      0.000       0.367       0.721      *
+    POS_VAL            0.378       0.113      0.002       0.136       0.576      *
+    ADVERS            -0.362       0.116      0.003      -0.567      -0.115      *
+    EKST_C             0.082       0.130      0.267      -0.176       0.332
+    UGOD_C             0.357       0.116      0.003       0.109       0.564      *
+    SAV_C              0.365       0.124      0.005       0.097       0.582      *
+    NEU_C             -0.140       0.138      0.162      -0.398       0.140
+    OTV_C             -0.164       0.129      0.110      -0.404       0.100
+
+ POS_VAL  WITH
+    SEU                0.562       0.091      0.000       0.359       0.714      *
+    ADVERS            -0.283       0.120      0.014      -0.502      -0.031      *
+    EKST_C             0.176       0.128      0.094      -0.085       0.412
+    UGOD_C             0.199       0.128      0.068      -0.064       0.437
+    SAV_C              0.094       0.135      0.247      -0.177       0.351
+    NEU_C             -0.201       0.133      0.075      -0.445       0.074
+    OTV_C              0.116       0.131      0.195      -0.148       0.364
+
+ ADVERS   WITH
+    SEU               -0.533       0.096      0.000      -0.695      -0.319      *
+    EKST_C            -0.131       0.130      0.164      -0.374       0.133
+    UGOD_C            -0.380       0.116      0.002      -0.584      -0.132      *
+    SAV_C             -0.218       0.126      0.050      -0.451       0.044
+    NEU_C              0.158       0.130      0.118      -0.106       0.401
+    OTV_C              0.065       0.133      0.317      -0.199       0.319
+
+ EKST_C   WITH
+    SEU                0.128       0.130      0.170      -0.134       0.374
+    UGOD_C             0.090       0.132      0.251      -0.175       0.341
+    SAV_C              0.195       0.128      0.072      -0.069       0.433
+    NEU_C             -0.512       0.104      0.000      -0.686      -0.280      *
+    OTV_C              0.256       0.127      0.029      -0.010       0.485
+
+ UGOD_C   WITH
+    SEU                0.397       0.114      0.001       0.150       0.596      *
+    SAV_C              0.494       0.103      0.000       0.266       0.669      *
+    NEU_C             -0.264       0.128      0.027      -0.493       0.004
+    OTV_C              0.087       0.137      0.269      -0.187       0.348
+
+ SAV_C    WITH
+    SEU                0.331       0.124      0.008       0.066       0.551      *
+    NEU_C             -0.370       0.119      0.003      -0.579      -0.115      *
+    OTV_C              0.034       0.136      0.404      -0.234       0.297
+
+ NEU_C    WITH
+    SEU               -0.032       0.137      0.410      -0.296       0.238
+    OTV_C             -0.188       0.132      0.086      -0.432       0.084
+
+ OTV_C    WITH
+    SEU                0.034       0.133      0.399      -0.227       0.290
+
+ Means
+    EKST_C             4.661       0.458      0.000       3.790       5.589      *
+    UGOD_C             5.665       0.554      0.000       4.619       6.786      *
+    SAV_C              5.517       0.547      0.000       4.486       6.626      *
+    NEU_C              3.331       0.343      0.000       2.680       4.027      *
+    OTV_C              4.640       0.475      0.000       3.745       5.604      *
+    SAV                7.252       0.684      0.000       5.966       8.645      *
+    EKST               6.400       0.610      0.000       5.253       7.642      *
+    A2                 8.015       0.784      0.000       6.553       9.635      *
+    OTV                5.686       0.545      0.000       4.660       6.799      *
+    N2                 1.650       0.186      0.000       1.294       2.023      *
+    SEU                6.370       0.602      0.000       5.231       7.598      *
+    HUM                1.817       0.197      0.000       1.441       2.214      *
+    IMP                6.796       0.648      0.000       5.577       8.118      *
+    NEG_VAL            1.816       0.197      0.000       1.439       2.212      *
+    COMPLEX            5.992       0.572      0.000       4.916       7.154      *
+    TIPI               5.532       0.530      0.000       4.537       6.611      *
+    POS_VAL            3.703       0.359      0.000       3.022       4.429      *
+    ADVERS             1.971       0.214      0.000       1.562       2.400      *
+
+ Variances
+    EKST_C             1.000       0.000      0.000       1.000       1.000
+    UGOD_C             1.000       0.000      0.000       1.000       1.000
+    SAV_C              1.000       0.000      0.000       1.000       1.000
+    NEU_C              1.000       0.000      0.000       1.000       1.000
+    OTV_C              1.000       0.000      0.000       1.000       1.000
+    SAV                1.000       0.000      0.000       1.000       1.000
+    EKST               1.000       0.000      0.000       1.000       1.000
+    A2                 1.000       0.000      0.000       1.000       1.000
+    OTV                1.000       0.000      0.000       1.000       1.000
+    N2                 1.000       0.000      0.000       1.000       1.000
+    SEU                1.000       0.000      0.000       1.000       1.000
+    HUM                1.000       0.000      0.000       1.000       1.000
+    IMP                1.000       0.000      0.000       1.000       1.000
+    NEG_VAL            1.000       0.000      0.000       1.000       1.000
+    COMPLEX            1.000       0.000      0.000       1.000       1.000
+    TIPI               1.000       0.000      0.000       1.000       1.000
+    POS_VAL            1.000       0.000      0.000       1.000       1.000
+    ADVERS             1.000       0.000      0.000       1.000       1.000
+
+
+STDY Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ SAV      WITH
+    EKST               0.266       0.023      0.000       0.220       0.311      *
+    A2                 0.100       0.025      0.000       0.052       0.149      *
+    OTV                0.308       0.023      0.000       0.263       0.351      *
+    N2                -0.093       0.025      0.000      -0.141      -0.044      *
+    SEU                0.326       0.022      0.000       0.282       0.369      *
+    HUM               -0.016       0.025      0.267      -0.064       0.033
+    IMP                0.301       0.023      0.000       0.256       0.345      *
+    NEG_VAL           -0.160       0.024      0.000      -0.207      -0.112      *
+    COMPLEX            0.267       0.023      0.000       0.221       0.312      *
+    TIPI               0.146       0.024      0.000       0.098       0.193      *
+    POS_VAL            0.247       0.023      0.000       0.201       0.292      *
+    ADVERS            -0.144       0.024      0.000      -0.192      -0.096      *
+
+ EKST     WITH
+    A2                 0.128       0.024      0.000       0.080       0.176      *
+    OTV                0.396       0.021      0.000       0.354       0.437      *
+    N2                -0.156       0.024      0.000      -0.204      -0.108      *
+    SEU                0.254       0.023      0.000       0.208       0.298      *
+    HUM                0.142       0.024      0.000       0.094       0.190      *
+    IMP                0.239       0.023      0.000       0.193       0.285      *
+    NEG_VAL           -0.183       0.024      0.000      -0.229      -0.135      *
+    COMPLEX            0.208       0.024      0.000       0.161       0.254      *
+    TIPI               0.110       0.025      0.000       0.062       0.158      *
+    POS_VAL            0.301       0.023      0.000       0.256       0.345      *
+    ADVERS            -0.200       0.024      0.000      -0.246      -0.153      *
+
+ A2       WITH
+    OTV                0.128       0.025      0.000       0.080       0.176      *
+    N2                -0.146       0.024      0.000      -0.193      -0.098      *
+    SEU                0.169       0.024      0.000       0.121       0.216      *
+    HUM                0.002       0.025      0.466      -0.047       0.051
+    IMP                0.100       0.025      0.000       0.051       0.148      *
+    NEG_VAL           -0.186       0.024      0.000      -0.233      -0.139      *
+    COMPLEX            0.079       0.025      0.001       0.030       0.127      *
+    TIPI               0.027       0.025      0.140      -0.022       0.075
+    POS_VAL            0.106       0.025      0.000       0.058       0.154      *
+    ADVERS            -0.170       0.024      0.000      -0.217      -0.122      *
+
+ OTV      WITH
+    N2                -0.135       0.024      0.000      -0.183      -0.087      *
+    SEU                0.355       0.022      0.000       0.312       0.397      *
+    HUM                0.204       0.024      0.000       0.157       0.251      *
+    IMP                0.279       0.023      0.000       0.233       0.323      *
+    NEG_VAL           -0.189       0.024      0.000      -0.235      -0.141      *
+    COMPLEX            0.251       0.023      0.000       0.205       0.297      *
+    TIPI               0.078       0.025      0.001       0.029       0.126      *
+    POS_VAL            0.410       0.021      0.000       0.369       0.450      *
+    ADVERS            -0.257       0.023      0.000      -0.302      -0.211      *
+
+ N2       WITH
+    SEU               -0.172       0.024      0.000      -0.219      -0.125      *
+    HUM                0.009       0.025      0.360      -0.040       0.057
+    IMP               -0.161       0.024      0.000      -0.208      -0.113      *
+    NEG_VAL            0.150       0.024      0.000       0.102       0.198      *
+    COMPLEX           -0.130       0.025      0.000      -0.178      -0.082      *
+    TIPI              -0.039       0.025      0.058      -0.088       0.010
+    POS_VAL           -0.198       0.024      0.000      -0.244      -0.150      *
+    ADVERS             0.319       0.022      0.000       0.274       0.362      *
+
+ HUM      WITH
+    SEU                0.020       0.025      0.214      -0.029       0.068
+    IMP                0.055       0.025      0.014       0.006       0.103      *
+    NEG_VAL            0.038       0.025      0.062      -0.010       0.087
+    COMPLEX            0.009       0.025      0.353      -0.039       0.058
+    TIPI              -0.141       0.024      0.000      -0.188      -0.093      *
+    POS_VAL            0.265       0.023      0.000       0.219       0.310      *
+    ADVERS            -0.051       0.025      0.022      -0.099      -0.002      *
+
+ IMP      WITH
+    SEU                0.434       0.020      0.000       0.393       0.472      *
+    NEG_VAL           -0.283       0.023      0.000      -0.327      -0.237      *
+    COMPLEX            0.594       0.016      0.000       0.561       0.624      *
+    TIPI               0.276       0.023      0.000       0.231       0.321      *
+    POS_VAL            0.534       0.018      0.000       0.498       0.568      *
+    ADVERS            -0.326       0.022      0.000      -0.369      -0.281      *
+
+ NEG_VAL  WITH
+    SEU               -0.221       0.024      0.000      -0.267      -0.174      *
+    COMPLEX           -0.206       0.024      0.000      -0.252      -0.159      *
+    TIPI              -0.096       0.025      0.000      -0.144      -0.048      *
+    POS_VAL           -0.288       0.023      0.000      -0.332      -0.242      *
+    ADVERS             0.395       0.021      0.000       0.353       0.435      *
+
+ COMPLEX  WITH
+    SEU                0.400       0.021      0.000       0.358       0.440      *
+    TIPI               0.322       0.022      0.000       0.277       0.365      *
+    POS_VAL            0.436       0.020      0.000       0.396       0.474      *
+    ADVERS            -0.206       0.024      0.000      -0.252      -0.159      *
+
+ TIPI     WITH
+    SEU                0.239       0.023      0.000       0.193       0.284      *
+    POS_VAL            0.168       0.024      0.000       0.121       0.215      *
+    ADVERS            -0.133       0.024      0.000      -0.181      -0.085      *
+
+ POS_VAL  WITH
+    SEU                0.384       0.021      0.000       0.341       0.424      *
+    ADVERS            -0.398       0.021      0.000      -0.438      -0.356      *
+
+ ADVERS   WITH
+    SEU               -0.294       0.023      0.000      -0.338      -0.249      *
+
+ Variances
+    SAV                1.000       0.000      0.000       1.000       1.000
+    EKST               1.000       0.000      0.000       1.000       1.000
+    A2                 1.000       0.000      0.000       1.000       1.000
+    OTV                1.000       0.000      0.000       1.000       1.000
+    N2                 1.000       0.000      0.000       1.000       1.000
+    SEU                1.000       0.000      0.000       1.000       1.000
+    HUM                1.000       0.000      0.000       1.000       1.000
+    IMP                1.000       0.000      0.000       1.000       1.000
+    NEG_VAL            1.000       0.000      0.000       1.000       1.000
+    COMPLEX            1.000       0.000      0.000       1.000       1.000
+    TIPI               1.000       0.000      0.000       1.000       1.000
+    POS_VAL            1.000       0.000      0.000       1.000       1.000
+    ADVERS             1.000       0.000      0.000       1.000       1.000
+
+Between Level
+
+ SAV      WITH
+    EKST               0.733       0.064      0.000       0.585       0.834      *
+    A2                 0.552       0.096      0.000       0.338       0.713      *
+    OTV                0.626       0.083      0.000       0.439       0.761      *
+    N2                -0.442       0.107      0.000      -0.627      -0.209      *
+    SEU                0.747       0.061      0.000       0.606       0.843      *
+    HUM               -0.151       0.128      0.125      -0.391       0.107
+    IMP                0.761       0.058      0.000       0.625       0.854      *
+    NEG_VAL           -0.457       0.105      0.000      -0.638      -0.229      *
+    COMPLEX            0.608       0.085      0.000       0.415       0.748      *
+    TIPI               0.515       0.098      0.000       0.298       0.681      *
+    POS_VAL            0.361       0.114      0.002       0.119       0.564      *
+    ADVERS            -0.532       0.097      0.000      -0.695      -0.316      *
+    EKST_C             0.166       0.128      0.106      -0.095       0.406
+    UGOD_C             0.479       0.107      0.000       0.241       0.661      *
+    SAV_C              0.421       0.112      0.001       0.178       0.615      *
+    NEU_C             -0.128       0.131      0.172      -0.375       0.138
+    OTV_C              0.106       0.134      0.219      -0.163       0.360
+
+ EKST     WITH
+    A2                 0.591       0.090      0.000       0.388       0.741      *
+    OTV                0.602       0.086      0.000       0.407       0.744      *
+    N2                -0.528       0.097      0.000      -0.692      -0.312      *
+    SEU                0.613       0.084      0.000       0.423       0.752      *
+    HUM                0.004       0.130      0.488      -0.250       0.257
+    IMP                0.683       0.073      0.000       0.516       0.801      *
+    NEG_VAL           -0.417       0.109      0.000      -0.607      -0.181      *
+    COMPLEX            0.516       0.098      0.000       0.298       0.682      *
+    TIPI               0.515       0.099      0.000       0.298       0.682      *
+    POS_VAL            0.427       0.108      0.000       0.195       0.614      *
+    ADVERS            -0.539       0.096      0.000      -0.701      -0.325      *
+    EKST_C             0.315       0.119      0.008       0.062       0.529      *
+    UGOD_C             0.530       0.101      0.000       0.305       0.697      *
+    SAV_C              0.293       0.121      0.012       0.039       0.512      *
+    NEU_C             -0.270       0.123      0.020      -0.492      -0.013      *
+    OTV_C              0.117       0.132      0.195      -0.149       0.365
+
+ A2       WITH
+    OTV                0.255       0.126      0.028      -0.006       0.484
+    N2                -0.668       0.079      0.000      -0.795      -0.488      *
+    SEU                0.509       0.101      0.000       0.285       0.681      *
+    HUM               -0.233       0.126      0.040      -0.466       0.028
+    IMP                0.457       0.108      0.000       0.221       0.643      *
+    NEG_VAL           -0.800       0.053      0.000      -0.881      -0.674      *
+    COMPLEX            0.348       0.119      0.004       0.095       0.559      *
+    TIPI               0.359       0.118      0.003       0.107       0.566      *
+    POS_VAL            0.133       0.130      0.158      -0.129       0.378
+    ADVERS            -0.697       0.074      0.000      -0.815      -0.527      *
+    EKST_C             0.159       0.134      0.124      -0.112       0.409
+    UGOD_C             0.442       0.115      0.000       0.189       0.638      *
+    SAV_C              0.166       0.134      0.114      -0.106       0.415
+    NEU_C             -0.048       0.136      0.365      -0.309       0.221
+    OTV_C             -0.095       0.137      0.249      -0.353       0.178
+
+ OTV      WITH
+    N2                -0.178       0.127      0.089      -0.415       0.082
+    SEU                0.682       0.073      0.000       0.513       0.799      *
+    HUM                0.186       0.126      0.078      -0.072       0.420
+    IMP                0.588       0.089      0.000       0.387       0.736      *
+    NEG_VAL           -0.239       0.123      0.033      -0.466       0.016
+    COMPLEX            0.508       0.100      0.000       0.287       0.677      *
+    TIPI               0.333       0.118      0.005       0.084       0.543      *
+    POS_VAL            0.557       0.092      0.000       0.351       0.712      *
+    ADVERS            -0.325       0.119      0.006      -0.538      -0.073      *
+    EKST_C             0.100       0.132      0.230      -0.166       0.350
+    UGOD_C             0.363       0.121      0.004       0.104       0.574      *
+    SAV_C              0.279       0.124      0.018       0.018       0.504      *
+    NEU_C             -0.154       0.132      0.128      -0.401       0.114
+    OTV_C              0.248       0.127      0.033      -0.017       0.481
+
+ N2       WITH
+    SEU               -0.421       0.109      0.000      -0.611      -0.186      *
+    HUM                0.197       0.126      0.066      -0.060       0.431
+    IMP               -0.456       0.106      0.000      -0.639      -0.226      *
+    NEG_VAL            0.478       0.102      0.000       0.254       0.654      *
+    COMPLEX           -0.350       0.116      0.003      -0.556      -0.103      *
+    TIPI              -0.420       0.110      0.000      -0.611      -0.183      *
+    POS_VAL           -0.160       0.127      0.110      -0.399       0.098
+    ADVERS             0.680       0.074      0.000       0.510       0.800      *
+    EKST_C            -0.294       0.122      0.013      -0.514      -0.037      *
+    UGOD_C            -0.392       0.114      0.001      -0.591      -0.144      *
+    SAV_C             -0.278       0.125      0.020      -0.504      -0.015      *
+    NEU_C              0.332       0.124      0.007       0.067       0.551      *
+    OTV_C              0.062       0.133      0.324      -0.201       0.317
+
+ HUM      WITH
+    SEU               -0.095       0.129      0.236      -0.341       0.163
+    IMP               -0.052       0.130      0.348      -0.303       0.206
+    NEG_VAL            0.304       0.119      0.009       0.055       0.518      *
+    COMPLEX            0.074       0.130      0.286      -0.185       0.323
+    TIPI              -0.177       0.126      0.088      -0.413       0.080
+    POS_VAL            0.212       0.124      0.051      -0.042       0.440
+    ADVERS             0.314       0.120      0.008       0.062       0.530      *
+    EKST_C             0.145       0.130      0.140      -0.118       0.390
+    UGOD_C            -0.106       0.133      0.218      -0.357       0.159
+    SAV_C             -0.122       0.131      0.182      -0.370       0.143
+    NEU_C             -0.097       0.135      0.241      -0.352       0.172
+    OTV_C              0.246       0.128      0.035      -0.021       0.480
+
+ IMP      WITH
+    SEU                0.808       0.049      0.000       0.691       0.883      *
+    NEG_VAL           -0.445       0.106      0.000      -0.628      -0.215      *
+    COMPLEX            0.886       0.031      0.000       0.811       0.933      *
+    TIPI               0.665       0.077      0.000       0.488       0.789      *
+    POS_VAL            0.718       0.066      0.000       0.565       0.822      *
+    ADVERS            -0.569       0.091      0.000      -0.721      -0.364      *
+    EKST_C             0.183       0.127      0.083      -0.077       0.419
+    UGOD_C             0.397       0.113      0.001       0.153       0.595      *
+    SAV_C              0.278       0.129      0.022       0.007       0.510      *
+    NEU_C             -0.204       0.134      0.072      -0.450       0.071
+    OTV_C              0.059       0.131      0.331      -0.200       0.309
+
+ NEG_VAL  WITH
+    SEU               -0.484       0.101      0.000      -0.658      -0.262      *
+    COMPLEX           -0.332       0.117      0.005      -0.541      -0.086      *
+    TIPI              -0.419       0.109      0.000      -0.609      -0.183      *
+    POS_VAL           -0.124       0.127      0.169      -0.366       0.131
+    ADVERS             0.732       0.064      0.000       0.584       0.833      *
+    EKST_C             0.048       0.131      0.360      -0.211       0.299
+    UGOD_C            -0.355       0.117      0.003      -0.560      -0.106      *
+    SAV_C             -0.127       0.129      0.171      -0.371       0.134
+    NEU_C             -0.036       0.130      0.392      -0.288       0.220
+    OTV_C              0.125       0.130      0.174      -0.137       0.369
+
+ COMPLEX  WITH
+    SEU                0.693       0.071      0.000       0.529       0.807      *
+    TIPI               0.521       0.098      0.000       0.304       0.686      *
+    POS_VAL            0.721       0.066      0.000       0.568       0.825      *
+    ADVERS            -0.411       0.111      0.001      -0.604      -0.171      *
+    EKST_C             0.146       0.128      0.134      -0.115       0.387
+    UGOD_C             0.256       0.125      0.026      -0.003       0.484
+    SAV_C              0.199       0.135      0.079      -0.079       0.447
+    NEU_C             -0.116       0.139      0.208      -0.377       0.163
+    OTV_C              0.127       0.129      0.168      -0.134       0.372
+
+ TIPI     WITH
+    SEU                0.570       0.091      0.000       0.367       0.721      *
+    POS_VAL            0.378       0.113      0.002       0.136       0.576      *
+    ADVERS            -0.362       0.116      0.003      -0.567      -0.115      *
+    EKST_C             0.082       0.130      0.267      -0.176       0.332
+    UGOD_C             0.357       0.116      0.003       0.109       0.564      *
+    SAV_C              0.365       0.124      0.005       0.097       0.582      *
+    NEU_C             -0.140       0.138      0.162      -0.398       0.140
+    OTV_C             -0.164       0.129      0.110      -0.404       0.100
+
+ POS_VAL  WITH
+    SEU                0.562       0.091      0.000       0.359       0.714      *
+    ADVERS            -0.283       0.120      0.014      -0.502      -0.031      *
+    EKST_C             0.176       0.128      0.094      -0.085       0.412
+    UGOD_C             0.199       0.128      0.068      -0.064       0.437
+    SAV_C              0.094       0.135      0.247      -0.177       0.351
+    NEU_C             -0.201       0.133      0.075      -0.445       0.074
+    OTV_C              0.116       0.131      0.195      -0.148       0.364
+
+ ADVERS   WITH
+    SEU               -0.533       0.096      0.000      -0.695      -0.319      *
+    EKST_C            -0.131       0.130      0.164      -0.374       0.133
+    UGOD_C            -0.380       0.116      0.002      -0.584      -0.132      *
+    SAV_C             -0.218       0.126      0.050      -0.451       0.044
+    NEU_C              0.158       0.130      0.118      -0.106       0.401
+    OTV_C              0.065       0.133      0.317      -0.199       0.319
+
+ EKST_C   WITH
+    SEU                0.128       0.130      0.170      -0.134       0.374
+    UGOD_C             0.090       0.132      0.251      -0.175       0.341
+    SAV_C              0.195       0.128      0.072      -0.069       0.433
+    NEU_C             -0.512       0.104      0.000      -0.686      -0.280      *
+    OTV_C              0.256       0.127      0.029      -0.010       0.485
+
+ UGOD_C   WITH
+    SEU                0.397       0.114      0.001       0.150       0.596      *
+    SAV_C              0.494       0.103      0.000       0.266       0.669      *
+    NEU_C             -0.264       0.128      0.027      -0.493       0.004
+    OTV_C              0.087       0.137      0.269      -0.187       0.348
+
+ SAV_C    WITH
+    SEU                0.331       0.124      0.008       0.066       0.551      *
+    NEU_C             -0.370       0.119      0.003      -0.579      -0.115      *
+    OTV_C              0.034       0.136      0.404      -0.234       0.297
+
+ NEU_C    WITH
+    SEU               -0.032       0.137      0.410      -0.296       0.238
+    OTV_C             -0.188       0.132      0.086      -0.432       0.084
+
+ OTV_C    WITH
+    SEU                0.034       0.133      0.399      -0.227       0.290
+
+ Means
+    EKST_C             4.661       0.458      0.000       3.790       5.589      *
+    UGOD_C             5.665       0.554      0.000       4.619       6.786      *
+    SAV_C              5.517       0.547      0.000       4.486       6.626      *
+    NEU_C              3.331       0.343      0.000       2.680       4.027      *
+    OTV_C              4.640       0.475      0.000       3.745       5.604      *
+    SAV                7.252       0.684      0.000       5.966       8.645      *
+    EKST               6.400       0.610      0.000       5.253       7.642      *
+    A2                 8.015       0.784      0.000       6.553       9.635      *
+    OTV                5.686       0.545      0.000       4.660       6.799      *
+    N2                 1.650       0.186      0.000       1.294       2.023      *
+    SEU                6.370       0.602      0.000       5.231       7.598      *
+    HUM                1.817       0.197      0.000       1.441       2.214      *
+    IMP                6.796       0.648      0.000       5.577       8.118      *
+    NEG_VAL            1.816       0.197      0.000       1.439       2.212      *
+    COMPLEX            5.992       0.572      0.000       4.916       7.154      *
+    TIPI               5.532       0.530      0.000       4.537       6.611      *
+    POS_VAL            3.703       0.359      0.000       3.022       4.429      *
+    ADVERS             1.971       0.214      0.000       1.562       2.400      *
+
+ Variances
+    EKST_C             1.000       0.000      0.000       1.000       1.000
+    UGOD_C             1.000       0.000      0.000       1.000       1.000
+    SAV_C              1.000       0.000      0.000       1.000       1.000
+    NEU_C              1.000       0.000      0.000       1.000       1.000
+    OTV_C              1.000       0.000      0.000       1.000       1.000
+    SAV                1.000       0.000      0.000       1.000       1.000
+    EKST               1.000       0.000      0.000       1.000       1.000
+    A2                 1.000       0.000      0.000       1.000       1.000
+    OTV                1.000       0.000      0.000       1.000       1.000
+    N2                 1.000       0.000      0.000       1.000       1.000
+    SEU                1.000       0.000      0.000       1.000       1.000
+    HUM                1.000       0.000      0.000       1.000       1.000
+    IMP                1.000       0.000      0.000       1.000       1.000
+    NEG_VAL            1.000       0.000      0.000       1.000       1.000
+    COMPLEX            1.000       0.000      0.000       1.000       1.000
+    TIPI               1.000       0.000      0.000       1.000       1.000
+    POS_VAL            1.000       0.000      0.000       1.000       1.000
+    ADVERS             1.000       0.000      0.000       1.000       1.000
+
+
+STD Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ SAV      WITH
+    EKST               0.125       0.012      0.000       0.102       0.149      *
+    A2                 0.059       0.015      0.000       0.030       0.088      *
+    OTV                0.159       0.013      0.000       0.133       0.186      *
+    N2                -0.067       0.018      0.000      -0.103      -0.032      *
+    SEU                0.145       0.012      0.000       0.123       0.168      *
+    HUM               -0.010       0.016      0.267      -0.041       0.021
+    IMP                0.141       0.012      0.000       0.118       0.166      *
+    NEG_VAL           -0.056       0.009      0.000      -0.074      -0.039      *
+    COMPLEX            0.133       0.013      0.000       0.108       0.159      *
+    TIPI               0.078       0.014      0.000       0.052       0.105      *
+    POS_VAL            0.148       0.015      0.000       0.119       0.179      *
+    ADVERS            -0.085       0.015      0.000      -0.115      -0.057      *
+
+ EKST     WITH
+    A2                 0.088       0.017      0.000       0.055       0.123      *
+    OTV                0.240       0.016      0.000       0.209       0.273      *
+    N2                -0.132       0.021      0.000      -0.175      -0.091      *
+    SEU                0.133       0.013      0.000       0.107       0.160      *
+    HUM                0.108       0.019      0.000       0.071       0.146      *
+    IMP                0.132       0.014      0.000       0.105       0.160      *
+    NEG_VAL           -0.075       0.010      0.000      -0.096      -0.055      *
+    COMPLEX            0.122       0.015      0.000       0.093       0.152      *
+    TIPI               0.070       0.016      0.000       0.039       0.101      *
+    POS_VAL            0.212       0.018      0.000       0.177       0.249      *
+    ADVERS            -0.139       0.018      0.000      -0.175      -0.105      *
+
+ A2       WITH
+    OTV                0.097       0.019      0.000       0.060       0.135      *
+    N2                -0.154       0.027      0.000      -0.207      -0.103      *
+    SEU                0.110       0.016      0.000       0.078       0.143      *
+    HUM                0.002       0.024      0.466      -0.044       0.048
+    IMP                0.069       0.017      0.000       0.035       0.103      *
+    NEG_VAL           -0.096       0.013      0.000      -0.122      -0.070      *
+    COMPLEX            0.057       0.018      0.001       0.022       0.093      *
+    TIPI               0.021       0.020      0.140      -0.017       0.060
+    POS_VAL            0.093       0.022      0.000       0.050       0.137      *
+    ADVERS            -0.148       0.022      0.000      -0.192      -0.105      *
+
+ OTV      WITH
+    N2                -0.126       0.023      0.000      -0.173      -0.080      *
+    SEU                0.204       0.015      0.000       0.175       0.235      *
+    HUM                0.170       0.021      0.000       0.129       0.212      *
+    IMP                0.169       0.016      0.000       0.139       0.200      *
+    NEG_VAL           -0.085       0.011      0.000      -0.108      -0.063      *
+    COMPLEX            0.162       0.017      0.000       0.130       0.195      *
+    TIPI               0.054       0.017      0.001       0.020       0.088      *
+    POS_VAL            0.317       0.021      0.000       0.278       0.360      *
+    ADVERS            -0.197       0.020      0.000      -0.236      -0.159      *
+
+ N2       WITH
+    SEU               -0.138       0.020      0.000      -0.179      -0.099      *
+    HUM                0.010       0.029      0.360      -0.046       0.067
+    IMP               -0.137       0.021      0.000      -0.179      -0.095      *
+    NEG_VAL            0.095       0.016      0.000       0.064       0.127      *
+    COMPLEX           -0.117       0.023      0.000      -0.162      -0.073      *
+    TIPI              -0.038       0.024      0.058      -0.086       0.009
+    POS_VAL           -0.214       0.028      0.000      -0.269      -0.161      *
+    ADVERS             0.342       0.028      0.000       0.288       0.398      *
+
+ HUM      WITH
+    SEU                0.014       0.018      0.214      -0.021       0.049
+    IMP                0.041       0.019      0.014       0.004       0.078      *
+    NEG_VAL            0.022       0.014      0.062      -0.006       0.049
+    COMPLEX            0.007       0.020      0.353      -0.032       0.047
+    TIPI              -0.122       0.022      0.000      -0.165      -0.080      *
+    POS_VAL            0.256       0.025      0.000       0.209       0.306      *
+    ADVERS            -0.048       0.024      0.022      -0.096      -0.001      *
+
+ IMP      WITH
+    SEU                0.227       0.014      0.000       0.200       0.255      *
+    NEG_VAL           -0.116       0.011      0.000      -0.138      -0.096      *
+    COMPLEX            0.347       0.017      0.000       0.315       0.382      *
+    TIPI               0.174       0.016      0.000       0.143       0.207      *
+    POS_VAL            0.376       0.020      0.000       0.338       0.416      *
+    ADVERS            -0.227       0.018      0.000      -0.263      -0.192      *
+
+ NEG_VAL  WITH
+    SEU               -0.086       0.010      0.000      -0.106      -0.067      *
+    COMPLEX           -0.090       0.011      0.000      -0.112      -0.069      *
+    TIPI              -0.045       0.012      0.000      -0.069      -0.022      *
+    POS_VAL           -0.151       0.014      0.000      -0.179      -0.125      *
+    ADVERS             0.206       0.014      0.000       0.179       0.234      *
+
+ COMPLEX  WITH
+    SEU                0.222       0.015      0.000       0.194       0.252      *
+    TIPI               0.215       0.018      0.000       0.182       0.250      *
+    POS_VAL            0.326       0.020      0.000       0.287       0.367      *
+    ADVERS            -0.152       0.019      0.000      -0.190      -0.116      *
+
+ TIPI     WITH
+    SEU                0.143       0.015      0.000       0.113       0.173      *
+    POS_VAL            0.135       0.020      0.000       0.096       0.175      *
+    ADVERS            -0.106       0.020      0.000      -0.146      -0.067      *
+
+ POS_VAL  WITH
+    SEU                0.256       0.018      0.000       0.222       0.292      *
+    ADVERS            -0.354       0.024      0.000      -0.403      -0.309      *
+
+ ADVERS   WITH
+    SEU               -0.194       0.017      0.000      -0.229      -0.161      *
+
+ Variances
+    SAV                0.399       0.014      0.000       0.373       0.428      *
+    EKST               0.552       0.019      0.000       0.516       0.592      *
+    A2                 0.858       0.030      0.000       0.802       0.920      *
+    OTV                0.666       0.023      0.000       0.622       0.714      *
+    N2                 1.303       0.046      0.000       1.217       1.397      *
+    SEU                0.496       0.018      0.000       0.463       0.532      *
+    HUM                1.038       0.037      0.000       0.970       1.113      *
+    IMP                0.551       0.019      0.000       0.515       0.591      *
+    NEG_VAL            0.308       0.011      0.000       0.288       0.330      *
+    COMPLEX            0.621       0.022      0.000       0.580       0.666      *
+    TIPI               0.721       0.025      0.000       0.673       0.773      *
+    POS_VAL            0.900       0.032      0.000       0.841       0.966      *
+    ADVERS             0.880       0.031      0.000       0.822       0.944      *
+
+Between Level
+
+ SAV      WITH
+    EKST               0.564       0.132      0.000       0.363       0.880      *
+    A2                 0.371       0.108      0.000       0.200       0.624      *
+    OTV                0.508       0.133      0.000       0.301       0.824      *
+    N2                -0.488       0.169      0.000      -0.876      -0.213      *
+    SEU                0.566       0.131      0.000       0.367       0.877      *
+    HUM               -0.178       0.167      0.125      -0.531       0.131
+    IMP                0.537       0.123      0.000       0.351       0.831      *
+    NEG_VAL           -0.293       0.098      0.000      -0.520      -0.135      *
+    COMPLEX            0.463       0.124      0.000       0.270       0.757      *
+    TIPI               0.427       0.130      0.000       0.220       0.731      *
+    POS_VAL            0.389       0.160      0.002       0.122       0.753      *
+    ADVERS            -0.438       0.131      0.000      -0.746      -0.232      *
+    EKST_C             0.103       0.089      0.106      -0.061       0.293
+    UGOD_C             0.285       0.094      0.000       0.132       0.503      *
+    SAV_C              0.259       0.095      0.001       0.103       0.478      *
+    NEU_C             -0.087       0.099      0.172      -0.293       0.099
+    OTV_C              0.070       0.097      0.219      -0.115       0.271
+
+ EKST     WITH
+    A2                 0.435       0.121      0.000       0.247       0.721      *
+    OTV                0.535       0.146      0.000       0.310       0.878      *
+    N2                -0.641       0.192      0.000      -1.090      -0.336      *
+    SEU                0.507       0.135      0.000       0.298       0.828      *
+    HUM                0.005       0.180      0.488      -0.351       0.364
+    IMP                0.527       0.130      0.000       0.328       0.836      *
+    NEG_VAL           -0.293       0.106      0.000      -0.537      -0.119      *
+    COMPLEX            0.430       0.131      0.000       0.221       0.736      *
+    TIPI               0.469       0.143      0.000       0.241       0.804      *
+    POS_VAL            0.504       0.179      0.000       0.212       0.917      *
+    ADVERS            -0.488       0.145      0.000      -0.827      -0.259      *
+    EKST_C             0.214       0.101      0.008       0.041       0.439      *
+    UGOD_C             0.347       0.105      0.000       0.179       0.591      *
+    SAV_C              0.198       0.099      0.012       0.026       0.419      *
+    NEU_C             -0.202       0.109      0.020      -0.443      -0.010      *
+    OTV_C              0.085       0.105      0.195      -0.114       0.304
+
+ A2       WITH
+    OTV                0.197       0.115      0.028      -0.004       0.451
+    N2                -0.712       0.180      0.000      -1.139      -0.434      *
+    SEU                0.368       0.115      0.000       0.184       0.636      *
+    HUM               -0.263       0.165      0.040      -0.622       0.032
+    IMP                0.307       0.105      0.000       0.136       0.548      *
+    NEG_VAL           -0.497       0.111      0.000      -0.761      -0.330      *
+    COMPLEX            0.253       0.110      0.004       0.066       0.501      *
+    TIPI               0.285       0.120      0.003       0.081       0.556      *
+    POS_VAL            0.137       0.148      0.158      -0.139       0.450
+    ADVERS            -0.555       0.137      0.000      -0.880      -0.345      *
+    EKST_C             0.095       0.089      0.124      -0.069       0.283
+    UGOD_C             0.253       0.091      0.000       0.101       0.461      *
+    SAV_C              0.098       0.088      0.114      -0.065       0.286
+    NEU_C             -0.031       0.096      0.365      -0.226       0.157
+    OTV_C             -0.060       0.095      0.249      -0.257       0.120
+
+ OTV      WITH
+    N2                -0.227       0.183      0.089      -0.618       0.106
+    SEU                0.597       0.148      0.000       0.371       0.949      *
+    HUM                0.253       0.195      0.078      -0.100       0.672
+    IMP                0.478       0.132      0.000       0.271       0.789      *
+    NEG_VAL           -0.177       0.107      0.033      -0.412       0.012
+    COMPLEX            0.447       0.139      0.000       0.225       0.771      *
+    TIPI               0.320       0.142      0.005       0.077       0.638      *
+    POS_VAL            0.697       0.201      0.000       0.383       1.170      *
+    ADVERS            -0.310       0.142      0.006      -0.628      -0.067      *
+    EKST_C             0.072       0.104      0.230      -0.127       0.286
+    UGOD_C             0.250       0.106      0.004       0.069       0.489      *
+    SAV_C              0.199       0.106      0.018       0.013       0.433      *
+    NEU_C             -0.122       0.116      0.128      -0.366       0.094
+    OTV_C              0.191       0.115      0.033      -0.013       0.443
+
+ N2       WITH
+    SEU               -0.501       0.180      0.000      -0.913      -0.205      *
+    HUM                0.366       0.265      0.066      -0.114       0.940
+    IMP               -0.506       0.170      0.000      -0.899      -0.229      *
+    NEG_VAL            0.486       0.157      0.000       0.234       0.851      *
+    COMPLEX           -0.420       0.178      0.003      -0.821      -0.118      *
+    TIPI              -0.550       0.199      0.000      -1.004      -0.224      *
+    POS_VAL           -0.272       0.241      0.110      -0.788       0.173
+    ADVERS             0.891       0.222      0.000       0.552       1.419      *
+    EKST_C            -0.289       0.145      0.013      -0.612      -0.036      *
+    UGOD_C            -0.369       0.143      0.001      -0.694      -0.129      *
+    SAV_C             -0.270       0.146      0.020      -0.595      -0.015      *
+    NEU_C              0.358       0.167      0.007       0.071       0.731      *
+    OTV_C              0.065       0.152      0.324      -0.226       0.376
+
+ HUM      WITH
+    SEU               -0.120       0.178      0.236      -0.489       0.219
+    IMP               -0.061       0.166      0.348      -0.397       0.261
+    NEG_VAL            0.329       0.158      0.009       0.058       0.680      *
+    COMPLEX            0.095       0.180      0.286      -0.252       0.465
+    TIPI              -0.247       0.199      0.088      -0.673       0.115
+    POS_VAL            0.386       0.258      0.051      -0.078       0.946
+    ADVERS             0.437       0.205      0.008       0.084       0.896      *
+    EKST_C             0.152       0.151      0.140      -0.129       0.473
+    UGOD_C            -0.107       0.146      0.218      -0.408       0.170
+    SAV_C             -0.127       0.151      0.182      -0.442       0.156
+    NEU_C             -0.112       0.169      0.241      -0.461       0.212
+    OTV_C              0.276       0.169      0.035      -0.024       0.646
+
+ IMP      WITH
+    SEU                0.614       0.136      0.000       0.409       0.940      *
+    NEG_VAL           -0.286       0.098      0.000      -0.514      -0.127      *
+    COMPLEX            0.682       0.143      0.000       0.467       1.026      *
+    TIPI               0.555       0.140      0.000       0.339       0.889      *
+    POS_VAL            0.781       0.186      0.000       0.497       1.225      *
+    ADVERS            -0.471       0.134      0.000      -0.787      -0.261      *
+    EKST_C             0.114       0.089      0.083      -0.049       0.305
+    UGOD_C             0.237       0.091      0.001       0.086       0.443      *
+    SAV_C              0.171       0.096      0.022       0.004       0.383      *
+    NEU_C             -0.140       0.104      0.072      -0.362       0.050
+    OTV_C              0.039       0.094      0.331      -0.144       0.229
+
+ NEG_VAL  WITH
+    SEU               -0.335       0.107      0.000      -0.583      -0.163      *
+    COMPLEX           -0.231       0.103      0.005      -0.463      -0.058      *
+    TIPI              -0.319       0.115      0.000      -0.583      -0.130      *
+    POS_VAL           -0.122       0.139      0.169      -0.415       0.136
+    ADVERS             0.559       0.132      0.000       0.359       0.872      *
+    EKST_C             0.027       0.081      0.360      -0.130       0.191
+    UGOD_C            -0.194       0.082      0.003      -0.378      -0.055      *
+    SAV_C             -0.072       0.081      0.171      -0.241       0.080
+    NEU_C             -0.023       0.088      0.392      -0.202       0.150
+    OTV_C              0.076       0.087      0.174      -0.088       0.259
+
+ COMPLEX  WITH
+    SEU                0.570       0.139      0.000       0.356       0.903      *
+    TIPI               0.470       0.143      0.000       0.243       0.805      *
+    POS_VAL            0.851       0.202      0.000       0.543       1.334      *
+    ADVERS            -0.368       0.136      0.001      -0.680      -0.142      *
+    EKST_C             0.098       0.096      0.134      -0.080       0.301
+    UGOD_C             0.166       0.095      0.026      -0.002       0.374
+    SAV_C              0.133       0.103      0.079      -0.053       0.355
+    NEU_C             -0.086       0.113      0.208      -0.320       0.128
+    OTV_C              0.092       0.103      0.168      -0.101       0.307
+
+ TIPI     WITH
+    SEU                0.510       0.144      0.000       0.285       0.848      *
+    POS_VAL            0.483       0.191      0.002       0.165       0.916      *
+    ADVERS            -0.354       0.147      0.003      -0.687      -0.106      *
+    EKST_C             0.060       0.104      0.267      -0.139       0.276
+    UGOD_C             0.253       0.106      0.003       0.074       0.491      *
+    SAV_C              0.267       0.117      0.005       0.068       0.529      *
+    NEU_C             -0.114       0.124      0.162      -0.374       0.118
+    OTV_C             -0.128       0.114      0.110      -0.370       0.081
+
+ POS_VAL  WITH
+    SEU                0.654       0.186      0.000       0.363       1.093      *
+    ADVERS            -0.359       0.186      0.014      -0.773      -0.039      *
+    EKST_C             0.168       0.137      0.094      -0.084       0.459
+    UGOD_C             0.182       0.134      0.068      -0.060       0.471
+    SAV_C              0.090       0.141      0.247      -0.177       0.381
+    NEU_C             -0.211       0.159      0.075      -0.551       0.081
+    OTV_C              0.118       0.148      0.195      -0.160       0.428
+
+ ADVERS   WITH
+    SEU               -0.474       0.141      0.000      -0.806      -0.250      *
+    EKST_C            -0.096       0.105      0.164      -0.316       0.102
+    UGOD_C            -0.268       0.107      0.002      -0.509      -0.089      *
+    SAV_C             -0.158       0.106      0.050      -0.388       0.032
+    NEU_C              0.127       0.116      0.118      -0.089       0.375
+    OTV_C              0.050       0.113      0.317      -0.168       0.282
+
+ EKST_C   WITH
+    SEU                0.085       0.096      0.170      -0.094       0.287
+    UGOD_C             0.048       0.076      0.251      -0.099       0.205
+    SAV_C              0.107       0.081      0.072      -0.038       0.282
+    NEU_C             -0.312       0.100      0.000      -0.547      -0.153      *
+    OTV_C              0.151       0.089      0.029      -0.006       0.347
+
+ UGOD_C   WITH
+    SEU                0.255       0.098      0.001       0.091       0.478      *
+    SAV_C              0.261       0.084      0.000       0.127       0.457      *
+    NEU_C             -0.153       0.088      0.027      -0.347       0.003
+    OTV_C              0.049       0.085      0.269      -0.113       0.225
+
+ SAV_C    WITH
+    SEU                0.220       0.103      0.008       0.043       0.450      *
+    NEU_C             -0.223       0.095      0.003      -0.441      -0.066      *
+    OTV_C              0.020       0.087      0.404      -0.150       0.196
+
+ NEU_C    WITH
+    SEU               -0.023       0.109      0.410      -0.242       0.190
+    OTV_C             -0.122       0.098      0.086      -0.332       0.056
+
+ OTV_C    WITH
+    SEU                0.024       0.102      0.399      -0.177       0.231
+
+ Means
+    EKST_C             3.498       0.079      0.000       3.342       3.654      *
+    UGOD_C             4.074       0.077      0.000       3.923       4.224      *
+    SAV_C              4.108       0.079      0.000       3.952       4.262      *
+    NEU_C              2.747       0.088      0.000       2.574       2.922      *
+    OTV_C              3.721       0.086      0.000       3.550       3.889      *
+    SAV                6.102       0.087      0.000       5.930       6.273      *
+    EKST               5.906       0.095      0.000       5.717       6.093      *
+    A2                 6.476       0.085      0.000       6.307       6.643      *
+    OTV                5.546       0.101      0.000       5.346       5.744      *
+    N2                 2.196       0.138      0.000       1.925       2.470      *
+    SEU                5.774       0.094      0.000       5.590       5.959      *
+    HUM                2.585       0.147      0.000       2.295       2.873      *
+    IMP                5.732       0.088      0.000       5.560       5.905      *
+    NEG_VAL            1.405       0.080      0.000       1.248       1.563      *
+    COMPLEX            5.484       0.095      0.000       5.297       5.670      *
+    TIPI               5.528       0.104      0.000       5.324       5.734      *
+    POS_VAL            4.813       0.134      0.000       4.550       5.077      *
+    ADVERS             1.957       0.104      0.000       1.753       2.162      *
+
+ Variances
+    EKST_C             0.563       0.114      0.000       0.395       0.839      *
+    UGOD_C             0.517       0.105      0.000       0.362       0.771      *
+    SAV_C              0.554       0.114      0.000       0.387       0.830      *
+    NEU_C              0.681       0.142      0.000       0.472       1.027      *
+    OTV_C              0.643       0.136      0.000       0.444       0.975      *
+    SAV                0.708       0.139      0.000       0.500       1.041      *
+    EKST               0.852       0.168      0.000       0.600       1.257      *
+    A2                 0.653       0.133      0.000       0.453       0.972      *
+    OTV                0.952       0.188      0.000       0.670       1.404      *
+    N2                 1.775       0.350      0.000       1.251       2.616      *
+    SEU                0.822       0.161      0.000       0.580       1.212      *
+    HUM                2.025       0.396      0.000       1.430       2.979      *
+    IMP                0.712       0.141      0.000       0.501       1.051      *
+    NEG_VAL            0.599       0.117      0.000       0.424       0.879      *
+    COMPLEX            0.838       0.166      0.000       0.589       1.234      *
+    TIPI               0.999       0.197      0.000       0.703       1.470      *
+    POS_VAL            1.690       0.331      0.000       1.196       2.485      *
+    ADVERS             0.989       0.197      0.000       0.693       1.464      *
+
+
+DIAGRAM INFORMATION
+
+  Mplus diagrams are currently not available for multilevel analysis.
+  No diagram output was produced.
+
+
+     Beginning Time:  16:57:50
+        Ending Time:  17:16:24
+       Elapsed Time:  00:18:34
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2023 Muthen & Muthen

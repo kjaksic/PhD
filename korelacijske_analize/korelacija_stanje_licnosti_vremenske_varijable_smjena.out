@@ -1,0 +1,2868 @@
+Mplus VERSION 8.10
+MUTHEN & MUTHEN
+06/17/2024  12:11 PM
+
+INPUT INSTRUCTIONS
+
+  DATA: File is korelacije.dat;
+
+  VARIABLE:
+  NAMES ARE id redni_broj_uzorkovanja
+  dan tjedan smjena H_1 H_2 H_3 IMP_1 IMP_2 IMP_3
+  NEG_VAL_1 NEG_VAL_2 NEG_VAL_3 COMP_1 COMP_2
+  COMP_3 TIP_1 TIP_2 TIP_3 POS_VAL_1 POS_VAL_2
+  POS_VAL_3 ADV_1 ADV_2 ADV_3 C1 C2 E1 E2
+  A1 A2 O1 O2 N1 N2 POZ_1 POZ_2 POZ_3
+  POZ_4 NEG_1 NEG_2 NEG_3 NEG_4
+  NEG_5 ER_1 ER_2 ER_3 ER_4 ER_5
+  ER_6 ER_7 ER_8 SE_1 SE_2 SE_3
+  SAV EKST OTV SEU
+  HUM IMP NEG_VAL COMPLEX TIPI
+  POS_VAL ADVERS T1GL1 T1GL2
+  T1GL3 T1GL4 T1GL5 T1GL6
+  T1GL7 T1GL8 T1GL9 T1GL10
+  T1GL11 T1GL12 T1GL13 T1GL14
+  T1GL15 T1GL16 T1GL17
+  T1GL18 T1GL19 T1GL20
+  T1GL21 T1GL22 T1GL23
+  T1GL24 T1GL25 T1GL26
+  T1GL27 T1GL28 T1GL29 T1GL30
+  EKST_C UGOD_C SAV_C NEU_C
+  OTV_C;
+
+
+  USEVARIABLES ARE A2 N2 SAV EKST OTV smjena;
+
+  MISSING ARE ALL (-99);
+
+  CATEGORICAL is smjena;
+
+  CLUSTER IS id;
+
+
+  ANALYSIS:
+  TYPE = TWOLEVEL;
+  ESTIMATOR = BAYES;
+  PROCESSORS = 12;
+  FBITERATIONS = 200000;
+
+
+  MODEL:
+
+  %WITHIN%
+
+  A2 with smjena;
+  N2 with smjena;
+  SAV with smjena;
+  EKST with smjena;
+  OTV with smjena;
+
+  A2 with N2;
+  A2 with SAV;
+  A2 with EKST;
+  A2 with OTV;
+
+  N2 with SAV;
+  N2 with EKST;
+  N2 with OTV;
+
+  SAV with EKST;
+  SAV with OTV;
+
+  EKST with OTV;
+
+  %BETWEEN%
+
+  A2 with smjena;
+  N2 with smjena;
+  SAV with smjena;
+  EKST with smjena;
+  OTV with smjena;
+
+  A2 with N2;
+  A2 with SAV;
+  A2 with EKST;
+  A2 with OTV;
+
+  N2 with SAV;
+  N2 with EKST;
+  N2 with OTV;
+
+  SAV with EKST;
+  SAV with OTV;
+
+  EKST with OTV;
+
+
+
+
+
+
+  OUTPUT: STANDARDIZED TECH8;
+
+
+
+*** WARNING
+  One or more individual-level variables have no variation within a
+  cluster for the following clusters.
+
+     Variable   Cluster IDs with no within-cluster variation
+
+      SMJENA      13994322 15611768 27918933 21212503 24593393 24595014 24593194 26754644 20856715
+      A2          13994322 20856921 27661979 12193480 12198304 27665653 15611768 16554668 20855586
+                  20162730 27664277 13526266 27787671 20854464 16554319 20855351 20163018 15471432
+                  15474494 13996939 16556163 16556161 13527350 24595014 24592461 24591987 24598783
+                  26754644 12497874 20798331 16554713 24595090 13997204
+      N2          13994322 20855574 12198304 27665653 20855586 12492269 27787671 16554319 20855351
+                  24598783 16554891 20798331 24595090
+      SAV         12198304 13994941 20162730 16554319 20855351 12491438 24591061 16556161 16554891
+                  16554713
+      EKST        12198304 16554319 24591061
+      OTV         16554319 20855351 24591061
+
+*** WARNING
+  Data set contains cases with missing on all variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on all variables:  316
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        2654
+
+Number of dependent variables                                    6
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   A2          N2          SAV         EKST        OTV
+
+  Binary and ordered categorical (ordinal)
+   SMJENA
+
+Variables with special functions
+
+  Cluster variable      ID
+
+Estimator                                                    BAYES
+Specifications for Bayesian Estimation
+  Point estimate                                            MEDIAN
+  Number of Markov chain Monte Carlo (MCMC) chains               2
+  Random seed for the first chain                                0
+  Starting value information                           UNPERTURBED
+  Algorithm used for Markov chain Monte Carlo           GIBBS(PX1)
+  Fixed number of iterations                                200000
+  K-th iteration used for thinning                               1
+Link                                                        PROBIT
+
+Input data file(s)
+  korelacije.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of clusters                         99
+
+       Size (s)    Cluster ID with Size s
+
+         15        13994322
+         18        20856921 27665886 20796311
+         20        20852179
+         21        12191870 27918624 27661979 12193480 20855574 27913643
+         23        12198304 16654540 13525517
+         24        27665653 15264484 27785220 15611768 16554668 26754012
+                   20796904 13994941 20855586 12492269 20162730 27664277
+                   27663723 15262166 20162054 27918933 20794922 27783342
+         25        27662560
+         27        13526266 12492795 27918828 15261338 27787671 20854791
+                   13528127 12494252 20854464 15612828 13522864 12498862
+                   16554319 20855884 20855351 16554342 12491438 13529089
+                   20163018 21212503
+         28        15471432 27915449
+         29        15474494 13996939 16556163
+         30        24591061 20855258 15471270 16556161 27788829 24593393
+                   16551092 15611922 13993235 27666050 21213820 13525223
+                   13527350 24595014 24592461 12495072 20162526 20161546
+                   12491236 27788116 24591987 24593194 27663860 24598783
+                   26754644 21214531 20856715 12497874 16554891 20798331
+                   15614525 24591737 24595365 15266576 12491120 16554713
+                   24595090 15264805 27662082 13997204 12492669
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+     Number of missing data patterns             2
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              SMJENA        A2            N2            SAV           EKST
+              ________      ________      ________      ________      ________
+ SMJENA         1.000
+ A2             0.655         0.655
+ N2             0.655         0.655         0.655
+ SAV            0.655         0.655         0.655         0.655
+ EKST           0.655         0.655         0.655         0.655         0.655
+ OTV            0.655         0.655         0.655         0.655         0.655
+
+
+           Covariance Coverage
+              OTV
+              ________
+ OTV            0.655
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    SMJENA
+      Category 1    0.645         1712.000
+      Category 2    0.355          942.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     A2                    6.476      -2.751       1.000    0.75%       6.000      7.000      7.000
+            1738.000       1.246       7.758       7.000   72.32%       7.000      7.000
+     N2                    2.221       1.253       1.000   46.03%       1.000      1.000      2.000
+            1738.000       2.413       0.596       7.000    1.67%       2.000      4.000
+     SAV                   6.114      -1.390       1.000    0.06%       5.500      6.000      6.000
+            1738.000       0.835       2.671       7.000   32.97%       6.500      7.000
+     EKST                  5.910      -1.294       1.000    0.23%       5.000      6.000      6.000
+            1738.000       1.054       2.364       7.000   26.29%       6.000      7.000
+     OTV                   5.565      -0.985       1.000    0.29%       5.000      5.500      6.000
+            1738.000       1.215       1.361       7.000   15.48%       6.000      6.500
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     USE THE FBITERATIONS OPTION TO INCREASE THE NUMBER OF ITERATIONS BY A FACTOR
+     OF AT LEAST TWO TO CHECK CONVERGENCE AND THAT THE PSR VALUE DOES NOT INCREASE.
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                              47
+
+Bayesian Posterior Predictive Checking using Chi-Square
+
+          95% Confidence Interval for the Difference Between
+          the Observed and the Replicated Chi-Square Values
+
+                                -30.062            27.834
+
+          Posterior Predictive P-Value              0.530
+
+
+
+MODEL RESULTS
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+
+Within Level
+
+ A2       WITH
+    SMJENA            -0.011       0.034      0.377      -0.077       0.056
+    N2                -0.152       0.026      0.000      -0.204      -0.102      *
+    SAV                0.058       0.014      0.000       0.030       0.086      *
+    EKST               0.087       0.017      0.000       0.054       0.121      *
+    OTV                0.095       0.019      0.000       0.059       0.132      *
+
+ N2       WITH
+    SMJENA             0.043       0.042      0.151      -0.039       0.125
+    SAV               -0.066       0.018      0.000      -0.101      -0.032      *
+    EKST              -0.130       0.021      0.000      -0.172      -0.090      *
+    OTV               -0.124       0.023      0.000      -0.170      -0.080      *
+
+ SAV      WITH
+    SMJENA             0.001       0.024      0.476      -0.045       0.048
+    EKST               0.123       0.012      0.000       0.100       0.147      *
+    OTV                0.156       0.013      0.000       0.131       0.182      *
+
+ EKST     WITH
+    SMJENA            -0.009       0.028      0.366      -0.064       0.045
+    OTV                0.236       0.016      0.000       0.206       0.268      *
+
+ OTV      WITH
+    SMJENA            -0.056       0.031      0.033      -0.116       0.004
+
+ Variances
+    A2                 0.845       0.030      0.000       0.790       0.905      *
+    N2                 1.282       0.045      0.000       1.199       1.374      *
+    SAV                0.393       0.014      0.000       0.367       0.421      *
+    EKST               0.544       0.019      0.000       0.508       0.583      *
+    OTV                0.656       0.023      0.000       0.613       0.703      *
+
+Between Level
+
+ A2       WITH
+    SMJENA             0.024       0.055      0.326      -0.083       0.134
+    N2                -0.432       0.086      0.000      -0.629      -0.292      *
+    SAV                0.228       0.052      0.000       0.141       0.346      *
+    EKST               0.266       0.058      0.000       0.171       0.398      *
+    OTV                0.121       0.055      0.009       0.021       0.240      *
+
+ N2       WITH
+    SMJENA            -0.106       0.089      0.103      -0.290       0.060
+    SAV               -0.299       0.081      0.000      -0.479      -0.162      *
+    EKST              -0.389       0.091      0.000      -0.595      -0.237      *
+    OTV               -0.134       0.087      0.052      -0.317       0.029
+
+ SAV      WITH
+    SMJENA            -0.083       0.056      0.057      -0.200       0.021
+    EKST               0.343       0.063      0.000       0.240       0.489      *
+    OTV                0.309       0.064      0.000       0.204       0.455      *
+
+ EKST     WITH
+    SMJENA            -0.009       0.060      0.440      -0.128       0.110
+    OTV                0.322       0.069      0.000       0.208       0.479      *
+
+ OTV      WITH
+    SMJENA            -0.008       0.063      0.449      -0.134       0.117
+
+ Means
+    A2                 6.474       0.068      0.000       6.341       6.607      *
+    N2                 2.202       0.108      0.000       1.989       2.414      *
+    SAV                6.102       0.069      0.000       5.967       6.237      *
+    EKST               5.905       0.075      0.000       5.757       6.053      *
+    OTV                5.541       0.080      0.000       5.385       5.696      *
+
+ Thresholds
+    SMJENA$1           0.481       0.080      0.000       0.326       0.641      *
+
+ Variances
+    SMJENA             0.530       0.102      0.000       0.373       0.769      *
+    A2                 0.396       0.065      0.000       0.293       0.546      *
+    N2                 1.067       0.166      0.000       0.800       1.450      *
+    SAV                0.438       0.067      0.000       0.330       0.594      *
+    EKST               0.519       0.081      0.000       0.391       0.706      *
+    OTV                0.576       0.090      0.000       0.432       0.785      *
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ A2       WITH
+    SMJENA            -0.012       0.037      0.377      -0.083       0.061
+    N2                -0.146       0.024      0.000      -0.193      -0.099      *
+    SAV                0.100       0.024      0.000       0.052       0.148      *
+    EKST               0.128       0.024      0.000       0.080       0.176      *
+    OTV                0.128       0.024      0.000       0.080       0.176      *
+
+ N2       WITH
+    SMJENA             0.038       0.037      0.151      -0.034       0.110
+    SAV               -0.093       0.024      0.000      -0.140      -0.045      *
+    EKST              -0.156       0.024      0.000      -0.203      -0.108      *
+    OTV               -0.136       0.024      0.000      -0.183      -0.088      *
+
+ SAV      WITH
+    SMJENA             0.002       0.038      0.476      -0.071       0.076
+    EKST               0.266       0.023      0.000       0.220       0.310      *
+    OTV                0.307       0.022      0.000       0.262       0.350      *
+
+ EKST     WITH
+    SMJENA            -0.013       0.038      0.366      -0.086       0.061
+    OTV                0.396       0.021      0.000       0.354       0.436      *
+
+ OTV      WITH
+    SMJENA            -0.070       0.038      0.033      -0.143       0.005
+
+ Variances
+    A2                 1.000       0.000      0.000       1.000       1.000
+    N2                 1.000       0.000      0.000       1.000       1.000
+    SAV                1.000       0.000      0.000       1.000       1.000
+    EKST               1.000       0.000      0.000       1.000       1.000
+    OTV                1.000       0.000      0.000       1.000       1.000
+
+Between Level
+
+ A2       WITH
+    SMJENA             0.053       0.115      0.326      -0.174       0.275
+    N2                -0.669       0.064      0.000      -0.776      -0.526      *
+    SAV                0.552       0.078      0.000       0.382       0.686      *
+    EKST               0.592       0.074      0.000       0.430       0.718      *
+    OTV                0.255       0.102      0.009       0.045       0.445      *
+
+ N2       WITH
+    SMJENA            -0.143       0.111      0.103      -0.353       0.079
+    SAV               -0.442       0.086      0.000      -0.595      -0.258      *
+    EKST              -0.528       0.078      0.000      -0.664      -0.358      *
+    OTV               -0.173       0.103      0.052      -0.367       0.037
+
+ SAV      WITH
+    SMJENA            -0.175       0.107      0.057      -0.376       0.043
+    EKST               0.723       0.053      0.000       0.605       0.811      *
+    OTV                0.619       0.067      0.000       0.471       0.733      *
+
+ EKST     WITH
+    SMJENA            -0.017       0.110      0.440      -0.233       0.199
+    OTV                0.592       0.071      0.000       0.437       0.713      *
+
+ OTV      WITH
+    SMJENA            -0.014       0.110      0.449      -0.230       0.201
+
+ Means
+    A2                10.290       0.825      0.000       8.747      11.982      *
+    N2                 2.133       0.192      0.000       1.766       2.521      *
+    SAV                9.222       0.696      0.000       7.900      10.627      *
+    EKST               8.194       0.625      0.000       7.009       9.458      *
+    OTV                7.299       0.565      0.000       6.237       8.448      *
+
+ Thresholds
+    SMJENA$1           0.662       0.119      0.000       0.431       0.897      *
+
+ Variances
+    SMJENA             1.000       0.000      0.000       1.000       1.000
+    A2                 1.000       0.000      0.000       1.000       1.000
+    N2                 1.000       0.000      0.000       1.000       1.000
+    SAV                1.000       0.000      0.000       1.000       1.000
+    EKST               1.000       0.000      0.000       1.000       1.000
+    OTV                1.000       0.000      0.000       1.000       1.000
+
+
+STDY Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ A2       WITH
+    SMJENA            -0.012       0.037      0.377      -0.083       0.061
+    N2                -0.146       0.024      0.000      -0.193      -0.099      *
+    SAV                0.100       0.024      0.000       0.052       0.148      *
+    EKST               0.128       0.024      0.000       0.080       0.176      *
+    OTV                0.128       0.024      0.000       0.080       0.176      *
+
+ N2       WITH
+    SMJENA             0.038       0.037      0.151      -0.034       0.110
+    SAV               -0.093       0.024      0.000      -0.140      -0.045      *
+    EKST              -0.156       0.024      0.000      -0.203      -0.108      *
+    OTV               -0.136       0.024      0.000      -0.183      -0.088      *
+
+ SAV      WITH
+    SMJENA             0.002       0.038      0.476      -0.071       0.076
+    EKST               0.266       0.023      0.000       0.220       0.310      *
+    OTV                0.307       0.022      0.000       0.262       0.350      *
+
+ EKST     WITH
+    SMJENA            -0.013       0.038      0.366      -0.086       0.061
+    OTV                0.396       0.021      0.000       0.354       0.436      *
+
+ OTV      WITH
+    SMJENA            -0.070       0.038      0.033      -0.143       0.005
+
+ Variances
+    A2                 1.000       0.000      0.000       1.000       1.000
+    N2                 1.000       0.000      0.000       1.000       1.000
+    SAV                1.000       0.000      0.000       1.000       1.000
+    EKST               1.000       0.000      0.000       1.000       1.000
+    OTV                1.000       0.000      0.000       1.000       1.000
+
+Between Level
+
+ A2       WITH
+    SMJENA             0.053       0.115      0.326      -0.174       0.275
+    N2                -0.669       0.064      0.000      -0.776      -0.526      *
+    SAV                0.552       0.078      0.000       0.382       0.686      *
+    EKST               0.592       0.074      0.000       0.430       0.718      *
+    OTV                0.255       0.102      0.009       0.045       0.445      *
+
+ N2       WITH
+    SMJENA            -0.143       0.111      0.103      -0.353       0.079
+    SAV               -0.442       0.086      0.000      -0.595      -0.258      *
+    EKST              -0.528       0.078      0.000      -0.664      -0.358      *
+    OTV               -0.173       0.103      0.052      -0.367       0.037
+
+ SAV      WITH
+    SMJENA            -0.175       0.107      0.057      -0.376       0.043
+    EKST               0.723       0.053      0.000       0.605       0.811      *
+    OTV                0.619       0.067      0.000       0.471       0.733      *
+
+ EKST     WITH
+    SMJENA            -0.017       0.110      0.440      -0.233       0.199
+    OTV                0.592       0.071      0.000       0.437       0.713      *
+
+ OTV      WITH
+    SMJENA            -0.014       0.110      0.449      -0.230       0.201
+
+ Means
+    A2                10.290       0.825      0.000       8.747      11.982      *
+    N2                 2.133       0.192      0.000       1.766       2.521      *
+    SAV                9.222       0.696      0.000       7.900      10.627      *
+    EKST               8.194       0.625      0.000       7.009       9.458      *
+    OTV                7.299       0.565      0.000       6.237       8.448      *
+
+ Thresholds
+    SMJENA$1           0.662       0.119      0.000       0.431       0.897      *
+
+ Variances
+    SMJENA             1.000       0.000      0.000       1.000       1.000
+    A2                 1.000       0.000      0.000       1.000       1.000
+    N2                 1.000       0.000      0.000       1.000       1.000
+    SAV                1.000       0.000      0.000       1.000       1.000
+    EKST               1.000       0.000      0.000       1.000       1.000
+    OTV                1.000       0.000      0.000       1.000       1.000
+
+
+STD Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ A2       WITH
+    SMJENA            -0.011       0.034      0.377      -0.077       0.056
+    N2                -0.152       0.026      0.000      -0.204      -0.102      *
+    SAV                0.058       0.014      0.000       0.030       0.086      *
+    EKST               0.087       0.017      0.000       0.054       0.121      *
+    OTV                0.095       0.019      0.000       0.059       0.132      *
+
+ N2       WITH
+    SMJENA             0.043       0.042      0.151      -0.039       0.125
+    SAV               -0.066       0.018      0.000      -0.101      -0.032      *
+    EKST              -0.130       0.021      0.000      -0.172      -0.090      *
+    OTV               -0.124       0.023      0.000      -0.170      -0.080      *
+
+ SAV      WITH
+    SMJENA             0.001       0.024      0.476      -0.045       0.048
+    EKST               0.123       0.012      0.000       0.100       0.147      *
+    OTV                0.156       0.013      0.000       0.131       0.182      *
+
+ EKST     WITH
+    SMJENA            -0.009       0.028      0.366      -0.064       0.045
+    OTV                0.236       0.016      0.000       0.206       0.268      *
+
+ OTV      WITH
+    SMJENA            -0.056       0.031      0.033      -0.116       0.004
+
+ Variances
+    A2                 0.845       0.030      0.000       0.790       0.905      *
+    N2                 1.282       0.045      0.000       1.199       1.374      *
+    SAV                0.393       0.014      0.000       0.367       0.421      *
+    EKST               0.544       0.019      0.000       0.508       0.583      *
+    OTV                0.656       0.023      0.000       0.613       0.703      *
+
+Between Level
+
+ A2       WITH
+    SMJENA             0.024       0.055      0.326      -0.083       0.134
+    N2                -0.432       0.086      0.000      -0.629      -0.292      *
+    SAV                0.228       0.052      0.000       0.141       0.346      *
+    EKST               0.266       0.058      0.000       0.171       0.398      *
+    OTV                0.121       0.055      0.009       0.021       0.240      *
+
+ N2       WITH
+    SMJENA            -0.106       0.089      0.103      -0.290       0.060
+    SAV               -0.299       0.081      0.000      -0.479      -0.162      *
+    EKST              -0.389       0.091      0.000      -0.595      -0.237      *
+    OTV               -0.134       0.087      0.052      -0.317       0.029
+
+ SAV      WITH
+    SMJENA            -0.083       0.056      0.057      -0.200       0.021
+    EKST               0.343       0.063      0.000       0.240       0.489      *
+    OTV                0.309       0.064      0.000       0.204       0.455      *
+
+ EKST     WITH
+    SMJENA            -0.009       0.060      0.440      -0.128       0.110
+    OTV                0.322       0.069      0.000       0.208       0.479      *
+
+ OTV      WITH
+    SMJENA            -0.008       0.063      0.449      -0.134       0.117
+
+ Means
+    A2                 6.474       0.068      0.000       6.341       6.607      *
+    N2                 2.202       0.108      0.000       1.989       2.414      *
+    SAV                6.102       0.069      0.000       5.967       6.237      *
+    EKST               5.905       0.075      0.000       5.757       6.053      *
+    OTV                5.541       0.080      0.000       5.385       5.696      *
+
+ Thresholds
+    SMJENA$1           0.481       0.080      0.000       0.326       0.641      *
+
+ Variances
+    SMJENA             0.530       0.102      0.000       0.373       0.769      *
+    A2                 0.396       0.065      0.000       0.293       0.546      *
+    N2                 1.067       0.166      0.000       0.800       1.450      *
+    SAV                0.438       0.067      0.000       0.330       0.594      *
+    EKST               0.519       0.081      0.000       0.391       0.706      *
+    OTV                0.576       0.090      0.000       0.432       0.785      *
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION FOR WITHIN
+
+
+           TAU
+              SMJENA$1
+              ________
+                    0
+
+
+           NU
+              SMJENA        A2            N2            SAV           EKST
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU
+              OTV
+              ________
+                    0
+
+
+           THETA
+              SMJENA        A2            N2            SAV           EKST
+              ________      ________      ________      ________      ________
+ SMJENA             0
+ A2                 1             2
+ N2                 3             4             5
+ SAV                6             7             8             9
+ EKST              10            11            12            13            14
+ OTV               15            16            17            18            19
+
+
+           THETA
+              OTV
+              ________
+ OTV               20
+
+
+     PARAMETER SPECIFICATION FOR BETWEEN
+
+
+           TAU
+              SMJENA$1
+              ________
+                   47
+
+
+           NU
+              SMJENA        A2            N2            SAV           EKST
+              ________      ________      ________      ________      ________
+                    0            21            22            23            24
+
+
+           NU
+              OTV
+              ________
+                   25
+
+
+           THETA
+              SMJENA        A2            N2            SAV           EKST
+              ________      ________      ________      ________      ________
+ SMJENA            26
+ A2                27            28
+ N2                29            30            31
+ SAV               32            33            34            35
+ EKST              36            37            38            39            40
+ OTV               41            42            43            44            45
+
+
+           THETA
+              OTV
+              ________
+ OTV               46
+
+
+     STARTING VALUES FOR WITHIN
+
+
+           TAU
+              SMJENA$1
+              ________
+                0.000
+
+
+           NU
+              SMJENA        A2            N2            SAV           EKST
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              OTV
+              ________
+                0.000
+
+
+           THETA
+              SMJENA        A2            N2            SAV           EKST
+              ________      ________      ________      ________      ________
+ SMJENA         1.000
+ A2             0.000         0.623
+ N2             0.000         0.000         1.206
+ SAV            0.000         0.000         0.000         0.418
+ EKST           0.000         0.000         0.000         0.000         0.527
+ OTV            0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              OTV
+              ________
+ OTV            0.608
+
+
+     STARTING VALUES FOR BETWEEN
+
+
+           TAU
+              SMJENA$1
+              ________
+                0.332
+
+
+           NU
+              SMJENA        A2            N2            SAV           EKST
+              ________      ________      ________      ________      ________
+                0.000         6.476         2.221         6.114         5.910
+
+
+           NU
+              OTV
+              ________
+                5.565
+
+
+           THETA
+              SMJENA        A2            N2            SAV           EKST
+              ________      ________      ________      ________      ________
+ SMJENA         1.000
+ A2             0.000         0.623
+ N2             0.000         0.000         1.206
+ SAV            0.000         0.000         0.000         0.418
+ EKST           0.000         0.000         0.000         0.000         0.527
+ OTV            0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              OTV
+              ________
+ OTV            0.608
+
+
+
+     PRIORS FOR ALL PARAMETERS            PRIOR MEAN      PRIOR VARIANCE     PRIOR STD. DEV.
+
+     Parameter 1~IW(0.000,7)
+     Parameter 2~IW(1.000,7)
+     Parameter 3~IW(0.000,7)
+     Parameter 4~IW(0.000,7)
+     Parameter 5~IW(1.000,7)
+     Parameter 6~IW(0.000,7)
+     Parameter 7~IW(0.000,7)
+     Parameter 8~IW(0.000,7)
+     Parameter 9~IW(1.000,7)
+     Parameter 10~IW(0.000,7)
+     Parameter 11~IW(0.000,7)
+     Parameter 12~IW(0.000,7)
+     Parameter 13~IW(0.000,7)
+     Parameter 14~IW(1.000,7)
+     Parameter 15~IW(0.000,7)
+     Parameter 16~IW(0.000,7)
+     Parameter 17~IW(0.000,7)
+     Parameter 18~IW(0.000,7)
+     Parameter 19~IW(0.000,7)
+     Parameter 20~IW(1.000,7)
+     Parameter 21~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 22~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 23~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 24~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 25~N(0.000,infinity)          0.0000            infinity            infinity
+     Parameter 26~IW(1.000,7)              infinity            infinity            infinity
+     Parameter 27~IW(0.000,7)              infinity            infinity            infinity
+     Parameter 28~IW(1.000,7)              infinity            infinity            infinity
+     Parameter 29~IW(0.000,7)              infinity            infinity            infinity
+     Parameter 30~IW(0.000,7)              infinity            infinity            infinity
+     Parameter 31~IW(1.000,7)              infinity            infinity            infinity
+     Parameter 32~IW(0.000,7)              infinity            infinity            infinity
+     Parameter 33~IW(0.000,7)              infinity            infinity            infinity
+     Parameter 34~IW(0.000,7)              infinity            infinity            infinity
+     Parameter 35~IW(1.000,7)              infinity            infinity            infinity
+     Parameter 36~IW(0.000,7)              infinity            infinity            infinity
+     Parameter 37~IW(0.000,7)              infinity            infinity            infinity
+     Parameter 38~IW(0.000,7)              infinity            infinity            infinity
+     Parameter 39~IW(0.000,7)              infinity            infinity            infinity
+     Parameter 40~IW(1.000,7)              infinity            infinity            infinity
+     Parameter 41~IW(0.000,7)              infinity            infinity            infinity
+     Parameter 42~IW(0.000,7)              infinity            infinity            infinity
+     Parameter 43~IW(0.000,7)              infinity            infinity            infinity
+     Parameter 44~IW(0.000,7)              infinity            infinity            infinity
+     Parameter 45~IW(0.000,7)              infinity            infinity            infinity
+     Parameter 46~IW(1.000,7)              infinity            infinity            infinity
+     Parameter 47~N(0.000,5.000)             0.0000              5.0000              2.2361
+
+
+TECHNICAL 8 OUTPUT
+
+
+   TECHNICAL 8 OUTPUT FOR BAYES ESTIMATION
+
+     PROCESSOR    BSEED
+     1            0
+     2            285380
+     3            253358
+     4            93468
+     5            608496
+     6            903420
+     7            195873
+     8            462953
+     9            939021
+     10           127215
+     11           415931
+     12           533738
+
+                     POTENTIAL       PARAMETER WITH
+     ITERATION    SCALE REDUCTION      HIGHEST PSR
+     100              1.185               4
+     200              1.091               1
+     300              1.072               7
+     400              1.044               1
+     500              1.013               15
+     600              1.021               6
+     700              1.012               16
+     800              1.013               31
+     900              1.013               34
+     1000             1.016               10
+     1100             1.010               10
+     1200             1.005               26
+     1300             1.007               26
+     1400             1.008               10
+     1500             1.007               1
+     1600             1.012               15
+     1700             1.004               3
+     1800             1.006               34
+     1900             1.006               34
+     2000             1.006               31
+     2100             1.004               17
+     2200             1.006               6
+     2300             1.008               31
+     2400             1.006               6
+     2500             1.006               15
+     2600             1.006               15
+     2700             1.007               15
+     2800             1.009               15
+     2900             1.007               15
+     3000             1.007               15
+     3100             1.008               15
+     3200             1.011               15
+     3300             1.013               15
+     3400             1.015               15
+     3500             1.018               15
+     3600             1.016               15
+     3700             1.011               15
+     3800             1.011               15
+     3900             1.005               15
+     4000             1.005               15
+     4100             1.008               15
+     4200             1.005               15
+     4300             1.005               15
+     4400             1.004               15
+     4500             1.005               15
+     4600             1.006               15
+     4700             1.006               15
+     4800             1.002               15
+     4900             1.002               4
+     5000             1.002               46
+     5100             1.002               4
+     5200             1.002               4
+     5300             1.002               47
+     5400             1.001               47
+     5500             1.001               3
+     5600             1.001               44
+     5700             1.002               47
+     5800             1.002               44
+     5900             1.003               47
+     6000             1.003               47
+     6100             1.003               47
+     6200             1.004               47
+     6300             1.003               3
+     6400             1.004               3
+     6500             1.004               3
+     6600             1.003               3
+     6700             1.004               3
+     6800             1.004               3
+     6900             1.004               3
+     7000             1.004               3
+     7100             1.003               3
+     7200             1.002               3
+     7300             1.002               3
+     7400             1.001               3
+     7500             1.001               26
+     7600             1.002               26
+     7700             1.001               26
+     7800             1.001               47
+     7900             1.002               26
+     8000             1.002               26
+     8100             1.002               26
+     8200             1.001               26
+     8300             1.002               26
+     8400             1.002               26
+     8500             1.001               26
+     8600             1.002               26
+     8700             1.002               26
+     8800             1.003               26
+     8900             1.003               26
+     9000             1.004               26
+     9100             1.003               26
+     9200             1.002               26
+     9300             1.002               26
+     9400             1.002               26
+     9500             1.002               26
+     9600             1.001               15
+     9700             1.001               15
+     9800             1.002               26
+     9900             1.002               26
+     10000            1.001               15
+     10100            1.002               15
+     10200            1.002               15
+     10300            1.003               15
+     10400            1.003               15
+     10500            1.002               15
+     10600            1.002               15
+     10700            1.002               15
+     10800            1.002               15
+     10900            1.003               15
+     11000            1.003               15
+     11100            1.002               15
+     11200            1.002               15
+     11300            1.002               15
+     11400            1.002               15
+     11500            1.001               15
+     11600            1.001               15
+     11700            1.002               15
+     11800            1.002               15
+     11900            1.002               15
+     12000            1.002               15
+     12100            1.002               15
+     12200            1.002               15
+     12300            1.001               7
+     12400            1.001               7
+     12500            1.001               15
+     12600            1.002               7
+     12700            1.002               7
+     12800            1.002               15
+     12900            1.002               15
+     13000            1.001               7
+     13100            1.001               7
+     13200            1.001               7
+     13300            1.002               7
+     13400            1.001               7
+     13500            1.001               7
+     13600            1.001               7
+     13700            1.001               7
+     13800            1.001               7
+     13900            1.001               15
+     14000            1.001               15
+     14100            1.001               15
+     14200            1.001               15
+     14300            1.001               15
+     14400            1.002               15
+     14500            1.002               15
+     14600            1.002               15
+     14700            1.002               15
+     14800            1.002               15
+     14900            1.002               15
+     15000            1.002               15
+     15100            1.002               15
+     15200            1.002               15
+     15300            1.002               15
+     15400            1.001               15
+     15500            1.001               15
+     15600            1.001               15
+     15700            1.001               15
+     15800            1.001               15
+     15900            1.001               15
+     16000            1.001               15
+     16100            1.001               15
+     16200            1.001               15
+     16300            1.001               15
+     16400            1.001               15
+     16500            1.001               15
+     16600            1.001               15
+     16700            1.001               15
+     16800            1.001               15
+     16900            1.001               19
+     17000            1.001               15
+     17100            1.001               19
+     17200            1.001               15
+     17300            1.001               15
+     17400            1.001               15
+     17500            1.001               15
+     17600            1.001               15
+     17700            1.001               26
+     17800            1.001               19
+     17900            1.001               19
+     18000            1.001               19
+     18100            1.001               26
+     18200            1.001               19
+     18300            1.001               26
+     18400            1.001               19
+     18500            1.001               19
+     18600            1.001               19
+     18700            1.001               19
+     18800            1.001               19
+     18900            1.001               19
+     19000            1.001               19
+     19100            1.001               17
+     19200            1.001               17
+     19300            1.001               17
+     19400            1.001               17
+     19500            1.001               17
+     19600            1.001               17
+     19700            1.001               19
+     19800            1.001               26
+     19900            1.001               17
+     20000            1.001               26
+     20100            1.001               26
+     20200            1.001               17
+     20300            1.001               17
+     20400            1.001               17
+     20500            1.001               17
+     20600            1.001               17
+     20700            1.001               17
+     20800            1.001               17
+     20900            1.001               17
+     21000            1.001               17
+     21100            1.001               17
+     21200            1.001               17
+     21300            1.001               17
+     21400            1.001               17
+     21500            1.002               17
+     21600            1.002               17
+     21700            1.002               17
+     21800            1.001               17
+     21900            1.001               17
+     22000            1.001               17
+     22100            1.001               17
+     22200            1.001               17
+     22300            1.001               17
+     22400            1.001               19
+     22500            1.001               17
+     22600            1.001               26
+     22700            1.001               26
+     22800            1.001               26
+     22900            1.001               26
+     23000            1.001               26
+     23100            1.001               26
+     23200            1.001               26
+     23300            1.001               26
+     23400            1.001               26
+     23500            1.001               26
+     23600            1.001               26
+     23700            1.001               26
+     23800            1.001               26
+     23900            1.001               26
+     24000            1.001               26
+     24100            1.001               26
+     24200            1.001               26
+     24300            1.000               26
+     24400            1.000               26
+     24500            1.001               26
+     24600            1.000               26
+     24700            1.000               26
+     24800            1.001               15
+     24900            1.001               15
+     25000            1.001               15
+     25100            1.001               26
+     25200            1.001               26
+     25300            1.001               26
+     25400            1.001               15
+     25500            1.001               15
+     25600            1.001               26
+     25700            1.001               15
+     25800            1.001               15
+     25900            1.001               15
+     26000            1.001               15
+     26100            1.001               15
+     26200            1.001               15
+     26300            1.001               15
+     26400            1.001               15
+     26500            1.001               15
+     26600            1.001               15
+     26700            1.001               15
+     26800            1.001               15
+     26900            1.001               15
+     27000            1.001               15
+     27100            1.001               15
+     27200            1.001               15
+     27300            1.001               15
+     27400            1.001               15
+     27500            1.001               15
+     27600            1.000               15
+     27700            1.000               15
+     27800            1.000               4
+     27900            1.000               17
+     28000            1.000               15
+     28100            1.000               15
+     28200            1.001               15
+     28300            1.000               15
+     28400            1.000               15
+     28500            1.000               15
+     28600            1.000               15
+     28700            1.000               15
+     28800            1.000               15
+     28900            1.000               4
+     29000            1.000               4
+     29100            1.000               4
+     29200            1.000               4
+     29300            1.000               4
+     29400            1.000               11
+     29500            1.000               4
+     29600            1.000               4
+     29700            1.000               4
+     29800            1.000               4
+     29900            1.000               4
+     30000            1.000               4
+     30100            1.000               4
+     30200            1.000               4
+     30300            1.000               4
+     30400            1.000               4
+     30500            1.000               4
+     30600            1.000               4
+     30700            1.001               4
+     30800            1.001               4
+     30900            1.001               4
+     31000            1.001               4
+     31100            1.001               4
+     31200            1.001               4
+     31300            1.001               4
+     31400            1.001               4
+     31500            1.001               4
+     31600            1.001               4
+     31700            1.001               4
+     31800            1.001               6
+     31900            1.000               4
+     32000            1.000               4
+     32100            1.000               4
+     32200            1.000               4
+     32300            1.000               6
+     32400            1.001               6
+     32500            1.000               6
+     32600            1.000               4
+     32700            1.000               6
+     32800            1.000               6
+     32900            1.001               6
+     33000            1.001               6
+     33100            1.001               6
+     33200            1.000               6
+     33300            1.000               6
+     33400            1.000               10
+     33500            1.001               10
+     33600            1.001               10
+     33700            1.000               10
+     33800            1.000               6
+     33900            1.000               6
+     34000            1.000               15
+     34100            1.000               6
+     34200            1.000               6
+     34300            1.001               6
+     34400            1.000               6
+     34500            1.001               6
+     34600            1.001               6
+     34700            1.001               6
+     34800            1.000               6
+     34900            1.000               6
+     35000            1.000               6
+     35100            1.000               6
+     35200            1.001               6
+     35300            1.001               6
+     35400            1.001               6
+     35500            1.001               6
+     35600            1.001               6
+     35700            1.001               6
+     35800            1.001               6
+     35900            1.001               6
+     36000            1.001               6
+     36100            1.001               6
+     36200            1.001               6
+     36300            1.000               6
+     36400            1.000               6
+     36500            1.000               6
+     36600            1.000               6
+     36700            1.000               6
+     36800            1.000               6
+     36900            1.001               6
+     37000            1.001               6
+     37100            1.001               6
+     37200            1.001               6
+     37300            1.001               6
+     37400            1.000               6
+     37500            1.001               6
+     37600            1.001               6
+     37700            1.001               6
+     37800            1.001               6
+     37900            1.001               6
+     38000            1.001               6
+     38100            1.001               6
+     38200            1.001               6
+     38300            1.001               6
+     38400            1.001               6
+     38500            1.001               6
+     38600            1.001               6
+     38700            1.001               6
+     38800            1.001               6
+     38900            1.001               6
+     39000            1.001               6
+     39100            1.001               6
+     39200            1.001               6
+     39300            1.001               6
+     39400            1.001               6
+     39500            1.001               6
+     39600            1.000               6
+     39700            1.000               6
+     39800            1.000               6
+     39900            1.000               6
+     40000            1.000               6
+     40100            1.000               6
+     40200            1.001               6
+     40300            1.000               6
+     40400            1.000               6
+     40500            1.000               6
+     40600            1.000               6
+     40700            1.000               6
+     40800            1.000               6
+     40900            1.000               6
+     41000            1.000               6
+     41100            1.000               6
+     41200            1.000               6
+     41300            1.000               6
+     41400            1.000               6
+     41500            1.000               6
+     41600            1.000               2
+     41700            1.000               2
+     41800            1.000               2
+     41900            1.000               14
+     42000            1.000               14
+     42100            1.000               2
+     42200            1.000               2
+     42300            1.000               2
+     42400            1.000               2
+     42500            1.000               2
+     42600            1.000               2
+     42700            1.000               2
+     42800            1.000               2
+     42900            1.000               2
+     43000            1.000               2
+     43100            1.000               2
+     43200            1.000               2
+     43300            1.000               2
+     43400            1.000               2
+     43500            1.000               2
+     43600            1.000               2
+     43700            1.000               2
+     43800            1.000               2
+     43900            1.000               2
+     44000            1.000               2
+     44100            1.000               2
+     44200            1.000               2
+     44300            1.000               2
+     44400            1.000               2
+     44500            1.000               2
+     44600            1.000               2
+     44700            1.000               14
+     44800            1.000               14
+     44900            1.000               14
+     45000            1.000               14
+     45100            1.000               14
+     45200            1.000               14
+     45300            1.000               14
+     45400            1.000               14
+     45500            1.000               6
+     45600            1.000               3
+     45700            1.000               14
+     45800            1.000               14
+     45900            1.000               14
+     46000            1.000               14
+     46100            1.000               14
+     46200            1.000               14
+     46300            1.000               14
+     46400            1.000               14
+     46500            1.000               14
+     46600            1.000               3
+     46700            1.000               14
+     46800            1.000               14
+     46900            1.000               3
+     47000            1.000               14
+     47100            1.000               14
+     47200            1.000               14
+     47300            1.000               14
+     47400            1.000               14
+     47500            1.000               14
+     47600            1.000               14
+     47700            1.000               14
+     47800            1.000               14
+     47900            1.000               14
+     48000            1.000               14
+     48100            1.000               14
+     48200            1.000               14
+     48300            1.000               14
+     48400            1.000               14
+     48500            1.000               14
+     48600            1.000               14
+     48700            1.000               14
+     48800            1.000               14
+     48900            1.000               14
+     49000            1.000               14
+     49100            1.000               19
+     49200            1.000               1
+     49300            1.000               14
+     49400            1.000               19
+     49500            1.000               14
+     49600            1.000               14
+     49700            1.000               14
+     49800            1.000               14
+     49900            1.000               14
+     50000            1.000               14
+     50100            1.000               14
+     50200            1.000               1
+     50300            1.000               1
+     50400            1.000               1
+     50500            1.000               14
+     50600            1.000               19
+     50700            1.000               19
+     50800            1.000               19
+     50900            1.000               1
+     51000            1.000               1
+     51100            1.000               1
+     51200            1.000               14
+     51300            1.000               14
+     51400            1.000               14
+     51500            1.000               14
+     51600            1.000               19
+     51700            1.000               14
+     51800            1.000               45
+     51900            1.000               19
+     52000            1.000               19
+     52100            1.000               19
+     52200            1.000               1
+     52300            1.000               1
+     52400            1.000               1
+     52500            1.000               1
+     52600            1.000               1
+     52700            1.000               1
+     52800            1.000               1
+     52900            1.000               1
+     53000            1.000               1
+     53100            1.000               1
+     53200            1.000               1
+     53300            1.000               1
+     53400            1.000               1
+     53500            1.000               1
+     53600            1.000               1
+     53700            1.000               1
+     53800            1.000               1
+     53900            1.000               1
+     54000            1.000               1
+     54100            1.000               1
+     54200            1.000               1
+     54300            1.000               1
+     54400            1.000               1
+     54500            1.000               1
+     54600            1.000               1
+     54700            1.000               1
+     54800            1.000               1
+     54900            1.000               1
+     55000            1.000               1
+     55100            1.000               1
+     55200            1.000               1
+     55300            1.000               1
+     55400            1.000               1
+     55500            1.000               1
+     55600            1.000               1
+     55700            1.000               1
+     55800            1.000               1
+     55900            1.000               1
+     56000            1.001               1
+     56100            1.000               1
+     56200            1.000               1
+     56300            1.000               1
+     56400            1.000               1
+     56500            1.000               1
+     56600            1.000               1
+     56700            1.000               1
+     56800            1.000               1
+     56900            1.000               1
+     57000            1.001               1
+     57100            1.001               1
+     57200            1.001               1
+     57300            1.001               1
+     57400            1.001               1
+     57500            1.001               1
+     57600            1.001               1
+     57700            1.001               1
+     57800            1.001               1
+     57900            1.001               1
+     58000            1.001               1
+     58100            1.001               1
+     58200            1.001               1
+     58300            1.001               1
+     58400            1.001               1
+     58500            1.001               1
+     58600            1.001               1
+     58700            1.001               1
+     58800            1.001               1
+     58900            1.001               1
+     59000            1.001               1
+     59100            1.001               1
+     59200            1.001               1
+     59300            1.001               1
+     59400            1.001               1
+     59500            1.001               1
+     59600            1.001               1
+     59700            1.001               1
+     59800            1.001               1
+     59900            1.001               1
+     60000            1.001               1
+     60100            1.001               1
+     60200            1.001               1
+     60300            1.001               1
+     60400            1.001               1
+     60500            1.001               1
+     60600            1.001               1
+     60700            1.001               1
+     60800            1.001               1
+     60900            1.001               1
+     61000            1.001               1
+     61100            1.001               1
+     61200            1.001               1
+     61300            1.001               1
+     61400            1.001               1
+     61500            1.001               1
+     61600            1.001               1
+     61700            1.001               1
+     61800            1.001               1
+     61900            1.001               1
+     62000            1.001               1
+     62100            1.001               1
+     62200            1.001               1
+     62300            1.001               1
+     62400            1.001               1
+     62500            1.001               1
+     62600            1.001               1
+     62700            1.001               1
+     62800            1.001               1
+     62900            1.001               1
+     63000            1.001               1
+     63100            1.001               1
+     63200            1.001               1
+     63300            1.001               1
+     63400            1.001               1
+     63500            1.001               1
+     63600            1.001               1
+     63700            1.001               1
+     63800            1.001               1
+     63900            1.001               1
+     64000            1.001               1
+     64100            1.001               1
+     64200            1.001               1
+     64300            1.001               1
+     64400            1.001               1
+     64500            1.001               1
+     64600            1.001               1
+     64700            1.001               1
+     64800            1.001               1
+     64900            1.001               1
+     65000            1.001               1
+     65100            1.001               1
+     65200            1.001               1
+     65300            1.001               1
+     65400            1.001               1
+     65500            1.001               1
+     65600            1.001               1
+     65700            1.001               1
+     65800            1.001               1
+     65900            1.001               1
+     66000            1.001               1
+     66100            1.001               1
+     66200            1.001               1
+     66300            1.001               1
+     66400            1.001               1
+     66500            1.001               1
+     66600            1.001               1
+     66700            1.001               1
+     66800            1.001               1
+     66900            1.001               1
+     67000            1.001               1
+     67100            1.001               1
+     67200            1.001               1
+     67300            1.001               1
+     67400            1.001               1
+     67500            1.001               1
+     67600            1.001               1
+     67700            1.001               1
+     67800            1.001               1
+     67900            1.001               1
+     68000            1.001               1
+     68100            1.001               1
+     68200            1.001               1
+     68300            1.001               1
+     68400            1.001               1
+     68500            1.001               1
+     68600            1.001               1
+     68700            1.001               1
+     68800            1.001               1
+     68900            1.001               1
+     69000            1.001               1
+     69100            1.001               1
+     69200            1.001               1
+     69300            1.001               1
+     69400            1.001               1
+     69500            1.001               1
+     69600            1.001               1
+     69700            1.001               1
+     69800            1.001               1
+     69900            1.001               1
+     70000            1.001               1
+     70100            1.001               1
+     70200            1.001               1
+     70300            1.001               1
+     70400            1.001               1
+     70500            1.000               1
+     70600            1.000               1
+     70700            1.000               1
+     70800            1.000               1
+     70900            1.000               1
+     71000            1.000               1
+     71100            1.000               1
+     71200            1.000               1
+     71300            1.000               1
+     71400            1.000               1
+     71500            1.000               1
+     71600            1.000               1
+     71700            1.000               1
+     71800            1.000               1
+     71900            1.000               1
+     72000            1.000               1
+     72100            1.000               1
+     72200            1.000               1
+     72300            1.001               1
+     72400            1.000               1
+     72500            1.001               1
+     72600            1.001               1
+     72700            1.000               1
+     72800            1.000               1
+     72900            1.000               1
+     73000            1.000               1
+     73100            1.000               1
+     73200            1.000               1
+     73300            1.000               1
+     73400            1.000               17
+     73500            1.000               1
+     73600            1.000               1
+     73700            1.000               1
+     73800            1.000               1
+     73900            1.000               1
+     74000            1.000               1
+     74100            1.000               1
+     74200            1.000               1
+     74300            1.000               1
+     74400            1.000               1
+     74500            1.000               1
+     74600            1.000               1
+     74700            1.000               1
+     74800            1.000               1
+     74900            1.000               1
+     75000            1.000               1
+     75100            1.000               1
+     75200            1.000               1
+     75300            1.000               1
+     75400            1.000               1
+     75500            1.000               1
+     75600            1.000               1
+     75700            1.000               1
+     75800            1.000               1
+     75900            1.000               1
+     76000            1.000               1
+     76100            1.000               1
+     76200            1.000               1
+     76300            1.000               1
+     76400            1.000               1
+     76500            1.000               18
+     76600            1.000               1
+     76700            1.000               1
+     76800            1.000               1
+     76900            1.000               1
+     77000            1.000               1
+     77100            1.000               1
+     77200            1.000               1
+     77300            1.000               1
+     77400            1.000               1
+     77500            1.000               1
+     77600            1.000               1
+     77700            1.000               1
+     77800            1.000               1
+     77900            1.000               1
+     78000            1.000               1
+     78100            1.000               1
+     78200            1.000               9
+     78300            1.000               9
+     78400            1.000               1
+     78500            1.000               9
+     78600            1.000               18
+     78700            1.000               18
+     78800            1.000               18
+     78900            1.000               9
+     79000            1.000               18
+     79100            1.000               18
+     79200            1.000               18
+     79300            1.000               18
+     79400            1.000               18
+     79500            1.000               18
+     79600            1.000               1
+     79700            1.000               1
+     79800            1.000               1
+     79900            1.000               1
+     80000            1.000               1
+     80100            1.000               1
+     80200            1.000               1
+     80300            1.000               1
+     80400            1.000               1
+     80500            1.000               1
+     80600            1.000               1
+     80700            1.000               1
+     80800            1.000               1
+     80900            1.000               1
+     81000            1.000               1
+     81100            1.000               1
+     81200            1.000               1
+     81300            1.000               1
+     81400            1.000               1
+     81500            1.000               1
+     81600            1.000               1
+     81700            1.000               1
+     81800            1.000               1
+     81900            1.000               1
+     82000            1.000               1
+     82100            1.000               1
+     82200            1.000               1
+     82300            1.000               1
+     82400            1.000               1
+     82500            1.000               1
+     82600            1.000               1
+     82700            1.000               1
+     82800            1.000               1
+     82900            1.000               1
+     83000            1.000               1
+     83100            1.000               1
+     83200            1.000               1
+     83300            1.000               1
+     83400            1.000               1
+     83500            1.000               1
+     83600            1.000               1
+     83700            1.000               1
+     83800            1.000               1
+     83900            1.000               1
+     84000            1.000               1
+     84100            1.000               1
+     84200            1.000               1
+     84300            1.000               1
+     84400            1.000               1
+     84500            1.000               1
+     84600            1.000               1
+     84700            1.000               1
+     84800            1.000               1
+     84900            1.000               1
+     85000            1.000               1
+     85100            1.000               1
+     85200            1.000               1
+     85300            1.000               1
+     85400            1.000               1
+     85500            1.000               1
+     85600            1.000               1
+     85700            1.000               1
+     85800            1.000               1
+     85900            1.000               1
+     86000            1.000               1
+     86100            1.000               1
+     86200            1.000               1
+     86300            1.000               1
+     86400            1.000               1
+     86500            1.000               1
+     86600            1.000               1
+     86700            1.000               1
+     86800            1.000               1
+     86900            1.000               1
+     87000            1.000               1
+     87100            1.000               1
+     87200            1.000               1
+     87300            1.000               1
+     87400            1.000               1
+     87500            1.000               1
+     87600            1.000               1
+     87700            1.000               1
+     87800            1.000               1
+     87900            1.000               1
+     88000            1.000               1
+     88100            1.000               18
+     88200            1.000               18
+     88300            1.000               18
+     88400            1.000               18
+     88500            1.000               18
+     88600            1.000               18
+     88700            1.000               18
+     88800            1.000               18
+     88900            1.000               18
+     89000            1.000               18
+     89100            1.000               18
+     89200            1.000               18
+     89300            1.000               18
+     89400            1.000               18
+     89500            1.000               18
+     89600            1.000               18
+     89700            1.000               18
+     89800            1.000               18
+     89900            1.000               18
+     90000            1.000               18
+     90100            1.000               18
+     90200            1.000               18
+     90300            1.000               18
+     90400            1.000               18
+     90500            1.000               18
+     90600            1.000               18
+     90700            1.000               18
+     90800            1.000               18
+     90900            1.000               18
+     91000            1.000               18
+     91100            1.000               18
+     91200            1.000               18
+     91300            1.000               18
+     91400            1.000               18
+     91500            1.000               18
+     91600            1.000               18
+     91700            1.000               18
+     91800            1.000               18
+     91900            1.000               18
+     92000            1.000               18
+     92100            1.000               18
+     92200            1.000               18
+     92300            1.000               18
+     92400            1.000               18
+     92500            1.000               18
+     92600            1.000               18
+     92700            1.000               18
+     92800            1.000               18
+     92900            1.000               18
+     93000            1.000               18
+     93100            1.000               18
+     93200            1.000               18
+     93300            1.000               18
+     93400            1.000               18
+     93500            1.000               18
+     93600            1.000               18
+     93700            1.000               18
+     93800            1.000               18
+     93900            1.000               18
+     94000            1.000               18
+     94100            1.000               18
+     94200            1.000               18
+     94300            1.000               18
+     94400            1.000               18
+     94500            1.000               18
+     94600            1.000               18
+     94700            1.000               18
+     94800            1.000               18
+     94900            1.000               18
+     95000            1.000               18
+     95100            1.000               18
+     95200            1.000               18
+     95300            1.000               18
+     95400            1.000               18
+     95500            1.000               18
+     95600            1.000               18
+     95700            1.000               18
+     95800            1.000               18
+     95900            1.000               18
+     96000            1.000               18
+     96100            1.000               18
+     96200            1.000               18
+     96300            1.000               18
+     96400            1.000               18
+     96500            1.000               18
+     96600            1.000               18
+     96700            1.000               18
+     96800            1.000               18
+     96900            1.000               18
+     97000            1.000               18
+     97100            1.000               18
+     97200            1.000               18
+     97300            1.000               18
+     97400            1.000               18
+     97500            1.000               18
+     97600            1.000               18
+     97700            1.000               18
+     97800            1.000               18
+     97900            1.000               18
+     98000            1.000               18
+     98100            1.000               18
+     98200            1.000               18
+     98300            1.000               18
+     98400            1.000               18
+     98500            1.000               18
+     98600            1.000               18
+     98700            1.000               18
+     98800            1.000               18
+     98900            1.000               18
+     99000            1.000               18
+     99100            1.000               18
+     99200            1.000               18
+     99300            1.000               18
+     99400            1.000               18
+     99500            1.000               18
+     99600            1.000               18
+     99700            1.000               18
+     99800            1.000               18
+     99900            1.000               18
+     100000           1.000               18
+     100100           1.000               18
+     100200           1.000               18
+     100300           1.000               18
+     100400           1.000               18
+     100500           1.000               18
+     100600           1.000               18
+     100700           1.000               18
+     100800           1.000               18
+     100900           1.000               18
+     101000           1.000               1
+     101100           1.000               1
+     101200           1.000               1
+     101300           1.000               1
+     101400           1.000               1
+     101500           1.000               1
+     101600           1.000               1
+     101700           1.000               18
+     101800           1.000               18
+     101900           1.000               18
+     102000           1.000               18
+     102100           1.000               1
+     102200           1.000               18
+     102300           1.000               18
+     102400           1.000               18
+     102500           1.000               18
+     102600           1.000               18
+     102700           1.000               18
+     102800           1.000               18
+     102900           1.000               18
+     103000           1.000               18
+     103100           1.000               18
+     103200           1.000               18
+     103300           1.000               18
+     103400           1.000               18
+     103500           1.000               18
+     103600           1.000               18
+     103700           1.000               18
+     103800           1.000               18
+     103900           1.000               18
+     104000           1.000               18
+     104100           1.000               18
+     104200           1.000               18
+     104300           1.000               18
+     104400           1.000               18
+     104500           1.000               18
+     104600           1.000               18
+     104700           1.000               18
+     104800           1.000               6
+     104900           1.000               18
+     105000           1.000               26
+     105100           1.000               26
+     105200           1.000               26
+     105300           1.000               26
+     105400           1.000               26
+     105500           1.000               26
+     105600           1.000               26
+     105700           1.000               26
+     105800           1.000               6
+     105900           1.000               6
+     106000           1.000               26
+     106100           1.000               6
+     106200           1.000               6
+     106300           1.000               6
+     106400           1.000               6
+     106500           1.000               6
+     106600           1.000               6
+     106700           1.000               6
+     106800           1.000               26
+     106900           1.000               26
+     107000           1.000               6
+     107100           1.000               6
+     107200           1.000               6
+     107300           1.000               6
+     107400           1.000               6
+     107500           1.000               6
+     107600           1.000               6
+     107700           1.000               6
+     107800           1.000               6
+     107900           1.000               6
+     108000           1.000               6
+     108100           1.000               6
+     108200           1.000               6
+     108300           1.000               6
+     108400           1.000               6
+     108500           1.000               6
+     108600           1.000               6
+     108700           1.000               6
+     108800           1.000               6
+     108900           1.000               6
+     109000           1.000               6
+     109100           1.000               6
+     109200           1.000               6
+     109300           1.000               6
+     109400           1.000               6
+     109500           1.000               6
+     109600           1.000               6
+     109700           1.000               6
+     109800           1.000               6
+     109900           1.000               6
+     110000           1.000               6
+     110100           1.000               6
+     110200           1.000               6
+     110300           1.000               6
+     110400           1.000               6
+     110500           1.000               6
+     110600           1.000               6
+     110700           1.000               6
+     110800           1.000               6
+     110900           1.000               6
+     111000           1.000               6
+     111100           1.000               6
+     111200           1.000               6
+     111300           1.000               6
+     111400           1.000               6
+     111500           1.000               6
+     111600           1.000               6
+     111700           1.000               6
+     111800           1.000               6
+     111900           1.000               6
+     112000           1.000               6
+     112100           1.000               6
+     112200           1.000               6
+     112300           1.000               6
+     112400           1.000               6
+     112500           1.000               6
+     112600           1.000               6
+     112700           1.000               6
+     112800           1.000               6
+     112900           1.000               6
+     113000           1.000               2
+     113100           1.000               6
+     113200           1.000               6
+     113300           1.000               2
+     113400           1.000               2
+     113500           1.000               6
+     113600           1.000               6
+     113700           1.000               6
+     113800           1.000               6
+     113900           1.000               6
+     114000           1.000               6
+     114100           1.000               6
+     114200           1.000               6
+     114300           1.000               6
+     114400           1.000               6
+     114500           1.000               6
+     114600           1.000               6
+     114700           1.000               6
+     114800           1.000               6
+     114900           1.000               6
+     115000           1.000               6
+     115100           1.000               6
+     115200           1.000               6
+     115300           1.000               6
+     115400           1.000               6
+     115500           1.000               6
+     115600           1.000               6
+     115700           1.000               6
+     115800           1.000               6
+     115900           1.000               6
+     116000           1.000               6
+     116100           1.000               6
+     116200           1.000               6
+     116300           1.000               6
+     116400           1.000               6
+     116500           1.000               6
+     116600           1.000               2
+     116700           1.000               2
+     116800           1.000               2
+     116900           1.000               6
+     117000           1.000               2
+     117100           1.000               2
+     117200           1.000               2
+     117300           1.000               2
+     117400           1.000               2
+     117500           1.000               2
+     117600           1.000               2
+     117700           1.000               2
+     117800           1.000               2
+     117900           1.000               2
+     118000           1.000               2
+     118100           1.000               2
+     118200           1.000               2
+     118300           1.000               2
+     118400           1.000               2
+     118500           1.000               2
+     118600           1.000               2
+     118700           1.000               2
+     118800           1.000               2
+     118900           1.000               2
+     119000           1.000               2
+     119100           1.000               2
+     119200           1.000               2
+     119300           1.000               2
+     119400           1.000               2
+     119500           1.000               2
+     119600           1.000               2
+     119700           1.000               2
+     119800           1.000               2
+     119900           1.000               2
+     120000           1.000               2
+     120100           1.000               2
+     120200           1.000               2
+     120300           1.000               2
+     120400           1.000               2
+     120500           1.000               2
+     120600           1.000               2
+     120700           1.000               2
+     120800           1.000               2
+     120900           1.000               2
+     121000           1.000               2
+     121100           1.000               2
+     121200           1.000               2
+     121300           1.000               2
+     121400           1.000               2
+     121500           1.000               2
+     121600           1.000               2
+     121700           1.000               2
+     121800           1.000               2
+     121900           1.000               2
+     122000           1.000               2
+     122100           1.000               2
+     122200           1.000               2
+     122300           1.000               2
+     122400           1.000               2
+     122500           1.000               2
+     122600           1.000               2
+     122700           1.000               2
+     122800           1.000               2
+     122900           1.000               2
+     123000           1.000               2
+     123100           1.000               2
+     123200           1.000               30
+     123300           1.000               30
+     123400           1.000               9
+     123500           1.000               9
+     123600           1.000               2
+     123700           1.000               9
+     123800           1.000               9
+     123900           1.000               9
+     124000           1.000               9
+     124100           1.000               9
+     124200           1.000               9
+     124300           1.000               9
+     124400           1.000               9
+     124500           1.000               9
+     124600           1.000               2
+     124700           1.000               2
+     124800           1.000               2
+     124900           1.000               2
+     125000           1.000               2
+     125100           1.000               2
+     125200           1.000               2
+     125300           1.000               2
+     125400           1.000               2
+     125500           1.000               9
+     125600           1.000               9
+     125700           1.000               9
+     125800           1.000               9
+     125900           1.000               9
+     126000           1.000               9
+     126100           1.000               9
+     126200           1.000               9
+     126300           1.000               9
+     126400           1.000               9
+     126500           1.000               9
+     126600           1.000               9
+     126700           1.000               9
+     126800           1.000               9
+     126900           1.000               9
+     127000           1.000               9
+     127100           1.000               9
+     127200           1.000               9
+     127300           1.000               9
+     127400           1.000               9
+     127500           1.000               9
+     127600           1.000               9
+     127700           1.000               9
+     127800           1.000               9
+     127900           1.000               9
+     128000           1.000               9
+     128100           1.000               9
+     128200           1.000               9
+     128300           1.000               9
+     128400           1.000               9
+     128500           1.000               9
+     128600           1.000               9
+     128700           1.000               9
+     128800           1.000               9
+     128900           1.000               9
+     129000           1.000               9
+     129100           1.000               9
+     129200           1.000               9
+     129300           1.000               9
+     129400           1.000               9
+     129500           1.000               9
+     129600           1.000               9
+     129700           1.000               9
+     129800           1.000               9
+     129900           1.000               9
+     130000           1.000               9
+     130100           1.000               9
+     130200           1.000               9
+     130300           1.000               9
+     130400           1.000               9
+     130500           1.000               9
+     130600           1.000               9
+     130700           1.000               9
+     130800           1.000               9
+     130900           1.000               9
+     131000           1.000               9
+     131100           1.000               2
+     131200           1.000               9
+     131300           1.000               2
+     131400           1.000               2
+     131500           1.000               2
+     131600           1.000               2
+     131700           1.000               2
+     131800           1.000               2
+     131900           1.000               2
+     132000           1.000               2
+     132100           1.000               2
+     132200           1.000               2
+     132300           1.000               2
+     132400           1.000               2
+     132500           1.000               2
+     132600           1.000               2
+     132700           1.000               2
+     132800           1.000               2
+     132900           1.000               2
+     133000           1.000               2
+     133100           1.000               2
+     133200           1.000               2
+     133300           1.000               2
+     133400           1.000               2
+     133500           1.000               2
+     133600           1.000               2
+     133700           1.000               2
+     133800           1.000               2
+     133900           1.000               2
+     134000           1.000               2
+     134100           1.000               2
+     134200           1.000               2
+     134300           1.000               2
+     134400           1.000               2
+     134500           1.000               2
+     134600           1.000               2
+     134700           1.000               2
+     134800           1.000               2
+     134900           1.000               2
+     135000           1.000               2
+     135100           1.000               2
+     135200           1.000               2
+     135300           1.000               2
+     135400           1.000               2
+     135500           1.000               2
+     135600           1.000               2
+     135700           1.000               2
+     135800           1.000               2
+     135900           1.000               2
+     136000           1.000               2
+     136100           1.000               2
+     136200           1.000               7
+     136300           1.000               7
+     136400           1.000               7
+     136500           1.000               2
+     136600           1.000               2
+     136700           1.000               7
+     136800           1.000               2
+     136900           1.000               7
+     137000           1.000               2
+     137100           1.000               2
+     137200           1.000               9
+     137300           1.000               2
+     137400           1.000               2
+     137500           1.000               2
+     137600           1.000               2
+     137700           1.000               2
+     137800           1.000               2
+     137900           1.000               9
+     138000           1.000               2
+     138100           1.000               2
+     138200           1.000               2
+     138300           1.000               2
+     138400           1.000               2
+     138500           1.000               2
+     138600           1.000               2
+     138700           1.000               2
+     138800           1.000               2
+     138900           1.000               2
+     139000           1.000               2
+     139100           1.000               2
+     139200           1.000               2
+     139300           1.000               2
+     139400           1.000               2
+     139500           1.000               15
+     139600           1.000               15
+     139700           1.000               15
+     139800           1.000               15
+     139900           1.000               2
+     140000           1.000               2
+     140100           1.000               2
+     140200           1.000               2
+     140300           1.000               2
+     140400           1.000               2
+     140500           1.000               2
+     140600           1.000               2
+     140700           1.000               2
+     140800           1.000               2
+     140900           1.000               2
+     141000           1.000               2
+     141100           1.000               2
+     141200           1.000               2
+     141300           1.000               2
+     141400           1.000               2
+     141500           1.000               2
+     141600           1.000               2
+     141700           1.000               2
+     141800           1.000               2
+     141900           1.000               2
+     142000           1.000               2
+     142100           1.000               2
+     142200           1.000               2
+     142300           1.000               2
+     142400           1.000               2
+     142500           1.000               2
+     142600           1.000               2
+     142700           1.000               2
+     142800           1.000               2
+     142900           1.000               2
+     143000           1.000               2
+     143100           1.000               2
+     143200           1.000               2
+     143300           1.000               2
+     143400           1.000               2
+     143500           1.000               2
+     143600           1.000               2
+     143700           1.000               2
+     143800           1.000               2
+     143900           1.000               15
+     144000           1.000               15
+     144100           1.000               2
+     144200           1.000               15
+     144300           1.000               15
+     144400           1.000               15
+     144500           1.000               15
+     144600           1.000               15
+     144700           1.000               15
+     144800           1.000               15
+     144900           1.000               15
+     145000           1.000               15
+     145100           1.000               15
+     145200           1.000               15
+     145300           1.000               15
+     145400           1.000               15
+     145500           1.000               15
+     145600           1.000               15
+     145700           1.000               15
+     145800           1.000               15
+     145900           1.000               15
+     146000           1.000               15
+     146100           1.000               15
+     146200           1.000               15
+     146300           1.000               15
+     146400           1.000               15
+     146500           1.000               15
+     146600           1.000               15
+     146700           1.000               15
+     146800           1.000               15
+     146900           1.000               15
+     147000           1.000               15
+     147100           1.000               15
+     147200           1.000               15
+     147300           1.000               15
+     147400           1.000               15
+     147500           1.000               15
+     147600           1.000               15
+     147700           1.000               15
+     147800           1.000               15
+     147900           1.000               15
+     148000           1.000               15
+     148100           1.000               15
+     148200           1.000               15
+     148300           1.000               15
+     148400           1.000               15
+     148500           1.000               15
+     148600           1.000               15
+     148700           1.000               15
+     148800           1.000               15
+     148900           1.000               15
+     149000           1.000               15
+     149100           1.000               15
+     149200           1.000               15
+     149300           1.000               15
+     149400           1.000               15
+     149500           1.000               15
+     149600           1.000               15
+     149700           1.000               15
+     149800           1.000               15
+     149900           1.000               15
+     150000           1.000               15
+     150100           1.000               15
+     150200           1.000               15
+     150300           1.000               15
+     150400           1.000               15
+     150500           1.000               15
+     150600           1.000               15
+     150700           1.000               15
+     150800           1.000               15
+     150900           1.000               15
+     151000           1.000               15
+     151100           1.000               15
+     151200           1.000               15
+     151300           1.000               15
+     151400           1.000               15
+     151500           1.000               15
+     151600           1.000               15
+     151700           1.000               15
+     151800           1.000               15
+     151900           1.000               15
+     152000           1.000               15
+     152100           1.000               15
+     152200           1.000               15
+     152300           1.000               15
+     152400           1.000               15
+     152500           1.000               15
+     152600           1.000               15
+     152700           1.000               15
+     152800           1.000               15
+     152900           1.000               15
+     153000           1.000               15
+     153100           1.000               15
+     153200           1.000               15
+     153300           1.000               15
+     153400           1.000               15
+     153500           1.000               15
+     153600           1.000               15
+     153700           1.000               15
+     153800           1.000               15
+     153900           1.000               15
+     154000           1.000               15
+     154100           1.000               15
+     154200           1.000               15
+     154300           1.000               15
+     154400           1.000               15
+     154500           1.000               15
+     154600           1.000               15
+     154700           1.000               15
+     154800           1.000               15
+     154900           1.000               15
+     155000           1.000               15
+     155100           1.000               15
+     155200           1.000               15
+     155300           1.000               15
+     155400           1.000               15
+     155500           1.000               15
+     155600           1.000               15
+     155700           1.000               15
+     155800           1.000               15
+     155900           1.000               15
+     156000           1.000               15
+     156100           1.000               15
+     156200           1.000               15
+     156300           1.000               15
+     156400           1.000               15
+     156500           1.000               15
+     156600           1.000               15
+     156700           1.000               15
+     156800           1.000               15
+     156900           1.000               15
+     157000           1.000               15
+     157100           1.000               15
+     157200           1.000               15
+     157300           1.000               15
+     157400           1.000               15
+     157500           1.000               15
+     157600           1.000               15
+     157700           1.000               15
+     157800           1.000               15
+     157900           1.000               15
+     158000           1.000               15
+     158100           1.000               15
+     158200           1.000               15
+     158300           1.000               15
+     158400           1.000               15
+     158500           1.000               15
+     158600           1.000               15
+     158700           1.000               15
+     158800           1.000               15
+     158900           1.000               15
+     159000           1.000               15
+     159100           1.000               15
+     159200           1.000               15
+     159300           1.000               15
+     159400           1.000               15
+     159500           1.000               15
+     159600           1.000               15
+     159700           1.000               15
+     159800           1.000               15
+     159900           1.000               15
+     160000           1.000               15
+     160100           1.000               15
+     160200           1.000               15
+     160300           1.000               15
+     160400           1.000               15
+     160500           1.000               15
+     160600           1.000               15
+     160700           1.000               15
+     160800           1.000               15
+     160900           1.000               15
+     161000           1.000               15
+     161100           1.000               15
+     161200           1.000               15
+     161300           1.000               15
+     161400           1.000               15
+     161500           1.000               15
+     161600           1.000               15
+     161700           1.000               15
+     161800           1.000               15
+     161900           1.000               15
+     162000           1.000               15
+     162100           1.000               15
+     162200           1.000               15
+     162300           1.000               15
+     162400           1.000               15
+     162500           1.000               15
+     162600           1.000               15
+     162700           1.000               15
+     162800           1.000               15
+     162900           1.000               15
+     163000           1.000               15
+     163100           1.000               15
+     163200           1.000               15
+     163300           1.000               15
+     163400           1.000               15
+     163500           1.000               15
+     163600           1.000               15
+     163700           1.000               15
+     163800           1.000               15
+     163900           1.000               15
+     164000           1.000               15
+     164100           1.000               15
+     164200           1.000               15
+     164300           1.000               15
+     164400           1.000               15
+     164500           1.000               15
+     164600           1.000               15
+     164700           1.000               15
+     164800           1.000               15
+     164900           1.000               15
+     165000           1.000               15
+     165100           1.000               15
+     165200           1.000               15
+     165300           1.000               15
+     165400           1.000               15
+     165500           1.000               15
+     165600           1.000               15
+     165700           1.000               15
+     165800           1.000               15
+     165900           1.000               15
+     166000           1.000               15
+     166100           1.000               15
+     166200           1.000               15
+     166300           1.000               15
+     166400           1.000               15
+     166500           1.000               15
+     166600           1.000               15
+     166700           1.000               15
+     166800           1.000               15
+     166900           1.000               15
+     167000           1.000               15
+     167100           1.000               15
+     167200           1.000               15
+     167300           1.000               15
+     167400           1.000               15
+     167500           1.000               15
+     167600           1.000               15
+     167700           1.000               15
+     167800           1.000               15
+     167900           1.000               15
+     168000           1.000               15
+     168100           1.000               15
+     168200           1.000               15
+     168300           1.000               15
+     168400           1.000               2
+     168500           1.000               2
+     168600           1.000               2
+     168700           1.000               2
+     168800           1.000               2
+     168900           1.000               2
+     169000           1.000               2
+     169100           1.000               2
+     169200           1.000               2
+     169300           1.000               2
+     169400           1.000               2
+     169500           1.000               2
+     169600           1.000               2
+     169700           1.000               2
+     169800           1.000               2
+     169900           1.000               2
+     170000           1.000               2
+     170100           1.000               2
+     170200           1.000               2
+     170300           1.000               2
+     170400           1.000               2
+     170500           1.000               15
+     170600           1.000               15
+     170700           1.000               15
+     170800           1.000               15
+     170900           1.000               15
+     171000           1.000               15
+     171100           1.000               15
+     171200           1.000               15
+     171300           1.000               15
+     171400           1.000               15
+     171500           1.000               15
+     171600           1.000               15
+     171700           1.000               15
+     171800           1.000               15
+     171900           1.000               15
+     172000           1.000               15
+     172100           1.000               15
+     172200           1.000               15
+     172300           1.000               15
+     172400           1.000               15
+     172500           1.000               15
+     172600           1.000               15
+     172700           1.000               15
+     172800           1.000               15
+     172900           1.000               15
+     173000           1.000               15
+     173100           1.000               15
+     173200           1.000               15
+     173300           1.000               15
+     173400           1.000               15
+     173500           1.000               15
+     173600           1.000               15
+     173700           1.000               15
+     173800           1.000               15
+     173900           1.000               15
+     174000           1.000               15
+     174100           1.000               15
+     174200           1.000               15
+     174300           1.000               15
+     174400           1.000               15
+     174500           1.000               15
+     174600           1.000               15
+     174700           1.000               15
+     174800           1.000               15
+     174900           1.000               15
+     175000           1.000               15
+     175100           1.000               15
+     175200           1.000               15
+     175300           1.000               15
+     175400           1.000               15
+     175500           1.000               15
+     175600           1.000               15
+     175700           1.000               15
+     175800           1.000               15
+     175900           1.000               15
+     176000           1.000               15
+     176100           1.000               15
+     176200           1.000               15
+     176300           1.000               15
+     176400           1.000               15
+     176500           1.000               15
+     176600           1.000               15
+     176700           1.000               15
+     176800           1.000               15
+     176900           1.000               15
+     177000           1.000               15
+     177100           1.000               15
+     177200           1.000               15
+     177300           1.000               15
+     177400           1.000               15
+     177500           1.000               15
+     177600           1.000               15
+     177700           1.000               15
+     177800           1.000               15
+     177900           1.000               15
+     178000           1.000               15
+     178100           1.000               15
+     178200           1.000               15
+     178300           1.000               15
+     178400           1.000               15
+     178500           1.000               15
+     178600           1.000               15
+     178700           1.000               15
+     178800           1.000               15
+     178900           1.000               15
+     179000           1.000               15
+     179100           1.000               15
+     179200           1.000               15
+     179300           1.000               15
+     179400           1.000               15
+     179500           1.000               15
+     179600           1.000               15
+     179700           1.000               15
+     179800           1.000               15
+     179900           1.000               15
+     180000           1.000               15
+     180100           1.000               15
+     180200           1.000               15
+     180300           1.000               15
+     180400           1.000               15
+     180500           1.000               15
+     180600           1.000               15
+     180700           1.000               15
+     180800           1.000               15
+     180900           1.000               15
+     181000           1.000               15
+     181100           1.000               15
+     181200           1.000               15
+     181300           1.000               15
+     181400           1.000               15
+     181500           1.000               15
+     181600           1.000               15
+     181700           1.000               15
+     181800           1.000               15
+     181900           1.000               15
+     182000           1.000               15
+     182100           1.000               15
+     182200           1.000               15
+     182300           1.000               15
+     182400           1.000               15
+     182500           1.000               15
+     182600           1.000               15
+     182700           1.000               15
+     182800           1.000               15
+     182900           1.000               15
+     183000           1.000               15
+     183100           1.000               15
+     183200           1.000               15
+     183300           1.000               15
+     183400           1.000               15
+     183500           1.000               15
+     183600           1.000               15
+     183700           1.000               15
+     183800           1.000               15
+     183900           1.000               15
+     184000           1.000               15
+     184100           1.000               15
+     184200           1.000               15
+     184300           1.000               15
+     184400           1.000               15
+     184500           1.000               15
+     184600           1.000               15
+     184700           1.000               15
+     184800           1.000               15
+     184900           1.000               15
+     185000           1.000               15
+     185100           1.000               15
+     185200           1.000               15
+     185300           1.000               15
+     185400           1.000               15
+     185500           1.000               15
+     185600           1.000               15
+     185700           1.000               15
+     185800           1.000               15
+     185900           1.000               15
+     186000           1.000               15
+     186100           1.000               15
+     186200           1.000               15
+     186300           1.000               15
+     186400           1.000               15
+     186500           1.000               15
+     186600           1.000               2
+     186700           1.000               2
+     186800           1.000               2
+     186900           1.000               15
+     187000           1.000               15
+     187100           1.000               15
+     187200           1.000               2
+     187300           1.000               2
+     187400           1.000               15
+     187500           1.000               2
+     187600           1.000               2
+     187700           1.000               2
+     187800           1.000               2
+     187900           1.000               2
+     188000           1.000               2
+     188100           1.000               2
+     188200           1.000               2
+     188300           1.000               15
+     188400           1.000               2
+     188500           1.000               2
+     188600           1.000               2
+     188700           1.000               2
+     188800           1.000               2
+     188900           1.000               2
+     189000           1.000               15
+     189100           1.000               15
+     189200           1.000               15
+     189300           1.000               15
+     189400           1.000               2
+     189500           1.000               2
+     189600           1.000               2
+     189700           1.000               2
+     189800           1.000               2
+     189900           1.000               2
+     190000           1.000               15
+     190100           1.000               15
+     190200           1.000               15
+     190300           1.000               15
+     190400           1.000               15
+     190500           1.000               15
+     190600           1.000               2
+     190700           1.000               2
+     190800           1.000               2
+     190900           1.000               2
+     191000           1.000               2
+     191100           1.000               2
+     191200           1.000               2
+     191300           1.000               2
+     191400           1.000               2
+     191500           1.000               2
+     191600           1.000               2
+     191700           1.000               2
+     191800           1.000               2
+     191900           1.000               2
+     192000           1.000               2
+     192100           1.000               2
+     192200           1.000               2
+     192300           1.000               2
+     192400           1.000               2
+     192500           1.000               2
+     192600           1.000               2
+     192700           1.000               2
+     192800           1.000               2
+     192900           1.000               2
+     193000           1.000               2
+     193100           1.000               2
+     193200           1.000               2
+     193300           1.000               2
+     193400           1.000               2
+     193500           1.000               2
+     193600           1.000               2
+     193700           1.000               2
+     193800           1.000               2
+     193900           1.000               2
+     194000           1.000               2
+     194100           1.000               2
+     194200           1.000               2
+     194300           1.000               2
+     194400           1.000               2
+     194500           1.000               2
+     194600           1.000               2
+     194700           1.000               2
+     194800           1.000               2
+     194900           1.000               2
+     195000           1.000               2
+     195100           1.000               2
+     195200           1.000               2
+     195300           1.000               2
+     195400           1.000               2
+     195500           1.000               2
+     195600           1.000               2
+     195700           1.000               2
+     195800           1.000               2
+     195900           1.000               2
+     196000           1.000               2
+     196100           1.000               2
+     196200           1.000               2
+     196300           1.000               2
+     196400           1.000               2
+     196500           1.000               2
+     196600           1.000               2
+     196700           1.000               2
+     196800           1.000               2
+     196900           1.000               2
+     197000           1.000               2
+     197100           1.000               2
+     197200           1.000               2
+     197300           1.000               2
+     197400           1.000               2
+     197500           1.000               2
+     197600           1.000               2
+     197700           1.000               2
+     197800           1.000               2
+     197900           1.000               2
+     198000           1.000               2
+     198100           1.000               2
+     198200           1.000               2
+     198300           1.000               2
+     198400           1.000               2
+     198500           1.000               2
+     198600           1.000               2
+     198700           1.000               2
+     198800           1.000               2
+     198900           1.000               2
+     199000           1.000               2
+     199100           1.000               2
+     199200           1.000               2
+     199300           1.000               2
+     199400           1.000               2
+     199500           1.000               2
+     199600           1.000               2
+     199700           1.000               2
+     199800           1.000               2
+     199900           1.000               2
+     200000           1.000               2
+
+
+DIAGRAM INFORMATION
+
+  Mplus diagrams are currently not available for multilevel analysis.
+  No diagram output was produced.
+
+
+     Beginning Time:  12:11:29
+        Ending Time:  12:17:18
+       Elapsed Time:  00:05:49
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2023 Muthen & Muthen
