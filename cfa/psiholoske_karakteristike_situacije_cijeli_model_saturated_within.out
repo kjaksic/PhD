@@ -1,0 +1,2352 @@
+Mplus VERSION 8.10
+MUTHEN & MUTHEN
+06/24/2024   2:39 PM
+
+INPUT INSTRUCTIONS
+
+  DATA: File is cfa.dat;
+
+
+  VARIABLE:
+
+  NAMES ARE id H_1 H_2 H_3 IMP_1 IMP_2 IMP_3
+  NEG_VAL_1 NEG_VAL_2 NEG_VAL_3 COMP_1 COMP_2
+  COMP_3 TIP_1 TIP_2 TIP_3 POS_VAL_1 POS_VAL_2
+  POS_VAL_3 ADV_1 ADV_2 ADV_3 C1 C2 E1 E2
+  A1 A2 O1 O2 N1 N2 POZ_1 POZ_2 POZ_3
+  POZ_4 NEG_1 NEG_2 NEG_3 NEG_4
+  NEG_5 SE_1 SE_2 SE_3;
+
+  USEVARIABLES ARE H_1-ADV_3;
+
+  MISSING ARE ALL (-99);
+
+  CLUSTER IS id;
+
+
+  ANALYSIS:
+  TYPE = TWOLEVEL;
+  ESTIMATOR = BAYES;
+  PROCESSORS = 12;
+  FBITERATIONS = 200000;
+  ALGORITHM=GIBBS(RW);
+
+
+  MODEL:
+
+  %WITHIN%
+
+  H_1 WITH H_2;
+  H_1 WITH H_3;
+  H_2 WITH H_3;
+
+  H_1 WITH IMP_1;
+  H_1 WITH IMP_2;
+  H_1 WITH IMP_3;
+
+  H_2 WITH IMP_1;
+  H_2 WITH IMP_2;
+  H_2 WITH IMP_3;
+
+  H_3 WITH IMP_1;
+  H_3 WITH IMP_2;
+  H_3 WITH IMP_3;
+
+  H_1 WITH NEG_VAL_1;
+  H_1 WITH NEG_VAL_2;
+  H_1 WITH NEG_VAL_3;
+
+  H_2 WITH NEG_VAL_1;
+  H_2 WITH NEG_VAL_2;
+  H_2 WITH NEG_VAL_3;
+
+  H_3 WITH NEG_VAL_1;
+  H_3 WITH NEG_VAL_2;
+  H_3 WITH NEG_VAL_3;
+
+
+  H_1 WITH COMP_1;
+  H_1 WITH COMP_2;
+  H_1 WITH COMP_3;
+
+  H_2 WITH COMP_1;
+  H_2 WITH COMP_2;
+  H_2 WITH COMP_3;
+
+  H_3 WITH COMP_1;
+  H_3 WITH COMP_2;
+  H_3 WITH COMP_3;
+
+
+  H_1 WITH TIP_1;
+  H_1 WITH TIP_2;
+  H_1 WITH TIP_3;
+
+
+  H_2 WITH TIP_1;
+  H_2 WITH TIP_2;
+  H_2 WITH TIP_3;
+
+
+  H_3 WITH TIP_1;
+  H_3 WITH TIP_2;
+  H_3 WITH TIP_3;
+
+
+  H_1 WITH POS_VAL_1;
+  H_1 WITH POS_VAL_2;
+  H_1 WITH POS_VAL_3;
+
+  H_2 WITH POS_VAL_1;
+  H_2 WITH POS_VAL_2;
+  H_2 WITH POS_VAL_3;
+
+  H_3 WITH POS_VAL_1;
+  H_3 WITH POS_VAL_2;
+  H_3 WITH POS_VAL_3;
+
+  H_1 WITH ADV_1;
+  H_1 WITH ADV_2;
+  H_1 WITH ADV_3;
+
+  H_2 WITH ADV_1;
+  H_2 WITH ADV_2;
+  H_2 WITH ADV_3;
+
+  H_3 WITH ADV_1;
+  H_3 WITH ADV_2;
+  H_3 WITH ADV_3;
+
+
+  IMP_1 WITH IMP_2;
+  IMP_1 WITH IMP_3;
+  IMP_2 WITH IMP_3;
+
+
+  IMP_1 WITH NEG_VAL_1;
+  IMP_1 WITH NEG_VAL_2;
+  IMP_1 WITH NEG_VAL_3;
+
+
+  IMP_2 WITH NEG_VAL_1;
+  IMP_2 WITH NEG_VAL_2;
+  IMP_2 WITH NEG_VAL_3;
+
+
+  IMP_3 WITH NEG_VAL_1;
+  IMP_3 WITH NEG_VAL_2;
+  IMP_3 WITH NEG_VAL_3;
+
+  IMP_1 WITH COMP_1;
+  IMP_1 WITH COMP_2;
+  IMP_1 WITH COMP_3;
+
+  IMP_2 WITH COMP_1;
+  IMP_2 WITH COMP_2;
+  IMP_2 WITH COMP_3;
+
+
+  IMP_3 WITH COMP_1;
+  IMP_3 WITH COMP_2;
+  IMP_3 WITH COMP_3;
+
+
+  IMP_1 WITH TIP_1;
+  IMP_1 WITH TIP_2;
+  IMP_1 WITH TIP_3;
+
+
+  IMP_2 WITH TIP_1;
+  IMP_2 WITH TIP_2;
+  IMP_2 WITH TIP_3;
+
+  IMP_3 WITH TIP_1;
+  IMP_3 WITH TIP_2;
+  IMP_3 WITH TIP_3;
+
+  IMP_1 WITH POS_VAL_1;
+  IMP_1 WITH POS_VAL_2;
+  IMP_1 WITH POS_VAL_3;
+
+  IMP_2 WITH POS_VAL_1;
+  IMP_2 WITH POS_VAL_2;
+  IMP_2 WITH POS_VAL_3;
+
+  IMP_3 WITH POS_VAL_1;
+  IMP_3 WITH POS_VAL_2;
+  IMP_3 WITH POS_VAL_3;
+
+
+  IMP_1 WITH ADV_1;
+  IMP_1 WITH ADV_2;
+  IMP_1 WITH ADV_3;
+
+
+  IMP_2 WITH ADV_1;
+  IMP_2 WITH ADV_2;
+  IMP_2 WITH ADV_3;
+
+  IMP_3 WITH ADV_1;
+  IMP_3 WITH ADV_2;
+  IMP_3 WITH ADV_3;
+
+  NEG_VAL_1 WITH NEG_VAL_2;
+  NEG_VAL_1 WITH NEG_VAL_3;
+  NEG_VAL_2 WITH NEG_VAL_3;
+
+  NEG_VAL_1 WITH COMP_1;
+  NEG_VAL_1 WITH COMP_2;
+  NEG_VAL_1 WITH COMP_3;
+
+
+  NEG_VAL_2 WITH COMP_1;
+  NEG_VAL_2 WITH COMP_2;
+  NEG_VAL_2 WITH COMP_3;
+
+
+  NEG_VAL_3 WITH COMP_1;
+  NEG_VAL_3 WITH COMP_2;
+  NEG_VAL_3 WITH COMP_3;
+
+
+  NEG_VAL_1 WITH TIP_1;
+  NEG_VAL_1 WITH TIP_2;
+  NEG_VAL_1 WITH TIP_3;
+
+  NEG_VAL_2 WITH TIP_1;
+  NEG_VAL_2 WITH TIP_2;
+  NEG_VAL_2 WITH TIP_3;
+
+
+  NEG_VAL_3 WITH TIP_1;
+  NEG_VAL_3 WITH TIP_2;
+  NEG_VAL_3 WITH TIP_3;
+
+
+  NEG_VAL_1 WITH POS_VAL_1;
+  NEG_VAL_1 WITH POS_VAL_2;
+  NEG_VAL_1 WITH POS_VAL_3;
+
+
+  NEG_VAL_2 WITH POS_VAL_1;
+  NEG_VAL_2 WITH POS_VAL_2;
+  NEG_VAL_2 WITH POS_VAL_3;
+
+
+  NEG_VAL_3 WITH POS_VAL_1;
+  NEG_VAL_3 WITH POS_VAL_2;
+  NEG_VAL_3 WITH POS_VAL_3;
+
+
+  NEG_VAL_1 WITH ADV_1;
+  NEG_VAL_1 WITH ADV_2;
+  NEG_VAL_1 WITH ADV_3;
+
+
+  NEG_VAL_2 WITH ADV_1;
+  NEG_VAL_2 WITH ADV_2;
+  NEG_VAL_2 WITH ADV_3;
+
+  NEG_VAL_3 WITH ADV_1;
+  NEG_VAL_3 WITH ADV_2;
+  NEG_VAL_3 WITH ADV_3;
+
+
+  COMP_1 WITH COMP_2;
+  COMP_1 WITH COMP_3;
+  COMP_2 WITH COMP_3;
+
+  COMP_1 WITH TIP_1;
+  COMP_1 WITH TIP_2;
+  COMP_1 WITH TIP_3;
+
+  COMP_2 WITH TIP_1;
+  COMP_2 WITH TIP_2;
+  COMP_2 WITH TIP_3;
+
+
+  COMP_3 WITH TIP_1;
+  COMP_3 WITH TIP_2;
+  COMP_3 WITH TIP_3;
+
+  COMP_1 WITH POS_VAL_1;
+  COMP_1 WITH POS_VAL_2;
+  COMP_1 WITH POS_VAL_3;
+
+
+  COMP_2 WITH POS_VAL_1;
+  COMP_2 WITH POS_VAL_2;
+  COMP_2 WITH POS_VAL_3;
+
+
+  COMP_3 WITH POS_VAL_1;
+  COMP_3 WITH POS_VAL_2;
+  COMP_3 WITH POS_VAL_3;
+
+
+  COMP_1 WITH ADV_1;
+  COMP_1 WITH ADV_2;
+  COMP_1 WITH ADV_3;
+
+
+  COMP_2 WITH ADV_1;
+  COMP_2 WITH ADV_2;
+  COMP_2 WITH ADV_3;
+
+  COMP_3 WITH ADV_1;
+  COMP_3 WITH ADV_2;
+  COMP_3 WITH ADV_3;
+
+
+  TIP_1 WITH TIP_2;
+  TIP_1 WITH TIP_3;
+  TIP_2 WITH TIP_3;
+
+  TIP_1 WITH POS_VAL_1;
+  TIP_1 WITH POS_VAL_2;
+  TIP_1 WITH POS_VAL_3;
+
+  TIP_1 WITH ADV_1;
+  TIP_1 WITH ADV_2;
+  TIP_1 WITH ADV_3;
+
+
+  TIP_2 WITH POS_VAL_1;
+  TIP_2 WITH POS_VAL_2;
+  TIP_2 WITH POS_VAL_3;
+
+  TIP_2 WITH ADV_1;
+  TIP_2 WITH ADV_2;
+  TIP_2 WITH ADV_3;
+
+
+  TIP_3 WITH POS_VAL_1;
+  TIP_3 WITH POS_VAL_2;
+  TIP_3 WITH POS_VAL_3;
+
+  TIP_3 WITH ADV_1;
+  TIP_3 WITH ADV_2;
+  TIP_3 WITH ADV_3;
+
+  POS_VAL_1 WITH POS_VAL_2;
+  POS_VAL_1 WITH POS_VAL_3;
+  POS_VAL_2 WITH POS_VAL_3;
+
+  POS_VAL_1 WITH ADV_1;
+  POS_VAL_1 WITH ADV_2;
+  POS_VAL_1 WITH ADV_3;
+
+  POS_VAL_2 WITH ADV_1;
+  POS_VAL_2 WITH ADV_2;
+  POS_VAL_2 WITH ADV_3;
+
+  POS_VAL_3 WITH ADV_1;
+  POS_VAL_3 WITH ADV_2;
+  POS_VAL_3 WITH ADV_3;
+
+
+  ADV_1 WITH ADV_2;
+  ADV_1 WITH ADV_3;
+  ADV_2 WITH ADV_3;
+
+
+  %BETWEEN%
+
+
+  HUM_b BY H_1 H_2 H_3;
+  IMP_b BY IMP_1 IMP_2 IMP_3;
+  NEGV_b BY NEG_VAL_1 NEG_VAL_2 NEG_VAL_3;
+  COMP_b BY COMP_1 COMP_2 COMP_3;
+  TYPC_b BY TIP_1 TIP_2 TIP_3;
+  POSV_b BY POS_VAL_1 POS_VAL_2 POS_VAL_3;
+  ADV_b BY ADV_1 ADV_2 ADV_3;
+
+
+
+
+
+  OUTPUT: STANDARDIZED TECH4;
+
+
+
+
+*** WARNING in VARIABLE command
+  Note that only the first 8 characters of variable names are used in the output.
+  Shorten variable names to avoid any confusion.
+*** WARNING
+  One or more individual-level variables have no variation within a
+  cluster for the following clusters.
+
+     Variable   Cluster IDs with no within-cluster variation
+
+      H_1         12494252 13994941 24592461 13527350 16556161 24595090
+      H_2         12497874 24592461 13527350 16556161 24595090 16554319 27787671 16554713
+      H_3         24592461 13527350 16556161 24595090 16554319 16554891
+      IMP_1       12491438 16554319
+      IMP_2       24591061 20855351 12491438 16554319
+      IMP_3       27785220 24591061 20855351 12491438 16554319
+      NEG_VAL_    20163018 27661979 13994322 12198304 20855574 20162730 27665653 21214531 12193480
+                  15261338 20162054 20855586 26754644 12497874 24592461 13996939 13527350 12491438
+                  16554668 27788116 16556161 16551092 24598783 16556163 20855258 24595090 16554319
+                  27787671 16554891
+      NEG_VAL_    20163018 27661979 27664277 13994322 12198304 15262166 20855574 15611768 20856921
+                  20794922 12492269 20162730 27665653 21214531 12193480 27918933 15474494 15261338
+                  24591061 20855586 26754644 20855351 13994941 27918624 24592461 20162526 13528127
+                  13996939 20798331 15611922 13527350 12491438 27788116 16556161 27666050 24598783
+                  15614525 16556163 20855258 24595090 16554319 27788829 12491236 27787671 16554891
+                  16554713 24593393
+      NEG_VAL_    20163018 27913643 27664277 12494252 15262166 13525517 15611768 20794922 12492269
+                  27665653 21214531 12193480 27918933 15474494 24591061 20855586 26754644 20855351
+                  12497874 27918624 20162526 13997204 13996939 20798331 12495072 20854791 15611922
+                  13526266 13527350 12491438 27788116 24591987 16556161 27663860 24591737 24595014
+                  24593194 24598783 15614525 12492795 20855258 16554319 12491236 13525223 16554342
+                  16554891 16554713 24593393
+      COMP_2      24591061 20855351 13527350 16554319
+      COMP_3      12198304 24591061 20855351 20852179 12491438 16554319
+      TIP_1       20163018 20855586
+      TIP_2       12491438
+      TIP_3       20794922 24591061 20855586 16556161
+      POS_VAL_    16556161
+      POS_VAL_    24591061 20855351
+      POS_VAL_    20855351 16554319
+      ADV_1       20163018 20855574 20162730 20162054 20855351 24592461 20798331 13527350 27788116
+                  16556163 16554319 16554891
+      ADV_2       20163018 27661979 13994322 12198304 20855574 20162730 27665653 24591061 20162054
+                  12497874 24592461 13996939 20798331 13527350 12491438 27788116 16556161 24598783
+                  16556163 24595090 16554319 16554891
+      ADV_3       13994322 20162730 27665653 20162054 24592461 12491438 27788116 24595090 16554319
+                  27787671 16554891
+
+*** WARNING
+  Data set contains cases with missing on all variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on all variables:  1232
+   3 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1738
+
+Number of dependent variables                                   21
+Number of independent variables                                  0
+Number of continuous latent variables                            7
+
+Observed dependent variables
+
+  Continuous
+   H_1         H_2         H_3         IMP_1       IMP_2       IMP_3
+   NEG_VAL_1   NEG_VAL_2   NEG_VAL_3   COMP_1      COMP_2      COMP_3
+   TIP_1       TIP_2       TIP_3       POS_VAL_1   POS_VAL_2   POS_VAL_3
+   ADV_1       ADV_2       ADV_3
+
+Continuous latent variables
+   HUM_B       IMP_B       NEGV_B      COMP_B      TYPC_B      POSV_B
+   ADV_B
+
+Variables with special functions
+
+  Cluster variable      ID
+
+Estimator                                                    BAYES
+Specifications for Bayesian Estimation
+  Point estimate                                            MEDIAN
+  Number of Markov chain Monte Carlo (MCMC) chains               2
+  Random seed for the first chain                                0
+  Starting value information                           UNPERTURBED
+  Algorithm used for Markov chain Monte Carlo            GIBBS(RW)
+  Fixed number of iterations                                200000
+  K-th iteration used for thinning                               1
+
+Input data file(s)
+  cfa.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of clusters                         99
+
+       Size (s)    Cluster ID with Size s
+
+          9        20163018
+         10        27913643 27665886 27661979 27664277
+         11        13994322 12494252 15264484 12198304
+         12        15262166 13525517 20855574 20796311
+         13        15611768 26754012 27662560 20856921 15266576
+         14        20794922 12492269 20162730 27665653 12498862 21214531
+                   12191870 16654540 13529089 20796904
+         15        27785220 12193480 27918933 15474494
+         16        15261338 20854464 24591061 20162054 20855586 26754644
+         17        20855351 12497874 13993235 13994941 27918624 24592461
+                   20162526 20852179 15471270 27783342 27662082 13997204
+         18        21213820 27663723 12492669 13528127 13996939 20798331
+                   12495072 20854791 15611922 15471432 13526266 13527350
+         19        12491438 16554668 27915449 13522864 27788116 15612828
+         20        24591987 20161546 24595365 16556161
+         21        27663860 24591737 24595014 27666050 15264805 16551092
+                   27918828
+         22        24593194 24598783
+         23        15614525 16556163 12492795 20855258 24595090 16554319
+                   20856715 27788829
+         24        12491236 13525223 16554342 27787671 12491120
+         25        16554891 16554713 21212503
+         26        24593393 20855884
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+     Number of missing data patterns             1
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              H_1           H_2           H_3           IMP_1         IMP_2
+              ________      ________      ________      ________      ________
+ H_1            1.000
+ H_2            1.000         1.000
+ H_3            1.000         1.000         1.000
+ IMP_1          1.000         1.000         1.000         1.000
+ IMP_2          1.000         1.000         1.000         1.000         1.000
+ IMP_3          1.000         1.000         1.000         1.000         1.000
+ NEG_VAL_       1.000         1.000         1.000         1.000         1.000
+ NEG_VAL_       1.000         1.000         1.000         1.000         1.000
+ NEG_VAL_       1.000         1.000         1.000         1.000         1.000
+ COMP_1         1.000         1.000         1.000         1.000         1.000
+ COMP_2         1.000         1.000         1.000         1.000         1.000
+ COMP_3         1.000         1.000         1.000         1.000         1.000
+ TIP_1          1.000         1.000         1.000         1.000         1.000
+ TIP_2          1.000         1.000         1.000         1.000         1.000
+ TIP_3          1.000         1.000         1.000         1.000         1.000
+ POS_VAL_       1.000         1.000         1.000         1.000         1.000
+ POS_VAL_       1.000         1.000         1.000         1.000         1.000
+ POS_VAL_       1.000         1.000         1.000         1.000         1.000
+ ADV_1          1.000         1.000         1.000         1.000         1.000
+ ADV_2          1.000         1.000         1.000         1.000         1.000
+ ADV_3          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              IMP_3         NEG_VAL_      NEG_VAL_      NEG_VAL_      COMP_1
+              ________      ________      ________      ________      ________
+ IMP_3          1.000
+ NEG_VAL_       1.000         1.000
+ NEG_VAL_       1.000         1.000         1.000
+ NEG_VAL_       1.000         1.000         1.000         1.000
+ COMP_1         1.000         1.000         1.000         1.000         1.000
+ COMP_2         1.000         1.000         1.000         1.000         1.000
+ COMP_3         1.000         1.000         1.000         1.000         1.000
+ TIP_1          1.000         1.000         1.000         1.000         1.000
+ TIP_2          1.000         1.000         1.000         1.000         1.000
+ TIP_3          1.000         1.000         1.000         1.000         1.000
+ POS_VAL_       1.000         1.000         1.000         1.000         1.000
+ POS_VAL_       1.000         1.000         1.000         1.000         1.000
+ POS_VAL_       1.000         1.000         1.000         1.000         1.000
+ ADV_1          1.000         1.000         1.000         1.000         1.000
+ ADV_2          1.000         1.000         1.000         1.000         1.000
+ ADV_3          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              COMP_2        COMP_3        TIP_1         TIP_2         TIP_3
+              ________      ________      ________      ________      ________
+ COMP_2         1.000
+ COMP_3         1.000         1.000
+ TIP_1          1.000         1.000         1.000
+ TIP_2          1.000         1.000         1.000         1.000
+ TIP_3          1.000         1.000         1.000         1.000         1.000
+ POS_VAL_       1.000         1.000         1.000         1.000         1.000
+ POS_VAL_       1.000         1.000         1.000         1.000         1.000
+ POS_VAL_       1.000         1.000         1.000         1.000         1.000
+ ADV_1          1.000         1.000         1.000         1.000         1.000
+ ADV_2          1.000         1.000         1.000         1.000         1.000
+ ADV_3          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              POS_VAL_      POS_VAL_      POS_VAL_      ADV_1         ADV_2
+              ________      ________      ________      ________      ________
+ POS_VAL_       1.000
+ POS_VAL_       1.000         1.000
+ POS_VAL_       1.000         1.000         1.000
+ ADV_1          1.000         1.000         1.000         1.000
+ ADV_2          1.000         1.000         1.000         1.000         1.000
+ ADV_3          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              ADV_3
+              ________
+ ADV_3          1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     H_1                   2.629       0.645       1.000   42.69%       1.000      1.000      2.000
+            1738.000       3.105      -0.906       7.000    1.73%       3.000      4.000
+     H_2                   2.488       0.721       1.000   44.53%       1.000      1.000      2.000
+            1738.000       2.832      -0.869       7.000    0.86%       2.000      4.000
+     H_3                   2.541       0.687       1.000   44.94%       1.000      1.000      2.000
+            1738.000       2.974      -0.878       7.000    1.27%       2.000      4.000
+     IMP_1                 5.629      -1.467       1.000    1.78%       5.000      6.000      6.000
+            1738.000       1.460       3.025       7.000   21.81%       6.000      7.000
+     IMP_2                 5.829      -1.523       1.000    0.98%       5.000      6.000      6.000
+            1738.000       1.242       3.487       7.000   27.85%       6.000      7.000
+     IMP_3                 5.744      -1.465       1.000    1.15%       5.000      6.000      6.000
+            1738.000       1.276       3.194       7.000   23.99%       6.000      7.000
+     NEG_VAL_1             1.496       2.771       1.000   75.20%       1.000      1.000      1.000
+            1738.000       1.245       7.642       7.000    0.69%       1.000      2.000
+     NEG_VAL_2             1.350       3.480       1.000   82.57%       1.000      1.000      1.000
+            1738.000       0.933      12.765       7.000    0.46%       1.000      1.000
+     NEG_VAL_3             1.372       2.931       1.000   83.77%       1.000      1.000      1.000
+            1738.000       0.975       8.391       7.000    0.29%       1.000      1.000
+     COMP_1                5.085      -1.126       1.000    5.93%       4.000      5.000      5.000
+            1738.000       2.407       0.868       7.000   14.21%       6.000      6.000
+     COMP_2                5.660      -1.449       1.000    1.73%       5.000      6.000      6.000
+            1738.000       1.453       3.050       7.000   23.82%       6.000      7.000
+     COMP_3                5.704      -1.542       1.000    1.61%       5.000      6.000      6.000
+            1738.000       1.489       3.100       7.000   24.80%       6.000      7.000
+     TIP_1                 5.483      -1.346       1.000    2.65%       5.000      5.000      6.000
+            1738.000       1.747       2.206       7.000   20.54%       6.000      7.000
+     TIP_2                 5.510      -1.305       1.000    2.01%       5.000      5.000      6.000
+            1738.000       1.660       2.117       7.000   20.71%       6.000      7.000
+     TIP_3                 5.551      -1.293       1.000    1.90%       5.000      6.000      6.000
+            1738.000       1.701       1.985       7.000   23.36%       6.000      7.000
+     POS_VAL_1             4.563      -0.655       1.000    8.06%       4.000      4.000      5.000
+            1738.000       2.676      -0.199       7.000    8.86%       5.000      6.000
+     POS_VAL_2             4.820      -0.784       1.000    7.19%       4.000      5.000      5.000
+            1738.000       2.779      -0.039       7.000   13.98%       6.000      6.000
+     POS_VAL_3             5.060      -0.957       1.000    4.72%       4.000      5.000      5.000
+            1738.000       2.344       0.552       7.000   15.13%       6.000      6.000
+     ADV_1                 1.976       1.462       1.000   55.06%       1.000      1.000      1.000
+            1738.000       1.998       1.131       7.000    0.52%       2.000      3.000
+     ADV_2                 1.677       2.164       1.000   68.35%       1.000      1.000      1.000
+            1738.000       1.655       4.002       7.000    0.75%       1.000      2.000
+     ADV_3                 2.218       1.186       1.000   51.09%       1.000      1.000      1.000
+            1738.000       2.661       0.153       7.000    1.27%       2.000      4.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     USE THE FBITERATIONS OPTION TO INCREASE THE NUMBER OF ITERATIONS BY A FACTOR
+     OF AT LEAST TWO TO CHECK CONVERGENCE AND THAT THE PSR VALUE DOES NOT INCREASE.
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                             315
+
+Bayesian Posterior Predictive Checking using Chi-Square
+
+          95% Confidence Interval for the Difference Between
+          the Observed and the Replicated Chi-Square Values
+
+                                -29.861           156.439
+
+          Posterior Predictive P-Value              0.090
+
+Information Criteria
+
+          Deviance (DIC)                        99444.047
+          Estimated Number of Parameters (pD)    1588.043
+
+
+
+MODEL RESULTS
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+
+Within Level
+
+ H_1      WITH
+    H_2                0.733       0.047      0.000       0.646       0.829      *
+    H_3                0.783       0.046      0.000       0.696       0.877      *
+    IMP_1              0.052       0.033      0.059      -0.013       0.117
+    IMP_2              0.060       0.029      0.021       0.002       0.116      *
+    IMP_3              0.056       0.031      0.037      -0.005       0.118
+    NEG_VAL_1         -0.054       0.031      0.039      -0.114       0.006
+    NEG_VAL_2          0.014       0.025      0.281      -0.034       0.062
+    NEG_VAL_3          0.072       0.023      0.001       0.027       0.118      *
+    COMP_1            -0.063       0.042      0.061      -0.146       0.017
+    COMP_2             0.017       0.032      0.297      -0.046       0.080
+    COMP_3             0.018       0.033      0.298      -0.047       0.082
+    TIP_1             -0.099       0.035      0.002      -0.169      -0.031      *
+    TIP_2             -0.134       0.034      0.000      -0.202      -0.068      *
+    TIP_3             -0.151       0.036      0.000      -0.222      -0.081      *
+    POS_VAL_1          0.402       0.043      0.000       0.320       0.488      *
+    POS_VAL_2          0.301       0.041      0.000       0.221       0.382      *
+    POS_VAL_3          0.195       0.038      0.000       0.120       0.271      *
+    ADV_1             -0.086       0.038      0.012      -0.161      -0.011      *
+    ADV_2             -0.108       0.037      0.002      -0.181      -0.036      *
+    ADV_3             -0.121       0.045      0.003      -0.210      -0.034      *
+
+ H_2      WITH
+    H_3                0.696       0.044      0.000       0.612       0.785      *
+    IMP_1              0.023       0.032      0.233      -0.038       0.086
+    IMP_2              0.035       0.028      0.104      -0.019       0.089
+    IMP_3              0.006       0.030      0.422      -0.052       0.065
+    NEG_VAL_1          0.023       0.030      0.220      -0.036       0.081
+    NEG_VAL_2          0.067       0.023      0.002       0.021       0.113      *
+    NEG_VAL_3          0.057       0.022      0.003       0.015       0.100      *
+    COMP_1            -0.045       0.040      0.128      -0.124       0.033
+    COMP_2            -0.016       0.031      0.295      -0.077       0.044
+    COMP_3             0.067       0.031      0.016       0.006       0.129      *
+    TIP_1             -0.144       0.034      0.000      -0.212      -0.079      *
+    TIP_2             -0.100       0.032      0.001      -0.165      -0.037      *
+    TIP_3             -0.149       0.034      0.000      -0.218      -0.084      *
+    POS_VAL_1          0.290       0.040      0.000       0.213       0.370      *
+    POS_VAL_2          0.163       0.039      0.000       0.089       0.239      *
+    POS_VAL_3          0.206       0.036      0.000       0.136       0.279      *
+    ADV_1              0.026       0.037      0.240      -0.046       0.099
+    ADV_2             -0.013       0.035      0.355      -0.082       0.056
+    ADV_3              0.062       0.043      0.078      -0.024       0.147
+
+ H_3      WITH
+    IMP_1              0.074       0.031      0.009       0.013       0.135      *
+    IMP_2              0.007       0.027      0.397      -0.047       0.061
+    IMP_3              0.075       0.029      0.005       0.018       0.133      *
+    NEG_VAL_1         -0.054       0.029      0.034      -0.111       0.004
+    NEG_VAL_2          0.038       0.023      0.051      -0.007       0.083
+    NEG_VAL_3          0.026       0.022      0.113      -0.017       0.068
+    COMP_1             0.029       0.039      0.228      -0.047       0.106
+    COMP_2            -0.025       0.030      0.204      -0.084       0.033
+    COMP_3             0.091       0.031      0.001       0.031       0.154      *
+    TIP_1             -0.075       0.033      0.012      -0.140      -0.010      *
+    TIP_2             -0.166       0.032      0.000      -0.231      -0.105      *
+    TIP_3             -0.085       0.034      0.006      -0.151      -0.019      *
+    POS_VAL_1          0.366       0.040      0.000       0.290       0.447      *
+    POS_VAL_2          0.203       0.038      0.000       0.128       0.277      *
+    POS_VAL_3          0.223       0.036      0.000       0.153       0.294      *
+    ADV_1             -0.095       0.037      0.004      -0.167      -0.024      *
+    ADV_2             -0.046       0.035      0.094      -0.116       0.022
+    ADV_3             -0.074       0.043      0.040      -0.161       0.009
+
+ IMP_1    WITH
+    IMP_2              0.387       0.023      0.000       0.342       0.434      *
+    IMP_3              0.450       0.026      0.000       0.401       0.501      *
+    NEG_VAL_1         -0.200       0.024      0.000      -0.249      -0.155      *
+    NEG_VAL_2         -0.079       0.018      0.000      -0.115      -0.043      *
+    NEG_VAL_3         -0.060       0.017      0.000      -0.093      -0.027      *
+    COMP_1             0.324       0.032      0.000       0.263       0.387      *
+    COMP_2             0.374       0.026      0.000       0.325       0.426      *
+    COMP_3             0.411       0.026      0.000       0.361       0.464      *
+    TIP_1              0.180       0.026      0.000       0.129       0.232      *
+    TIP_2              0.200       0.025      0.000       0.151       0.251      *
+    TIP_3              0.202       0.026      0.000       0.151       0.254      *
+    POS_VAL_1          0.364       0.032      0.000       0.303       0.428      *
+    POS_VAL_2          0.436       0.032      0.000       0.376       0.500      *
+    POS_VAL_3          0.428       0.031      0.000       0.370       0.489      *
+    ADV_1             -0.220       0.029      0.000      -0.280      -0.164      *
+    ADV_2             -0.285       0.029      0.000      -0.343      -0.232      *
+    ADV_3             -0.261       0.035      0.000      -0.330      -0.194      *
+
+ IMP_2    WITH
+    IMP_3              0.342       0.022      0.000       0.300       0.386      *
+    NEG_VAL_1         -0.179       0.021      0.000      -0.221      -0.140      *
+    NEG_VAL_2         -0.102       0.016      0.000      -0.134      -0.071      *
+    NEG_VAL_3         -0.043       0.015      0.002      -0.072      -0.014      *
+    COMP_1             0.286       0.028      0.000       0.232       0.343      *
+    COMP_2             0.314       0.022      0.000       0.272       0.358      *
+    COMP_3             0.363       0.023      0.000       0.320       0.408      *
+    TIP_1              0.132       0.023      0.000       0.087       0.178      *
+    TIP_2              0.150       0.022      0.000       0.107       0.194      *
+    TIP_3              0.164       0.023      0.000       0.119       0.210      *
+    POS_VAL_1          0.345       0.028      0.000       0.292       0.401      *
+    POS_VAL_2          0.412       0.028      0.000       0.359       0.467      *
+    POS_VAL_3          0.326       0.026      0.000       0.277       0.377      *
+    ADV_1             -0.193       0.026      0.000      -0.245      -0.144      *
+    ADV_2             -0.240       0.025      0.000      -0.290      -0.194      *
+    ADV_3             -0.257       0.030      0.000      -0.316      -0.199      *
+
+ IMP_3    WITH
+    NEG_VAL_1         -0.209       0.023      0.000      -0.255      -0.166      *
+    NEG_VAL_2         -0.098       0.017      0.000      -0.132      -0.065      *
+    NEG_VAL_3         -0.089       0.016      0.000      -0.121      -0.058      *
+    COMP_1             0.308       0.030      0.000       0.250       0.368      *
+    COMP_2             0.367       0.024      0.000       0.319       0.415      *
+    COMP_3             0.397       0.025      0.000       0.350       0.447      *
+    TIP_1              0.156       0.025      0.000       0.108       0.206      *
+    TIP_2              0.170       0.024      0.000       0.123       0.218      *
+    TIP_3              0.223       0.025      0.000       0.175       0.273      *
+    POS_VAL_1          0.350       0.030      0.000       0.291       0.408      *
+    POS_VAL_2          0.388       0.030      0.000       0.330       0.447      *
+    POS_VAL_3          0.368       0.028      0.000       0.312       0.423      *
+    ADV_1             -0.138       0.028      0.000      -0.192      -0.084      *
+    ADV_2             -0.246       0.027      0.000      -0.301      -0.195      *
+    ADV_3             -0.233       0.033      0.000      -0.298      -0.169      *
+
+ NEG_VAL_ WITH
+    NEG_VAL_2          0.227       0.018      0.000       0.193       0.264      *
+    NEG_VAL_3          0.123       0.016      0.000       0.092       0.156      *
+    COMP_1            -0.078       0.029      0.003      -0.134      -0.022      *
+    COMP_2            -0.186       0.023      0.000      -0.232      -0.142      *
+    COMP_3            -0.191       0.024      0.000      -0.239      -0.146      *
+    TIP_1             -0.082       0.025      0.000      -0.131      -0.033      *
+    TIP_2             -0.102       0.024      0.000      -0.149      -0.056      *
+    TIP_3             -0.085       0.024      0.000      -0.133      -0.038      *
+    POS_VAL_1         -0.284       0.030      0.000      -0.345      -0.228      *
+    POS_VAL_2         -0.267       0.029      0.000      -0.325      -0.212      *
+    POS_VAL_3         -0.278       0.027      0.000      -0.334      -0.226      *
+    ADV_1              0.317       0.028      0.000       0.263       0.374      *
+    ADV_2              0.344       0.028      0.000       0.293       0.401      *
+    ADV_3              0.334       0.033      0.000       0.270       0.400      *
+
+ NEG_VAL_ WITH
+    NEG_VAL_3          0.113       0.013      0.000       0.089       0.139      *
+    COMP_1            -0.059       0.023      0.005      -0.104      -0.014      *
+    COMP_2            -0.097       0.018      0.000      -0.133      -0.063      *
+    COMP_3            -0.110       0.018      0.000      -0.146      -0.074      *
+    TIP_1             -0.093       0.020      0.000      -0.131      -0.055      *
+    TIP_2             -0.022       0.018      0.114      -0.058       0.014
+    TIP_3             -0.047       0.019      0.008      -0.085      -0.009      *
+    POS_VAL_1         -0.132       0.023      0.000      -0.178      -0.088      *
+    POS_VAL_2         -0.116       0.022      0.000      -0.160      -0.073      *
+    POS_VAL_3         -0.122       0.021      0.000      -0.163      -0.081      *
+    ADV_1              0.161       0.021      0.000       0.120       0.204      *
+    ADV_2              0.219       0.021      0.000       0.179       0.261      *
+    ADV_3              0.138       0.025      0.000       0.090       0.188      *
+
+ NEG_VAL_ WITH
+    COMP_1            -0.029       0.021      0.083      -0.071       0.012
+    COMP_2            -0.050       0.016      0.001      -0.083      -0.018      *
+    COMP_3            -0.022       0.017      0.092      -0.055       0.011
+    TIP_1              0.018       0.018      0.162      -0.017       0.053
+    TIP_2              0.000       0.017      0.492      -0.035       0.034
+    TIP_3             -0.003       0.018      0.428      -0.039       0.033
+    POS_VAL_1         -0.063       0.021      0.002      -0.104      -0.022      *
+    POS_VAL_2         -0.069       0.020      0.000      -0.110      -0.029      *
+    POS_VAL_3         -0.054       0.019      0.002      -0.092      -0.017      *
+    ADV_1              0.115       0.020      0.000       0.076       0.154      *
+    ADV_2              0.131       0.019      0.000       0.093       0.169      *
+    ADV_3              0.127       0.024      0.000       0.081       0.173      *
+
+ COMP_1   WITH
+    COMP_2             0.370       0.031      0.000       0.310       0.433      *
+    COMP_3             0.342       0.032      0.000       0.280       0.405      *
+    TIP_1              0.257       0.033      0.000       0.194       0.323      *
+    TIP_2              0.211       0.032      0.000       0.150       0.274      *
+    TIP_3              0.226       0.034      0.000       0.161       0.294      *
+    POS_VAL_1          0.186       0.039      0.000       0.112       0.263      *
+    POS_VAL_2          0.314       0.038      0.000       0.241       0.391      *
+    POS_VAL_3          0.296       0.036      0.000       0.226       0.368      *
+    ADV_1             -0.046       0.036      0.104      -0.117       0.025
+    ADV_2             -0.145       0.035      0.000      -0.215      -0.078      *
+    ADV_3             -0.081       0.042      0.026      -0.165       0.001
+
+ COMP_2   WITH
+    COMP_3             0.393       0.026      0.000       0.344       0.444      *
+    TIP_1              0.205       0.025      0.000       0.156       0.255      *
+    TIP_2              0.237       0.025      0.000       0.189       0.285      *
+    TIP_3              0.244       0.026      0.000       0.194       0.296      *
+    POS_VAL_1          0.319       0.031      0.000       0.261       0.381      *
+    POS_VAL_2          0.341       0.030      0.000       0.284       0.400      *
+    POS_VAL_3          0.348       0.028      0.000       0.292       0.404      *
+    ADV_1             -0.091       0.028      0.000      -0.147      -0.037      *
+    ADV_2             -0.236       0.027      0.000      -0.291      -0.183      *
+    ADV_3             -0.176       0.033      0.000      -0.243      -0.112      *
+
+ COMP_3   WITH
+    TIP_1              0.195       0.026      0.000       0.146       0.246      *
+    TIP_2              0.198       0.025      0.000       0.149       0.247      *
+    TIP_3              0.172       0.026      0.000       0.121       0.223      *
+    POS_VAL_1          0.368       0.032      0.000       0.306       0.431      *
+    POS_VAL_2          0.393       0.031      0.000       0.332       0.454      *
+    POS_VAL_3          0.397       0.030      0.000       0.340       0.456      *
+    ADV_1             -0.163       0.029      0.000      -0.221      -0.107      *
+    ADV_2             -0.239       0.028      0.000      -0.296      -0.185      *
+    ADV_3             -0.213       0.034      0.000      -0.282      -0.148      *
+
+ TIP_1    WITH
+    TIP_2              0.546       0.030      0.000       0.490       0.607      *
+    TIP_3              0.536       0.031      0.000       0.479       0.599      *
+    POS_VAL_1          0.144       0.032      0.000       0.081       0.208      *
+    POS_VAL_2          0.130       0.032      0.000       0.068       0.193      *
+    POS_VAL_3          0.181       0.030      0.000       0.122       0.239      *
+    ADV_1             -0.092       0.031      0.002      -0.153      -0.033      *
+    ADV_2             -0.202       0.030      0.000      -0.261      -0.145      *
+    ADV_3             -0.128       0.036      0.000      -0.200      -0.058      *
+
+ TIP_2    WITH
+    TIP_3              0.562       0.030      0.000       0.505       0.624      *
+    POS_VAL_1          0.153       0.031      0.000       0.092       0.215      *
+    POS_VAL_2          0.126       0.030      0.000       0.067       0.187      *
+    POS_VAL_3          0.135       0.029      0.000       0.078       0.191      *
+    ADV_1             -0.063       0.029      0.014      -0.121      -0.006      *
+    ADV_2             -0.198       0.028      0.000      -0.255      -0.143      *
+    ADV_3             -0.066       0.035      0.028      -0.134       0.002
+
+ TIP_3    WITH
+    POS_VAL_1          0.132       0.032      0.000       0.069       0.196      *
+    POS_VAL_2          0.088       0.032      0.002       0.026       0.150      *
+    POS_VAL_3          0.141       0.030      0.000       0.083       0.200      *
+    ADV_1             -0.042       0.031      0.086      -0.103       0.018
+    ADV_2             -0.138       0.030      0.000      -0.196      -0.081      *
+    ADV_3             -0.040       0.036      0.131      -0.112       0.031
+
+ POS_VAL_ WITH
+    POS_VAL_2          0.711       0.041      0.000       0.632       0.792      *
+    POS_VAL_3          0.628       0.038      0.000       0.554       0.704      *
+    ADV_1             -0.356       0.037      0.000      -0.431      -0.285      *
+    ADV_2             -0.456       0.036      0.000      -0.530      -0.388      *
+    ADV_3             -0.437       0.043      0.000      -0.524      -0.355      *
+
+ POS_VAL_ WITH
+    POS_VAL_3          0.644       0.037      0.000       0.572       0.718      *
+    ADV_1             -0.239       0.035      0.000      -0.311      -0.172      *
+    ADV_2             -0.347       0.034      0.000      -0.416      -0.281      *
+    ADV_3             -0.357       0.041      0.000      -0.441      -0.278      *
+
+ POS_VAL_ WITH
+    ADV_1             -0.285       0.034      0.000      -0.354      -0.221      *
+    ADV_2             -0.365       0.033      0.000      -0.431      -0.302      *
+    ADV_3             -0.407       0.040      0.000      -0.488      -0.331      *
+
+ ADV_1    WITH
+    ADV_2              0.514       0.035      0.000       0.448       0.584      *
+    ADV_3              0.666       0.043      0.000       0.586       0.754      *
+
+ ADV_2    WITH
+    ADV_3              0.634       0.042      0.000       0.556       0.719      *
+
+ Variances
+    H_1                1.792       0.063      0.000       1.675       1.923      *
+    H_2                1.629       0.058      0.000       1.521       1.748      *
+    H_3                1.599       0.056      0.000       1.496       1.715      *
+    IMP_1              0.985       0.035      0.000       0.919       1.058      *
+    IMP_2              0.757       0.026      0.000       0.708       0.810      *
+    IMP_3              0.895       0.031      0.000       0.836       0.958      *
+    NEG_VAL_1          0.876       0.031      0.000       0.819       0.941      *
+    NEG_VAL_2          0.534       0.019      0.000       0.499       0.572      *
+    NEG_VAL_3          0.465       0.017      0.000       0.434       0.498      *
+    COMP_1             1.536       0.055      0.000       1.436       1.649      *
+    COMP_2             0.923       0.033      0.000       0.861       0.991      *
+    COMP_3             0.966       0.034      0.000       0.903       1.035      *
+    TIP_1              1.108       0.038      0.000       1.036       1.188      *
+    TIP_2              1.028       0.037      0.000       0.959       1.104      *
+    TIP_3              1.124       0.039      0.000       1.051       1.205      *
+    POS_VAL_1          1.520       0.054      0.000       1.418       1.630      *
+    POS_VAL_2          1.451       0.051      0.000       1.355       1.553      *
+    POS_VAL_3          1.272       0.045      0.000       1.187       1.363      *
+    ADV_1              1.325       0.047      0.000       1.238       1.421      *
+    ADV_2              1.241       0.045      0.000       1.157       1.331      *
+    ADV_3              1.848       0.066      0.000       1.726       1.982      *
+
+Between Level
+
+ HUM_B    BY
+    H_1                1.000       0.000      0.000       1.000       1.000
+    H_2                0.901       0.051      0.000       0.803       1.003      *
+    H_3                1.031       0.038      0.000       0.959       1.107      *
+
+ IMP_B    BY
+    IMP_1              1.000       0.000      0.000       1.000       1.000
+    IMP_2              0.997       0.056      0.000       0.891       1.109      *
+    IMP_3              0.920       0.045      0.000       0.836       1.012      *
+
+ NEGV_B   BY
+    NEG_VAL_1          1.000       0.000      0.000       1.000       1.000
+    NEG_VAL_2          0.997       0.046      0.000       0.910       1.090      *
+    NEG_VAL_3          0.894       0.087      0.000       0.727       1.067      *
+
+ COMP_B   BY
+    COMP_1             1.000       0.000      0.000       1.000       1.000
+    COMP_2             1.105       0.081      0.000       0.959       1.279      *
+    COMP_3             1.167       0.074      0.000       1.041       1.330      *
+
+ TYPC_B   BY
+    TIP_1              1.000       0.000      0.000       1.000       1.000
+    TIP_2              0.990       0.034      0.000       0.927       1.058      *
+    TIP_3              0.950       0.036      0.000       0.882       1.023      *
+
+ POSV_B   BY
+    POS_VAL_1          1.000       0.000      0.000       1.000       1.000
+    POS_VAL_2          1.173       0.106      0.000       0.971       1.388      *
+    POS_VAL_3          1.120       0.091      0.000       0.941       1.299      *
+
+ ADV_B    BY
+    ADV_1              1.000       0.000      0.000       1.000       1.000
+    ADV_2              0.826       0.058      0.000       0.720       0.947      *
+    ADV_3              1.055       0.086      0.000       0.895       1.233      *
+
+ IMP_B    WITH
+    HUM_B             -0.053       0.099      0.500      -0.112       0.128
+
+ NEGV_B   WITH
+    HUM_B              0.244       0.108      0.000       0.047       0.424      *
+    IMP_B             -0.232       0.033      0.000      -0.308      -0.193      *
+
+ COMP_B   WITH
+    HUM_B              0.006       0.064      0.500      -0.045       0.092
+    IMP_B              0.456       0.053      0.000       0.419       0.527      *
+    NEGV_B            -0.180       0.022      0.000      -0.225      -0.174      *
+
+ TYPC_B   WITH
+    HUM_B             -0.195       0.066      0.030      -0.223       0.004
+    IMP_B              0.379       0.060      0.000       0.370       0.557      *
+    NEGV_B            -0.233       0.057      0.000      -0.351      -0.119      *
+    COMP_B             0.342       0.050      0.000       0.296       0.492      *
+
+ POSV_B   WITH
+    HUM_B              0.211       0.130      0.000       0.041       0.506      *
+    IMP_B              0.480       0.132      0.000       0.359       0.788      *
+    NEGV_B            -0.078       0.081      0.167      -0.236       0.067
+    COMP_B             0.449       0.102      0.000       0.349       0.706      *
+    TYPC_B             0.291       0.107      0.000       0.171       0.572      *
+
+ ADV_B    WITH
+    HUM_B              0.325       0.128      0.002       0.052       0.542      *
+    IMP_B             -0.364       0.058      0.000      -0.486      -0.278      *
+    NEGV_B             0.538       0.081      0.000       0.397       0.695      *
+    COMP_B            -0.298       0.044      0.000      -0.381      -0.222      *
+    TYPC_B            -0.289       0.078      0.006      -0.446      -0.159      *
+    POSV_B            -0.199       0.110      0.017      -0.424      -0.019      *
+
+ Intercepts
+    H_1                2.670       0.122      0.000       2.429       2.911      *
+    H_2                2.517       0.117      0.000       2.287       2.748      *
+    H_3                2.581       0.124      0.000       2.335       2.827      *
+    IMP_1              5.630       0.079      0.000       5.470       5.781      *
+    IMP_2              5.830       0.079      0.000       5.670       5.980      *
+    IMP_3              5.747       0.072      0.000       5.600       5.883      *
+    NEG_VAL_1          1.502       0.073      0.000       1.362       1.650      *
+    NEG_VAL_2          1.354       0.072      0.000       1.216       1.498      *
+    NEG_VAL_3          1.367       0.078      0.000       1.215       1.522      *
+    COMP_1             5.081       0.105      0.000       4.873       5.287      *
+    COMP_2             5.663       0.082      0.000       5.498       5.820      *
+    COMP_3             5.712       0.082      0.000       5.545       5.868      *
+    TIP_1              5.495       0.092      0.000       5.295       5.664      *
+    TIP_2              5.521       0.090      0.000       5.326       5.690      *
+    TIP_3              5.563       0.088      0.000       5.375       5.729      *
+    POS_VAL_1          4.580       0.120      0.000       4.344       4.813      *
+    POS_VAL_2          4.815       0.126      0.000       4.565       5.058      *
+    POS_VAL_3          5.063       0.113      0.000       4.838       5.281      *
+    ADV_1              1.984       0.098      0.000       1.792       2.179      *
+    ADV_2              1.679       0.077      0.000       1.526       1.828      *
+    ADV_3              2.224       0.104      0.000       2.020       2.429      *
+
+ Variances
+    HUM_B              1.365       0.055      0.000       1.289       1.520      *
+    IMP_B              0.490       0.084      0.000       0.455       0.665      *
+    NEGV_B             0.500       0.075      0.000       0.359       0.636      *
+    COMP_B             0.398       0.037      0.000       0.390       0.494      *
+    TYPC_B             0.741       0.101      0.000       0.585       0.988      *
+    POSV_B             0.851       0.273      0.000       0.608       1.667      *
+    ADV_B              0.767       0.120      0.000       0.562       1.023      *
+
+ Residual Variances
+    H_1                0.048       0.024      0.000       0.008       0.103      *
+    H_2                0.170       0.039      0.000       0.107       0.261      *
+    H_3                0.018       0.018      0.000       0.001       0.065      *
+    IMP_1              0.037       0.013      0.000       0.017       0.066      *
+    IMP_2              0.042       0.013      0.000       0.022       0.073      *
+    IMP_3              0.008       0.006      0.000       0.000       0.024      *
+    NEG_VAL_1          0.003       0.004      0.000       0.000       0.016      *
+    NEG_VAL_2          0.011       0.008      0.000       0.001       0.031      *
+    NEG_VAL_3          0.194       0.035      0.000       0.139       0.275      *
+    COMP_1             0.576       0.099      0.000       0.418       0.806      *
+    COMP_2             0.088       0.021      0.000       0.054       0.136      *
+    COMP_3             0.028       0.013      0.000       0.007       0.057      *
+    TIP_1              0.006       0.006      0.000       0.000       0.022      *
+    TIP_2              0.002       0.002      0.000       0.000       0.009      *
+    TIP_3              0.007       0.006      0.000       0.000       0.023      *
+    POS_VAL_1          0.363       0.068      0.000       0.255       0.520      *
+    POS_VAL_2          0.181       0.044      0.000       0.109       0.282      *
+    POS_VAL_3          0.015       0.017      0.000       0.001       0.063      *
+    ADV_1              0.139       0.037      0.000       0.079       0.224      *
+    ADV_2              0.016       0.014      0.000       0.001       0.052      *
+    ADV_3              0.148       0.042      0.000       0.080       0.243      *
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ H_1      WITH
+    H_2                0.430       0.021      0.000       0.389       0.469      *
+    H_3                0.462       0.020      0.000       0.423       0.500      *
+    IMP_1              0.039       0.025      0.059      -0.010       0.088
+    IMP_2              0.051       0.025      0.021       0.002       0.099      *
+    IMP_3              0.044       0.025      0.037      -0.004       0.093
+    NEG_VAL_1         -0.043       0.024      0.039      -0.091       0.005
+    NEG_VAL_2          0.014       0.025      0.281      -0.035       0.063
+    NEG_VAL_3          0.079       0.025      0.001       0.030       0.128      *
+    COMP_1            -0.038       0.025      0.061      -0.087       0.010
+    COMP_2             0.013       0.025      0.297      -0.036       0.062
+    COMP_3             0.013       0.025      0.298      -0.036       0.062
+    TIP_1             -0.070       0.025      0.002      -0.119      -0.022      *
+    TIP_2             -0.098       0.025      0.000      -0.147      -0.050      *
+    TIP_3             -0.106       0.025      0.000      -0.155      -0.057      *
+    POS_VAL_1          0.244       0.024      0.000       0.197       0.289      *
+    POS_VAL_2          0.186       0.024      0.000       0.138       0.233      *
+    POS_VAL_3          0.129       0.025      0.000       0.080       0.177      *
+    ADV_1             -0.056       0.025      0.012      -0.104      -0.007      *
+    ADV_2             -0.072       0.025      0.002      -0.121      -0.024      *
+    ADV_3             -0.067       0.024      0.003      -0.114      -0.019      *
+
+ H_2      WITH
+    H_3                0.432       0.020      0.000       0.391       0.471      *
+    IMP_1              0.018       0.025      0.233      -0.030       0.067
+    IMP_2              0.031       0.025      0.104      -0.017       0.080
+    IMP_3              0.005       0.025      0.422      -0.043       0.054
+    NEG_VAL_1          0.019       0.025      0.220      -0.030       0.067
+    NEG_VAL_2          0.072       0.025      0.002       0.023       0.120      *
+    NEG_VAL_3          0.066       0.025      0.003       0.018       0.114      *
+    COMP_1            -0.028       0.025      0.128      -0.078       0.021
+    COMP_2            -0.013       0.025      0.295      -0.063       0.036
+    COMP_3             0.054       0.025      0.016       0.005       0.102      *
+    TIP_1             -0.107       0.025      0.000      -0.156      -0.059      *
+    TIP_2             -0.077       0.025      0.001      -0.126      -0.029      *
+    TIP_3             -0.110       0.025      0.000      -0.159      -0.062      *
+    POS_VAL_1          0.185       0.024      0.000       0.137       0.232      *
+    POS_VAL_2          0.106       0.025      0.000       0.058       0.154      *
+    POS_VAL_3          0.143       0.024      0.000       0.095       0.191      *
+    ADV_1              0.018       0.025      0.240      -0.031       0.067
+    ADV_2             -0.009       0.025      0.355      -0.058       0.039
+    ADV_3              0.036       0.025      0.078      -0.014       0.084
+
+ H_3      WITH
+    IMP_1              0.059       0.025      0.009       0.010       0.107      *
+    IMP_2              0.006       0.025      0.397      -0.042       0.055
+    IMP_3              0.063       0.024      0.005       0.015       0.110      *
+    NEG_VAL_1         -0.045       0.025      0.034      -0.093       0.003
+    NEG_VAL_2          0.041       0.025      0.051      -0.008       0.089
+    NEG_VAL_3          0.030       0.025      0.113      -0.019       0.079
+    COMP_1             0.018       0.025      0.228      -0.030       0.068
+    COMP_2            -0.021       0.025      0.204      -0.069       0.027
+    COMP_3             0.073       0.025      0.001       0.025       0.123      *
+    TIP_1             -0.056       0.025      0.012      -0.105      -0.007      *
+    TIP_2             -0.130       0.025      0.000      -0.178      -0.082      *
+    TIP_3             -0.063       0.025      0.006      -0.112      -0.014      *
+    POS_VAL_1          0.235       0.024      0.000       0.188       0.281      *
+    POS_VAL_2          0.133       0.024      0.000       0.085       0.179      *
+    POS_VAL_3          0.156       0.024      0.000       0.108       0.203      *
+    ADV_1             -0.065       0.025      0.004      -0.114      -0.017      *
+    ADV_2             -0.032       0.025      0.094      -0.082       0.016
+    ADV_3             -0.043       0.025      0.040      -0.093       0.005
+
+ IMP_1    WITH
+    IMP_2              0.449       0.020      0.000       0.408       0.486      *
+    IMP_3              0.479       0.019      0.000       0.441       0.515      *
+    NEG_VAL_1         -0.216       0.024      0.000      -0.263      -0.169      *
+    NEG_VAL_2         -0.108       0.025      0.000      -0.157      -0.060      *
+    NEG_VAL_3         -0.089       0.025      0.000      -0.137      -0.040      *
+    COMP_1             0.264       0.023      0.000       0.217       0.308      *
+    COMP_2             0.393       0.021      0.000       0.351       0.433      *
+    COMP_3             0.422       0.020      0.000       0.381       0.461      *
+    TIP_1              0.173       0.024      0.000       0.125       0.219      *
+    TIP_2              0.199       0.024      0.000       0.152       0.245      *
+    TIP_3              0.192       0.024      0.000       0.145       0.237      *
+    POS_VAL_1          0.298       0.023      0.000       0.253       0.342      *
+    POS_VAL_2          0.365       0.022      0.000       0.322       0.407      *
+    POS_VAL_3          0.382       0.022      0.000       0.339       0.424      *
+    ADV_1             -0.193       0.024      0.000      -0.240      -0.145      *
+    ADV_2             -0.258       0.023      0.000      -0.303      -0.213      *
+    ADV_3             -0.194       0.024      0.000      -0.240      -0.146      *
+
+ IMP_2    WITH
+    IMP_3              0.416       0.021      0.000       0.375       0.455      *
+    NEG_VAL_1         -0.220       0.024      0.000      -0.267      -0.173      *
+    NEG_VAL_2         -0.160       0.024      0.000      -0.207      -0.112      *
+    NEG_VAL_3         -0.072       0.025      0.002      -0.121      -0.023      *
+    COMP_1             0.266       0.023      0.000       0.219       0.311      *
+    COMP_2             0.376       0.021      0.000       0.333       0.416      *
+    COMP_3             0.424       0.020      0.000       0.384       0.463      *
+    TIP_1              0.144       0.024      0.000       0.096       0.192      *
+    TIP_2              0.171       0.024      0.000       0.122       0.218      *
+    TIP_3              0.178       0.024      0.000       0.131       0.224      *
+    POS_VAL_1          0.322       0.022      0.000       0.278       0.365      *
+    POS_VAL_2          0.394       0.021      0.000       0.352       0.433      *
+    POS_VAL_3          0.332       0.022      0.000       0.289       0.375      *
+    ADV_1             -0.193       0.024      0.000      -0.240      -0.145      *
+    ADV_2             -0.248       0.023      0.000      -0.293      -0.203      *
+    ADV_3             -0.217       0.024      0.000      -0.263      -0.170      *
+
+ IMP_3    WITH
+    NEG_VAL_1         -0.236       0.024      0.000      -0.282      -0.190      *
+    NEG_VAL_2         -0.142       0.024      0.000      -0.189      -0.094      *
+    NEG_VAL_3         -0.138       0.024      0.000      -0.185      -0.090      *
+    COMP_1             0.263       0.023      0.000       0.217       0.308      *
+    COMP_2             0.404       0.021      0.000       0.361       0.443      *
+    COMP_3             0.428       0.020      0.000       0.387       0.466      *
+    TIP_1              0.157       0.024      0.000       0.110       0.204      *
+    TIP_2              0.178       0.024      0.000       0.130       0.224      *
+    TIP_3              0.222       0.023      0.000       0.176       0.268      *
+    POS_VAL_1          0.300       0.023      0.000       0.255       0.343      *
+    POS_VAL_2          0.341       0.022      0.000       0.296       0.383      *
+    POS_VAL_3          0.345       0.022      0.000       0.300       0.387      *
+    ADV_1             -0.127       0.025      0.000      -0.174      -0.077      *
+    ADV_2             -0.234       0.024      0.000      -0.280      -0.188      *
+    ADV_3             -0.181       0.024      0.000      -0.228      -0.133      *
+
+ NEG_VAL_ WITH
+    NEG_VAL_2          0.333       0.022      0.000       0.288       0.376      *
+    NEG_VAL_3          0.194       0.024      0.000       0.146       0.241      *
+    COMP_1            -0.067       0.024      0.003      -0.115      -0.019      *
+    COMP_2            -0.207       0.024      0.000      -0.254      -0.160      *
+    COMP_3            -0.208       0.024      0.000      -0.255      -0.160      *
+    TIP_1             -0.083       0.025      0.000      -0.131      -0.034      *
+    TIP_2             -0.108       0.024      0.000      -0.155      -0.060      *
+    TIP_3             -0.086       0.024      0.000      -0.133      -0.038      *
+    POS_VAL_1         -0.247       0.023      0.000      -0.292      -0.200      *
+    POS_VAL_2         -0.237       0.023      0.000      -0.282      -0.191      *
+    POS_VAL_3         -0.263       0.023      0.000      -0.309      -0.218      *
+    ADV_1              0.294       0.023      0.000       0.249       0.339      *
+    ADV_2              0.330       0.022      0.000       0.287       0.374      *
+    ADV_3              0.262       0.023      0.000       0.216       0.307      *
+
+ NEG_VAL_ WITH
+    NEG_VAL_3          0.228       0.024      0.000       0.180       0.273      *
+    COMP_1            -0.065       0.025      0.005      -0.114      -0.016      *
+    COMP_2            -0.138       0.025      0.000      -0.186      -0.090      *
+    COMP_3            -0.153       0.024      0.000      -0.200      -0.104      *
+    TIP_1             -0.120       0.025      0.000      -0.169      -0.072      *
+    TIP_2             -0.030       0.025      0.114      -0.079       0.019
+    TIP_3             -0.060       0.025      0.008      -0.109      -0.011      *
+    POS_VAL_1         -0.147       0.025      0.000      -0.195      -0.099      *
+    POS_VAL_2         -0.132       0.025      0.000      -0.180      -0.084      *
+    POS_VAL_3         -0.148       0.025      0.000      -0.195      -0.099      *
+    ADV_1              0.192       0.024      0.000       0.144       0.238      *
+    ADV_2              0.269       0.023      0.000       0.223       0.314      *
+    ADV_3              0.139       0.024      0.000       0.091       0.187      *
+
+ NEG_VAL_ WITH
+    COMP_1            -0.035       0.025      0.083      -0.083       0.014
+    COMP_2            -0.077       0.025      0.001      -0.126      -0.028      *
+    COMP_3            -0.033       0.025      0.092      -0.081       0.016
+    TIP_1              0.025       0.025      0.162      -0.024       0.073
+    TIP_2             -0.001       0.025      0.492      -0.050       0.048
+    TIP_3             -0.004       0.025      0.428      -0.053       0.045
+    POS_VAL_1         -0.075       0.025      0.002      -0.123      -0.026      *
+    POS_VAL_2         -0.084       0.025      0.000      -0.132      -0.036      *
+    POS_VAL_3         -0.070       0.025      0.002      -0.118      -0.022      *
+    ADV_1              0.146       0.024      0.000       0.098       0.194      *
+    ADV_2              0.172       0.024      0.000       0.124       0.220      *
+    ADV_3              0.137       0.025      0.000       0.088       0.184      *
+
+ COMP_1   WITH
+    COMP_2             0.311       0.023      0.000       0.266       0.354      *
+    COMP_3             0.281       0.023      0.000       0.234       0.325      *
+    TIP_1              0.197       0.024      0.000       0.150       0.243      *
+    TIP_2              0.168       0.024      0.000       0.121       0.215      *
+    TIP_3              0.172       0.025      0.000       0.124       0.220      *
+    POS_VAL_1          0.122       0.025      0.000       0.074       0.170      *
+    POS_VAL_2          0.211       0.024      0.000       0.164       0.257      *
+    POS_VAL_3          0.212       0.024      0.000       0.164       0.258      *
+    ADV_1             -0.032       0.025      0.104      -0.081       0.018
+    ADV_2             -0.105       0.025      0.000      -0.154      -0.057      *
+    ADV_3             -0.048       0.025      0.026      -0.098       0.000
+
+ COMP_2   WITH
+    COMP_3             0.416       0.021      0.000       0.374       0.455      *
+    TIP_1              0.203       0.023      0.000       0.156       0.248      *
+    TIP_2              0.243       0.023      0.000       0.196       0.287      *
+    TIP_3              0.240       0.024      0.000       0.193       0.285      *
+    POS_VAL_1          0.270       0.023      0.000       0.224       0.315      *
+    POS_VAL_2          0.295       0.023      0.000       0.249       0.338      *
+    POS_VAL_3          0.321       0.022      0.000       0.276       0.364      *
+    ADV_1             -0.082       0.025      0.000      -0.131      -0.033      *
+    ADV_2             -0.220       0.024      0.000      -0.267      -0.174      *
+    ADV_3             -0.135       0.025      0.000      -0.183      -0.086      *
+
+ COMP_3   WITH
+    TIP_1              0.188       0.024      0.000       0.142       0.234      *
+    TIP_2              0.199       0.024      0.000       0.151       0.245      *
+    TIP_3              0.165       0.024      0.000       0.117       0.211      *
+    POS_VAL_1          0.303       0.023      0.000       0.258       0.348      *
+    POS_VAL_2          0.332       0.022      0.000       0.287       0.374      *
+    POS_VAL_3          0.358       0.022      0.000       0.315       0.400      *
+    ADV_1             -0.144       0.025      0.000      -0.193      -0.096      *
+    ADV_2             -0.219       0.024      0.000      -0.265      -0.172      *
+    ADV_3             -0.159       0.024      0.000      -0.208      -0.112      *
+
+ TIP_1    WITH
+    TIP_2              0.512       0.018      0.000       0.475       0.547      *
+    TIP_3              0.481       0.019      0.000       0.443       0.517      *
+    POS_VAL_1          0.111       0.025      0.000       0.062       0.159      *
+    POS_VAL_2          0.103       0.025      0.000       0.054       0.151      *
+    POS_VAL_3          0.152       0.024      0.000       0.103       0.199      *
+    ADV_1             -0.076       0.025      0.002      -0.125      -0.027      *
+    ADV_2             -0.172       0.024      0.000      -0.219      -0.125      *
+    ADV_3             -0.089       0.025      0.000      -0.138      -0.041      *
+
+ TIP_2    WITH
+    TIP_3              0.523       0.018      0.000       0.487       0.557      *
+    POS_VAL_1          0.123       0.024      0.000       0.074       0.170      *
+    POS_VAL_2          0.103       0.025      0.000       0.055       0.152      *
+    POS_VAL_3          0.118       0.025      0.000       0.069       0.165      *
+    ADV_1             -0.054       0.025      0.014      -0.103      -0.005      *
+    ADV_2             -0.175       0.024      0.000      -0.222      -0.128      *
+    ADV_3             -0.048       0.025      0.028      -0.096       0.001
+
+ TIP_3    WITH
+    POS_VAL_1          0.101       0.025      0.000       0.053       0.148      *
+    POS_VAL_2          0.069       0.025      0.002       0.020       0.117      *
+    POS_VAL_3          0.118       0.024      0.000       0.070       0.166      *
+    ADV_1             -0.034       0.025      0.086      -0.084       0.014
+    ADV_2             -0.117       0.024      0.000      -0.164      -0.069      *
+    ADV_3             -0.028       0.025      0.131      -0.077       0.021
+
+ POS_VAL_ WITH
+    POS_VAL_2          0.479       0.019      0.000       0.440       0.515      *
+    POS_VAL_3          0.452       0.020      0.000       0.412       0.489      *
+    ADV_1             -0.251       0.024      0.000      -0.297      -0.205      *
+    ADV_2             -0.333       0.022      0.000      -0.375      -0.289      *
+    ADV_3             -0.261       0.023      0.000      -0.306      -0.215      *
+
+ POS_VAL_ WITH
+    POS_VAL_3          0.474       0.019      0.000       0.435       0.511      *
+    ADV_1             -0.173       0.024      0.000      -0.221      -0.125      *
+    ADV_2             -0.259       0.023      0.000      -0.304      -0.213      *
+    ADV_3             -0.218       0.024      0.000      -0.264      -0.172      *
+
+ POS_VAL_ WITH
+    ADV_1             -0.220       0.024      0.000      -0.267      -0.172      *
+    ADV_2             -0.291       0.023      0.000      -0.335      -0.245      *
+    ADV_3             -0.265       0.023      0.000      -0.311      -0.220      *
+
+ ADV_1    WITH
+    ADV_2              0.401       0.021      0.000       0.359       0.441      *
+    ADV_3              0.426       0.021      0.000       0.385       0.466      *
+
+ ADV_2    WITH
+    ADV_3              0.419       0.021      0.000       0.378       0.459      *
+
+ Variances
+    H_1                1.000       0.000      0.000       1.000       1.000
+    H_2                1.000       0.000      0.000       1.000       1.000
+    H_3                1.000       0.000      0.000       1.000       1.000
+    IMP_1              1.000       0.000      0.000       1.000       1.000
+    IMP_2              1.000       0.000      0.000       1.000       1.000
+    IMP_3              1.000       0.000      0.000       1.000       1.000
+    NEG_VAL_1          1.000       0.000      0.000       1.000       1.000
+    NEG_VAL_2          1.000       0.000      0.000       1.000       1.000
+    NEG_VAL_3          1.000       0.000      0.000       1.000       1.000
+    COMP_1             1.000       0.000      0.000       1.000       1.000
+    COMP_2             1.000       0.000      0.000       1.000       1.000
+    COMP_3             1.000       0.000      0.000       1.000       1.000
+    TIP_1              1.000       0.000      0.000       1.000       1.000
+    TIP_2              1.000       0.000      0.000       1.000       1.000
+    TIP_3              1.000       0.000      0.000       1.000       1.000
+    POS_VAL_1          1.000       0.000      0.000       1.000       1.000
+    POS_VAL_2          1.000       0.000      0.000       1.000       1.000
+    POS_VAL_3          1.000       0.000      0.000       1.000       1.000
+    ADV_1              1.000       0.000      0.000       1.000       1.000
+    ADV_2              1.000       0.000      0.000       1.000       1.000
+    ADV_3              1.000       0.000      0.000       1.000       1.000
+
+Between Level
+
+ HUM_B    BY
+    H_1                0.983       0.008      0.000       0.964       0.997      *
+    H_2                0.932       0.017      0.000       0.893       0.958      *
+    H_3                0.994       0.006      0.000       0.977       1.000      *
+
+ IMP_B    BY
+    IMP_1              0.967       0.012      0.000       0.939       0.985      *
+    IMP_2              0.962       0.013      0.000       0.931       0.982      *
+    IMP_3              0.992       0.007      0.000       0.972       1.000      *
+
+ NEGV_B   BY
+    NEG_VAL_1          0.997       0.004      0.000       0.984       1.000      *
+    NEG_VAL_2          0.989       0.009      0.000       0.966       0.999      *
+    NEG_VAL_3          0.817       0.042      0.000       0.719       0.882      *
+
+ COMP_B   BY
+    COMP_1             0.650       0.035      0.000       0.580       0.717      *
+    COMP_2             0.925       0.021      0.000       0.876       0.957      *
+    COMP_3             0.977       0.012      0.000       0.949       0.995      *
+
+ TYPC_B   BY
+    TIP_1              0.996       0.004      0.000       0.985       1.000      *
+    TIP_2              0.999       0.002      0.000       0.994       1.000      *
+    TIP_3              0.995       0.005      0.000       0.982       1.000      *
+
+ POSV_B   BY
+    POS_VAL_1          0.844       0.037      0.000       0.769       0.912      *
+    POS_VAL_2          0.935       0.019      0.000       0.889       0.965      *
+    POS_VAL_3          0.993       0.008      0.000       0.971       1.000      *
+
+ ADV_B    BY
+    ADV_1              0.920       0.022      0.000       0.869       0.956      *
+    ADV_2              0.985       0.013      0.000       0.949       0.999      *
+    ADV_3              0.923       0.024      0.000       0.866       0.960      *
+
+ IMP_B    WITH
+    HUM_B             -0.068       0.118      0.500      -0.142       0.139
+
+ NEGV_B   WITH
+    HUM_B              0.295       0.118      0.000       0.062       0.468      *
+    IMP_B             -0.463       0.059      0.000      -0.593      -0.386      *
+
+ COMP_B   WITH
+    HUM_B              0.004       0.083      0.500      -0.062       0.112
+    IMP_B              0.994       0.004      0.000       0.980       0.997      *
+    NEGV_B            -0.406       0.062      0.000      -0.541      -0.348      *
+
+ TYPC_B   WITH
+    HUM_B             -0.189       0.067      0.030      -0.221       0.004
+    IMP_B              0.661       0.055      0.000       0.544       0.761      *
+    NEGV_B            -0.395       0.089      0.000      -0.545      -0.193      *
+    COMP_B             0.643       0.056      0.000       0.515       0.745      *
+
+ POSV_B   WITH
+    HUM_B              0.189       0.091      0.000       0.039       0.379      *
+    IMP_B              0.739       0.052      0.000       0.639       0.836      *
+    NEGV_B            -0.115       0.119      0.167      -0.339       0.100
+    COMP_B             0.766       0.048      0.000       0.681       0.857      *
+    TYPC_B             0.373       0.082      0.000       0.223       0.548      *
+
+ ADV_B    WITH
+    HUM_B              0.316       0.115      0.002       0.052       0.488      *
+    IMP_B             -0.570       0.068      0.000      -0.692      -0.443      *
+    NEGV_B             0.877       0.033      0.000       0.798       0.927      *
+    COMP_B            -0.524       0.073      0.000      -0.649      -0.382      *
+    TYPC_B            -0.391       0.093      0.006      -0.548      -0.205      *
+    POSV_B            -0.242       0.120      0.017      -0.451      -0.022      *
+
+ Intercepts
+    H_1                2.235       0.116      0.000       1.997       2.456      *
+    H_2                2.216       0.155      0.000       1.915       2.522      *
+    H_3                2.118       0.132      0.000       1.856       2.371      *
+    IMP_1              7.576       0.550      0.000       6.633       8.237      *
+    IMP_2              7.727       0.595      0.000       6.683       8.866      *
+    IMP_3              8.496       0.672      0.000       7.351       9.773      *
+    NEG_VAL_1          2.126       0.192      0.000       1.833       2.555      *
+    NEG_VAL_2          1.913       0.173      0.000       1.622       2.293      *
+    NEG_VAL_3          1.784       0.172      0.000       1.468       2.138      *
+    COMP_1             5.080       0.282      0.000       4.521       5.625      *
+    COMP_2             7.280       0.580      0.000       6.233       8.423      *
+    COMP_3             7.340       0.582      0.000       6.319       8.440      *
+    TIP_1              6.355       0.423      0.000       5.498       7.166      *
+    TIP_2              6.482       0.442      0.000       5.580       7.330      *
+    TIP_3              6.775       0.471      0.000       5.826       7.687      *
+    POS_VAL_1          4.111       0.399      0.000       3.185       4.704      *
+    POS_VAL_2          4.018       0.365      0.000       3.301       4.703      *
+    POS_VAL_3          4.712       0.430      0.000       3.856       5.487      *
+    ADV_1              2.079       0.169      0.000       1.769       2.430      *
+    ADV_2              2.276       0.190      0.000       1.938       2.681      *
+    ADV_3              2.217       0.192      0.000       1.868       2.619      *
+
+ Variances
+    HUM_B              1.000       0.000      0.000       1.000       1.000
+    IMP_B              1.000       0.000      0.000       1.000       1.000      *
+    NEGV_B             1.000       0.000      0.000       1.000       1.000
+    COMP_B             1.000       0.000      0.000       1.000       1.000
+    TYPC_B             1.000       0.000      0.000       1.000       1.000
+    POSV_B             1.000       0.000      0.000       1.000       1.000
+    ADV_B              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    H_1                0.033       0.016      0.000       0.006       0.070      *
+    H_2                0.132       0.031      0.000       0.082       0.202      *
+    H_3                0.012       0.012      0.000       0.001       0.045      *
+    IMP_1              0.065       0.023      0.000       0.029       0.118      *
+    IMP_2              0.074       0.025      0.000       0.036       0.133      *
+    IMP_3              0.017       0.014      0.000       0.001       0.054      *
+    NEG_VAL_1          0.006       0.009      0.000       0.000       0.032      *
+    NEG_VAL_2          0.022       0.017      0.000       0.001       0.066      *
+    NEG_VAL_3          0.332       0.067      0.000       0.223       0.483      *
+    COMP_1             0.578       0.045      0.000       0.486       0.664      *
+    COMP_2             0.145       0.038      0.000       0.085       0.233      *
+    COMP_3             0.046       0.023      0.000       0.010       0.100      *
+    TIP_1              0.008       0.008      0.000       0.000       0.030      *
+    TIP_2              0.002       0.003      0.000       0.000       0.013      *
+    TIP_3              0.010       0.009      0.000       0.001       0.035      *
+    POS_VAL_1          0.288       0.063      0.000       0.169       0.409      *
+    POS_VAL_2          0.125       0.036      0.000       0.069       0.209      *
+    POS_VAL_3          0.013       0.015      0.000       0.001       0.056      *
+    ADV_1              0.153       0.041      0.000       0.086       0.245      *
+    ADV_2              0.029       0.026      0.000       0.001       0.099      *
+    ADV_3              0.147       0.044      0.000       0.078       0.250      *
+
+
+STDY Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ H_1      WITH
+    H_2                0.430       0.021      0.000       0.389       0.469      *
+    H_3                0.462       0.020      0.000       0.423       0.500      *
+    IMP_1              0.039       0.025      0.059      -0.010       0.088
+    IMP_2              0.051       0.025      0.021       0.002       0.099      *
+    IMP_3              0.044       0.025      0.037      -0.004       0.093
+    NEG_VAL_1         -0.043       0.024      0.039      -0.091       0.005
+    NEG_VAL_2          0.014       0.025      0.281      -0.035       0.063
+    NEG_VAL_3          0.079       0.025      0.001       0.030       0.128      *
+    COMP_1            -0.038       0.025      0.061      -0.087       0.010
+    COMP_2             0.013       0.025      0.297      -0.036       0.062
+    COMP_3             0.013       0.025      0.298      -0.036       0.062
+    TIP_1             -0.070       0.025      0.002      -0.119      -0.022      *
+    TIP_2             -0.098       0.025      0.000      -0.147      -0.050      *
+    TIP_3             -0.106       0.025      0.000      -0.155      -0.057      *
+    POS_VAL_1          0.244       0.024      0.000       0.197       0.289      *
+    POS_VAL_2          0.186       0.024      0.000       0.138       0.233      *
+    POS_VAL_3          0.129       0.025      0.000       0.080       0.177      *
+    ADV_1             -0.056       0.025      0.012      -0.104      -0.007      *
+    ADV_2             -0.072       0.025      0.002      -0.121      -0.024      *
+    ADV_3             -0.067       0.024      0.003      -0.114      -0.019      *
+
+ H_2      WITH
+    H_3                0.432       0.020      0.000       0.391       0.471      *
+    IMP_1              0.018       0.025      0.233      -0.030       0.067
+    IMP_2              0.031       0.025      0.104      -0.017       0.080
+    IMP_3              0.005       0.025      0.422      -0.043       0.054
+    NEG_VAL_1          0.019       0.025      0.220      -0.030       0.067
+    NEG_VAL_2          0.072       0.025      0.002       0.023       0.120      *
+    NEG_VAL_3          0.066       0.025      0.003       0.018       0.114      *
+    COMP_1            -0.028       0.025      0.128      -0.078       0.021
+    COMP_2            -0.013       0.025      0.295      -0.063       0.036
+    COMP_3             0.054       0.025      0.016       0.005       0.102      *
+    TIP_1             -0.107       0.025      0.000      -0.156      -0.059      *
+    TIP_2             -0.077       0.025      0.001      -0.126      -0.029      *
+    TIP_3             -0.110       0.025      0.000      -0.159      -0.062      *
+    POS_VAL_1          0.185       0.024      0.000       0.137       0.232      *
+    POS_VAL_2          0.106       0.025      0.000       0.058       0.154      *
+    POS_VAL_3          0.143       0.024      0.000       0.095       0.191      *
+    ADV_1              0.018       0.025      0.240      -0.031       0.067
+    ADV_2             -0.009       0.025      0.355      -0.058       0.039
+    ADV_3              0.036       0.025      0.078      -0.014       0.084
+
+ H_3      WITH
+    IMP_1              0.059       0.025      0.009       0.010       0.107      *
+    IMP_2              0.006       0.025      0.397      -0.042       0.055
+    IMP_3              0.063       0.024      0.005       0.015       0.110      *
+    NEG_VAL_1         -0.045       0.025      0.034      -0.093       0.003
+    NEG_VAL_2          0.041       0.025      0.051      -0.008       0.089
+    NEG_VAL_3          0.030       0.025      0.113      -0.019       0.079
+    COMP_1             0.018       0.025      0.228      -0.030       0.068
+    COMP_2            -0.021       0.025      0.204      -0.069       0.027
+    COMP_3             0.073       0.025      0.001       0.025       0.123      *
+    TIP_1             -0.056       0.025      0.012      -0.105      -0.007      *
+    TIP_2             -0.130       0.025      0.000      -0.178      -0.082      *
+    TIP_3             -0.063       0.025      0.006      -0.112      -0.014      *
+    POS_VAL_1          0.235       0.024      0.000       0.188       0.281      *
+    POS_VAL_2          0.133       0.024      0.000       0.085       0.179      *
+    POS_VAL_3          0.156       0.024      0.000       0.108       0.203      *
+    ADV_1             -0.065       0.025      0.004      -0.114      -0.017      *
+    ADV_2             -0.032       0.025      0.094      -0.082       0.016
+    ADV_3             -0.043       0.025      0.040      -0.093       0.005
+
+ IMP_1    WITH
+    IMP_2              0.449       0.020      0.000       0.408       0.486      *
+    IMP_3              0.479       0.019      0.000       0.441       0.515      *
+    NEG_VAL_1         -0.216       0.024      0.000      -0.263      -0.169      *
+    NEG_VAL_2         -0.108       0.025      0.000      -0.157      -0.060      *
+    NEG_VAL_3         -0.089       0.025      0.000      -0.137      -0.040      *
+    COMP_1             0.264       0.023      0.000       0.217       0.308      *
+    COMP_2             0.393       0.021      0.000       0.351       0.433      *
+    COMP_3             0.422       0.020      0.000       0.381       0.461      *
+    TIP_1              0.173       0.024      0.000       0.125       0.219      *
+    TIP_2              0.199       0.024      0.000       0.152       0.245      *
+    TIP_3              0.192       0.024      0.000       0.145       0.237      *
+    POS_VAL_1          0.298       0.023      0.000       0.253       0.342      *
+    POS_VAL_2          0.365       0.022      0.000       0.322       0.407      *
+    POS_VAL_3          0.382       0.022      0.000       0.339       0.424      *
+    ADV_1             -0.193       0.024      0.000      -0.240      -0.145      *
+    ADV_2             -0.258       0.023      0.000      -0.303      -0.213      *
+    ADV_3             -0.194       0.024      0.000      -0.240      -0.146      *
+
+ IMP_2    WITH
+    IMP_3              0.416       0.021      0.000       0.375       0.455      *
+    NEG_VAL_1         -0.220       0.024      0.000      -0.267      -0.173      *
+    NEG_VAL_2         -0.160       0.024      0.000      -0.207      -0.112      *
+    NEG_VAL_3         -0.072       0.025      0.002      -0.121      -0.023      *
+    COMP_1             0.266       0.023      0.000       0.219       0.311      *
+    COMP_2             0.376       0.021      0.000       0.333       0.416      *
+    COMP_3             0.424       0.020      0.000       0.384       0.463      *
+    TIP_1              0.144       0.024      0.000       0.096       0.192      *
+    TIP_2              0.171       0.024      0.000       0.122       0.218      *
+    TIP_3              0.178       0.024      0.000       0.131       0.224      *
+    POS_VAL_1          0.322       0.022      0.000       0.278       0.365      *
+    POS_VAL_2          0.394       0.021      0.000       0.352       0.433      *
+    POS_VAL_3          0.332       0.022      0.000       0.289       0.375      *
+    ADV_1             -0.193       0.024      0.000      -0.240      -0.145      *
+    ADV_2             -0.248       0.023      0.000      -0.293      -0.203      *
+    ADV_3             -0.217       0.024      0.000      -0.263      -0.170      *
+
+ IMP_3    WITH
+    NEG_VAL_1         -0.236       0.024      0.000      -0.282      -0.190      *
+    NEG_VAL_2         -0.142       0.024      0.000      -0.189      -0.094      *
+    NEG_VAL_3         -0.138       0.024      0.000      -0.185      -0.090      *
+    COMP_1             0.263       0.023      0.000       0.217       0.308      *
+    COMP_2             0.404       0.021      0.000       0.361       0.443      *
+    COMP_3             0.428       0.020      0.000       0.387       0.466      *
+    TIP_1              0.157       0.024      0.000       0.110       0.204      *
+    TIP_2              0.178       0.024      0.000       0.130       0.224      *
+    TIP_3              0.222       0.023      0.000       0.176       0.268      *
+    POS_VAL_1          0.300       0.023      0.000       0.255       0.343      *
+    POS_VAL_2          0.341       0.022      0.000       0.296       0.383      *
+    POS_VAL_3          0.345       0.022      0.000       0.300       0.387      *
+    ADV_1             -0.127       0.025      0.000      -0.174      -0.077      *
+    ADV_2             -0.234       0.024      0.000      -0.280      -0.188      *
+    ADV_3             -0.181       0.024      0.000      -0.228      -0.133      *
+
+ NEG_VAL_ WITH
+    NEG_VAL_2          0.333       0.022      0.000       0.288       0.376      *
+    NEG_VAL_3          0.194       0.024      0.000       0.146       0.241      *
+    COMP_1            -0.067       0.024      0.003      -0.115      -0.019      *
+    COMP_2            -0.207       0.024      0.000      -0.254      -0.160      *
+    COMP_3            -0.208       0.024      0.000      -0.255      -0.160      *
+    TIP_1             -0.083       0.025      0.000      -0.131      -0.034      *
+    TIP_2             -0.108       0.024      0.000      -0.155      -0.060      *
+    TIP_3             -0.086       0.024      0.000      -0.133      -0.038      *
+    POS_VAL_1         -0.247       0.023      0.000      -0.292      -0.200      *
+    POS_VAL_2         -0.237       0.023      0.000      -0.282      -0.191      *
+    POS_VAL_3         -0.263       0.023      0.000      -0.309      -0.218      *
+    ADV_1              0.294       0.023      0.000       0.249       0.339      *
+    ADV_2              0.330       0.022      0.000       0.287       0.374      *
+    ADV_3              0.262       0.023      0.000       0.216       0.307      *
+
+ NEG_VAL_ WITH
+    NEG_VAL_3          0.228       0.024      0.000       0.180       0.273      *
+    COMP_1            -0.065       0.025      0.005      -0.114      -0.016      *
+    COMP_2            -0.138       0.025      0.000      -0.186      -0.090      *
+    COMP_3            -0.153       0.024      0.000      -0.200      -0.104      *
+    TIP_1             -0.120       0.025      0.000      -0.169      -0.072      *
+    TIP_2             -0.030       0.025      0.114      -0.079       0.019
+    TIP_3             -0.060       0.025      0.008      -0.109      -0.011      *
+    POS_VAL_1         -0.147       0.025      0.000      -0.195      -0.099      *
+    POS_VAL_2         -0.132       0.025      0.000      -0.180      -0.084      *
+    POS_VAL_3         -0.148       0.025      0.000      -0.195      -0.099      *
+    ADV_1              0.192       0.024      0.000       0.144       0.238      *
+    ADV_2              0.269       0.023      0.000       0.223       0.314      *
+    ADV_3              0.139       0.024      0.000       0.091       0.187      *
+
+ NEG_VAL_ WITH
+    COMP_1            -0.035       0.025      0.083      -0.083       0.014
+    COMP_2            -0.077       0.025      0.001      -0.126      -0.028      *
+    COMP_3            -0.033       0.025      0.092      -0.081       0.016
+    TIP_1              0.025       0.025      0.162      -0.024       0.073
+    TIP_2             -0.001       0.025      0.492      -0.050       0.048
+    TIP_3             -0.004       0.025      0.428      -0.053       0.045
+    POS_VAL_1         -0.075       0.025      0.002      -0.123      -0.026      *
+    POS_VAL_2         -0.084       0.025      0.000      -0.132      -0.036      *
+    POS_VAL_3         -0.070       0.025      0.002      -0.118      -0.022      *
+    ADV_1              0.146       0.024      0.000       0.098       0.194      *
+    ADV_2              0.172       0.024      0.000       0.124       0.220      *
+    ADV_3              0.137       0.025      0.000       0.088       0.184      *
+
+ COMP_1   WITH
+    COMP_2             0.311       0.023      0.000       0.266       0.354      *
+    COMP_3             0.281       0.023      0.000       0.234       0.325      *
+    TIP_1              0.197       0.024      0.000       0.150       0.243      *
+    TIP_2              0.168       0.024      0.000       0.121       0.215      *
+    TIP_3              0.172       0.025      0.000       0.124       0.220      *
+    POS_VAL_1          0.122       0.025      0.000       0.074       0.170      *
+    POS_VAL_2          0.211       0.024      0.000       0.164       0.257      *
+    POS_VAL_3          0.212       0.024      0.000       0.164       0.258      *
+    ADV_1             -0.032       0.025      0.104      -0.081       0.018
+    ADV_2             -0.105       0.025      0.000      -0.154      -0.057      *
+    ADV_3             -0.048       0.025      0.026      -0.098       0.000
+
+ COMP_2   WITH
+    COMP_3             0.416       0.021      0.000       0.374       0.455      *
+    TIP_1              0.203       0.023      0.000       0.156       0.248      *
+    TIP_2              0.243       0.023      0.000       0.196       0.287      *
+    TIP_3              0.240       0.024      0.000       0.193       0.285      *
+    POS_VAL_1          0.270       0.023      0.000       0.224       0.315      *
+    POS_VAL_2          0.295       0.023      0.000       0.249       0.338      *
+    POS_VAL_3          0.321       0.022      0.000       0.276       0.364      *
+    ADV_1             -0.082       0.025      0.000      -0.131      -0.033      *
+    ADV_2             -0.220       0.024      0.000      -0.267      -0.174      *
+    ADV_3             -0.135       0.025      0.000      -0.183      -0.086      *
+
+ COMP_3   WITH
+    TIP_1              0.188       0.024      0.000       0.142       0.234      *
+    TIP_2              0.199       0.024      0.000       0.151       0.245      *
+    TIP_3              0.165       0.024      0.000       0.117       0.211      *
+    POS_VAL_1          0.303       0.023      0.000       0.258       0.348      *
+    POS_VAL_2          0.332       0.022      0.000       0.287       0.374      *
+    POS_VAL_3          0.358       0.022      0.000       0.315       0.400      *
+    ADV_1             -0.144       0.025      0.000      -0.193      -0.096      *
+    ADV_2             -0.219       0.024      0.000      -0.265      -0.172      *
+    ADV_3             -0.159       0.024      0.000      -0.208      -0.112      *
+
+ TIP_1    WITH
+    TIP_2              0.512       0.018      0.000       0.475       0.547      *
+    TIP_3              0.481       0.019      0.000       0.443       0.517      *
+    POS_VAL_1          0.111       0.025      0.000       0.062       0.159      *
+    POS_VAL_2          0.103       0.025      0.000       0.054       0.151      *
+    POS_VAL_3          0.152       0.024      0.000       0.103       0.199      *
+    ADV_1             -0.076       0.025      0.002      -0.125      -0.027      *
+    ADV_2             -0.172       0.024      0.000      -0.219      -0.125      *
+    ADV_3             -0.089       0.025      0.000      -0.138      -0.041      *
+
+ TIP_2    WITH
+    TIP_3              0.523       0.018      0.000       0.487       0.557      *
+    POS_VAL_1          0.123       0.024      0.000       0.074       0.170      *
+    POS_VAL_2          0.103       0.025      0.000       0.055       0.152      *
+    POS_VAL_3          0.118       0.025      0.000       0.069       0.165      *
+    ADV_1             -0.054       0.025      0.014      -0.103      -0.005      *
+    ADV_2             -0.175       0.024      0.000      -0.222      -0.128      *
+    ADV_3             -0.048       0.025      0.028      -0.096       0.001
+
+ TIP_3    WITH
+    POS_VAL_1          0.101       0.025      0.000       0.053       0.148      *
+    POS_VAL_2          0.069       0.025      0.002       0.020       0.117      *
+    POS_VAL_3          0.118       0.024      0.000       0.070       0.166      *
+    ADV_1             -0.034       0.025      0.086      -0.084       0.014
+    ADV_2             -0.117       0.024      0.000      -0.164      -0.069      *
+    ADV_3             -0.028       0.025      0.131      -0.077       0.021
+
+ POS_VAL_ WITH
+    POS_VAL_2          0.479       0.019      0.000       0.440       0.515      *
+    POS_VAL_3          0.452       0.020      0.000       0.412       0.489      *
+    ADV_1             -0.251       0.024      0.000      -0.297      -0.205      *
+    ADV_2             -0.333       0.022      0.000      -0.375      -0.289      *
+    ADV_3             -0.261       0.023      0.000      -0.306      -0.215      *
+
+ POS_VAL_ WITH
+    POS_VAL_3          0.474       0.019      0.000       0.435       0.511      *
+    ADV_1             -0.173       0.024      0.000      -0.221      -0.125      *
+    ADV_2             -0.259       0.023      0.000      -0.304      -0.213      *
+    ADV_3             -0.218       0.024      0.000      -0.264      -0.172      *
+
+ POS_VAL_ WITH
+    ADV_1             -0.220       0.024      0.000      -0.267      -0.172      *
+    ADV_2             -0.291       0.023      0.000      -0.335      -0.245      *
+    ADV_3             -0.265       0.023      0.000      -0.311      -0.220      *
+
+ ADV_1    WITH
+    ADV_2              0.401       0.021      0.000       0.359       0.441      *
+    ADV_3              0.426       0.021      0.000       0.385       0.466      *
+
+ ADV_2    WITH
+    ADV_3              0.419       0.021      0.000       0.378       0.459      *
+
+ Variances
+    H_1                1.000       0.000      0.000       1.000       1.000
+    H_2                1.000       0.000      0.000       1.000       1.000
+    H_3                1.000       0.000      0.000       1.000       1.000
+    IMP_1              1.000       0.000      0.000       1.000       1.000
+    IMP_2              1.000       0.000      0.000       1.000       1.000
+    IMP_3              1.000       0.000      0.000       1.000       1.000
+    NEG_VAL_1          1.000       0.000      0.000       1.000       1.000
+    NEG_VAL_2          1.000       0.000      0.000       1.000       1.000
+    NEG_VAL_3          1.000       0.000      0.000       1.000       1.000
+    COMP_1             1.000       0.000      0.000       1.000       1.000
+    COMP_2             1.000       0.000      0.000       1.000       1.000
+    COMP_3             1.000       0.000      0.000       1.000       1.000
+    TIP_1              1.000       0.000      0.000       1.000       1.000
+    TIP_2              1.000       0.000      0.000       1.000       1.000
+    TIP_3              1.000       0.000      0.000       1.000       1.000
+    POS_VAL_1          1.000       0.000      0.000       1.000       1.000
+    POS_VAL_2          1.000       0.000      0.000       1.000       1.000
+    POS_VAL_3          1.000       0.000      0.000       1.000       1.000
+    ADV_1              1.000       0.000      0.000       1.000       1.000
+    ADV_2              1.000       0.000      0.000       1.000       1.000
+    ADV_3              1.000       0.000      0.000       1.000       1.000
+
+Between Level
+
+ HUM_B    BY
+    H_1                0.983       0.008      0.000       0.964       0.997      *
+    H_2                0.932       0.017      0.000       0.893       0.958      *
+    H_3                0.994       0.006      0.000       0.977       1.000      *
+
+ IMP_B    BY
+    IMP_1              0.967       0.012      0.000       0.939       0.985      *
+    IMP_2              0.962       0.013      0.000       0.931       0.982      *
+    IMP_3              0.992       0.007      0.000       0.972       1.000      *
+
+ NEGV_B   BY
+    NEG_VAL_1          0.997       0.004      0.000       0.984       1.000      *
+    NEG_VAL_2          0.989       0.009      0.000       0.966       0.999      *
+    NEG_VAL_3          0.817       0.042      0.000       0.719       0.882      *
+
+ COMP_B   BY
+    COMP_1             0.650       0.035      0.000       0.580       0.717      *
+    COMP_2             0.925       0.021      0.000       0.876       0.957      *
+    COMP_3             0.977       0.012      0.000       0.949       0.995      *
+
+ TYPC_B   BY
+    TIP_1              0.996       0.004      0.000       0.985       1.000      *
+    TIP_2              0.999       0.002      0.000       0.994       1.000      *
+    TIP_3              0.995       0.005      0.000       0.982       1.000      *
+
+ POSV_B   BY
+    POS_VAL_1          0.844       0.037      0.000       0.769       0.912      *
+    POS_VAL_2          0.935       0.019      0.000       0.889       0.965      *
+    POS_VAL_3          0.993       0.008      0.000       0.971       1.000      *
+
+ ADV_B    BY
+    ADV_1              0.920       0.022      0.000       0.869       0.956      *
+    ADV_2              0.985       0.013      0.000       0.949       0.999      *
+    ADV_3              0.923       0.024      0.000       0.866       0.960      *
+
+ IMP_B    WITH
+    HUM_B             -0.068       0.118      0.500      -0.142       0.139
+
+ NEGV_B   WITH
+    HUM_B              0.295       0.118      0.000       0.062       0.468      *
+    IMP_B             -0.463       0.059      0.000      -0.593      -0.386      *
+
+ COMP_B   WITH
+    HUM_B              0.004       0.083      0.500      -0.062       0.112
+    IMP_B              0.994       0.004      0.000       0.980       0.997      *
+    NEGV_B            -0.406       0.062      0.000      -0.541      -0.348      *
+
+ TYPC_B   WITH
+    HUM_B             -0.189       0.067      0.030      -0.221       0.004
+    IMP_B              0.661       0.055      0.000       0.544       0.761      *
+    NEGV_B            -0.395       0.089      0.000      -0.545      -0.193      *
+    COMP_B             0.643       0.056      0.000       0.515       0.745      *
+
+ POSV_B   WITH
+    HUM_B              0.189       0.091      0.000       0.039       0.379      *
+    IMP_B              0.739       0.052      0.000       0.639       0.836      *
+    NEGV_B            -0.115       0.119      0.167      -0.339       0.100
+    COMP_B             0.766       0.048      0.000       0.681       0.857      *
+    TYPC_B             0.373       0.082      0.000       0.223       0.548      *
+
+ ADV_B    WITH
+    HUM_B              0.316       0.115      0.002       0.052       0.488      *
+    IMP_B             -0.570       0.068      0.000      -0.692      -0.443      *
+    NEGV_B             0.877       0.033      0.000       0.798       0.927      *
+    COMP_B            -0.524       0.073      0.000      -0.649      -0.382      *
+    TYPC_B            -0.391       0.093      0.006      -0.548      -0.205      *
+    POSV_B            -0.242       0.120      0.017      -0.451      -0.022      *
+
+ Intercepts
+    H_1                2.235       0.116      0.000       1.997       2.456      *
+    H_2                2.216       0.155      0.000       1.915       2.522      *
+    H_3                2.118       0.132      0.000       1.856       2.371      *
+    IMP_1              7.576       0.550      0.000       6.633       8.237      *
+    IMP_2              7.727       0.595      0.000       6.683       8.866      *
+    IMP_3              8.496       0.672      0.000       7.351       9.773      *
+    NEG_VAL_1          2.126       0.192      0.000       1.833       2.555      *
+    NEG_VAL_2          1.913       0.173      0.000       1.622       2.293      *
+    NEG_VAL_3          1.784       0.172      0.000       1.468       2.138      *
+    COMP_1             5.080       0.282      0.000       4.521       5.625      *
+    COMP_2             7.280       0.580      0.000       6.233       8.423      *
+    COMP_3             7.340       0.582      0.000       6.319       8.440      *
+    TIP_1              6.355       0.423      0.000       5.498       7.166      *
+    TIP_2              6.482       0.442      0.000       5.580       7.330      *
+    TIP_3              6.775       0.471      0.000       5.826       7.687      *
+    POS_VAL_1          4.111       0.399      0.000       3.185       4.704      *
+    POS_VAL_2          4.018       0.365      0.000       3.301       4.703      *
+    POS_VAL_3          4.712       0.430      0.000       3.856       5.487      *
+    ADV_1              2.079       0.169      0.000       1.769       2.430      *
+    ADV_2              2.276       0.190      0.000       1.938       2.681      *
+    ADV_3              2.217       0.192      0.000       1.868       2.619      *
+
+ Variances
+    HUM_B              1.000       0.000      0.000       1.000       1.000
+    IMP_B              1.000       0.000      0.000       1.000       1.000      *
+    NEGV_B             1.000       0.000      0.000       1.000       1.000
+    COMP_B             1.000       0.000      0.000       1.000       1.000
+    TYPC_B             1.000       0.000      0.000       1.000       1.000
+    POSV_B             1.000       0.000      0.000       1.000       1.000
+    ADV_B              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    H_1                0.033       0.016      0.000       0.006       0.070      *
+    H_2                0.132       0.031      0.000       0.082       0.202      *
+    H_3                0.012       0.012      0.000       0.001       0.045      *
+    IMP_1              0.065       0.023      0.000       0.029       0.118      *
+    IMP_2              0.074       0.025      0.000       0.036       0.133      *
+    IMP_3              0.017       0.014      0.000       0.001       0.054      *
+    NEG_VAL_1          0.006       0.009      0.000       0.000       0.032      *
+    NEG_VAL_2          0.022       0.017      0.000       0.001       0.066      *
+    NEG_VAL_3          0.332       0.067      0.000       0.223       0.483      *
+    COMP_1             0.578       0.045      0.000       0.486       0.664      *
+    COMP_2             0.145       0.038      0.000       0.085       0.233      *
+    COMP_3             0.046       0.023      0.000       0.010       0.100      *
+    TIP_1              0.008       0.008      0.000       0.000       0.030      *
+    TIP_2              0.002       0.003      0.000       0.000       0.013      *
+    TIP_3              0.010       0.009      0.000       0.001       0.035      *
+    POS_VAL_1          0.288       0.063      0.000       0.169       0.409      *
+    POS_VAL_2          0.125       0.036      0.000       0.069       0.209      *
+    POS_VAL_3          0.013       0.015      0.000       0.001       0.056      *
+    ADV_1              0.153       0.041      0.000       0.086       0.245      *
+    ADV_2              0.029       0.026      0.000       0.001       0.099      *
+    ADV_3              0.147       0.044      0.000       0.078       0.250      *
+
+
+STD Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ H_1      WITH
+    H_2                0.733       0.047      0.000       0.646       0.829      *
+    H_3                0.783       0.046      0.000       0.696       0.877      *
+    IMP_1              0.052       0.033      0.059      -0.013       0.117
+    IMP_2              0.060       0.029      0.021       0.002       0.116      *
+    IMP_3              0.056       0.031      0.037      -0.005       0.118
+    NEG_VAL_1         -0.054       0.031      0.039      -0.114       0.006
+    NEG_VAL_2          0.014       0.025      0.281      -0.034       0.062
+    NEG_VAL_3          0.072       0.023      0.001       0.027       0.118      *
+    COMP_1            -0.063       0.042      0.061      -0.146       0.017
+    COMP_2             0.017       0.032      0.297      -0.046       0.080
+    COMP_3             0.018       0.033      0.298      -0.047       0.082
+    TIP_1             -0.099       0.035      0.002      -0.169      -0.031      *
+    TIP_2             -0.134       0.034      0.000      -0.202      -0.068      *
+    TIP_3             -0.151       0.036      0.000      -0.222      -0.081      *
+    POS_VAL_1          0.402       0.043      0.000       0.320       0.488      *
+    POS_VAL_2          0.301       0.041      0.000       0.221       0.382      *
+    POS_VAL_3          0.195       0.038      0.000       0.120       0.271      *
+    ADV_1             -0.086       0.038      0.012      -0.161      -0.011      *
+    ADV_2             -0.108       0.037      0.002      -0.181      -0.036      *
+    ADV_3             -0.121       0.045      0.003      -0.210      -0.034      *
+
+ H_2      WITH
+    H_3                0.696       0.044      0.000       0.612       0.785      *
+    IMP_1              0.023       0.032      0.233      -0.038       0.086
+    IMP_2              0.035       0.028      0.104      -0.019       0.089
+    IMP_3              0.006       0.030      0.422      -0.052       0.065
+    NEG_VAL_1          0.023       0.030      0.220      -0.036       0.081
+    NEG_VAL_2          0.067       0.023      0.002       0.021       0.113      *
+    NEG_VAL_3          0.057       0.022      0.003       0.015       0.100      *
+    COMP_1            -0.045       0.040      0.128      -0.124       0.033
+    COMP_2            -0.016       0.031      0.295      -0.077       0.044
+    COMP_3             0.067       0.031      0.016       0.006       0.129      *
+    TIP_1             -0.144       0.034      0.000      -0.212      -0.079      *
+    TIP_2             -0.100       0.032      0.001      -0.165      -0.037      *
+    TIP_3             -0.149       0.034      0.000      -0.218      -0.084      *
+    POS_VAL_1          0.290       0.040      0.000       0.213       0.370      *
+    POS_VAL_2          0.163       0.039      0.000       0.089       0.239      *
+    POS_VAL_3          0.206       0.036      0.000       0.136       0.279      *
+    ADV_1              0.026       0.037      0.240      -0.046       0.099
+    ADV_2             -0.013       0.035      0.355      -0.082       0.056
+    ADV_3              0.062       0.043      0.078      -0.024       0.147
+
+ H_3      WITH
+    IMP_1              0.074       0.031      0.009       0.013       0.135      *
+    IMP_2              0.007       0.027      0.397      -0.047       0.061
+    IMP_3              0.075       0.029      0.005       0.018       0.133      *
+    NEG_VAL_1         -0.054       0.029      0.034      -0.111       0.004
+    NEG_VAL_2          0.038       0.023      0.051      -0.007       0.083
+    NEG_VAL_3          0.026       0.022      0.113      -0.017       0.068
+    COMP_1             0.029       0.039      0.228      -0.047       0.106
+    COMP_2            -0.025       0.030      0.204      -0.084       0.033
+    COMP_3             0.091       0.031      0.001       0.031       0.154      *
+    TIP_1             -0.075       0.033      0.012      -0.140      -0.010      *
+    TIP_2             -0.166       0.032      0.000      -0.231      -0.105      *
+    TIP_3             -0.085       0.034      0.006      -0.151      -0.019      *
+    POS_VAL_1          0.366       0.040      0.000       0.290       0.447      *
+    POS_VAL_2          0.203       0.038      0.000       0.128       0.277      *
+    POS_VAL_3          0.223       0.036      0.000       0.153       0.294      *
+    ADV_1             -0.095       0.037      0.004      -0.167      -0.024      *
+    ADV_2             -0.046       0.035      0.094      -0.116       0.022
+    ADV_3             -0.074       0.043      0.040      -0.161       0.009
+
+ IMP_1    WITH
+    IMP_2              0.387       0.023      0.000       0.342       0.434      *
+    IMP_3              0.450       0.026      0.000       0.401       0.501      *
+    NEG_VAL_1         -0.200       0.024      0.000      -0.249      -0.155      *
+    NEG_VAL_2         -0.079       0.018      0.000      -0.115      -0.043      *
+    NEG_VAL_3         -0.060       0.017      0.000      -0.093      -0.027      *
+    COMP_1             0.324       0.032      0.000       0.263       0.387      *
+    COMP_2             0.374       0.026      0.000       0.325       0.426      *
+    COMP_3             0.411       0.026      0.000       0.361       0.464      *
+    TIP_1              0.180       0.026      0.000       0.129       0.232      *
+    TIP_2              0.200       0.025      0.000       0.151       0.251      *
+    TIP_3              0.202       0.026      0.000       0.151       0.254      *
+    POS_VAL_1          0.364       0.032      0.000       0.303       0.428      *
+    POS_VAL_2          0.436       0.032      0.000       0.376       0.500      *
+    POS_VAL_3          0.428       0.031      0.000       0.370       0.489      *
+    ADV_1             -0.220       0.029      0.000      -0.280      -0.164      *
+    ADV_2             -0.285       0.029      0.000      -0.343      -0.232      *
+    ADV_3             -0.261       0.035      0.000      -0.330      -0.194      *
+
+ IMP_2    WITH
+    IMP_3              0.342       0.022      0.000       0.300       0.386      *
+    NEG_VAL_1         -0.179       0.021      0.000      -0.221      -0.140      *
+    NEG_VAL_2         -0.102       0.016      0.000      -0.134      -0.071      *
+    NEG_VAL_3         -0.043       0.015      0.002      -0.072      -0.014      *
+    COMP_1             0.286       0.028      0.000       0.232       0.343      *
+    COMP_2             0.314       0.022      0.000       0.272       0.358      *
+    COMP_3             0.363       0.023      0.000       0.320       0.408      *
+    TIP_1              0.132       0.023      0.000       0.087       0.178      *
+    TIP_2              0.150       0.022      0.000       0.107       0.194      *
+    TIP_3              0.164       0.023      0.000       0.119       0.210      *
+    POS_VAL_1          0.345       0.028      0.000       0.292       0.401      *
+    POS_VAL_2          0.412       0.028      0.000       0.359       0.467      *
+    POS_VAL_3          0.326       0.026      0.000       0.277       0.377      *
+    ADV_1             -0.193       0.026      0.000      -0.245      -0.144      *
+    ADV_2             -0.240       0.025      0.000      -0.290      -0.194      *
+    ADV_3             -0.257       0.030      0.000      -0.316      -0.199      *
+
+ IMP_3    WITH
+    NEG_VAL_1         -0.209       0.023      0.000      -0.255      -0.166      *
+    NEG_VAL_2         -0.098       0.017      0.000      -0.132      -0.065      *
+    NEG_VAL_3         -0.089       0.016      0.000      -0.121      -0.058      *
+    COMP_1             0.308       0.030      0.000       0.250       0.368      *
+    COMP_2             0.367       0.024      0.000       0.319       0.415      *
+    COMP_3             0.397       0.025      0.000       0.350       0.447      *
+    TIP_1              0.156       0.025      0.000       0.108       0.206      *
+    TIP_2              0.170       0.024      0.000       0.123       0.218      *
+    TIP_3              0.223       0.025      0.000       0.175       0.273      *
+    POS_VAL_1          0.350       0.030      0.000       0.291       0.408      *
+    POS_VAL_2          0.388       0.030      0.000       0.330       0.447      *
+    POS_VAL_3          0.368       0.028      0.000       0.312       0.423      *
+    ADV_1             -0.138       0.028      0.000      -0.192      -0.084      *
+    ADV_2             -0.246       0.027      0.000      -0.301      -0.195      *
+    ADV_3             -0.233       0.033      0.000      -0.298      -0.169      *
+
+ NEG_VAL_ WITH
+    NEG_VAL_2          0.227       0.018      0.000       0.193       0.264      *
+    NEG_VAL_3          0.123       0.016      0.000       0.092       0.156      *
+    COMP_1            -0.078       0.029      0.003      -0.134      -0.022      *
+    COMP_2            -0.186       0.023      0.000      -0.232      -0.142      *
+    COMP_3            -0.191       0.024      0.000      -0.239      -0.146      *
+    TIP_1             -0.082       0.025      0.000      -0.131      -0.033      *
+    TIP_2             -0.102       0.024      0.000      -0.149      -0.056      *
+    TIP_3             -0.085       0.024      0.000      -0.133      -0.038      *
+    POS_VAL_1         -0.284       0.030      0.000      -0.345      -0.228      *
+    POS_VAL_2         -0.267       0.029      0.000      -0.325      -0.212      *
+    POS_VAL_3         -0.278       0.027      0.000      -0.334      -0.226      *
+    ADV_1              0.317       0.028      0.000       0.263       0.374      *
+    ADV_2              0.344       0.028      0.000       0.293       0.401      *
+    ADV_3              0.334       0.033      0.000       0.270       0.400      *
+
+ NEG_VAL_ WITH
+    NEG_VAL_3          0.113       0.013      0.000       0.089       0.139      *
+    COMP_1            -0.059       0.023      0.005      -0.104      -0.014      *
+    COMP_2            -0.097       0.018      0.000      -0.133      -0.063      *
+    COMP_3            -0.110       0.018      0.000      -0.146      -0.074      *
+    TIP_1             -0.093       0.020      0.000      -0.131      -0.055      *
+    TIP_2             -0.022       0.018      0.114      -0.058       0.014
+    TIP_3             -0.047       0.019      0.008      -0.085      -0.009      *
+    POS_VAL_1         -0.132       0.023      0.000      -0.178      -0.088      *
+    POS_VAL_2         -0.116       0.022      0.000      -0.160      -0.073      *
+    POS_VAL_3         -0.122       0.021      0.000      -0.163      -0.081      *
+    ADV_1              0.161       0.021      0.000       0.120       0.204      *
+    ADV_2              0.219       0.021      0.000       0.179       0.261      *
+    ADV_3              0.138       0.025      0.000       0.090       0.188      *
+
+ NEG_VAL_ WITH
+    COMP_1            -0.029       0.021      0.083      -0.071       0.012
+    COMP_2            -0.050       0.016      0.001      -0.083      -0.018      *
+    COMP_3            -0.022       0.017      0.092      -0.055       0.011
+    TIP_1              0.018       0.018      0.162      -0.017       0.053
+    TIP_2              0.000       0.017      0.492      -0.035       0.034
+    TIP_3             -0.003       0.018      0.428      -0.039       0.033
+    POS_VAL_1         -0.063       0.021      0.002      -0.104      -0.022      *
+    POS_VAL_2         -0.069       0.020      0.000      -0.110      -0.029      *
+    POS_VAL_3         -0.054       0.019      0.002      -0.092      -0.017      *
+    ADV_1              0.115       0.020      0.000       0.076       0.154      *
+    ADV_2              0.131       0.019      0.000       0.093       0.169      *
+    ADV_3              0.127       0.024      0.000       0.081       0.173      *
+
+ COMP_1   WITH
+    COMP_2             0.370       0.031      0.000       0.310       0.433      *
+    COMP_3             0.342       0.032      0.000       0.280       0.405      *
+    TIP_1              0.257       0.033      0.000       0.194       0.323      *
+    TIP_2              0.211       0.032      0.000       0.150       0.274      *
+    TIP_3              0.226       0.034      0.000       0.161       0.294      *
+    POS_VAL_1          0.186       0.039      0.000       0.112       0.263      *
+    POS_VAL_2          0.314       0.038      0.000       0.241       0.391      *
+    POS_VAL_3          0.296       0.036      0.000       0.226       0.368      *
+    ADV_1             -0.046       0.036      0.104      -0.117       0.025
+    ADV_2             -0.145       0.035      0.000      -0.215      -0.078      *
+    ADV_3             -0.081       0.042      0.026      -0.165       0.001
+
+ COMP_2   WITH
+    COMP_3             0.393       0.026      0.000       0.344       0.444      *
+    TIP_1              0.205       0.025      0.000       0.156       0.255      *
+    TIP_2              0.237       0.025      0.000       0.189       0.285      *
+    TIP_3              0.244       0.026      0.000       0.194       0.296      *
+    POS_VAL_1          0.319       0.031      0.000       0.261       0.381      *
+    POS_VAL_2          0.341       0.030      0.000       0.284       0.400      *
+    POS_VAL_3          0.348       0.028      0.000       0.292       0.404      *
+    ADV_1             -0.091       0.028      0.000      -0.147      -0.037      *
+    ADV_2             -0.236       0.027      0.000      -0.291      -0.183      *
+    ADV_3             -0.176       0.033      0.000      -0.243      -0.112      *
+
+ COMP_3   WITH
+    TIP_1              0.195       0.026      0.000       0.146       0.246      *
+    TIP_2              0.198       0.025      0.000       0.149       0.247      *
+    TIP_3              0.172       0.026      0.000       0.121       0.223      *
+    POS_VAL_1          0.368       0.032      0.000       0.306       0.431      *
+    POS_VAL_2          0.393       0.031      0.000       0.332       0.454      *
+    POS_VAL_3          0.397       0.030      0.000       0.340       0.456      *
+    ADV_1             -0.163       0.029      0.000      -0.221      -0.107      *
+    ADV_2             -0.239       0.028      0.000      -0.296      -0.185      *
+    ADV_3             -0.213       0.034      0.000      -0.282      -0.148      *
+
+ TIP_1    WITH
+    TIP_2              0.546       0.030      0.000       0.490       0.607      *
+    TIP_3              0.536       0.031      0.000       0.479       0.599      *
+    POS_VAL_1          0.144       0.032      0.000       0.081       0.208      *
+    POS_VAL_2          0.130       0.032      0.000       0.068       0.193      *
+    POS_VAL_3          0.181       0.030      0.000       0.122       0.239      *
+    ADV_1             -0.092       0.031      0.002      -0.153      -0.033      *
+    ADV_2             -0.202       0.030      0.000      -0.261      -0.145      *
+    ADV_3             -0.128       0.036      0.000      -0.200      -0.058      *
+
+ TIP_2    WITH
+    TIP_3              0.562       0.030      0.000       0.505       0.624      *
+    POS_VAL_1          0.153       0.031      0.000       0.092       0.215      *
+    POS_VAL_2          0.126       0.030      0.000       0.067       0.187      *
+    POS_VAL_3          0.135       0.029      0.000       0.078       0.191      *
+    ADV_1             -0.063       0.029      0.014      -0.121      -0.006      *
+    ADV_2             -0.198       0.028      0.000      -0.255      -0.143      *
+    ADV_3             -0.066       0.035      0.028      -0.134       0.002
+
+ TIP_3    WITH
+    POS_VAL_1          0.132       0.032      0.000       0.069       0.196      *
+    POS_VAL_2          0.088       0.032      0.002       0.026       0.150      *
+    POS_VAL_3          0.141       0.030      0.000       0.083       0.200      *
+    ADV_1             -0.042       0.031      0.086      -0.103       0.018
+    ADV_2             -0.138       0.030      0.000      -0.196      -0.081      *
+    ADV_3             -0.040       0.036      0.131      -0.112       0.031
+
+ POS_VAL_ WITH
+    POS_VAL_2          0.711       0.041      0.000       0.632       0.792      *
+    POS_VAL_3          0.628       0.038      0.000       0.554       0.704      *
+    ADV_1             -0.356       0.037      0.000      -0.431      -0.285      *
+    ADV_2             -0.456       0.036      0.000      -0.530      -0.388      *
+    ADV_3             -0.437       0.043      0.000      -0.524      -0.355      *
+
+ POS_VAL_ WITH
+    POS_VAL_3          0.644       0.037      0.000       0.572       0.718      *
+    ADV_1             -0.239       0.035      0.000      -0.311      -0.172      *
+    ADV_2             -0.347       0.034      0.000      -0.416      -0.281      *
+    ADV_3             -0.357       0.041      0.000      -0.441      -0.278      *
+
+ POS_VAL_ WITH
+    ADV_1             -0.285       0.034      0.000      -0.354      -0.221      *
+    ADV_2             -0.365       0.033      0.000      -0.431      -0.302      *
+    ADV_3             -0.407       0.040      0.000      -0.488      -0.331      *
+
+ ADV_1    WITH
+    ADV_2              0.514       0.035      0.000       0.448       0.584      *
+    ADV_3              0.666       0.043      0.000       0.586       0.754      *
+
+ ADV_2    WITH
+    ADV_3              0.634       0.042      0.000       0.556       0.719      *
+
+ Variances
+    H_1                1.792       0.063      0.000       1.675       1.923      *
+    H_2                1.629       0.058      0.000       1.521       1.748      *
+    H_3                1.599       0.056      0.000       1.496       1.715      *
+    IMP_1              0.985       0.035      0.000       0.919       1.058      *
+    IMP_2              0.757       0.026      0.000       0.708       0.810      *
+    IMP_3              0.895       0.031      0.000       0.836       0.958      *
+    NEG_VAL_1          0.876       0.031      0.000       0.819       0.941      *
+    NEG_VAL_2          0.534       0.019      0.000       0.499       0.572      *
+    NEG_VAL_3          0.465       0.017      0.000       0.434       0.498      *
+    COMP_1             1.536       0.055      0.000       1.436       1.649      *
+    COMP_2             0.923       0.033      0.000       0.861       0.991      *
+    COMP_3             0.966       0.034      0.000       0.903       1.035      *
+    TIP_1              1.108       0.038      0.000       1.036       1.188      *
+    TIP_2              1.028       0.037      0.000       0.959       1.104      *
+    TIP_3              1.124       0.039      0.000       1.051       1.205      *
+    POS_VAL_1          1.520       0.054      0.000       1.418       1.630      *
+    POS_VAL_2          1.451       0.051      0.000       1.355       1.553      *
+    POS_VAL_3          1.272       0.045      0.000       1.187       1.363      *
+    ADV_1              1.325       0.047      0.000       1.238       1.421      *
+    ADV_2              1.241       0.045      0.000       1.157       1.331      *
+    ADV_3              1.848       0.066      0.000       1.726       1.982      *
+
+Between Level
+
+ HUM_B    BY
+    H_1                1.168       0.023      0.000       1.136       1.233      *
+    H_2                1.059       0.062      0.000       0.940       1.184      *
+    H_3                1.210       0.048      0.000       1.120       1.311      *
+
+ IMP_B    BY
+    IMP_1              0.699       0.057      0.000       0.675       0.815      *
+    IMP_2              0.724       0.060      0.000       0.624       0.844      *
+    IMP_3              0.669       0.054      0.000       0.582       0.773      *
+
+ NEGV_B   BY
+    NEG_VAL_1          0.707       0.054      0.000       0.599       0.798      *
+    NEG_VAL_2          0.699       0.054      0.000       0.595       0.802      *
+    NEG_VAL_3          0.624       0.072      0.000       0.491       0.771      *
+
+ COMP_B   BY
+    COMP_1             0.631       0.028      0.000       0.625       0.703      *
+    COMP_2             0.718       0.066      0.000       0.605       0.852      *
+    COMP_3             0.759       0.064      0.000       0.654       0.885      *
+
+ TYPC_B   BY
+    TIP_1              0.861       0.058      0.000       0.765       0.994      *
+    TIP_2              0.850       0.059      0.000       0.751       0.984      *
+    TIP_3              0.816       0.058      0.000       0.718       0.947      *
+
+ POSV_B   BY
+    POS_VAL_1          0.923       0.132      0.000       0.780       1.291      *
+    POS_VAL_2          1.118       0.116      0.000       0.935       1.378      *
+    POS_VAL_3          1.065       0.101      0.000       0.914       1.293      *
+
+ ADV_B    BY
+    ADV_1              0.876       0.068      0.000       0.749       1.011      *
+    ADV_2              0.724       0.055      0.000       0.622       0.837      *
+    ADV_3              0.925       0.081      0.000       0.773       1.089      *
+
+ IMP_B    WITH
+    HUM_B             -0.068       0.118      0.500      -0.142       0.139
+
+ NEGV_B   WITH
+    HUM_B              0.295       0.118      0.000       0.062       0.468      *
+    IMP_B             -0.463       0.059      0.000      -0.593      -0.386      *
+
+ COMP_B   WITH
+    HUM_B              0.004       0.083      0.500      -0.062       0.112
+    IMP_B              0.994       0.004      0.000       0.980       0.997      *
+    NEGV_B            -0.406       0.062      0.000      -0.541      -0.348      *
+
+ TYPC_B   WITH
+    HUM_B             -0.189       0.067      0.030      -0.221       0.004
+    IMP_B              0.661       0.055      0.000       0.544       0.761      *
+    NEGV_B            -0.395       0.089      0.000      -0.545      -0.193      *
+    COMP_B             0.643       0.056      0.000       0.515       0.745      *
+
+ POSV_B   WITH
+    HUM_B              0.189       0.091      0.000       0.039       0.379      *
+    IMP_B              0.739       0.052      0.000       0.639       0.836      *
+    NEGV_B            -0.115       0.119      0.167      -0.339       0.100
+    COMP_B             0.766       0.048      0.000       0.681       0.857      *
+    TYPC_B             0.373       0.082      0.000       0.223       0.548      *
+
+ ADV_B    WITH
+    HUM_B              0.316       0.115      0.002       0.052       0.488      *
+    IMP_B             -0.570       0.068      0.000      -0.692      -0.443      *
+    NEGV_B             0.877       0.033      0.000       0.798       0.927      *
+    COMP_B            -0.524       0.073      0.000      -0.649      -0.382      *
+    TYPC_B            -0.391       0.093      0.006      -0.548      -0.205      *
+    POSV_B            -0.242       0.120      0.017      -0.451      -0.022      *
+
+ Intercepts
+    H_1                2.670       0.122      0.000       2.429       2.911      *
+    H_2                2.517       0.117      0.000       2.287       2.748      *
+    H_3                2.581       0.124      0.000       2.335       2.827      *
+    IMP_1              5.630       0.079      0.000       5.470       5.781      *
+    IMP_2              5.830       0.079      0.000       5.670       5.980      *
+    IMP_3              5.747       0.072      0.000       5.600       5.883      *
+    NEG_VAL_1          1.502       0.073      0.000       1.362       1.650      *
+    NEG_VAL_2          1.354       0.072      0.000       1.216       1.498      *
+    NEG_VAL_3          1.367       0.078      0.000       1.215       1.522      *
+    COMP_1             5.081       0.105      0.000       4.873       5.287      *
+    COMP_2             5.663       0.082      0.000       5.498       5.820      *
+    COMP_3             5.712       0.082      0.000       5.545       5.868      *
+    TIP_1              5.495       0.092      0.000       5.295       5.664      *
+    TIP_2              5.521       0.090      0.000       5.326       5.690      *
+    TIP_3              5.563       0.088      0.000       5.375       5.729      *
+    POS_VAL_1          4.580       0.120      0.000       4.344       4.813      *
+    POS_VAL_2          4.815       0.126      0.000       4.565       5.058      *
+    POS_VAL_3          5.063       0.113      0.000       4.838       5.281      *
+    ADV_1              1.984       0.098      0.000       1.792       2.179      *
+    ADV_2              1.679       0.077      0.000       1.526       1.828      *
+    ADV_3              2.224       0.104      0.000       2.020       2.429      *
+
+ Variances
+    HUM_B              1.000       0.000      0.000       1.000       1.000
+    IMP_B              1.000       0.000      0.000       1.000       1.000      *
+    NEGV_B             1.000       0.000      0.000       1.000       1.000
+    COMP_B             1.000       0.000      0.000       1.000       1.000
+    TYPC_B             1.000       0.000      0.000       1.000       1.000
+    POSV_B             1.000       0.000      0.000       1.000       1.000
+    ADV_B              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    H_1                0.048       0.024      0.000       0.008       0.103      *
+    H_2                0.170       0.039      0.000       0.107       0.261      *
+    H_3                0.018       0.018      0.000       0.001       0.065      *
+    IMP_1              0.037       0.013      0.000       0.017       0.066      *
+    IMP_2              0.042       0.013      0.000       0.022       0.073      *
+    IMP_3              0.008       0.006      0.000       0.000       0.024      *
+    NEG_VAL_1          0.003       0.004      0.000       0.000       0.016      *
+    NEG_VAL_2          0.011       0.008      0.000       0.001       0.031      *
+    NEG_VAL_3          0.194       0.035      0.000       0.139       0.275      *
+    COMP_1             0.576       0.099      0.000       0.418       0.806      *
+    COMP_2             0.088       0.021      0.000       0.054       0.136      *
+    COMP_3             0.028       0.013      0.000       0.007       0.057      *
+    TIP_1              0.006       0.006      0.000       0.000       0.022      *
+    TIP_2              0.002       0.002      0.000       0.000       0.009      *
+    TIP_3              0.007       0.006      0.000       0.000       0.023      *
+    POS_VAL_1          0.363       0.068      0.000       0.255       0.520      *
+    POS_VAL_2          0.181       0.044      0.000       0.109       0.282      *
+    POS_VAL_3          0.015       0.017      0.000       0.001       0.063      *
+    ADV_1              0.139       0.037      0.000       0.079       0.224      *
+    ADV_2              0.016       0.014      0.000       0.001       0.052      *
+    ADV_3              0.148       0.042      0.000       0.080       0.243      *
+
+
+R-SQUARE
+
+Between Level
+
+                                Posterior  One-Tailed         95% C.I.
+    Variable        Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%
+
+    H_1                0.967       0.016      0.000       0.930       0.994
+    H_2                0.868       0.031      0.000       0.798       0.918
+    H_3                0.988       0.012      0.000       0.955       0.999
+    IMP_1              0.935       0.023      0.000       0.882       0.971
+    IMP_2              0.926       0.025      0.000       0.867       0.964
+    IMP_3              0.983       0.014      0.000       0.946       0.999
+    NEG_VAL_1          0.994       0.009      0.000       0.968       1.000
+    NEG_VAL_2          0.978       0.017      0.000       0.934       0.999
+    NEG_VAL_3          0.668       0.067      0.000       0.517       0.777
+    COMP_1             0.422       0.045      0.000       0.336       0.514
+    COMP_2             0.855       0.038      0.000       0.767       0.915
+    COMP_3             0.954       0.023      0.000       0.900       0.990
+    TIP_1              0.992       0.008      0.000       0.970       1.000
+    TIP_2              0.998       0.003      0.000       0.987       1.000
+    TIP_3              0.990       0.009      0.000       0.965       0.999
+    POS_VAL_1          0.712       0.063      0.000       0.591       0.831
+    POS_VAL_2          0.875       0.036      0.000       0.791       0.931
+    POS_VAL_3          0.987       0.015      0.000       0.944       0.999
+    ADV_1              0.847       0.041      0.000       0.755       0.914
+    ADV_2              0.971       0.026      0.000       0.901       0.999
+    ADV_3              0.853       0.044      0.000       0.750       0.922
+
+
+TECHNICAL 4 OUTPUT
+
+     TECHNICAL 4 OUTPUT IS NOT AVAILABLE FOR THIS MODEL.
+
+
+
+DIAGRAM INFORMATION
+
+  Mplus diagrams are currently not available for multilevel analysis.
+  No diagram output was produced.
+
+
+     Beginning Time:  14:39:06
+        Ending Time:  15:02:02
+       Elapsed Time:  00:22:56
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2023 Muthen & Muthen

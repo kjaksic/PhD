@@ -1,0 +1,404 @@
+Mplus VERSION 8.10
+MUTHEN & MUTHEN
+06/20/2024   3:13 PM
+
+INPUT INSTRUCTIONS
+
+  DATA: File is cfa.dat;
+
+
+  VARIABLE:
+
+  NAMES ARE id H_1 H_2 H_3 IMP_1 IMP_2 IMP_3
+  NEG_VAL_1 NEG_VAL_2 NEG_VAL_3 COMP_1 COMP_2
+  COMP_3 TIP_1 TIP_2 TIP_3 POS_VAL_1 POS_VAL_2
+  POS_VAL_3 ADV_1 ADV_2 ADV_3 C1 C2 E1 E2
+  A1 A2 O1 O2 N1 N2 POZ_1 POZ_2 POZ_3
+  POZ_4 NEG_1 NEG_2 NEG_3 NEG_4
+  NEG_5 SE_1 SE_2 SE_3;
+
+
+
+  USEVARIABLES ARE TIP_1-TIP_3;
+
+  MISSING ARE ALL (-99);
+
+  CLUSTER IS id;
+
+
+  ANALYSIS:
+  TYPE = TWOLEVEL;
+  ESTIMATOR = BAYES;
+  PROCESSORS = 12;
+  FBITERATIONS = 200000;
+
+
+  MODEL:
+
+  %WITHIN%
+
+  TIP_W BY TIP_1* TIP_2 TIP_3 (loadw1-loadw3);
+
+  TIP_W@1;
+
+  TIP_1 (resw1);
+  TIP_2 (resw2);
+  TIP_3 (resw3);
+
+  %BETWEEN%
+
+  TIP_1 WITH TIP_2;
+  TIP_1 WITH TIP_3;
+  TIP_2 WITH TIP_3;
+
+
+
+  OUTPUT: STANDARDIZED;
+
+
+
+
+
+*** WARNING
+  One or more individual-level variables have no variation within a
+  cluster for the following clusters.
+
+     Variable   Cluster IDs with no within-cluster variation
+
+      TIP_1       20163018 20855586
+      TIP_2       12491438
+      TIP_3       20794922 24591061 20855586 16556161
+
+*** WARNING
+  Data set contains cases with missing on all variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on all variables:  1232
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1738
+
+Number of dependent variables                                    3
+Number of independent variables                                  0
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Continuous
+   TIP_1       TIP_2       TIP_3
+
+Continuous latent variables
+   TIP_W
+
+Variables with special functions
+
+  Cluster variable      ID
+
+Estimator                                                    BAYES
+Specifications for Bayesian Estimation
+  Point estimate                                            MEDIAN
+  Number of Markov chain Monte Carlo (MCMC) chains               2
+  Random seed for the first chain                                0
+  Starting value information                           UNPERTURBED
+  Algorithm used for Markov chain Monte Carlo           GIBBS(PX1)
+  Fixed number of iterations                                200000
+  K-th iteration used for thinning                               1
+
+Input data file(s)
+  cfa.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of clusters                         99
+
+       Size (s)    Cluster ID with Size s
+
+          9        20163018
+         10        27913643 27665886 27661979 27664277
+         11        13994322 12494252 15264484 12198304
+         12        15262166 13525517 20855574 20796311
+         13        15611768 26754012 27662560 20856921 15266576
+         14        20794922 12492269 20162730 27665653 12498862 21214531
+                   12191870 16654540 13529089 20796904
+         15        27785220 12193480 27918933 15474494
+         16        15261338 20854464 24591061 20162054 20855586 26754644
+         17        20855351 12497874 13993235 13994941 27918624 24592461
+                   20162526 20852179 15471270 27783342 27662082 13997204
+         18        21213820 27663723 12492669 13528127 13996939 20798331
+                   12495072 20854791 15611922 15471432 13526266 13527350
+         19        12491438 16554668 27915449 13522864 27788116 15612828
+         20        24591987 20161546 24595365 16556161
+         21        27663860 24591737 24595014 27666050 15264805 16551092
+                   27918828
+         22        24593194 24598783
+         23        15614525 16556163 12492795 20855258 24595090 16554319
+                   20856715 27788829
+         24        12491236 13525223 16554342 27787671 12491120
+         25        16554891 16554713 21212503
+         26        24593393 20855884
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+     Number of missing data patterns             1
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              TIP_1         TIP_2         TIP_3
+              ________      ________      ________
+ TIP_1          1.000
+ TIP_2          1.000         1.000
+ TIP_3          1.000         1.000         1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     TIP_1                 5.483      -1.346       1.000    2.65%       5.000      5.000      6.000
+            1738.000       1.747       2.206       7.000   20.54%       6.000      7.000
+     TIP_2                 5.510      -1.305       1.000    2.01%       5.000      5.000      6.000
+            1738.000       1.660       2.117       7.000   20.71%       6.000      7.000
+     TIP_3                 5.551      -1.293       1.000    1.90%       5.000      6.000      6.000
+            1738.000       1.701       1.985       7.000   23.36%       6.000      7.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     USE THE FBITERATIONS OPTION TO INCREASE THE NUMBER OF ITERATIONS BY A FACTOR
+     OF AT LEAST TWO TO CHECK CONVERGENCE AND THAT THE PSR VALUE DOES NOT INCREASE.
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                              15
+
+Bayesian Posterior Predictive Checking using Chi-Square
+
+          95% Confidence Interval for the Difference Between
+          the Observed and the Replicated Chi-Square Values
+
+                                -16.736            18.372
+
+          Posterior Predictive P-Value              0.473
+
+Information Criteria
+
+          Deviance (DIC)                        13995.896
+          Estimated Number of Parameters (pD)     136.618
+
+
+
+MODEL RESULTS
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+
+Within Level
+
+ TIP_W    BY
+    TIP_1              0.713       0.027      0.000       0.661       0.767      *
+    TIP_2              0.747       0.026      0.000       0.697       0.799      *
+    TIP_3              0.735       0.027      0.000       0.682       0.789      *
+
+ Variances
+    TIP_W              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    TIP_1              0.571       0.029      0.000       0.516       0.630      *
+    TIP_2              0.448       0.028      0.000       0.394       0.503      *
+    TIP_3              0.558       0.030      0.000       0.501       0.617      *
+
+Between Level
+
+ TIP_1    WITH
+    TIP_2              0.674       0.110      0.000       0.499       0.931      *
+    TIP_3              0.641       0.106      0.000       0.474       0.889      *
+
+ TIP_2    WITH
+    TIP_3              0.642       0.106      0.000       0.475       0.889      *
+
+ Means
+    TIP_1              5.497       0.087      0.000       5.324       5.668      *
+    TIP_2              5.523       0.086      0.000       5.353       5.692      *
+    TIP_3              5.565       0.084      0.000       5.399       5.729      *
+
+ Variances
+    TIP_1              0.685       0.114      0.000       0.505       0.951      *
+    TIP_2              0.672       0.112      0.000       0.496       0.932      *
+    TIP_3              0.624       0.105      0.000       0.458       0.869      *
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ TIP_W    BY
+    TIP_1              0.686       0.019      0.000       0.647       0.723      *
+    TIP_2              0.745       0.019      0.000       0.707       0.781      *
+    TIP_3              0.701       0.019      0.000       0.663       0.738      *
+
+ Variances
+    TIP_W              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    TIP_1              0.529       0.026      0.000       0.477       0.581      *
+    TIP_2              0.445       0.028      0.000       0.390       0.500      *
+    TIP_3              0.508       0.027      0.000       0.456       0.561      *
+
+Between Level
+
+ TIP_1    WITH
+    TIP_2              0.994       0.005      0.000       0.981       0.999      *
+    TIP_3              0.983       0.010      0.000       0.957       0.996      *
+
+ TIP_2    WITH
+    TIP_3              0.993       0.005      0.000       0.978       0.999      *
+
+ Means
+    TIP_1              6.641       0.544      0.000       5.619       7.753      *
+    TIP_2              6.737       0.550      0.000       5.703       7.858      *
+    TIP_3              7.043       0.583      0.000       5.949       8.239      *
+
+ Variances
+    TIP_1              1.000       0.000      0.000       1.000       1.000
+    TIP_2              1.000       0.000      0.000       1.000       1.000
+    TIP_3              1.000       0.000      0.000       1.000       1.000
+
+
+STDY Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ TIP_W    BY
+    TIP_1              0.686       0.019      0.000       0.647       0.723      *
+    TIP_2              0.745       0.019      0.000       0.707       0.781      *
+    TIP_3              0.701       0.019      0.000       0.663       0.738      *
+
+ Variances
+    TIP_W              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    TIP_1              0.529       0.026      0.000       0.477       0.581      *
+    TIP_2              0.445       0.028      0.000       0.390       0.500      *
+    TIP_3              0.508       0.027      0.000       0.456       0.561      *
+
+Between Level
+
+ TIP_1    WITH
+    TIP_2              0.994       0.005      0.000       0.981       0.999      *
+    TIP_3              0.983       0.010      0.000       0.957       0.996      *
+
+ TIP_2    WITH
+    TIP_3              0.993       0.005      0.000       0.978       0.999      *
+
+ Means
+    TIP_1              6.641       0.544      0.000       5.619       7.753      *
+    TIP_2              6.737       0.550      0.000       5.703       7.858      *
+    TIP_3              7.043       0.583      0.000       5.949       8.239      *
+
+ Variances
+    TIP_1              1.000       0.000      0.000       1.000       1.000
+    TIP_2              1.000       0.000      0.000       1.000       1.000
+    TIP_3              1.000       0.000      0.000       1.000       1.000
+
+
+STD Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ TIP_W    BY
+    TIP_1              0.713       0.027      0.000       0.661       0.767      *
+    TIP_2              0.747       0.026      0.000       0.697       0.799      *
+    TIP_3              0.735       0.027      0.000       0.682       0.789      *
+
+ Variances
+    TIP_W              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    TIP_1              0.571       0.029      0.000       0.516       0.630      *
+    TIP_2              0.448       0.028      0.000       0.394       0.503      *
+    TIP_3              0.558       0.030      0.000       0.501       0.617      *
+
+Between Level
+
+ TIP_1    WITH
+    TIP_2              0.674       0.110      0.000       0.499       0.931      *
+    TIP_3              0.641       0.106      0.000       0.474       0.889      *
+
+ TIP_2    WITH
+    TIP_3              0.642       0.106      0.000       0.475       0.889      *
+
+ Means
+    TIP_1              5.497       0.087      0.000       5.324       5.668      *
+    TIP_2              5.523       0.086      0.000       5.353       5.692      *
+    TIP_3              5.565       0.084      0.000       5.399       5.729      *
+
+ Variances
+    TIP_1              0.685       0.114      0.000       0.505       0.951      *
+    TIP_2              0.672       0.112      0.000       0.496       0.932      *
+    TIP_3              0.624       0.105      0.000       0.458       0.869      *
+
+
+R-SQUARE
+
+Within Level
+
+                                Posterior  One-Tailed         95% C.I.
+    Variable        Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%
+
+    TIP_1              0.471       0.026      0.000       0.419       0.523
+    TIP_2              0.555       0.028      0.000       0.500       0.610
+    TIP_3              0.492       0.027      0.000       0.439       0.544
+
+
+DIAGRAM INFORMATION
+
+  Mplus diagrams are currently not available for multilevel analysis.
+  No diagram output was produced.
+
+
+     Beginning Time:  15:13:39
+        Ending Time:  15:15:55
+       Elapsed Time:  00:02:16
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2023 Muthen & Muthen

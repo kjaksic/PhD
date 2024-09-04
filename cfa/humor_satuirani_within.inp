@@ -1,0 +1,59 @@
+DATA: File is cfa.dat;
+
+
+VARIABLE:
+
+NAMES ARE id H_1 H_2 H_3 IMP_1 IMP_2 IMP_3
+NEG_VAL_1 NEG_VAL_2 NEG_VAL_3 COMP_1 COMP_2
+COMP_3 TIP_1 TIP_2 TIP_3 POS_VAL_1 POS_VAL_2
+POS_VAL_3 ADV_1 ADV_2 ADV_3 C1 C2 E1 E2
+A1 A2 O1 O2 N1 N2 POZ_1 POZ_2 POZ_3
+POZ_4 NEG_1 NEG_2 NEG_3 NEG_4
+NEG_5 SE_1 SE_2 SE_3;
+
+
+ 
+USEVARIABLES ARE H_1-H_3;  
+
+MISSING ARE ALL (-99);   
+
+CLUSTER IS id; 
+
+
+ANALYSIS: 
+TYPE = TWOLEVEL; 
+ESTIMATOR = BAYES; 
+PROCESSORS = 12; 
+FBITERATIONS = 200000;
+
+MODEL: 
+
+%WITHIN% 
+
+H_1 WITH H_2; 
+H_1 WITH H_3; 
+H_2 WITH H_3;
+
+%BETWEEN% 
+
+HUMORB BY H_1* H_2 H_3 (load1-load3);  
+
+HUMORB@1; 
+
+H_3@0;  
+
+H_1 (resvb1); 
+H_2 (resvb2);
+H_3 (resvb3);
+
+MODEL CONSTRAINT:
+
+NEW(omegab);
+
+omegab =
+(load1+load2+load3)^2/((load1+load2+load3)^2+resvb1+resvb2+resvb3); 
+
+
+OUTPUT: STANDARDIZED TECH8;
+
+

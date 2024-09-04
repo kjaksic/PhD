@@ -1,0 +1,413 @@
+Mplus VERSION 8.10
+MUTHEN & MUTHEN
+06/20/2024   3:31 PM
+
+INPUT INSTRUCTIONS
+
+  DATA: File is cfa.dat;
+
+
+  VARIABLE:
+
+  NAMES ARE id H_1 H_2 H_3 IMP_1 IMP_2 IMP_3
+  NEG_VAL_1 NEG_VAL_2 NEG_VAL_3 COMP_1 COMP_2
+  COMP_3 TIP_1 TIP_2 TIP_3 POS_VAL_1 POS_VAL_2
+  POS_VAL_3 ADV_1 ADV_2 ADV_3 C1 C2 E1 E2
+  A1 A2 O1 O2 N1 N2 POZ_1 POZ_2 POZ_3
+  POZ_4 NEG_1 NEG_2 NEG_3 NEG_4
+  NEG_5 SE_1 SE_2 SE_3;
+
+
+
+  USEVARIABLES ARE IMP_1-IMP_3;
+
+  MISSING ARE ALL (-99);
+
+  CLUSTER IS id;
+
+
+  ANALYSIS:
+  TYPE = TWOLEVEL;
+  ESTIMATOR = BAYES;
+  PROCESSORS = 12;
+  FBITERATIONS = 200000;
+
+  MODEL:
+
+  %WITHIN%
+
+  IMP_W BY IMP_1* IMP_2 IMP_3 (loadw1-loadw3);
+
+  IMP_W@1;
+
+  IMP_1 (resw1);
+  IMP_2 (resw2);
+  IMP_3 (resw3);
+
+  %BETWEEN%
+
+  IMP_1 WITH IMP_2;
+  IMP_1 WITH IMP_3;
+  IMP_2 WITH IMP_3;
+
+
+  MODEL CONSTRAINT:
+
+  NEW(omegaw);
+
+  omegaw=
+  (loadw1+loadw2+loadw3)^2/((loadw1+loadw2+loadw3)^2+resw1 + resw2 + resw3);
+
+
+  OUTPUT: STANDARDIZED;
+
+
+
+
+
+*** WARNING
+  One or more individual-level variables have no variation within a
+  cluster for the following clusters.
+
+     Variable   Cluster IDs with no within-cluster variation
+
+      IMP_1       12491438 16554319
+      IMP_2       24591061 20855351 12491438 16554319
+      IMP_3       27785220 24591061 20855351 12491438 16554319
+
+*** WARNING
+  Data set contains cases with missing on all variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on all variables:  1232
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1738
+
+Number of dependent variables                                    3
+Number of independent variables                                  0
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Continuous
+   IMP_1       IMP_2       IMP_3
+
+Continuous latent variables
+   IMP_W
+
+Variables with special functions
+
+  Cluster variable      ID
+
+Estimator                                                    BAYES
+Specifications for Bayesian Estimation
+  Point estimate                                            MEDIAN
+  Number of Markov chain Monte Carlo (MCMC) chains               2
+  Random seed for the first chain                                0
+  Starting value information                           UNPERTURBED
+  Algorithm used for Markov chain Monte Carlo           GIBBS(PX1)
+  Fixed number of iterations                                200000
+  K-th iteration used for thinning                               1
+
+Input data file(s)
+  cfa.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of clusters                         99
+
+       Size (s)    Cluster ID with Size s
+
+          9        20163018
+         10        27913643 27665886 27661979 27664277
+         11        13994322 12494252 15264484 12198304
+         12        15262166 13525517 20855574 20796311
+         13        15611768 26754012 27662560 20856921 15266576
+         14        20794922 12492269 20162730 27665653 12498862 21214531
+                   12191870 16654540 13529089 20796904
+         15        27785220 12193480 27918933 15474494
+         16        15261338 20854464 24591061 20162054 20855586 26754644
+         17        20855351 12497874 13993235 13994941 27918624 24592461
+                   20162526 20852179 15471270 27783342 27662082 13997204
+         18        21213820 27663723 12492669 13528127 13996939 20798331
+                   12495072 20854791 15611922 15471432 13526266 13527350
+         19        12491438 16554668 27915449 13522864 27788116 15612828
+         20        24591987 20161546 24595365 16556161
+         21        27663860 24591737 24595014 27666050 15264805 16551092
+                   27918828
+         22        24593194 24598783
+         23        15614525 16556163 12492795 20855258 24595090 16554319
+                   20856715 27788829
+         24        12491236 13525223 16554342 27787671 12491120
+         25        16554891 16554713 21212503
+         26        24593393 20855884
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+     Number of missing data patterns             1
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              IMP_1         IMP_2         IMP_3
+              ________      ________      ________
+ IMP_1          1.000
+ IMP_2          1.000         1.000
+ IMP_3          1.000         1.000         1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     IMP_1                 5.629      -1.467       1.000    1.78%       5.000      6.000      6.000
+            1738.000       1.460       3.025       7.000   21.81%       6.000      7.000
+     IMP_2                 5.829      -1.523       1.000    0.98%       5.000      6.000      6.000
+            1738.000       1.242       3.487       7.000   27.85%       6.000      7.000
+     IMP_3                 5.744      -1.465       1.000    1.15%       5.000      6.000      6.000
+            1738.000       1.276       3.194       7.000   23.99%       6.000      7.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     USE THE FBITERATIONS OPTION TO INCREASE THE NUMBER OF ITERATIONS BY A FACTOR
+     OF AT LEAST TWO TO CHECK CONVERGENCE AND THAT THE PSR VALUE DOES NOT INCREASE.
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                              15
+
+Bayesian Posterior Predictive Checking using Chi-Square
+
+          95% Confidence Interval for the Difference Between
+          the Observed and the Replicated Chi-Square Values
+
+                                -16.752            18.443
+
+          Posterior Predictive P-Value              0.474
+
+Information Criteria
+
+          Deviance (DIC)                        13204.171
+          Estimated Number of Parameters (pD)     197.335
+
+
+
+MODEL RESULTS
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+
+Within Level
+
+ IMP_W    BY
+    IMP_1              0.709       0.028      0.000       0.655       0.765      *
+    IMP_2              0.536       0.024      0.000       0.490       0.583      *
+    IMP_3              0.621       0.026      0.000       0.570       0.673      *
+
+ Variances
+    IMP_W              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    IMP_1              0.461       0.031      0.000       0.399       0.523      *
+    IMP_2              0.452       0.022      0.000       0.410       0.497      *
+    IMP_3              0.489       0.027      0.000       0.438       0.542      *
+
+Between Level
+
+ IMP_1    WITH
+    IMP_2              0.473       0.082      0.000       0.343       0.663      *
+    IMP_3              0.445       0.076      0.000       0.325       0.623      *
+
+ IMP_2    WITH
+    IMP_3              0.454       0.077      0.000       0.334       0.633      *
+
+ Means
+    IMP_1              5.627       0.077      0.000       5.476       5.777      *
+    IMP_2              5.828       0.077      0.000       5.677       5.978      *
+    IMP_3              5.743       0.070      0.000       5.606       5.880      *
+
+ Variances
+    IMP_1              0.517       0.088      0.000       0.379       0.721      *
+    IMP_2              0.533       0.088      0.000       0.394       0.739      *
+    IMP_3              0.425       0.073      0.000       0.310       0.596      *
+
+New/Additional Parameters
+    OMEGAW             0.713       0.012      0.000       0.688       0.736      *
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ IMP_W    BY
+    IMP_1              0.722       0.023      0.000       0.677       0.766      *
+    IMP_2              0.623       0.022      0.000       0.578       0.666      *
+    IMP_3              0.664       0.022      0.000       0.619       0.707      *
+
+ Variances
+    IMP_W              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    IMP_1              0.478       0.033      0.000       0.413       0.541      *
+    IMP_2              0.612       0.028      0.000       0.556       0.666      *
+    IMP_3              0.559       0.030      0.000       0.501       0.617      *
+
+Between Level
+
+ IMP_1    WITH
+    IMP_2              0.903       0.027      0.000       0.840       0.944      *
+    IMP_3              0.951       0.018      0.000       0.908       0.978      *
+
+ IMP_2    WITH
+    IMP_3              0.957       0.017      0.000       0.915       0.982      *
+
+ Means
+    IMP_1              7.825       0.650      0.000       6.611       9.161      *
+    IMP_2              7.983       0.647      0.000       6.763       9.301      *
+    IMP_3              8.810       0.739      0.000       7.430      10.329      *
+
+ Variances
+    IMP_1              1.000       0.000      0.000       1.000       1.000
+    IMP_2              1.000       0.000      0.000       1.000       1.000
+    IMP_3              1.000       0.000      0.000       1.000       1.000
+
+
+STDY Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ IMP_W    BY
+    IMP_1              0.722       0.023      0.000       0.677       0.766      *
+    IMP_2              0.623       0.022      0.000       0.578       0.666      *
+    IMP_3              0.664       0.022      0.000       0.619       0.707      *
+
+ Variances
+    IMP_W              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    IMP_1              0.478       0.033      0.000       0.413       0.541      *
+    IMP_2              0.612       0.028      0.000       0.556       0.666      *
+    IMP_3              0.559       0.030      0.000       0.501       0.617      *
+
+Between Level
+
+ IMP_1    WITH
+    IMP_2              0.903       0.027      0.000       0.840       0.944      *
+    IMP_3              0.951       0.018      0.000       0.908       0.978      *
+
+ IMP_2    WITH
+    IMP_3              0.957       0.017      0.000       0.915       0.982      *
+
+ Means
+    IMP_1              7.825       0.650      0.000       6.611       9.161      *
+    IMP_2              7.983       0.647      0.000       6.763       9.301      *
+    IMP_3              8.810       0.739      0.000       7.430      10.329      *
+
+ Variances
+    IMP_1              1.000       0.000      0.000       1.000       1.000
+    IMP_2              1.000       0.000      0.000       1.000       1.000
+    IMP_3              1.000       0.000      0.000       1.000       1.000
+
+
+STD Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ IMP_W    BY
+    IMP_1              0.709       0.028      0.000       0.655       0.765      *
+    IMP_2              0.536       0.024      0.000       0.490       0.583      *
+    IMP_3              0.621       0.026      0.000       0.570       0.673      *
+
+ Variances
+    IMP_W              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    IMP_1              0.461       0.031      0.000       0.399       0.523      *
+    IMP_2              0.452       0.022      0.000       0.410       0.497      *
+    IMP_3              0.489       0.027      0.000       0.438       0.542      *
+
+Between Level
+
+ IMP_1    WITH
+    IMP_2              0.473       0.082      0.000       0.343       0.663      *
+    IMP_3              0.445       0.076      0.000       0.325       0.623      *
+
+ IMP_2    WITH
+    IMP_3              0.454       0.077      0.000       0.334       0.633      *
+
+ Means
+    IMP_1              5.627       0.077      0.000       5.476       5.777      *
+    IMP_2              5.828       0.077      0.000       5.677       5.978      *
+    IMP_3              5.743       0.070      0.000       5.606       5.880      *
+
+ Variances
+    IMP_1              0.517       0.088      0.000       0.379       0.721      *
+    IMP_2              0.533       0.088      0.000       0.394       0.739      *
+    IMP_3              0.425       0.073      0.000       0.310       0.596      *
+
+
+R-SQUARE
+
+Within Level
+
+                                Posterior  One-Tailed         95% C.I.
+    Variable        Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%
+
+    IMP_1              0.522       0.033      0.000       0.459       0.587
+    IMP_2              0.388       0.028      0.000       0.334       0.444
+    IMP_3              0.441       0.030      0.000       0.383       0.499
+
+
+DIAGRAM INFORMATION
+
+  Mplus diagrams are currently not available for multilevel analysis.
+  No diagram output was produced.
+
+
+     Beginning Time:  15:31:40
+        Ending Time:  15:35:58
+       Elapsed Time:  00:04:18
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2023 Muthen & Muthen

@@ -1,0 +1,419 @@
+Mplus VERSION 8.10
+MUTHEN & MUTHEN
+06/20/2024   3:05 PM
+
+INPUT INSTRUCTIONS
+
+  DATA: File is cfa.dat;
+
+
+  VARIABLE:
+
+  NAMES ARE id H_1 H_2 H_3 IMP_1 IMP_2 IMP_3
+  NEG_VAL_1 NEG_VAL_2 NEG_VAL_3 COMP_1 COMP_2
+  COMP_3 TIP_1 TIP_2 TIP_3 POS_VAL_1 POS_VAL_2
+  POS_VAL_3 ADV_1 ADV_2 ADV_3 C1 C2 E1 E2
+  A1 A2 O1 O2 N1 N2 POZ_1 POZ_2 POZ_3
+  POZ_4 NEG_1 NEG_2 NEG_3 NEG_4
+  NEG_5 SE_1 SE_2 SE_3;
+
+
+
+  USEVARIABLES ARE ADV_1-ADV_3;
+
+  MISSING ARE ALL (-99);
+
+  CLUSTER IS id;
+
+
+  ANALYSIS:
+  TYPE = TWOLEVEL;
+  ESTIMATOR = BAYES;
+  PROCESSORS = 12;
+  FBITERATIONS = 200000;
+
+  MODEL:
+
+  %WITHIN%
+
+  ADV_1 WITH ADV_2;
+  ADV_1 WITH ADV_3;
+  ADV_2 WITH ADV_3;
+
+
+  %BETWEEN%
+
+  ADV_B BY ADV_1* ADV_2 ADV_3 (loadb1-loadb3);
+
+  ADV_B@1;
+
+  ADV_1 (resb1);
+  ADV_2 (resb2);
+  ADV_3 (resb3);
+
+
+  MODEL CONSTRAINT:
+
+  NEW(omegab);
+
+  omegab =
+  (loadb1+loadb2+loadb3)^2/((loadb1+loadb2+loadb3)^2+resb1+resb2+resb3);
+
+
+
+  OUTPUT: STANDARDIZED;
+
+
+
+
+
+*** WARNING
+  One or more individual-level variables have no variation within a
+  cluster for the following clusters.
+
+     Variable   Cluster IDs with no within-cluster variation
+
+      ADV_1       20163018 20855574 20162730 20162054 20855351 24592461 20798331 13527350 27788116
+                  16556163 16554319 16554891
+      ADV_2       20163018 27661979 13994322 12198304 20855574 20162730 27665653 24591061 20162054
+                  12497874 24592461 13996939 20798331 13527350 12491438 27788116 16556161 24598783
+                  16556163 24595090 16554319 16554891
+      ADV_3       13994322 20162730 27665653 20162054 24592461 12491438 27788116 24595090 16554319
+                  27787671 16554891
+
+*** WARNING
+  Data set contains cases with missing on all variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on all variables:  1232
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1738
+
+Number of dependent variables                                    3
+Number of independent variables                                  0
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Continuous
+   ADV_1       ADV_2       ADV_3
+
+Continuous latent variables
+   ADV_B
+
+Variables with special functions
+
+  Cluster variable      ID
+
+Estimator                                                    BAYES
+Specifications for Bayesian Estimation
+  Point estimate                                            MEDIAN
+  Number of Markov chain Monte Carlo (MCMC) chains               2
+  Random seed for the first chain                                0
+  Starting value information                           UNPERTURBED
+  Algorithm used for Markov chain Monte Carlo           GIBBS(PX1)
+  Fixed number of iterations                                200000
+  K-th iteration used for thinning                               1
+
+Input data file(s)
+  cfa.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of clusters                         99
+
+       Size (s)    Cluster ID with Size s
+
+          9        20163018
+         10        27913643 27665886 27661979 27664277
+         11        13994322 12494252 15264484 12198304
+         12        15262166 13525517 20855574 20796311
+         13        15611768 26754012 27662560 20856921 15266576
+         14        20794922 12492269 20162730 27665653 12498862 21214531
+                   12191870 16654540 13529089 20796904
+         15        27785220 12193480 27918933 15474494
+         16        15261338 20854464 24591061 20162054 20855586 26754644
+         17        20855351 12497874 13993235 13994941 27918624 24592461
+                   20162526 20852179 15471270 27783342 27662082 13997204
+         18        21213820 27663723 12492669 13528127 13996939 20798331
+                   12495072 20854791 15611922 15471432 13526266 13527350
+         19        12491438 16554668 27915449 13522864 27788116 15612828
+         20        24591987 20161546 24595365 16556161
+         21        27663860 24591737 24595014 27666050 15264805 16551092
+                   27918828
+         22        24593194 24598783
+         23        15614525 16556163 12492795 20855258 24595090 16554319
+                   20856715 27788829
+         24        12491236 13525223 16554342 27787671 12491120
+         25        16554891 16554713 21212503
+         26        24593393 20855884
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+     Number of missing data patterns             1
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              ADV_1         ADV_2         ADV_3
+              ________      ________      ________
+ ADV_1          1.000
+ ADV_2          1.000         1.000
+ ADV_3          1.000         1.000         1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     ADV_1                 1.976       1.462       1.000   55.06%       1.000      1.000      1.000
+            1738.000       1.998       1.131       7.000    0.52%       2.000      3.000
+     ADV_2                 1.677       2.164       1.000   68.35%       1.000      1.000      1.000
+            1738.000       1.655       4.002       7.000    0.75%       1.000      2.000
+     ADV_3                 2.218       1.186       1.000   51.09%       1.000      1.000      1.000
+            1738.000       2.661       0.153       7.000    1.27%       2.000      4.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     USE THE FBITERATIONS OPTION TO INCREASE THE NUMBER OF ITERATIONS BY A FACTOR
+     OF AT LEAST TWO TO CHECK CONVERGENCE AND THAT THE PSR VALUE DOES NOT INCREASE.
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                              15
+
+Bayesian Posterior Predictive Checking using Chi-Square
+
+          95% Confidence Interval for the Difference Between
+          the Observed and the Replicated Chi-Square Values
+
+                                -16.807            17.649
+
+          Posterior Predictive P-Value              0.480
+
+Information Criteria
+
+          Deviance (DIC)                        15999.526
+          Estimated Number of Parameters (pD)     223.711
+
+
+
+MODEL RESULTS
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+
+Within Level
+
+ ADV_1    WITH
+    ADV_2              0.502       0.033      0.000       0.439       0.570      *
+    ADV_3              0.643       0.041      0.000       0.565       0.726      *
+
+ ADV_2    WITH
+    ADV_3              0.615       0.040      0.000       0.540       0.695      *
+
+ Variances
+    ADV_1              1.294       0.045      0.000       1.209       1.388      *
+    ADV_2              1.213       0.043      0.000       1.133       1.300      *
+    ADV_3              1.796       0.063      0.000       1.678       1.924      *
+
+Between Level
+
+ ADV_B    BY
+    ADV_1              0.795       0.077      0.000       0.657       0.960      *
+    ADV_2              0.631       0.061      0.000       0.521       0.761      *
+    ADV_3              0.892       0.083      0.000       0.741       1.068      *
+
+ Intercepts
+    ADV_1              1.981       0.093      0.000       1.800       2.166      *
+    ADV_2              1.674       0.075      0.000       1.529       1.822      *
+    ADV_3              2.220       0.103      0.000       2.019       2.425      *
+
+ Variances
+    ADV_B              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    ADV_1              0.112       0.037      0.000       0.049       0.194      *
+    ADV_2              0.053       0.022      0.000       0.016       0.102      *
+    ADV_3              0.097       0.041      0.000       0.028       0.189      *
+
+New/Additional Parameters
+    OMEGAB             0.953       0.011      0.000       0.926       0.971      *
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ ADV_1    WITH
+    ADV_2              0.401       0.021      0.000       0.360       0.441      *
+    ADV_3              0.422       0.020      0.000       0.381       0.461      *
+
+ ADV_2    WITH
+    ADV_3              0.417       0.020      0.000       0.376       0.456      *
+
+ Variances
+    ADV_1              1.000       0.000      0.000       1.000       1.000
+    ADV_2              1.000       0.000      0.000       1.000       1.000
+    ADV_3              1.000       0.000      0.000       1.000       1.000
+
+Between Level
+
+ ADV_B    BY
+    ADV_1              0.922       0.029      0.000       0.855       0.968      *
+    ADV_2              0.940       0.027      0.000       0.876       0.982      *
+    ADV_3              0.944       0.026      0.000       0.884       0.984      *
+
+ Intercepts
+    ADV_1              2.293       0.215      0.000       1.888       2.730      *
+    ADV_2              2.489       0.237      0.000       2.047       2.977      *
+    ADV_3              2.348       0.220      0.000       1.934       2.800      *
+
+ Variances
+    ADV_B              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    ADV_1              0.150       0.052      0.000       0.064       0.268      *
+    ADV_2              0.116       0.051      0.000       0.035       0.233      *
+    ADV_3              0.108       0.048      0.000       0.031       0.218      *
+
+
+STDY Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ ADV_1    WITH
+    ADV_2              0.401       0.021      0.000       0.360       0.441      *
+    ADV_3              0.422       0.020      0.000       0.381       0.461      *
+
+ ADV_2    WITH
+    ADV_3              0.417       0.020      0.000       0.376       0.456      *
+
+ Variances
+    ADV_1              1.000       0.000      0.000       1.000       1.000
+    ADV_2              1.000       0.000      0.000       1.000       1.000
+    ADV_3              1.000       0.000      0.000       1.000       1.000
+
+Between Level
+
+ ADV_B    BY
+    ADV_1              0.922       0.029      0.000       0.855       0.968      *
+    ADV_2              0.940       0.027      0.000       0.876       0.982      *
+    ADV_3              0.944       0.026      0.000       0.884       0.984      *
+
+ Intercepts
+    ADV_1              2.293       0.215      0.000       1.888       2.730      *
+    ADV_2              2.489       0.237      0.000       2.047       2.977      *
+    ADV_3              2.348       0.220      0.000       1.934       2.800      *
+
+ Variances
+    ADV_B              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    ADV_1              0.150       0.052      0.000       0.064       0.268      *
+    ADV_2              0.116       0.051      0.000       0.035       0.233      *
+    ADV_3              0.108       0.048      0.000       0.031       0.218      *
+
+
+STD Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ ADV_1    WITH
+    ADV_2              0.502       0.033      0.000       0.439       0.570      *
+    ADV_3              0.643       0.041      0.000       0.565       0.726      *
+
+ ADV_2    WITH
+    ADV_3              0.615       0.040      0.000       0.540       0.695      *
+
+ Variances
+    ADV_1              1.294       0.045      0.000       1.209       1.388      *
+    ADV_2              1.213       0.043      0.000       1.133       1.300      *
+    ADV_3              1.796       0.063      0.000       1.678       1.924      *
+
+Between Level
+
+ ADV_B    BY
+    ADV_1              0.795       0.077      0.000       0.657       0.960      *
+    ADV_2              0.631       0.061      0.000       0.521       0.761      *
+    ADV_3              0.892       0.083      0.000       0.741       1.068      *
+
+ Intercepts
+    ADV_1              1.981       0.093      0.000       1.800       2.166      *
+    ADV_2              1.674       0.075      0.000       1.529       1.822      *
+    ADV_3              2.220       0.103      0.000       2.019       2.425      *
+
+ Variances
+    ADV_B              1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    ADV_1              0.112       0.037      0.000       0.049       0.194      *
+    ADV_2              0.053       0.022      0.000       0.016       0.102      *
+    ADV_3              0.097       0.041      0.000       0.028       0.189      *
+
+
+R-SQUARE
+
+Between Level
+
+                                Posterior  One-Tailed         95% C.I.
+    Variable        Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%
+
+    ADV_1              0.850       0.052      0.000       0.732       0.936
+    ADV_2              0.884       0.051      0.000       0.767       0.965
+    ADV_3              0.892       0.048      0.000       0.782       0.969
+
+
+DIAGRAM INFORMATION
+
+  Mplus diagrams are currently not available for multilevel analysis.
+  No diagram output was produced.
+
+
+     Beginning Time:  15:05:47
+        Ending Time:  15:08:08
+       Elapsed Time:  00:02:21
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2023 Muthen & Muthen

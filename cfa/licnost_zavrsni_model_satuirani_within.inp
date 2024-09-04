@@ -1,0 +1,103 @@
+DATA: File is cfa.dat;
+
+
+VARIABLE:
+
+NAMES ARE id H_1 H_2 H_3 IMP_1 IMP_2 IMP_3
+NEG_VAL_1 NEG_VAL_2 NEG_VAL_3 COMP_1 COMP_2
+COMP_3 TIP_1 TIP_2 TIP_3 POS_VAL_1 POS_VAL_2
+POS_VAL_3 ADV_1 ADV_2 ADV_3 C1 C2 E1 E2
+A1 A2 O1 O2 N1 N2 POZ_1 POZ_2 POZ_3
+POZ_4 NEG_1 NEG_2 NEG_3 NEG_4
+NEG_5 SE_1 SE_2 SE_3;
+
+ 
+USEVARIABLES ARE C1 C2 E1 E2 
+A2 O1 O2 N2;
+
+MISSING ARE ALL (-99);  
+
+CLUSTER IS id; 
+
+
+ANALYSIS: 
+TYPE = TWOLEVEL;   
+ESTIMATOR = BAYES; 
+PROCESSORS = 12;
+FBITERATIONS = 200000;
+
+MODEL:  
+
+%WITHIN%
+
+C1 WITH C2; 
+C1 WITH E1; 
+C1 WITH E2;  
+C1 WITH A2; 
+C1 WITH O1;
+C1 WITH O2; 
+C1 WITH N2; 
+
+C2 WITH E1; 
+C2 WITH E2; 
+C2 WITH A2; 
+C2 WITH O1; 
+C2 WITH O2; 
+C2 WITH N2; 
+
+E1 WITH E2; 
+E1 WITH A2; 
+E1 WITH O1; 
+E1 WITH O2; 
+E1 WITH N2; 
+
+E2 WITH A2; 
+E2 WITH O1; 
+E2 WITH O2; 
+E2 WITH N2; 
+
+A2 WITH O1; 
+A2 WITH O2; 
+A2 WITH N2; 
+
+O1 WITH O2; 
+O1 WITH N2; 
+
+O2 WITH N2;
+ 
+
+
+%BETWEEN% 
+
+SAVB BY C1* C2 (loadcb1-loadcb2);
+EKSTB BY E1* E2 (loadeb1-loadeb2);
+UGODB BY A2;
+OTVB BY O1* O2 (loadob1-loadob2);
+NEUB BY N2;
+
+SAVB@1; 
+EKSTB@1; 
+OTVB@1; 
+
+
+C1(rescb1); 
+C2(rescb2);
+E1(reseb1); 
+E2(reseb2); 
+O1(resob1);
+O2(resob2);
+
+
+MODEL CONSTRAINT:
+NEW(omega_cb omega_eb omega_ob); 
+
+omega_cb = (loadcb1+loadcb2)^2/((loadcb1+loadcb2)^2+rescb1+rescb2));
+
+omega_eb = (loadeb1+loadeb2)^2/((loadeb1+loadeb2)^2+reseb1+reseb2));
+
+omega_ob = (loadob1+loadob2)^2/((loadob1+loadob2)^2+resob1+resob2));
+
+
+OUTPUT: STANDARDIZED TECH8; 
+
+

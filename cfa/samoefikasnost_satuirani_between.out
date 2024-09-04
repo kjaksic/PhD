@@ -1,0 +1,412 @@
+Mplus VERSION 8.10
+MUTHEN & MUTHEN
+06/20/2024   2:45 PM
+
+INPUT INSTRUCTIONS
+
+  DATA: File is cfa.dat;
+
+
+  VARIABLE:
+
+  NAMES ARE id H_1 H_2 H_3 IMP_1 IMP_2 IMP_3
+  NEG_VAL_1 NEG_VAL_2 NEG_VAL_3 COMP_1 COMP_2
+  COMP_3 TIP_1 TIP_2 TIP_3 POS_VAL_1 POS_VAL_2
+  POS_VAL_3 ADV_1 ADV_2 ADV_3 C1 C2 E1 E2
+  A1 A2 O1 O2 N1 N2 POZ_1 POZ_2 POZ_3
+  POZ_4 NEG_1 NEG_2 NEG_3 NEG_4
+  NEG_5 SE_1 SE_2 SE_3;
+
+  USEVARIABLES ARE SE_1-SE_3;
+
+  MISSING ARE ALL (-99);
+
+  CLUSTER IS id;
+
+
+  ANALYSIS:
+  TYPE = TWOLEVEL;
+  ESTIMATOR = BAYES;
+  PROCESSORS = 12;
+  FBITERATIONS = 200000;
+
+  MODEL:
+
+  %WITHIN%
+
+  SAMOEFW BY SE_1* SE_2 SE_3 (loadw1-loadw3);
+
+  SE_1 (resw1);
+  SE_2 (resw2);
+  SE_3 (resw3);
+
+  SAMOEFW@1;
+
+  %BETWEEN%
+
+  SE_1 WITH SE_2;
+  SE_1 WITH SE_3;
+  SE_2 WITH SE_3;
+
+
+  MODEL CONSTRAINT:
+
+  NEW(omegaw);
+
+  omegaw = (loadw1+loadw3)^2/((loadw1+loadw3)^2+resw1 + resw2 + resw3);
+
+
+
+  OUTPUT: STANDARDIZED;
+
+
+
+
+
+*** WARNING
+  One or more individual-level variables have no variation within a
+  cluster for the following clusters.
+
+     Variable   Cluster IDs with no within-cluster variation
+
+      SE_1        12492269 24591061 20855351 13994941 12491438 16554319
+      SE_2        26754012 24591061 20855351 13994941 12491438 16554319 16554713
+      SE_3        12198304 26754012 12492269 24591061 20855586 13994941 13527350 12491438 24595090
+                  16554319 27787671 16554891 16554713
+
+*** WARNING
+  Data set contains cases with missing on all variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on all variables:  1232
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1738
+
+Number of dependent variables                                    3
+Number of independent variables                                  0
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Continuous
+   SE_1        SE_2        SE_3
+
+Continuous latent variables
+   SAMOEFW
+
+Variables with special functions
+
+  Cluster variable      ID
+
+Estimator                                                    BAYES
+Specifications for Bayesian Estimation
+  Point estimate                                            MEDIAN
+  Number of Markov chain Monte Carlo (MCMC) chains               2
+  Random seed for the first chain                                0
+  Starting value information                           UNPERTURBED
+  Algorithm used for Markov chain Monte Carlo           GIBBS(PX1)
+  Fixed number of iterations                                200000
+  K-th iteration used for thinning                               1
+
+Input data file(s)
+  cfa.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of clusters                         99
+
+       Size (s)    Cluster ID with Size s
+
+          9        20163018
+         10        27913643 27665886 27661979 27664277
+         11        13994322 12494252 15264484 12198304
+         12        15262166 13525517 20855574 20796311
+         13        15611768 26754012 27662560 20856921 15266576
+         14        20794922 12492269 20162730 27665653 12498862 21214531
+                   12191870 16654540 13529089 20796904
+         15        27785220 12193480 27918933 15474494
+         16        15261338 20854464 24591061 20162054 20855586 26754644
+         17        20855351 12497874 13993235 13994941 27918624 24592461
+                   20162526 20852179 15471270 27783342 27662082 13997204
+         18        21213820 27663723 12492669 13528127 13996939 20798331
+                   12495072 20854791 15611922 15471432 13526266 13527350
+         19        12491438 16554668 27915449 13522864 27788116 15612828
+         20        24591987 20161546 24595365 16556161
+         21        27663860 24591737 24595014 27666050 15264805 16551092
+                   27918828
+         22        24593194 24598783
+         23        15614525 16556163 12492795 20855258 24595090 16554319
+                   20856715 27788829
+         24        12491236 13525223 16554342 27787671 12491120
+         25        16554891 16554713 21212503
+         26        24593393 20855884
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+     Number of missing data patterns             1
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              SE_1          SE_2          SE_3
+              ________      ________      ________
+ SE_1           1.000
+ SE_2           1.000         1.000
+ SE_3           1.000         1.000         1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     SE_1                  5.677      -1.181       1.000    0.92%       5.000      6.000      6.000
+            1738.000       1.356       2.013       7.000   24.68%       6.000      7.000
+     SE_2                  5.592      -1.151       1.000    1.21%       5.000      6.000      6.000
+            1738.000       1.591       1.519       7.000   24.51%       6.000      7.000
+     SE_3                  6.073      -1.681       1.000    0.81%       5.000      6.000      6.000
+            1738.000       1.304       3.559       7.000   44.82%       7.000      7.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     USE THE FBITERATIONS OPTION TO INCREASE THE NUMBER OF ITERATIONS BY A FACTOR
+     OF AT LEAST TWO TO CHECK CONVERGENCE AND THAT THE PSR VALUE DOES NOT INCREASE.
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                              15
+
+Bayesian Posterior Predictive Checking using Chi-Square
+
+          95% Confidence Interval for the Difference Between
+          the Observed and the Replicated Chi-Square Values
+
+                                -17.001            18.535
+
+          Posterior Predictive P-Value              0.471
+
+Information Criteria
+
+          Deviance (DIC)                        12958.329
+          Estimated Number of Parameters (pD)     264.347
+
+
+
+MODEL RESULTS
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+
+Within Level
+
+ SAMOEFW  BY
+    SE_1               0.634       0.027      0.000       0.582       0.688      *
+    SE_2               0.684       0.029      0.000       0.627       0.742      *
+    SE_3               0.432       0.024      0.000       0.385       0.479      *
+
+ Variances
+    SAMOEFW            1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    SE_1               0.361       0.028      0.000       0.306       0.416      *
+    SE_2               0.433       0.033      0.000       0.368       0.496      *
+    SE_3               0.542       0.022      0.000       0.500       0.587      *
+
+Between Level
+
+ SE_1     WITH
+    SE_2               0.602       0.104      0.000       0.437       0.844      *
+    SE_3               0.413       0.085      0.000       0.277       0.609      *
+
+ SE_2     WITH
+    SE_3               0.441       0.091      0.000       0.295       0.652      *
+
+ Means
+    SE_1               5.674       0.083      0.000       5.511       5.837      *
+    SE_2               5.577       0.090      0.000       5.401       5.754      *
+    SE_3               6.074       0.081      0.000       5.914       6.232      *
+
+ Variances
+    SE_1               0.629       0.103      0.000       0.467       0.870      *
+    SE_2               0.737       0.121      0.000       0.547       1.016      *
+    SE_3               0.597       0.098      0.000       0.443       0.826      *
+
+New/Additional Parameters
+    OMEGAW             0.460       0.019      0.000       0.422       0.496      *
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ SAMOEFW  BY
+    SE_1               0.726       0.025      0.000       0.676       0.775      *
+    SE_2               0.720       0.025      0.000       0.670       0.770      *
+    SE_3               0.506       0.024      0.000       0.458       0.552      *
+
+ Variances
+    SAMOEFW            1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    SE_1               0.473       0.037      0.000       0.400       0.543      *
+    SE_2               0.481       0.037      0.000       0.407       0.551      *
+    SE_3               0.744       0.024      0.000       0.695       0.791      *
+
+Between Level
+
+ SE_1     WITH
+    SE_2               0.887       0.028      0.000       0.821       0.929      *
+    SE_3               0.679       0.062      0.000       0.539       0.783      *
+
+ SE_2     WITH
+    SE_3               0.670       0.064      0.000       0.527       0.777      *
+
+ Means
+    SE_1               7.155       0.576      0.000       6.065       8.325      *
+    SE_2               6.499       0.525      0.000       5.512       7.566      *
+    SE_3               7.860       0.632      0.000       6.665       9.146      *
+
+ Variances
+    SE_1               1.000       0.000      0.000       1.000       1.000
+    SE_2               1.000       0.000      0.000       1.000       1.000
+    SE_3               1.000       0.000      0.000       1.000       1.000
+
+
+STDY Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ SAMOEFW  BY
+    SE_1               0.726       0.025      0.000       0.676       0.775      *
+    SE_2               0.720       0.025      0.000       0.670       0.770      *
+    SE_3               0.506       0.024      0.000       0.458       0.552      *
+
+ Variances
+    SAMOEFW            1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    SE_1               0.473       0.037      0.000       0.400       0.543      *
+    SE_2               0.481       0.037      0.000       0.407       0.551      *
+    SE_3               0.744       0.024      0.000       0.695       0.791      *
+
+Between Level
+
+ SE_1     WITH
+    SE_2               0.887       0.028      0.000       0.821       0.929      *
+    SE_3               0.679       0.062      0.000       0.539       0.783      *
+
+ SE_2     WITH
+    SE_3               0.670       0.064      0.000       0.527       0.777      *
+
+ Means
+    SE_1               7.155       0.576      0.000       6.065       8.325      *
+    SE_2               6.499       0.525      0.000       5.512       7.566      *
+    SE_3               7.860       0.632      0.000       6.665       9.146      *
+
+ Variances
+    SE_1               1.000       0.000      0.000       1.000       1.000
+    SE_2               1.000       0.000      0.000       1.000       1.000
+    SE_3               1.000       0.000      0.000       1.000       1.000
+
+
+STD Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ SAMOEFW  BY
+    SE_1               0.634       0.027      0.000       0.582       0.688      *
+    SE_2               0.684       0.029      0.000       0.627       0.742      *
+    SE_3               0.432       0.024      0.000       0.385       0.479      *
+
+ Variances
+    SAMOEFW            1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    SE_1               0.361       0.028      0.000       0.306       0.416      *
+    SE_2               0.433       0.033      0.000       0.368       0.496      *
+    SE_3               0.542       0.022      0.000       0.500       0.587      *
+
+Between Level
+
+ SE_1     WITH
+    SE_2               0.602       0.104      0.000       0.437       0.844      *
+    SE_3               0.413       0.085      0.000       0.277       0.609      *
+
+ SE_2     WITH
+    SE_3               0.441       0.091      0.000       0.295       0.652      *
+
+ Means
+    SE_1               5.674       0.083      0.000       5.511       5.837      *
+    SE_2               5.577       0.090      0.000       5.401       5.754      *
+    SE_3               6.074       0.081      0.000       5.914       6.232      *
+
+ Variances
+    SE_1               0.629       0.103      0.000       0.467       0.870      *
+    SE_2               0.737       0.121      0.000       0.547       1.016      *
+    SE_3               0.597       0.098      0.000       0.443       0.826      *
+
+
+R-SQUARE
+
+Within Level
+
+                                Posterior  One-Tailed         95% C.I.
+    Variable        Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%
+
+    SE_1               0.527       0.037      0.000       0.457       0.600
+    SE_2               0.519       0.037      0.000       0.449       0.593
+    SE_3               0.256       0.024      0.000       0.209       0.305
+
+
+DIAGRAM INFORMATION
+
+  Mplus diagrams are currently not available for multilevel analysis.
+  No diagram output was produced.
+
+
+     Beginning Time:  14:45:31
+        Ending Time:  14:47:45
+       Elapsed Time:  00:02:14
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2023 Muthen & Muthen

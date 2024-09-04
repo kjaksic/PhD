@@ -1,0 +1,427 @@
+Mplus VERSION 8.10
+MUTHEN & MUTHEN
+06/20/2024   3:24 PM
+
+INPUT INSTRUCTIONS
+
+  DATA: File is cfa.dat;
+
+
+  VARIABLE:
+
+  NAMES ARE id H_1 H_2 H_3 IMP_1 IMP_2 IMP_3
+  NEG_VAL_1 NEG_VAL_2 NEG_VAL_3 COMP_1 COMP_2
+  COMP_3 TIP_1 TIP_2 TIP_3 POS_VAL_1 POS_VAL_2
+  POS_VAL_3 ADV_1 ADV_2 ADV_3 C1 C2 E1 E2
+  A1 A2 O1 O2 N1 N2 POZ_1 POZ_2 POZ_3
+  POZ_4 NEG_1 NEG_2 NEG_3 NEG_4
+  NEG_5 SE_1 SE_2 SE_3;
+
+
+  USEVARIABLES ARE NEG_VAL_1-NEG_VAL_3;
+
+  MISSING ARE ALL (-99);
+
+  CLUSTER IS id;
+
+
+  ANALYSIS:
+  TYPE = TWOLEVEL;
+  ESTIMATOR = BAYES;
+  PROCESSORS = 12;
+  FBITERATIONS = 200000;
+
+  MODEL:
+
+  %WITHIN%
+
+  NEG_VAL_1 WITH NEG_VAL_2;
+  NEG_VAL_1 WITH NEG_VAL_3;
+  NEG_VAL_2 WITH NEG_VAL_3;
+
+  %BETWEEN%
+
+  NEG_VAL_B BY NEG_VAL_1* NEG_VAL_2 NEG_VAL_3 (loadb1-loadb3);
+
+  NEG_VAL_B@1;
+
+  NEG_VAL_1 (resb1);
+  NEG_VAL_2 (resb2);
+  NEG_VAL_3 (resb3);
+
+
+  MODEL CONSTRAINT:
+
+  NEW(omegab);
+
+  omegab=
+  (loadb1+loadb2+loadb3)^2/((loadb1+loadb2+loadb3)^2+resb1 + resb2 + resb3);
+
+  OUTPUT: STANDARDIZED;
+
+
+
+
+
+*** WARNING in VARIABLE command
+  Note that only the first 8 characters of variable names are used in the output.
+  Shorten variable names to avoid any confusion.
+*** WARNING
+  One or more individual-level variables have no variation within a
+  cluster for the following clusters.
+
+     Variable   Cluster IDs with no within-cluster variation
+
+      NEG_VAL_    20163018 27661979 13994322 12198304 20855574 20162730 27665653 21214531 12193480
+                  15261338 20162054 20855586 26754644 12497874 24592461 13996939 13527350 12491438
+                  16554668 27788116 16556161 16551092 24598783 16556163 20855258 24595090 16554319
+                  27787671 16554891
+      NEG_VAL_    20163018 27661979 27664277 13994322 12198304 15262166 20855574 15611768 20856921
+                  20794922 12492269 20162730 27665653 21214531 12193480 27918933 15474494 15261338
+                  24591061 20855586 26754644 20855351 13994941 27918624 24592461 20162526 13528127
+                  13996939 20798331 15611922 13527350 12491438 27788116 16556161 27666050 24598783
+                  15614525 16556163 20855258 24595090 16554319 27788829 12491236 27787671 16554891
+                  16554713 24593393
+      NEG_VAL_    20163018 27913643 27664277 12494252 15262166 13525517 15611768 20794922 12492269
+                  27665653 21214531 12193480 27918933 15474494 24591061 20855586 26754644 20855351
+                  12497874 27918624 20162526 13997204 13996939 20798331 12495072 20854791 15611922
+                  13526266 13527350 12491438 27788116 24591987 16556161 27663860 24591737 24595014
+                  24593194 24598783 15614525 12492795 20855258 16554319 12491236 13525223 16554342
+                  16554891 16554713 24593393
+
+*** WARNING
+  Data set contains cases with missing on all variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on all variables:  1232
+   3 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1738
+
+Number of dependent variables                                    3
+Number of independent variables                                  0
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Continuous
+   NEG_VAL_1   NEG_VAL_2   NEG_VAL_3
+
+Continuous latent variables
+   NEG_VAL_
+
+Variables with special functions
+
+  Cluster variable      ID
+
+Estimator                                                    BAYES
+Specifications for Bayesian Estimation
+  Point estimate                                            MEDIAN
+  Number of Markov chain Monte Carlo (MCMC) chains               2
+  Random seed for the first chain                                0
+  Starting value information                           UNPERTURBED
+  Algorithm used for Markov chain Monte Carlo           GIBBS(PX1)
+  Fixed number of iterations                                200000
+  K-th iteration used for thinning                               1
+
+Input data file(s)
+  cfa.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of clusters                         99
+
+       Size (s)    Cluster ID with Size s
+
+          9        20163018
+         10        27913643 27665886 27661979 27664277
+         11        13994322 12494252 15264484 12198304
+         12        15262166 13525517 20855574 20796311
+         13        15611768 26754012 27662560 20856921 15266576
+         14        20794922 12492269 20162730 27665653 12498862 21214531
+                   12191870 16654540 13529089 20796904
+         15        27785220 12193480 27918933 15474494
+         16        15261338 20854464 24591061 20162054 20855586 26754644
+         17        20855351 12497874 13993235 13994941 27918624 24592461
+                   20162526 20852179 15471270 27783342 27662082 13997204
+         18        21213820 27663723 12492669 13528127 13996939 20798331
+                   12495072 20854791 15611922 15471432 13526266 13527350
+         19        12491438 16554668 27915449 13522864 27788116 15612828
+         20        24591987 20161546 24595365 16556161
+         21        27663860 24591737 24595014 27666050 15264805 16551092
+                   27918828
+         22        24593194 24598783
+         23        15614525 16556163 12492795 20855258 24595090 16554319
+                   20856715 27788829
+         24        12491236 13525223 16554342 27787671 12491120
+         25        16554891 16554713 21212503
+         26        24593393 20855884
+
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+     Number of missing data patterns             1
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              NEG_VAL_      NEG_VAL_      NEG_VAL_
+              ________      ________      ________
+ NEG_VAL_       1.000
+ NEG_VAL_       1.000         1.000
+ NEG_VAL_       1.000         1.000         1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     NEG_VAL_1             1.496       2.771       1.000   75.20%       1.000      1.000      1.000
+            1738.000       1.245       7.642       7.000    0.69%       1.000      2.000
+     NEG_VAL_2             1.350       3.480       1.000   82.57%       1.000      1.000      1.000
+            1738.000       0.933      12.765       7.000    0.46%       1.000      1.000
+     NEG_VAL_3             1.372       2.931       1.000   83.77%       1.000      1.000      1.000
+            1738.000       0.975       8.391       7.000    0.29%       1.000      1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     USE THE FBITERATIONS OPTION TO INCREASE THE NUMBER OF ITERATIONS BY A FACTOR
+     OF AT LEAST TWO TO CHECK CONVERGENCE AND THAT THE PSR VALUE DOES NOT INCREASE.
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                              15
+
+Bayesian Posterior Predictive Checking using Chi-Square
+
+          95% Confidence Interval for the Difference Between
+          the Observed and the Replicated Chi-Square Values
+
+                                -16.720            18.165
+
+          Posterior Predictive P-Value              0.469
+
+Information Criteria
+
+          Deviance (DIC)                        11897.317
+          Estimated Number of Parameters (pD)     207.907
+
+
+
+MODEL RESULTS
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+
+Within Level
+
+ NEG_VAL_ WITH
+    NEG_VAL_2          0.222       0.017      0.000       0.189       0.258      *
+    NEG_VAL_3          0.120       0.016      0.000       0.090       0.152      *
+
+ NEG_VAL_ WITH
+    NEG_VAL_3          0.110       0.012      0.000       0.086       0.135      *
+
+ Variances
+    NEG_VAL_1          0.859       0.030      0.000       0.802       0.920      *
+    NEG_VAL_2          0.521       0.018      0.000       0.487       0.558      *
+    NEG_VAL_3          0.455       0.016      0.000       0.425       0.487      *
+
+Between Level
+
+ NEG_VAL_ BY
+    NEG_VAL_1          0.606       0.053      0.000       0.516       0.721      *
+    NEG_VAL_2          0.625       0.051      0.000       0.538       0.737      *
+    NEG_VAL_3          0.565       0.065      0.000       0.448       0.703      *
+
+ Intercepts
+    NEG_VAL_1          1.501       0.068      0.000       1.363       1.637      *
+    NEG_VAL_2          1.352       0.068      0.000       1.213       1.486      *
+    NEG_VAL_3          1.366       0.076      0.000       1.216       1.514      *
+
+ Variances
+    NEG_VAL_B          1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    NEG_VAL_1          0.009       0.008      0.000       0.000       0.030      *
+    NEG_VAL_2          0.005       0.006      0.000       0.000       0.021      *
+    NEG_VAL_3          0.185       0.033      0.000       0.132       0.262      *
+
+New/Additional Parameters
+    OMEGAB             0.941       0.013      0.000       0.910       0.962      *
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ NEG_VAL_ WITH
+    NEG_VAL_2          0.332       0.022      0.000       0.289       0.375      *
+    NEG_VAL_3          0.193       0.024      0.000       0.146       0.239      *
+
+ NEG_VAL_ WITH
+    NEG_VAL_3          0.226       0.023      0.000       0.180       0.272      *
+
+ Variances
+    NEG_VAL_1          1.000       0.000      0.000       1.000       1.000
+    NEG_VAL_2          1.000       0.000      0.000       1.000       1.000
+    NEG_VAL_3          1.000       0.000      0.000       1.000       1.000
+
+Between Level
+
+ NEG_VAL_ BY
+    NEG_VAL_1          0.988       0.011      0.000       0.959       0.999      *
+    NEG_VAL_2          0.994       0.007      0.000       0.973       1.000      *
+    NEG_VAL_3          0.796       0.044      0.000       0.696       0.867      *
+
+ Intercepts
+    NEG_VAL_1          2.443       0.231      0.000       2.001       2.901      *
+    NEG_VAL_2          2.145       0.199      0.000       1.764       2.542      *
+    NEG_VAL_3          1.920       0.180      0.000       1.573       2.279      *
+
+ Variances
+    NEG_VAL_B          1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    NEG_VAL_1          0.024       0.021      0.000       0.001       0.080      *
+    NEG_VAL_2          0.012       0.014      0.000       0.001       0.054      *
+    NEG_VAL_3          0.366       0.069      0.000       0.248       0.516      *
+
+
+STDY Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ NEG_VAL_ WITH
+    NEG_VAL_2          0.332       0.022      0.000       0.289       0.375      *
+    NEG_VAL_3          0.193       0.024      0.000       0.146       0.239      *
+
+ NEG_VAL_ WITH
+    NEG_VAL_3          0.226       0.023      0.000       0.180       0.272      *
+
+ Variances
+    NEG_VAL_1          1.000       0.000      0.000       1.000       1.000
+    NEG_VAL_2          1.000       0.000      0.000       1.000       1.000
+    NEG_VAL_3          1.000       0.000      0.000       1.000       1.000
+
+Between Level
+
+ NEG_VAL_ BY
+    NEG_VAL_1          0.988       0.011      0.000       0.959       0.999      *
+    NEG_VAL_2          0.994       0.007      0.000       0.973       1.000      *
+    NEG_VAL_3          0.796       0.044      0.000       0.696       0.867      *
+
+ Intercepts
+    NEG_VAL_1          2.443       0.231      0.000       2.001       2.901      *
+    NEG_VAL_2          2.145       0.199      0.000       1.764       2.542      *
+    NEG_VAL_3          1.920       0.180      0.000       1.573       2.279      *
+
+ Variances
+    NEG_VAL_B          1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    NEG_VAL_1          0.024       0.021      0.000       0.001       0.080      *
+    NEG_VAL_2          0.012       0.014      0.000       0.001       0.054      *
+    NEG_VAL_3          0.366       0.069      0.000       0.248       0.516      *
+
+
+STD Standardization
+
+                                Posterior  One-Tailed         95% C.I.
+                    Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%  Significance
+Within Level
+
+ NEG_VAL_ WITH
+    NEG_VAL_2          0.222       0.017      0.000       0.189       0.258      *
+    NEG_VAL_3          0.120       0.016      0.000       0.090       0.152      *
+
+ NEG_VAL_ WITH
+    NEG_VAL_3          0.110       0.012      0.000       0.086       0.135      *
+
+ Variances
+    NEG_VAL_1          0.859       0.030      0.000       0.802       0.920      *
+    NEG_VAL_2          0.521       0.018      0.000       0.487       0.558      *
+    NEG_VAL_3          0.455       0.016      0.000       0.425       0.487      *
+
+Between Level
+
+ NEG_VAL_ BY
+    NEG_VAL_1          0.606       0.053      0.000       0.516       0.721      *
+    NEG_VAL_2          0.625       0.051      0.000       0.538       0.737      *
+    NEG_VAL_3          0.565       0.065      0.000       0.448       0.703      *
+
+ Intercepts
+    NEG_VAL_1          1.501       0.068      0.000       1.363       1.637      *
+    NEG_VAL_2          1.352       0.068      0.000       1.213       1.486      *
+    NEG_VAL_3          1.366       0.076      0.000       1.216       1.514      *
+
+ Variances
+    NEG_VAL_B          1.000       0.000      0.000       1.000       1.000
+
+ Residual Variances
+    NEG_VAL_1          0.009       0.008      0.000       0.000       0.030      *
+    NEG_VAL_2          0.005       0.006      0.000       0.000       0.021      *
+    NEG_VAL_3          0.185       0.033      0.000       0.132       0.262      *
+
+
+R-SQUARE
+
+Between Level
+
+                                Posterior  One-Tailed         95% C.I.
+    Variable        Estimate       S.D.      P-Value   Lower 2.5%  Upper 2.5%
+
+    NEG_VAL_1          0.976       0.021      0.000       0.920       0.999
+    NEG_VAL_2          0.988       0.014      0.000       0.946       0.999
+    NEG_VAL_3          0.634       0.069      0.000       0.484       0.752
+
+
+DIAGRAM INFORMATION
+
+  Mplus diagrams are currently not available for multilevel analysis.
+  No diagram output was produced.
+
+
+     Beginning Time:  15:24:42
+        Ending Time:  15:26:55
+       Elapsed Time:  00:02:13
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2023 Muthen & Muthen
