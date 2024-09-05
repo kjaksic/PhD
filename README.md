@@ -61,9 +61,9 @@ N1 - N2 cestice skale stanja neuroticizma
 
 EKST - prosjecan rezultat na stanju ekstraverzije  
 
-<p><br>OTV - prosjecan rezultat na stanju otvorenosti<br><p>    
+OTV - prosjecan rezultat na stanju otvorenosti    
 
-#samoefikasnost
+<p><br>#samoefikasnost<br><p>    
 
 SE_1 - SE_3 cestice skale samoefikasnosti 
 
@@ -81,7 +81,7 @@ SAV_C - prosjecan rezultat na crti savjesnosti
 
 NEU_C - prosjecan rezultat na crti neuroticizma 
 
-<p><br>OTV_C - prosjecan rezultat na crti otvorenosti<br><p> 
+OTV_C - prosjecan rezultat na crti otvorenosti 
 
 <p><br>#podaci prikupljeni za potrebe sireg istrazivanja<br><p>  
 
