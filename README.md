@@ -12,10 +12,10 @@ dan - dan u tjednu
 
 tjedan - tjedan provedbe istrazivanja 
 
-smjena - skolska smjena u kojoj su prikupljeni podaci 
+<p><br>smjena - skolska smjena u kojoj su prikupljeni podaci<br><p> 
 
 
-#psihološke karakteristike situacije
+<p><br>#psihološke karakteristike situacije<br><p>
 
 H_1 - H3 cestice skale humora 
 
@@ -29,9 +29,8 @@ TIP_1 - TIP_3 cestice skale skale tipicnosti
 
 POS_VAL_1 - POS_VAL_3 cestice skale pozitivne valentnosti 
 
-ADV_1 - ADV_3 cestice skale negativnosti  
-
-
+<p><br>ADV_1 - ADV_3 cestice skale negativnosti<br><p>
+  
 HUM - prosjecan rezultat na humoristicnosti 
 
 IMP - prosjecan rezultat na vaznosti 
@@ -44,10 +43,9 @@ TIPI - prosjecan rezultat na tipicnosti
 
 POS_VAL - prosjecan rezultat na pozitivnoj valentnosti  
 
-ADVERS - prosjecan rezultat na negativnosti 
+<p><br>ADVERS - prosjecan rezultat na negativnosti<br><p>  
 
-
-#stanja ličnosti
+<p><br>#stanja ličnosti<br><p>  
 
 C1 - C2 cestice skale stanja savjesnosti 
 
@@ -57,13 +55,13 @@ A1 - A2 cestice skale stanja ugodnosti
 
 O1 - O2 cestice skale stanja otvorenosti  
 
-N1 - N2 cestice skale stanja neuroticizma  
+<p><br>N1 - N2 cestice skale stanja neuroticizma<br><p>   
 
 SAV - prosjecan rezultat na stanju savjesnosti 
 
 EKST - prosjecan rezultat na stanju ekstraverzije  
 
-OTV - prosjecan rezultat na stanju otvorenosti  
+<p><br>OTV - prosjecan rezultat na stanju otvorenosti<br><p>    
 
 #samoefikasnost
 
@@ -71,7 +69,7 @@ SE_1 - SE_3 cestice skale samoefikasnosti
 
 SEU - prosjecan rezultat na stanju samoefikasnosti  
 
-#crte licnosti
+<p><br>#crte licnosti<br><p>
 
 TIGL1-TIGL30 - cestice crta licnosti 
 
@@ -83,10 +81,9 @@ SAV_C - prosjecan rezultat na crti savjesnosti
 
 NEU_C - prosjecan rezultat na crti neuroticizma 
 
-OTV_C - prosjecan rezultat na crti otvorenosti 
+<p><br>OTV_C - prosjecan rezultat na crti otvorenosti<br><p> 
 
-
-#podaci prikupljeni za potrebe sireg istrazivanja 
+<p><br>#podaci prikupljeni za potrebe sireg istrazivanja<br><p>  
 
 POZ_1 - POZ_4 cestice skale pozitivnosti 
 
