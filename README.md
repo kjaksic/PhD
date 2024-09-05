@@ -12,7 +12,7 @@ dan - dan u tjednu
 
 tjedan - tjedan provedbe istrazivanja 
 
-<p><br>smjena - skolska smjena u kojoj su prikupljeni podaci<br><p> 
+smjena - skolska smjena u kojoj su prikupljeni podaci
 
 
 <p><br>#psihološke karakteristike situacije<br><p>
