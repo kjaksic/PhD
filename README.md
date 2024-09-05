@@ -15,7 +15,7 @@ tjedan - tjedan provedbe istrazivanja
 smjena - skolska smjena u kojoj su prikupljeni podaci
 
 
-<p><br>#psihološke karakteristike situacije<br><p>
+<p><br><strong>Psihološke karakteristike situacije<br></strong><p>
 
 H_1 - H3 cestice skale humora 
 
@@ -45,7 +45,7 @@ POS_VAL - prosjecan rezultat na pozitivnoj valentnosti
 
 ADVERS - prosjecan rezultat na negativnosti 
 
-<p><br>#stanja ličnosti<br><p>  
+<p><br><strong>Stanja ličnosti<br></strong><p>  
 
 C1 - C2 cestice skale stanja savjesnosti 
 
@@ -63,13 +63,13 @@ EKST - prosjecan rezultat na stanju ekstraverzije
 
 OTV - prosjecan rezultat na stanju otvorenosti    
 
-<p><br>#samoefikasnost<br><p>    
+<p><br><strong>Samoefikasnost<br></strong><p>      
 
 SE_1 - SE_3 cestice skale samoefikasnosti 
 
 SEU - prosjecan rezultat na stanju samoefikasnosti  
 
-<p><br>#crte licnosti<br><p>
+<p><br><strong>Crte licnosti<br></strong><p>   
 
 TIGL1-TIGL30 - cestice crta licnosti 
 
@@ -83,7 +83,7 @@ NEU_C - prosjecan rezultat na crti neuroticizma
 
 OTV_C - prosjecan rezultat na crti otvorenosti 
 
-<p><br>#podaci prikupljeni za potrebe sireg istrazivanja<br><p>  
+<p><br><strong>Podaci prikupljeni za potrebe sireg istrazivanja<br></strong><p>    
 
 POZ_1 - POZ_4 cestice skale pozitivnosti 
 
