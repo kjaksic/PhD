@@ -4,7 +4,7 @@ library(plotly)
 
 
 # read in the data
-data <- read.csv2("graf.csv")  
+data <- read.csv2("vizualizacije.csv")  
 
 #create time variables
 data$tjedan <- as.factor(data$tjedan) 
