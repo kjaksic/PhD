@@ -1,4 +1,4 @@
-#ispod su navedene oznake varijabli koriÅ¡tenih u prilozenim skriptama
+#ispod su navedene oznake varijabli koristenih u prilozenim skriptama
 
 id - sifra ispitanika 
 
