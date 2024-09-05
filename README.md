@@ -2,7 +2,7 @@
 
 Ispod su navedene oznake varijabli koristenih u prilozenim skriptama 
 
-<p><br><strong></strong>Kontrolne varijable<br></strong><p>
+<p><br><strong>Kontrolne varijable<br></strong><p>
 
 id - sifra ispitanika 
 
