@@ -4,92 +4,92 @@ Ispod su navedene oznake varijabli koristenih u priloženim skriptama
 
 <p><br><strong>Kontrolne varijable<br></strong><p>
 
-id - sifra ispitanika 
+id - šifra ispitanika 
 
 redni_broj uzorkovanja - redni broj signala 
 
 dan - dan u tjednu 
 
-tjedan - tjedan provedbe istrazivanja 
+tjedan - tjedan provedbe istraživanja 
 
-smjena - skolska smjena u kojoj su prikupljeni podaci
+smjena - školska smjena u kojoj su prikupljeni podaci
 
 
 <p><br><strong>Psihološke karakteristike situacije<br></strong><p>
 
-H_1 - H3 cestice skale humora 
+H_1 - H3 čestice skale humora 
 
-IMP_1 - IMP3 cestice skale vaznosti 
+IMP_1 - IMP3 čestice skale važnosti 
 
-NEG_VAL_1 - NEG_VAL_3 cestice skale negativne valentnosti 
+NEG_VAL_1 - NEG_VAL_3 čestice skale negativne valentnosti 
 
-COMP_1 - COMP_3 cestice skale kompleksnosti 
+COMP_1 - COMP_3 čestice skale kompleksnosti 
 
-TIP_1 - TIP_3 cestice skale skale tipicnosti  
+TIP_1 - TIP_3 čestice skale skale tipičnosti  
 
-POS_VAL_1 - POS_VAL_3 cestice skale pozitivne valentnosti 
+POS_VAL_1 - POS_VAL_3 čestice skale pozitivne valentnosti 
 
-ADV_1 - ADV_3 cestice skale negativnosti
+ADV_1 - ADV_3 čestice skale negativnosti
   
-<p><br>HUM - prosjecan rezultat na humoristicnosti<br><p>
+<p><br>HUM - prosječan rezultat na humorističnosti<br><p>
 
-IMP - prosjecan rezultat na vaznosti 
+IMP - prosječan rezultat na važnosti 
 
-NEG_VAL - prosjecan rezultat na negativnoj valentnosti 
+NEG_VAL - prosječan rezultat na negativnoj valentnosti 
 
-COMPLEX - prosjecan rezultat na kompleksnosti 
+COMPLEX - prosječan rezultat na kompleksnosti 
 
-TIPI - prosjecan rezultat na tipicnosti  
+TIPI - prosječan rezultat na tipičnosti  
 
-POS_VAL - prosjecan rezultat na pozitivnoj valentnosti  
+POS_VAL - prosječan rezultat na pozitivnoj valentnosti  
 
-ADVERS - prosjecan rezultat na negativnosti 
+ADVERS - prosječan rezultat na negativnosti 
 
 <p><br><strong>Stanja ličnosti<br></strong><p>  
 
-C1 - C2 cestice skale stanja savjesnosti 
+C1 - C2 čestice skale stanja savjesnosti 
 
-E1 - E2 cestice skale stanja ekstraverzije 
+E1 - E2 čestice skale stanja ekstraverzije 
 
-A1 - A2 cestice skale stanja ugodnosti 
+A1 - A2 čestice skale stanja ugodnosti 
 
-O1 - O2 cestice skale stanja otvorenosti  
+O1 - O2 čestice skale stanja otvorenosti  
 
-N1 - N2 cestice skale stanja neuroticizma   
+N1 - N2 čestice skale stanja neuroticizma   
 
-<p><br>SAV - prosjecan rezultat na stanju savjesnosti<br><p>    
+<p><br>SAV - prosječan rezultat na stanju savjesnosti<br><p>    
 
-EKST - prosjecan rezultat na stanju ekstraverzije  
+EKST -  prosječan rezultat na stanju ekstraverzije  
 
-OTV - prosjecan rezultat na stanju otvorenosti    
+OTV - prosječan rezultat na stanju otvorenosti    
 
 <p><br><strong>Samoefikasnost<br></strong><p>      
 
-SE_1 - SE_3 cestice skale samoefikasnosti 
+SE_1 - SE_3 čestice skale samoefikasnosti 
 
-SEU - prosjecan rezultat na stanju samoefikasnosti  
+SEU - prosječan rezultat na stanju samoefikasnosti  
 
-<p><br><strong>Crte licnosti<br></strong><p>   
+<p><br><strong>Crte ličnosti<br></strong><p>   
 
-TIGL1-TIGL30 - cestice crta licnosti 
+TIGL1-TIGL30 - čestice crta ličnosti 
 
-EKST_C - prosjecan rezultat na crti ekstraverzije 
+EKST_C - prosječan rezultat na crti ekstraverzije 
 
-UGOD_C - prosjecan rezultat na crti ugodnosti 
+UGOD_C - prosječan rezultat na crti ugodnosti 
 
-SAV_C - prosjecan rezultat na crti savjesnosti 
+SAV_C - prosječan rezultat na crti savjesnosti 
 
-NEU_C - prosjecan rezultat na crti neuroticizma 
+NEU_C - prosječan rezultat na crti neuroticizma 
 
-OTV_C - prosjecan rezultat na crti otvorenosti 
+OTV_C - prosječan rezultat na crti otvorenosti 
 
-<p><br><strong>Podaci prikupljeni za potrebe sireg istrazivanja<br></strong><p>    
+<p><br><strong>Podaci prikupljeni za potrebe šireg istraživanja<br></strong><p>    
 
-POZ_1 - POZ_4 cestice skale pozitivnosti 
+POZ_1 - POZ_4 čestice skale pozitivnosti 
 
-NEG_1 - NEG_5 cestice skale negativnosti 
+NEG_1 - NEG_5 čestice skale negativnosti 
 
-ER_1 - ER_8 cestice skale emocionalne regulacije 
+ER_1 - ER_8 čestice skale emocionalne regulacije 
 
 
 
