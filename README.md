@@ -1,6 +1,6 @@
 <br><strong>Documentation</strong><br> 
 
-Ispod su navedene oznake varijabli koristenih u priloženim skriptama 
+Ispod su navedene oznake varijabli korištenih u priloženim skriptama 
 
 <p><br><strong>Kontrolne varijable<br></strong><p>
 
