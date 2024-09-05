@@ -6,19 +6,19 @@ redni_broj uzorkovanja - redni broj signala
 
 dan - dan u tjednu 
 
-tjedan - tjedan provedbe istraÅ¾ivanja 
+tjedan - tjedan provedbe istrazivanja 
 
 smjena - skolska smjena u kojoj su prikupljeni podaci 
 
 H_1 - H3 cestice skale humora 
 
-IMP_1 - IMP3 cestice skale vaÅ¾nosti 
+IMP_1 - IMP3 cestice skale vaznosti 
 
 NEG_VAL_1 - NEG_vAL_3 cestice skale negativne valentnosti 
 
 COMP_1 - COMP_3 cestice skale kompleksnosti 
 
-TIP_1 - TIP_3 cestice skale skale tipiÄnosti  
+TIP_1 - TIP_3 cestice skale skale tipicnosti  
 
 POS_VAL_1 - POS_VAL_3 cestice skale pozitivne valentnosti 
 
@@ -44,9 +44,9 @@ OTV - prosjecan rezultat na stanju otvorenosti
 
 SEU - prosjecan rezultat na stanju samoefikasnosti  
 
-HUM - prosjecan rezultat na humoristiÄnosti 
+HUM - prosjecan rezultat na humoristicnosti 
 
-IMP - prosjecan rezultat na vaÅ¾nosti 
+IMP - prosjecan rezultat na vaznosti 
 
 NEG_VAL - prosjecan rezultat na negativnoj valentnosti 
 
