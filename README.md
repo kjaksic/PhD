@@ -1,4 +1,4 @@
-<p><strong><br>Documentation</strong><br><p> 
+<p><br><strong>Documentation</strong><br><p> 
 
 Ispod su navedene oznake varijabli koristenih u prilozenim skriptama 
 
