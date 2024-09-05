@@ -43,7 +43,7 @@ TIPI - prosjecan rezultat na tipicnosti
 
 POS_VAL - prosjecan rezultat na pozitivnoj valentnosti  
 
-<p><br>ADVERS - prosjecan rezultat na negativnosti<br><p>  
+ADVERS - prosjecan rezultat na negativnosti 
 
 <p><br>#stanja ličnosti<br><p>  
 
@@ -55,9 +55,9 @@ A1 - A2 cestice skale stanja ugodnosti
 
 O1 - O2 cestice skale stanja otvorenosti  
 
-<p><br>N1 - N2 cestice skale stanja neuroticizma<br><p>   
+N1 - N2 cestice skale stanja neuroticizma   
 
-SAV - prosjecan rezultat na stanju savjesnosti 
+<p><br>SAV - prosjecan rezultat na stanju savjesnosti<br><p>    
 
 EKST - prosjecan rezultat na stanju ekstraverzije  
 
