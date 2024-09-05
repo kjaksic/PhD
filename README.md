@@ -29,9 +29,9 @@ TIP_1 - TIP_3 cestice skale skale tipicnosti
 
 POS_VAL_1 - POS_VAL_3 cestice skale pozitivne valentnosti 
 
-<p><br>ADV_1 - ADV_3 cestice skale negativnosti<br><p>
+ADV_1 - ADV_3 cestice skale negativnosti
   
-HUM - prosjecan rezultat na humoristicnosti 
+<p><br>HUM - prosjecan rezultat na humoristicnosti<br><p>
 
 IMP - prosjecan rezultat na vaznosti 
 
