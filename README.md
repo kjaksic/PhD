@@ -4,6 +4,7 @@ Ispod su navedene oznake varijabli koristenih u prilozenim skriptama
 
 #kontrolne varijable
 
+
 id - sifra ispitanika 
 
 redni_broj uzorkovanja - redni broj signala 
@@ -13,6 +14,7 @@ dan - dan u tjednu
 tjedan - tjedan provedbe istrazivanja 
 
 smjena - skolska smjena u kojoj su prikupljeni podaci 
+
 
 #psihološke karakteristike situacije
 
@@ -67,6 +69,7 @@ OTV - prosjecan rezultat na stanju otvorenosti
 #samoefikasnost
 
 SE_1 - SE_3 cestice skale samoefikasnosti 
+
 SEU - prosjecan rezultat na stanju samoefikasnosti  
 
 #crte licnosti
