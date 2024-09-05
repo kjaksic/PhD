@@ -1,8 +1,7 @@
 <strong>Documentation</strong>
+Ispod su navedene oznake varijabli koristenih u prilozenim skriptama 
 
-<p><br>Ispod su navedene oznake varijabli koristenih u prilozenim skriptama<br><p> 
-
-#kontrolne varijable
+<p><br>#kontrolne varijable<br><p> 
 
 id - sifra ispitanika 
 
