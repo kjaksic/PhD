@@ -52,13 +52,13 @@ NEG_VAL - prosjecan rezultat na negativnoj valentnosti
 
 COMPLEX - prosjecan rezultat na kompleksnosti 
 
-TIPI - prosjecan rezultat na tipicnosti  
+TIPI - prosjecan rezultat na tipicnosti  
 
 POS_VAL - prosjecan rezultat na pozitivnoj valentnosti  
 
 ADVERS - prosjecan rezultat na negativnosti 
 
-TIGL1-TIGL30 - cestice crta licnosti 
+TIGL1-TIGL30 - cestice crta licnosti 
 
 EKST_C - prosjecan rezultat na crti ekstraverzije 
 
