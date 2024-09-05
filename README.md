@@ -3,6 +3,7 @@
 Ispod su navedene oznake varijabli koristenih u prilozenim skriptama 
 
 #kontrolne varijable
+
 id - sifra ispitanika 
 
 redni_broj uzorkovanja - redni broj signala 
@@ -14,6 +15,7 @@ tjedan - tjedan provedbe istrazivanja
 smjena - skolska smjena u kojoj su prikupljeni podaci 
 
 #psihološke karakteristike situacije
+
 H_1 - H3 cestice skale humora 
 
 IMP_1 - IMP3 cestice skale vaznosti 
@@ -45,6 +47,7 @@ ADVERS - prosjecan rezultat na negativnosti
 
 
 #stanja ličnosti
+
 C1 - C2 cestice skale stanja savjesnosti 
 
 E1 - E2 cestice skale stanja ekstraverzije 
@@ -62,6 +65,7 @@ EKST - prosjecan rezultat na stanju ekstraverzije
 OTV - prosjecan rezultat na stanju otvorenosti  
 
 #samoefikasnost
+
 SE_1 - SE_3 cestice skale samoefikasnosti 
 SEU - prosjecan rezultat na stanju samoefikasnosti  
 
