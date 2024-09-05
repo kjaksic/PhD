@@ -33,7 +33,7 @@ data$POS_VAL_cent <- calc.mcent(data$POS_VAL_S, ID, data)
 data$NEG_VAL_cent <- calc.mcent(data$NEG_VAL_S, ID, data)  
 data$COMPLEX_cent <- calc.mcent(data$COMPLEX_S, ID, data) 
 data$ADVERS_cent <- calc.mcent(data$ADVER_S, ID, data) 
-data$TIP_S_cent <- calc.mcent(data$TIP_S, ID, data)
+data$TIPI_S_cent <- calc.mcent(data$TIPI_S, ID, data)
 
 
 #plot time variable effect 
